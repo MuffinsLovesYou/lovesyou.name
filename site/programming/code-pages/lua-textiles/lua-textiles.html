@@ -1,0 +1,22 @@
+<div id='code-page-lua-textiles-notes'>
+	<p>If either of the code blocks isn't highlighted, it is because I didn't do the promises right.  If they are blank, maybe github is down I dunno.  <br>
+								Anyways. Dwarf Fortress is a great and complex game.  DFHack is a memory management hacking application that lets people supplement the game's functionality with custom Lua and Ruby scripts.  I spent a weekend learning Lua and putting together a pair of scripts to manage clothing.  It isn't quite done just yet, and I'm building it to be extensible, so once it is done I will still be tinkering. <br>
+								The purpose is management of the dwarven clothing industry.  The script can execute commands immediately or queue them for execution at specified intervals.  This allows the user to queue up yearly jobs to throw away worn out clothing, or queue up the construction of new clothing. <br>
+								Lua is a pretty fun little language.  I'm always in love with C# because it's what I'm most used to and I like the look and feel of it, but I have a definite soft spot in my heart for the flexibility and scrappiness of scripting languages.  They offer a developer a lot more chances to burn themselves with bad practices, but in so doing, they sometimes force more thoughtfulness into the development process.
+								As of 9/3/16, when I am creating this demo page, I've got the queue set up for storing/executing commands, and am finishing up the timer system.  The goal is for the script to run on auto once every in-game month, and to call any relevant queued scripts. I.e. the first month of spring, it will fire and call all [spring] tasks, then flag them off until the next year.</p>
+
+							</div>
+<div class='code-page-lua-textiles-view-code-div'>
+    <h2>calling script</h2>
+    <pre style='overflow:auto; max-height:400px;'>
+        <code id='code-page-lua-textiles-caller-code-block' class='language-javascript'>
+        </code>
+    </pre>
+</div>
+<div class='code-page-lua-textiles-module-code-div'>
+    <h2>module</h2>
+    <pre style='overflow:auto; max-height:400px;'>
+        <code id='code-page-lua-textiles-model-code-block' class='language-javascript'>
+        </code>
+    </pre>
+</div>
