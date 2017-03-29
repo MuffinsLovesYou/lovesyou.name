@@ -3,4 +3,5 @@ This is my personal website for fooling around.  The .name domain is a bit wonky
 
 ## the theme
 When I first created the website I wanted a clean theme that was largely image based, as I wasn't going to be loading the thing down with content. I got the 'phantom' theme from https://html5up.net/phantom and retooled it a bit.  Recently I did a ground-up rewrite, keeping the same general concepts, but stripping it down so heavily there's not much of the original theme left.
-
+I'm really pleased with the tiles I got set up: 
+![tile](http://imgur.com/a/3neVm "tile")
