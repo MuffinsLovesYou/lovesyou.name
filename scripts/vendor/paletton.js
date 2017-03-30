@@ -57,7 +57,7 @@ define([], () => {
 
 
 		var localcolor = {
-			'maximilien' : {"byPalette":{"pri":["#FF9A58","#FFF8F3","#FFC29A","#FF7319","#FF6400"]},"byLum":{"pri":["#FFF8F3","#FFC29A","#FF9A58","#FF7319","#FF6400"]}}
+			'maximilien' : {"byPalette":{"pri":["#6B532B","#BDAC8F","#8D7955","#4D360E","#221600"]},"byLum":{"pri":["#BDAC8F","#8D7955","#6B532B","#4D360E","#221600"]}}
 			,'law' : {"byPalette":{"pri":["#607070","#ABB1B1","#7D8888","#485C5C","#314646"]},"byLum":{"pri":["#ABB1B1","#7D8888","#607070","#485C5C","#314646"]}}
 			,'barbican-brady' : {"byPalette":{"pri":["#362200","#180F00","#402C0A","#AB6D00","#FFA200"]},"byLum":{"pri":["#FFA200","#AB6D00","#402C0A","#362200","#180F00"]}} 
 
