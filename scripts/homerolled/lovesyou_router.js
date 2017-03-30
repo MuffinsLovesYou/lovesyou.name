@@ -19,7 +19,8 @@ define([
             ,'code-pages/lua-textiles' : 'programming/code-pages/lua-textiles/lua-textiles'
             ,'code-pages/lua-textilesv2' : 'programming/code-pages/lua-textilesv2/lua-textilesv2'
             ,'code-pages/lvlr' : 'programming/code-pages/lvlr/lvlr'
-            
+            ,'code-pages/lovesyou.name' : 'programming/code-pages/lovesyou.name/lovesyou.name'
+
             /* */
             ,'maximilien' : 'dungeons-dragons/character-sheets/maximilien-robert/maximilien-robert'
             ,'barbican-brady' : 'dungeons-dragons/character-sheets/barbican-brady/barbican-brady'

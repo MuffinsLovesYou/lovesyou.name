@@ -1,32 +1,24 @@
 <div id='code-page-character-notes'>
-    <p>This is part of last-week's project. I started just updating my dice roller, but then I realized it had been over a year
-        since I had done any significant work on my D&D stuff. Likewise, it had some known issues when trying to port it
-        to the website (race conditions with script loading that didn't occur when it was just a filesystem app). <br> The
-        D&D project is the very definition of a small personal project that has outgrown its scope several times. It started
-        as ad-hoc html pages with all the data hard-coded into them. Basically I was using HTML as a text editor since I
-        could have more full control over the formatting. Then I started having just one single markup page, and the content
-        was stored in .js files and passed to it. The last revision a year ago was bringing in require.js to manage my script
-        loading so that I could start building an actual D&D library of scripts to support an object-oriented approach.
-        <br> So this last revision. I finally created a proper character object/model (the first script below) and a another
-        (second below) that pushes it to the waiting html page. There were quite a few other changes as well:
-        <ul>
-            <li>Anonymized all page-load functions sinced they wouldn't need to be called but once</li>
-            <li>Made sure everything was scoped in an appropriate object to unclutter the global space</li>
-            <li>Renamed and reorganized files</li>
-            <li>Revisited how I utilized require.js for loading and fixed all race conditions.</li>
-            <li>Imported and tailored json and xml databases for items and spells</li>
-        </ul>
+    <p>I've been having a lot of fun rewriting my site, including my D&D tools. The site is now 
+        a sordid single-page mvvm affair. The viewmodel loads its .html, and then gets passed 
+        the data to bind to it from the character-specific calling page.</p>
+    <p>The model has gotten cleaned up a bit too.  I stripped all the .html and images out of 
+        my D&D library so that it is just scripts. This also let me split off skills, and soon, 
+        classes into their own files so that things are more well defined. </p>
+
+    <p>You should be able to see all this in action with one of the 
+        character sheets at <a href='#character-sheets' target='_blank'>#character-sheets</a>. 
     </p>
 </div>
 <div class='code-page-character-view-code-div'>
-    <h2>View</h2>
+    <h2>viewmodel</h2>
     <pre style='overflow:auto; max-height:400px;'>
         <code id='code-page-character-view-code-block' class='language-javascript'>
         </code>
     </pre>
 </div>
 <div class='code-page-character-model-code-div'>
-    <h2>Model</h2>
+    <h2>model</h2>
     <pre style='overflow:auto; max-height:400px;'>
         <code id='code-page-character-model-code-block' class='language-javascript'>
         </code>

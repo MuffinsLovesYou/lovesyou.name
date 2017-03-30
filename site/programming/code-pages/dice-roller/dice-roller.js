@@ -8,7 +8,7 @@ define([
 
         let code_block = document.getElementById('code-page-dice-roller-code-block');
         let roller_template = new LYTemplate();
-        roller_template.ContentUrl =  'https://raw.githubusercontent.com/MuffinsLovesYou/DungeonsDragons/master/5e/scripts/DungeonsDragonsLibrary/Utilities/5eDiceRoller.js',
+        roller_template.ContentUrl =  'https://raw.githubusercontent.com/MuffinsLovesYou/LYDice/master/LYDice.js',
         roller_template.OnAttach = function(){
             roller_template.ContentFormat = function(data){
                 data = data.replace('/[<]/g', '&lt;');

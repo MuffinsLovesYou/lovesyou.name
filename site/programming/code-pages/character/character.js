@@ -8,7 +8,7 @@ define([
 
         let view_block = document.getElementById('code-page-character-view-code-block');;
         let view_template = new LYTemplate();
-        view_template.ContentUrl = 'https://raw.githubusercontent.com/MuffinsLovesYou/DungeonsDragons/master/5e/scripts/CharacterView.js';                
+        view_template.ContentUrl = 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/site/dungeons-dragons/character-sheets/elements/character-sheet.js';                
         view_template.OnAttach = function(){
             view_template.ContentFormat = function(data){
                 data = data.replace('/[<]/g', '&lt;');
@@ -21,7 +21,7 @@ define([
 
         let character_block = document.getElementById('code-page-character-model-code-block');;
         let character_template = new LYTemplate();
-        character_template.ContentUrl = 'https://raw.githubusercontent.com/MuffinsLovesYou/DungeonsDragons/master/5e/scripts/DungeonsDragonsLibrary/Character.js';                
+        character_template.ContentUrl = 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/5e/character.js';                
         character_template.OnAttach = function(){
             character_template.ContentFormat = function(data){
                 data = data.replace('/[<]/g', '&lt;');
