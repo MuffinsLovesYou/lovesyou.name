@@ -22,9 +22,9 @@ define([
             ,'code-pages/lovesyou.name' : 'programming/code-pages/lovesyou.name/lovesyou.name'
 
             /* */
-            ,'maximilien' : 'dungeons-dragons/character-sheets/maximilien-robert/maximilien-robert'
-            ,'barbican-brady' : 'dungeons-dragons/character-sheets/barbican-brady/barbican-brady'
-            ,'law' :'dungeons-dragons/character-sheets/law/law'
+            ,'maximilien' : 'dungeons-dragons/character-sheets/sheets/maximilien-robert'
+            ,'barbican-brady' : 'dungeons-dragons/character-sheets/sheets/barbican-brady'
+            ,'law' :'dungeons-dragons/character-sheets/sheets/law'
         }
         router.main_content = document.getElementById('main-content');
 
