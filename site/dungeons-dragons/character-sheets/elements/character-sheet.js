@@ -17,7 +17,6 @@ define([
         set('Background', data.Background);
         set('XP', data.XP);
 
-
         var personality = document.getElementById('character_personality');
         for (var t in data.Personality) {
             let div = document.createElement('div');
@@ -97,22 +96,14 @@ define([
                     'site/dungeons-dragons/character-sheets/elements/spellbox/spellbox',
                     '5e/spells'
                 ], (modal, spellbox, spells) => {
-
                     spell = spells[spell];
-                    modal.OnAttach = (() => {
-                        let base_attach = modal.OnAttach;
-                        return () => {
-                            base_attach();
-                            spellbox.Container = document.getElementById('modal-content');
-                            spellbox.Data = spell;
-                        }
-                    })();
+                    modal.OnAttach = () => {
+                        spellbox.Container = document.getElementById('modal-content');
+                        spellbox.Data = spell;
+                    };
                     modal.Container = document.getElementById('spellbox-container');
                 });
-
-
             });
-
         }
     }
     template.OnAttach = function () {
@@ -125,7 +116,6 @@ define([
         require(['scripts/homerolled/character-sheet-styler'], (sheet_styler) => {
             sheet_styler.stylize();
         });
-
 
         require(['site/common/dice/dice'], (dice)=>{
             dice.Container = document.getElementById('dice-container');           

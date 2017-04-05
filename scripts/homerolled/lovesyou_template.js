@@ -61,6 +61,7 @@ define([
                 ,get : function() {
                     return template._on_attach;
                 }
+                ,configurable : true
             }
             ,'Data' : {
                 get : new Get(template, '_data')
