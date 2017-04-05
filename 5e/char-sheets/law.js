@@ -11,7 +11,7 @@ define([
 
 	Law.Background = 'Merc';
 	Law.XP = 6500;
-	Law.Stats.Strength = 16;
+	Law.Stats.Strength = 16;//18
 	Law.Stats.Dexterity = 8;
 	Law.Stats.Constitution = 16;
 	Law.Stats.Intelligence = 8;
@@ -23,12 +23,18 @@ define([
 
 	Law.AC = 18; // Plate 
 
-	Law.Personality.Trait = '';
-	Law.Personality.Ideal = '';
-	Law.Personality.Bond = '';
-	Law.Personality.Flaw = '';
-	Law.Personality.Background = '';
-	Law.Personality.Description = ``;
+	Law.Personality.Description = `Boasting to be the largest half-elf alive, Law stands about 6'4" tall and 
+	weighs about 260lbs. His shining armor, fanciful hats, and big grin are all part of his uniform working as the 
+	'face' of whatever mercenary, or now adventuring group he's with. `;
+	Law.Personality.Trait = 'I work hard, so I can play hard when I\'m done.';
+	Law.Personality.Ideal = 'This life is about freedom. Hard work for easy pay, often comfortably outside the law.';
+	Law.Personality.Bond = 'The individual is strong, but the group is stronger.';
+	Law.Personality.Flaw = 'Though my order is warlike, I struggle with my oath. ';
+	Law.Personality.Background = `Living a largely vagrant childhood, Law's first profession was working as a page 
+	for members of the Tiny Legion band of mercenaries. They had close ties with a monastery to Tempus, that was 
+	renowned for producing well-trained and honorable fighters. Off and on he would train there and then take his 
+	lessons with him on the road as a soldier of fortune, trying to find balance between a self-serving lifestyle 
+	and vows to serve others.`;
 
 	Law.Features.push('Feat: Shield Master');
 	Law.Features.push('Fighter: Action Surge');
@@ -38,12 +44,12 @@ define([
 	Law.Features.push('Bard: Expertise (athletics, performance)')
 	Law.Features.push('Bard: College of lore');
 
-	Law.Skills.Athletics.Trained = true; // mercenary
+	Law.Skills.Athletics.Trained = true; // merc
 	Law.Skills.Insight.Trained = true; // paladin
-	Law.Skills.Intimidation.Trained = true; // mercenary
-	//Law.Skills.Performance.Trained = true; // bard
-	//Law.Skills.Perception.Trained = true; // fighter 
-	Law.Skills.Persuasion.Trained = true; // paladin
+	Law.Skills.Religion.Trained = true; // paladin
+	Law.Skills.Performance.Trained = true; // helf
+	Law.Skills.Perception.Trained = true; // merc
+	Law.Skills.Persuasion.Trained = true; // helf
 	
 	
 	let items = Law.Items;
