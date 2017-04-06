@@ -4,12 +4,11 @@ define([
     ,'dice'
 ], function (util, LYTemplate) {
 
-    
     var template = new LYTemplate();
     template.ContentUrl = 'site/common/dice/dice.html';
     template.OnAttach = function () {
         DiceRoller.init();
     } 
-
     return template;
+    
 });

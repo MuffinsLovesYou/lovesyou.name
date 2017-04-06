@@ -3,7 +3,6 @@ define([
     ,'5e/skills'
     ,'5e/spells'
 ], (Items,Skills,Spells) => {
-    console.log('loading character.js')
 
     // Eventually this may get migrated to its own file.
     function Class(name, level, archetype) {

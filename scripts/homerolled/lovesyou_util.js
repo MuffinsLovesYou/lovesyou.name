@@ -2,7 +2,6 @@
 	unassorted UI helpers and utility functions
 */
 define([],()=>{
-	console.log('loading lovesyou_util')
 
 	let Util = function(){
 		let util = this;

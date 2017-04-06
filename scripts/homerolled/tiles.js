@@ -1,7 +1,6 @@
 
 define([], function(){
-    console.log('loading tiles');
-
+    
     var Tiles = function(){
         var tiles = this;
 
