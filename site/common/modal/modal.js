@@ -21,6 +21,9 @@ define([
                             return;
                         }
                         template.Container.innerHTML = '';
+                        while(template.Container.firstChild){
+                            template.Container.removeChild(template.Container.firstChild);
+                        }
                     });
                 })();
                 let content = document.getElementById('modal-content');
