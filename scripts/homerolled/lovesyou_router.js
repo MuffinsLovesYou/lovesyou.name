@@ -2,29 +2,33 @@ define([
     'colorizer'
 ], (colorizer) => {
     colorizer.load();
-    console.log('loading lovesyou_router');
 
     let LYRouter = function () {
         let router = this;
         router.baseUrl = 'site/';
+        router.paths = {
+            base : 'site/'
+            ,sheets :'dungeons-dragons/character-sheets/sheets/'
+            ,code : 'programming/code-pages/'
+        }
         router.map = {
             'landing' : 'landing/landing'
             ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'
             ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
             ,'programming' : 'programming/programming'
             /* */
-            ,'code-pages/character' : 'programming/code-pages/character/character'
-            ,'code-pages/dice-roller' : 'programming/code-pages/dice-roller/dice-roller'
-            ,'code-pages/lua-actions' : 'programming/code-pages/lua-actions/lua-actions'
-            ,'code-pages/lua-textiles' : 'programming/code-pages/lua-textiles/lua-textiles'
-            ,'code-pages/lua-textilesv2' : 'programming/code-pages/lua-textilesv2/lua-textilesv2'
-            ,'code-pages/lvlr' : 'programming/code-pages/lvlr/lvlr'
-            ,'code-pages/lovesyou.name' : 'programming/code-pages/lovesyou.name/lovesyou.name'
+            ,'code-pages/character' : router.paths.code + 'character/character'
+            ,'code-pages/dice-roller' : router.paths.code + 'dice-roller/dice-roller'
+            ,'code-pages/lua-actions' : router.paths.code + 'lua-actions/lua-actions'
+            ,'code-pages/lua-textiles' : router.paths.code + 'lua-textiles/lua-textiles'
+            ,'code-pages/lua-textilesv2' : router.paths.code + 'lua-textilesv2/lua-textilesv2'
+            ,'code-pages/lvlr' : router.paths.code + 'lvlr/lvlr'
+            ,'code-pages/lovesyou.name' : router.paths.code + 'lovesyou.name/lovesyou.name'
 
             /* */
-            ,'maximilien' : 'dungeons-dragons/character-sheets/sheets/maximilien-robert'
-            ,'barbican-brady' : 'dungeons-dragons/character-sheets/sheets/barbican-brady'
-            ,'law' :'dungeons-dragons/character-sheets/sheets/law'
+            ,'maximilien' : router.paths.sheets + 'maximilien-robert'
+            ,'barbican-brady' : router.paths.sheets + 'barbican-brady'
+            ,'law' : router.paths.sheets + 'law'
         }
         router.main_content = document.getElementById('main-content');
 
@@ -33,7 +37,7 @@ define([
                 let url = window.location.toString();
                 url = url.replace('.html', '');
                 window.history.replaceState(null, null, url);
-            } catch (e) { }
+            } catch (e) { /*fails on local browser during dev*/ }
         }
         router.navigate = function () {
             router.clean_url();
