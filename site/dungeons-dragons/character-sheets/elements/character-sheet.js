@@ -1,8 +1,7 @@
 define([
-    'lovesyou_util', 
+    'lovesyou_util',
     'lovesyou_template'
 ], function (util, LYTemplate) {
-
 
     var template = new LYTemplate();
     template.ContentUrl = 'site/dungeons-dragons/character-sheets/elements/' + 'character-sheet.html';
@@ -98,8 +97,8 @@ define([
                 ], (modal, spellbox, spells) => {
                     spell = spells[spell];
                     modal.OnAttach = () => {
-                        spellbox.Container = document.getElementById('modal-content');
                         spellbox.Data = spell;
+                        spellbox.Container = document.getElementById('modal-content');
                     };
                     modal.Container = document.getElementById('spellbox-container');
                 });
@@ -117,11 +116,10 @@ define([
             sheet_styler.stylize();
         });
 
-        require(['site/common/dice/dice'], (dice)=>{
-            dice.Container = document.getElementById('dice-container');           
+        require(['site/common/dice/dice'], (dice) => {
+            dice.Container = document.getElementById('dice-container');
         })
     }
-
 
     return template;
 });

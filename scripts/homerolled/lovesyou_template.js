@@ -14,7 +14,6 @@ define([
         template._data_bound;
         template._data_loading;
         template._data_url;
-
         Object.defineProperties(template, {
             'Container': {
                 get : ()=> { return template._container; }
@@ -36,7 +35,6 @@ define([
                 set: function (url) {
                     template._content_url = url;
                     template._content_loading = true;
-                    if(template.test){ console.log('hai'); }
                     util.xhr({
                         url: url,
                         success: function (data) {
@@ -50,6 +48,7 @@ define([
                 get : ()=>{ return template._content; } 
                 ,set : function(value){
                     template._content_attached = false;
+                    template._data_bound = false;
                     if(typeof(template._format_content)==='function'){
                         value = template._format_content(value);
                     }
@@ -87,7 +86,7 @@ define([
                     template._data_url = url;
                     template._data_loading = true;
                     require([url],(val)=>{
-                        template._data_loaded = false;
+                        template._data_loading = false;
                         template.Data = val;
                     });
                 }                
@@ -115,10 +114,10 @@ define([
              }
         }
         template._bind_data = function(){      
-            if(!template.data_bound && template._content_attached && template._data){
-                template._data_bind();
+            if(!template._data_bound && template._content_attached && template._data){
                 template._data_bound = true;
-                if(template.data_url) { template._data = null; }
+                template._data_bind();
+                template._data = null; 
             }
         }
 

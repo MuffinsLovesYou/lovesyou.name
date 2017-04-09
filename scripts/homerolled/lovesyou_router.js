@@ -14,6 +14,8 @@ define([
         router.map = {
             'landing' : 'landing/landing'
             ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'
+            ,'notes' : 'dungeons-dragons/notes/notes'
+            ,'note' : 'dungeons-dragons/notes/note'
             ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
             ,'programming' : 'programming/programming'
             /* */
@@ -44,6 +46,7 @@ define([
             colorizer.on_navigate();
             let key = window.location.hash.slice(1).toLowerCase();
             if(!key){ key = 'landing'; }
+            if(key.substr(0,6)==='notes/'){ key = 'note'; }
             if (!router.map[key]) {
                 return;
             }
