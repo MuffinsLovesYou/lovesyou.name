@@ -17,6 +17,7 @@ define([
             ,'notes' : 'dungeons-dragons/notes/notes'
             ,'note' : 'dungeons-dragons/notes/note'
             ,'maps' : 'dungeons-dragons/maps/maps'
+            ,'monsterbox' : 'dungeons-dragons/elements/monsterbox/monsterbox'
             ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
             ,'programming' : 'programming/programming'
             /* */
@@ -48,6 +49,7 @@ define([
             let key = window.location.hash.slice(1).toLowerCase();
             if(!key){ key = 'landing'; }
             if(key.substr(0,6)==='notes/'){ key = 'note'; }
+            if(key.substr(0,10)==='monsterbox'){ key = 'monsterbox'; }
             if (!router.map[key]) {
                 return;
             }
