@@ -16,6 +16,7 @@ define([
             ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'
             ,'notes' : 'dungeons-dragons/notes/notes'
             ,'note' : 'dungeons-dragons/notes/note'
+            ,'maps' : 'dungeons-dragons/maps/maps'
             ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
             ,'programming' : 'programming/programming'
             /* */
