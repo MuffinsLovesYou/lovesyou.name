@@ -318,6 +318,15 @@ let Spells = {
       "Range" : "Self",
       "School" : "Transmutation"
    },
+   "Feather Fall" : {
+     "Casting Time" : "1 reaction, which you take when you or a creature within 60 feet of you falls",
+      "Components" : "V, M (a small feather or piece of down)",
+      "Description" : "Choose up to five falling creatures within range. A falling creature's rate of descent slows to 60 feet per round until the spell ends. If the creature lands before the spell ends, it take no falling damage and can land on its feet, and the spell ends for that creature.",
+      "Duration" : "1 minute",
+      "Level" : 1,
+      "Range" : "60 feet",
+      "School" : "transmutation"
+   },
    "Find the Path" : {
       "Casting Time" : "1 minute",
       "Components" : "V, S, M (a set of divinatory tools—such as bones, ivory sticks, cards, teeth, or carved runes— worth 100 gp and an object from the location you wish to find)",

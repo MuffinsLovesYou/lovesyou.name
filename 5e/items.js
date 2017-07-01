@@ -294,6 +294,16 @@ let Items = {
         "Value": "40gp",
         "Weight": "38"
     },
+    'Everburning Torch' : {
+        Name : 'Everburning Torch',
+        Value : '50gp',
+        Weight : '1'
+    },
+    'Eversmoking Bottle' : {
+        Name : 'Eversmoking Bottle',
+        Value : '250gp',
+        Weight : '1'
+    },
     "Explorer's Pack": {
         "Name": "Explorer's Pack",
         "Value": "10gp",
@@ -343,6 +353,11 @@ let Items = {
         "Name": "Hammer",
         "Value": "1gp",
         "Weight": "3"
+    },
+    Hammock : {
+        Name : 'Hammock',
+        Value : '50sp',
+        Weight : '1'
     },
     "Healer's Kit": {
         "Name": "Healer's Kit",
@@ -397,6 +412,11 @@ let Items = {
         "Name": "Hunting Trap",
         "Value": "5gp",
         "Weight": "25"
+    },
+    'Immovable Rod' : {
+        Name: 'Immovable Rod',
+        Value : 'Uncommon',
+        Weight : '2'
     },
     "Ink": {
         "Name": "Ink",

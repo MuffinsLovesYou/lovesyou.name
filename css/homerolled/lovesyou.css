@@ -30,6 +30,9 @@ a:hover   {
     font-style:italic;
 }
 
+header {
+    display:block;
+}
 
 .logo {
     font-weight:800;

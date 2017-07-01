@@ -17,7 +17,12 @@ define([
         set('XP', data.XP);
 
         var personality = document.getElementById('character_personality');
+        if(data.Personality.isEmpty()) { 
+            document.querySelector('#personality_tab').style.display = 'none';
+        }
         for (var t in data.Personality) {
+            if(typeof(data.Personality[t]) !== 'string')
+                continue;
             let div = document.createElement('div');
             let lspan = document.createElement('span');
             let rspan = document.createElement('span');
@@ -54,15 +59,18 @@ define([
         });
 
         let features = document.getElementById('character_features');
-
+        if(features.length === 0)
+            document.querySelector('#features_tab').style.display = 'none';
         for (let f in data.Features) {
             let feature = data.Features[f];
             let span = document.createElement('span')
-            span.innerHTML = feature + '<br>';
+            span.innerHTML = feature + ' <br/>';
             features.appendChild(span);
         }
 
         obj = data.Items;
+        if(obj.length === 0)
+            document.querySelector('#items_tab').style.display = 'none';
         tbl = document.getElementById('table-items');
         util.fill_table({
             columns: ["Name", "Count", "Value", "Weight"],
@@ -78,6 +86,8 @@ define([
         lblItems.innerHTML = lblItems.innerHTML + ' ' + totalWeight + '/' + data.Carry_Weight;
 
         obj = data.Spells;
+        if(obj.length === 0)
+            document.querySelector('#spells_tab').style.display = 'none';
         tbl = document.getElementById('table-spells');
         util.fill_table({
             columns: ["Name", 'Level', 'Casting Time', 'Range', 'Duration' /* Ritual */ ],

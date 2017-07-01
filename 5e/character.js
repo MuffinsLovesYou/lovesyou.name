@@ -71,7 +71,14 @@ define([
             Wisdom: 10,
             Charisma: 10
         }
-        char.Carry_Weight = char.Stats.Strength * 15;
+        Object.defineProperty(char, 'Carry_Weight', {
+            enumerable : true,
+            get : function() {
+                return char.Stats.Strength * 15;
+            }
+        });
+        
+        
         /* returns the sum of the character's class-levels */
         Object.defineProperty(char, 'Level', {
             enumerable: true,
@@ -141,7 +148,10 @@ define([
             Ideal: '',
             Bond: '',
             Flaw: '',
-            Description: ''
+            Description: '',
+            isEmpty : function(){
+                return (this.Trait+this.Ideal+this.Bond+this.Flaw+this.Description).length === 0;
+            }
         }
 
         Skills.map(char);
@@ -153,19 +163,24 @@ define([
         char.Spells = {};
         char.Spells.Add = (name) => {
             char.Spells[name] = Spells[name]
+            char.Spells.length++;
         }
+        char.Spells.length = 0;
 
         char.Items = {}
-        char.Items.Add = (name, count) => {
+        char.Items.Add = (name, count, weight) => {
             count = count || 1;
+            if(!Items[name])
+                return console.log(name+ ' not found in items database.');
             let item = JSON.parse(JSON.stringify(Items[name]));
             item.Count = count;
 
             item.base_weight = item.Weight || 0;
             item.Weight = Math.floor(((item.base_weight * count) * 10)) / 10;
-
+            char.Items.length++;
             char.Items[name] = item;
         }
+        char.Items.length = 0;
         
     }
     return Character;

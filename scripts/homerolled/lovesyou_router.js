@@ -19,6 +19,7 @@ define([
             ,'maps' : 'dungeons-dragons/maps/maps'
             ,'monsterbox' : 'dungeons-dragons/elements/monsterbox/monsterbox'
             ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
+            ,'character-sheet' : 'dungeons-dragons/character-sheets/character-sheet'
             ,'programming' : 'programming/programming'
             /* */
             ,'code-pages/character' : router.paths.code + 'character/character'
@@ -33,6 +34,7 @@ define([
             ,'maximilien' : router.paths.sheets + 'maximilien-robert'
             ,'barbican-brady' : router.paths.sheets + 'barbican-brady'
             ,'law' : router.paths.sheets + 'law'
+            ,'krismorel' : router.paths.sheets + 'krismorel'
         }
         router.main_content = document.getElementById('main-content');
 
@@ -49,7 +51,8 @@ define([
             let key = window.location.hash.slice(1).toLowerCase();
             if(!key){ key = 'landing'; }
             if(key.substr(0,6)==='notes/'){ key = 'note'; }
-            if(key.substr(0,10)==='monsterbox'){ key = 'monsterbox'; }
+            else if (key.substr(0,6)==='chars/') { key = 'character-sheet'; }
+            else if(key.substr(0,10)==='monsterbox'){ key = 'monsterbox'; }
             if (!router.map[key]) {
                 return;
             }
