@@ -53,12 +53,13 @@ define([
             if(key.substr(0,6)==='notes/'){ key = 'note'; }
             else if (key.substr(0,6)==='chars/') { key = 'character-sheet'; }
             else if(key.substr(0,10)==='monsterbox'){ key = 'monsterbox'; }
-            if (!router.map[key]) {
-                return;
-            }
+            if (!router.map[key]) return;
+            
             let route = router.baseUrl + router.map[key];
             require([route], function (template) {
-                template.Container = router.main_content;
+                template = template.new();
+                template.container = router.main_content;
+                template.attach();
             });
         }
 

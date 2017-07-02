@@ -4,8 +4,8 @@ define([
 ], function (util, LYTemplate, tiles) {
 
     var template = new LYTemplate();
-    template.ContentUrl = util.context+'dungeons-dragons.html';
-    template.OnAttach = function () {
+    template.content_url = util.context+'dungeons-dragons.html';
+    template.onContentBound = function () {
         tiles.decorate();
     }
 

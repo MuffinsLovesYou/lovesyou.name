@@ -48,10 +48,10 @@ define([
     }
 
     var template = new LYTemplate();
-    template.ContentUrl = 'site/dungeons-dragons/elements/monsterbox/monsterbox.html';
+    template.content_url = 'site/dungeons-dragons/elements/monsterbox/monsterbox.html';
     
-    template.DataBind = function () {
-        let data = template.Data;
+    template.onDataBound = function () {
+        let data = template.data;
         let mb = document.getElementById('mb');
         
         objectToHtml(data, mb);
@@ -64,8 +64,8 @@ define([
             }
         }
     }
-    template.OnAttach = function () {
-        template.Data = monster;
+    template.onContentBound = function () {
+        template.data = monster;
     }
 
     return template;

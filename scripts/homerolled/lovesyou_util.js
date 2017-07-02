@@ -33,37 +33,8 @@ define([],()=>{
 				})();
 			}
 		});
-
-		util.xhr = function(json_args){
-			let xhr = new XMLHttpRequest();
-			xhr.open(
-				json_args.method || 'GET',
-				json_args.url,
-				((typeof(json_args.async)==='boolean') ? json_args.async : true)
-			);
-
-			xhr.responseType = json_args.dataType || 'text';
-			xhr.onreadystatechange = () => {
-				if(xhr.readyState === xhr.DONE){
-					if(+xhr.status === 200){
-						if(json_args.success){
-							json_args.success(xhr.responseText);
-						}
-						else { return xhr.responseText; }
-					}
-					else{
-						if(json_args.error){
-							json_args.error(xhr.error);
-						}
-						else{ 
-							console.log(xhr);
-							console.log(json_args);
-							console.log(xhr.error); }
-					}
-				}
-			}
-			xhr.send();
-		}
+		
+		
 		/* this is really limited right now */
 		util.fill_table = function(args){
 			let tb = args.table.createTBody();

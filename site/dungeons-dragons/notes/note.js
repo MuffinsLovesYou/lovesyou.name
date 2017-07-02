@@ -3,17 +3,16 @@ define([
     ,'lovesyou_template'
     ,'scripts/homerolled/markdown-parser'
 ], function (util, LYTemplate, md) {
-
-    let note = window.location.hash.split('/');
-    note = note[note.length-1];
-
-
+    
     var template = new LYTemplate();
-    template.ContentFormat = (x)=>{
-        return md.Parse(x);
+    template.initialize = function(){
+        var _this = this;
+        let note = window.location.hash.split('/').pop();
+        _this.content_url = '5e/notes/'+note+'.md'; 
     }
-    template.ContentUrl = '5e/notes/'+note+'.md'; 
-    template.OnAttach = function () {}
+    template.content_formatter = function(){
+        this.content = md.Parse(this.content);
+    }
 
     return template;
 });

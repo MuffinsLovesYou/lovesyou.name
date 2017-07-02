@@ -5,38 +5,31 @@ define([
 
 
     var template = new LYTemplate();
-    template.ContentUrl = 'site/common/modal/modal.html';
-    // Modal needs default attach behavior on top of the behavior supplied to it.
-    Object.defineProperty(template, "OnAttach", {
-        get: function () {
-            return template._on_attach;
+    template.content_url = 'site/common/modal/modal.html';
+    template._onContentBound = ()=>{};
+    Object.defineProperty(template, 'onContentBound', {
+        get : function(){
+            return this._onContentBound;
         },
-        set: function (func) {
-            let base = func;
-            func = function () {
-                ((over = document.getElementById('modal-overlay')) => {
-                    over.style.backgroundColor = 'rgba(0,0,0,.5)';
-                    over.addEventListener('click', (e) => {
-                        if (e.target !== over) {
-                            return;
-                        }
-                        template.Container.innerHTML = '';
-                        while(template.Container.firstChild){
-                            template.Container.removeChild(template.Container.firstChild);
-                        }
-                    });
-                })();
+        set : function(func) {
+                var _this = this;
+                _this._onContentBound = function(){
+                let over = document.getElementById('modal-overlay');
+                over.style.backgroundColor = 'rgba(0,0,0,.5)';
+                over.addEventListener('click', (e) => {
+                    if (e.target !== over)
+                        return;
+                    while(_this.container.firstChild){
+                        _this.container.removeChild(_this.container.firstChild);
+                    }
+                });
                 let content = document.getElementById('modal-content');
                 content.style.backgroundColor = document.body.style.backgroundColor;
                 content.style.opacity = '1.0';
-                base();
+                func();
             }
-
-            template._on_attach = func;
         }
     });
-
-
 
     return template;
 });

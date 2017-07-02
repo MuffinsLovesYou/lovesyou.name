@@ -4,8 +4,8 @@ define([
 ], function (util, LYTemplate, tiles) {
 
     var template = new LYTemplate();
-    template.ContentUrl = util.context + 'programming.html';
-    template.OnAttach = function () {
+    template.content_url = util.context + 'programming.html';
+    template.onContentBound = function () {
         tiles.decorate();
     };
 

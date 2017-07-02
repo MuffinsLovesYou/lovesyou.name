@@ -4,12 +4,12 @@ define([
     ,'5e/spells'
 ], function (util, LYTemplate, spells) {
 
-
     var template = new LYTemplate();
-    template.ContentUrl = 'site/dungeons-dragons/character-sheets/elements/spellbox/spellbox.html';
-    
-    template.DataBind = function () {
-        let data = template.Data;
+    template.initialize = function() {
+        this.content_url = 'site/dungeons-dragons/character-sheets/elements/spellbox/spellbox.html';
+    }
+    template.onDataBound = function () {
+        let data = this.data;
         document.getElementById('spell-name').innerHTML = data.Name;
         document.getElementById('spell-sub').innerHTML = 'level ' + data.Level + ' ' + data.School;
         document.getElementById('spell-casting-time').innerHTML = data['Casting Time'];
@@ -19,7 +19,7 @@ define([
         
         document.getElementById('spell-description').innerHTML = data.Description;
     }
-    template.OnAttach = function () { }
+    template.onContentBound = function () { }
 
     return template;
 });

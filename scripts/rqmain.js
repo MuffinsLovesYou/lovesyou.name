@@ -5,15 +5,17 @@ requirejs.config({
 	baseUrl : "", // root.
 
 	paths:{ // establishes shortcuts to relative paths. Gotta check this with URLs
-		'elements' : 'site/dungeons-dragons/character-sheets/elements/'
-		
-		,'lovesyou_util' : 'scripts/homerolled/lovesyou_util'
-		,'lovesyou_template' : 'scripts/homerolled/lovesyou_template'
-		,'lovesyou_router' : 'scripts/homerolled/lovesyou_router'
-		,'tiles' : 'scripts/homerolled/tiles'
-		,'prism' : 'scripts/vendor/prism'
-		,'colorizer' : 'scripts/vendor/paletton'
+		'colorizer' : 'scripts/vendor/paletton'
 		,'dice' : 'scripts/homerolled/LYDice/LYDice'
+		,'elements' : 'site/dungeons-dragons/character-sheets/elements/'
+		,'lovesyou_router' : 'scripts/homerolled/lovesyou_router'
+		,'lovesyou_template' : 'scripts/homerolled/lovesyou_template'
+		,'lovesyou_util' : 'scripts/homerolled/lovesyou_util'
+		,'prism' : 'scripts/vendor/prism'
+		,'seq' : 'scripts/homerolled/seq'
+		,'tiles' : 'scripts/homerolled/tiles'
+		,'xhr' : 'scripts/homerolled/xhr'
+		
 	},
 
 });
@@ -23,8 +25,7 @@ require(['lovesyou_util',
 	'lovesyou_router',
 	'tiles'],()=>{
 	
-		console.log('base initialized');
-	
+		console.log('rqmain.js application entry point');
 	
 		var emojis = [
 		"\\ \\ \\٩(｡•ㅅ•｡)و/ / /"
@@ -37,7 +38,6 @@ require(['lovesyou_util',
 		];
 		
 		document.title = emojis[Math.floor(Math.random()*emojis.length)];
-	
 	
 	if(require.loaded){
 		require.loaded();

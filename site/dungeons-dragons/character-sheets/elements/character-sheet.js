@@ -4,12 +4,13 @@ define([
 ], function (util, LYTemplate) {
 
     var template = new LYTemplate();
-    template.ContentUrl = 'site/dungeons-dragons/character-sheets/elements/' + 'character-sheet.html';
-    template.DataBind = function () {
+    template.content_url = 'site/dungeons-dragons/character-sheets/elements/character-sheet.html';
+    template.onDataBound = function () {
+        var _this = this;
         let set = (id, val) => {
             document.getElementById('character_' + id).innerHTML = val;
         }
-        let data = template.Data;
+        let data = _this.data;
         set('Name', data.Name);
         set('Race', data.Race);
         set('Class', data.ClassName);
@@ -106,16 +107,21 @@ define([
                     '5e/spells'
                 ], (modal, spellbox, spells) => {
                     spell = spells[spell];
-                    modal.OnAttach = () => {
-                        spellbox.Data = spell;
-                        spellbox.Container = document.getElementById('modal-content');
+                    modal = modal.new();
+                    modal.onContentBound = () => {
+                        spellbox = spellbox.new();
+                        spellbox.data = spell;
+                        spellbox.container = document.getElementById('modal-content');
+                        spellbox.attach();
                     };
-                    modal.Container = document.getElementById('spellbox-container');
+                    modal.container = document.getElementById('spellbox-container');
+                    modal.attach();
+                    
                 });
             });
         }
     }
-    template.OnAttach = function () {
+    template.onContentBound = function () {
         var fileref = document.createElement("link");
         fileref.rel = "stylesheet";
         fileref.type = "text/css";
@@ -127,7 +133,8 @@ define([
         });
 
         require(['site/common/dice/dice'], (dice) => {
-            dice.Container = document.getElementById('dice-container');
+            dice.container = document.getElementById('dice-container');
+            dice.attach();
         })
     }
 

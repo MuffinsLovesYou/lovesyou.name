@@ -5,8 +5,8 @@ define([
 ], function (util, LYTemplate) {
 
     var template = new LYTemplate();
-    template.ContentUrl = 'site/common/dice/dice.html';
-    template.OnAttach = function () {
+    template.content_url = 'site/common/dice/dice.html';
+    template.onContentBound = function () {
         DiceRoller.init();
     } 
     return template;

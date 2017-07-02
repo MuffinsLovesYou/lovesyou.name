@@ -1,130 +1,109 @@
 define([
     'lovesyou_util'
-], function (util) {
+    ,'xhr'
+    ,'seq'
+], function (util, xhr, Seq) {
 
     let LYTemplate = function (args) {
         let template = this;
 
-        template._container;
-        template._content;
-        template._content_attached;
-        template._content_loading;
-        template._content_url;
-        template._data;
-        template._data_bound;
-        template._data_loading;
-        template._data_url;
-        Object.defineProperties(template, {
-            'Container': {
-                get : ()=> { return template._container; }
-                ,set: function (elem) {
-                    template._container = elem;
-                    template._content_attached = false;
-                    if(template._content_url && !template._content_loading && !template._content){
-                        template.ContentUrl = template._content_url;
-                    }
-                    template._data_bound = false;
-                    if(template._data_url && !template._data_loading && !template._data){
-                        template.DataUrl = template._data_url;
-                    }
-                    
-                    template._attach_content();
-                }
-            }
-            ,'ContentUrl': {
-                set: function (url) {
-                    template._content_url = url;
-                    template._content_loading = true;
-                    util.xhr({
-                        url: url,
-                        success: function (data) {
-                            template._content_loading = false;
-                            template.Content = data;
-                        }
-                    });
-                }
-            }
-            ,'Content' : { 
-                get : ()=>{ return template._content; } 
-                ,set : function(value){
-                    template._content_attached = false;
-                    template._data_bound = false;
-                    if(typeof(template._format_content)==='function'){
-                        value = template._format_content(value);
-                    }
-                    template._content = value;
-                    template._attach_content();
-                }
-             }
-            ,'ContentFormat' :{
-                set : function(func){
-                    template._format_content = func;
-                    if(template._content) {
-                        template._content = template._format_content(template._content);
-                    }
-                }
-            }
-            ,'OnAttach' : {
-                set : function(func){
-                    template._on_attach = func;
-                }
-                ,get : function() {
-                    return template._on_attach;
-                }
-                ,configurable : true
-            }
-            ,'Data' : {
-                get : ()=>{ return template._data; }
-                ,set : function(data){
-                    template._data = data;
-                    template._data_bound = false;
-                    template._bind_data();
-                } 
-            }
-            ,'DataUrl' : {
-                set : function (url) {
-                    template._data_url = url;
-                    template._data_loading = true;
-                    require([url],(val)=>{
-                        template._data_loading = false;
-                        template.Data = val;
-                    });
-                }                
-            }
-            ,'DataBind' : {
-                get : ()=>{ return template._data_bind; }
-                ,set : function(val) {
-                    template._data_bind = val;
-                }
-            }
-        });
+        // data members
+        template.container;
+        template.content;
+        template.content_url;
+        template.data;
+        template.data_url;
+        // overridable functions
+        template.initialize = ()=>{}
+        template.onDataLoaded = ()=>{}
+        template.onDataBound = ()=>{}
+        template.onContentLoaded = ()=>{}
+        template.onContentBound = ()=>{}
+        template.content_formatter = ()=>{};
 
-        template._attach_content = function(){
-            if(template._container && template._content){
-                while(template._container.firstChild){
-                    template._container.removeChild(template._container.firstChild);
-                }
-                template._container.insertAdjacentHTML('afterbegin', template._content);
-                template._content_attached = true;
-                if(template._content_url) { template._content = null; }
-                template._container = null;
-                
-                template._on_attach();
-                template._bind_data();
-             }
+        template.new = function(){
+            var _this = this;
+            let n = _this._initialize();
+            n.initialize();
+            return n;
         }
-        template._bind_data = function(){      
-            if(!template._data_bound && template._content_attached && template._data){
-                template._data_bound = true;
-                template._data_bind();
-                template._data = null; 
-            }
+        template.attach = function(char){
+            var _this = this;
+            var seq = new Seq();  
+            seq.do(_this._loadContent())
+                .and(_this._loadData())
+                .then((x,y)=>{
+                    _this.onContentLoaded();
+                    _this.onDataLoaded();
+                    _this._bindContent();
+                    _this._bindData();
+                });
         }
-
-        template._data_bind = ()=>{};
-        template._on_attach = ()=>{};
-        template._format_content;// = ()=>{};
         
+        template._initialize = function() {
+            var _this = this;
+            let clone = {};
+            let descriptors = Object.keys(_this).reduce((descriptors, key) => {
+                descriptors[key] = Object.getOwnPropertyDescriptor(_this, key);
+                return descriptors;
+            }, {});
+            Object.getOwnPropertySymbols(_this).forEach(sym => {
+                let descriptor = Object.getOwnPropertyDescriptor(_this, sym);
+                if (descriptor.enumerable) {
+                    descriptors[sym] = descriptor;
+                }
+            });
+            Object.defineProperties(clone, descriptors);
+            return clone;
+        }
+
+        template._loadData = function(){
+            let _this = this;
+            if(_this.data_url){
+                if(_this.data_url.slice(-3)==='.js'){
+                    var req = new Promise((s,f)=>{ 
+                        require([_this.data_url], (data)=>{
+                            _this.data = data;
+                            s(data);
+                        });
+                    });
+                    return req;
+                }
+                let get = xhr.get(_this._data_url, (data)=>{
+                    _this._data = data;
+                }, { responseType : 'json' });
+                return get;
+            } 
+        }
+
+        template._loadContent = function() { 
+            let _this = this;
+            if(_this.content_url){
+                let get = xhr.get(_this.content_url, (data)=>{
+                    _this.content = data;
+                    _this.content_formatter(data);
+                });
+                return get;
+            }
+        }
+
+        template._bindContent = function(){
+            let _this = this;
+            if(_this.container && _this.content){
+                while(_this.container.firstChild){
+                    _this.container.removeChild(_this.container.firstChild);
+                }
+                _this.container.insertAdjacentHTML('afterbegin', _this.content);
+                _this.onContentBound();
+             }
+        }
+        template._bindData = function(){  
+            let _this = this;
+            if(_this.data){
+                _this.onDataBound();
+            }
+        }
+
         return template;
     }
 
