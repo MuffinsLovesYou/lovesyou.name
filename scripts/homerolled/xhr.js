@@ -29,7 +29,7 @@ define([], function(){
                     if(options.failure)
                         options.failure(xhr.error);
                     else {
-                        console.log(xhr, json_args, xhr.error);
+                        console.log(xhr, options, xhr.error);
                     }
                 }
             }

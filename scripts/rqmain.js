@@ -12,7 +12,7 @@ requirejs.config({
 		,'lovesyou_template' : 'scripts/homerolled/lovesyou_template'
 		,'lovesyou_util' : 'scripts/homerolled/lovesyou_util'
 		,'prism' : 'scripts/vendor/prism'
-		,'seq' : 'scripts/homerolled/seq'
+		,'dtf' : 'scripts/homerolled/dtf'
 		,'tiles' : 'scripts/homerolled/tiles'
 		,'xhr' : 'scripts/homerolled/xhr'
 		

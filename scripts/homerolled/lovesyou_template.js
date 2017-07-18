@@ -1,8 +1,8 @@
 define([
     'lovesyou_util'
     ,'xhr'
-    ,'seq'
-], function (util, xhr, Seq) {
+    ,'dtf'
+], function (util, xhr, dtf) {
 
     let LYTemplate = function (args) {
         let template = this;
@@ -29,8 +29,7 @@ define([
         }
         template.attach = function(char){
             var _this = this;
-            var seq = new Seq();  
-            seq.do(_this._loadContent())
+            dtf.do(_this._loadContent())
                 .and(_this._loadData())
                 .then((x,y)=>{
                     _this.onContentLoaded();
