@@ -21,6 +21,7 @@ define([
             ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
             ,'character-sheet' : 'dungeons-dragons/character-sheets/character-sheet'
             ,'programming' : 'programming/programming'
+            ,'test' : 'test/test'
             /* */
             ,'code-pages/character' : router.paths.code + 'character/character'
             ,'code-pages/dice-roller' : router.paths.code + 'dice-roller/dice-roller'

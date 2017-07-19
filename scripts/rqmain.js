@@ -15,7 +15,7 @@ requirejs.config({
 		,'dtf' : 'scripts/homerolled/dtf'
 		,'tiles' : 'scripts/homerolled/tiles'
 		,'xhr' : 'scripts/homerolled/xhr'
-		
+		,'lovesyou_table' : 'scripts/homerolled/lovesyou_table'
 	},
 
 });

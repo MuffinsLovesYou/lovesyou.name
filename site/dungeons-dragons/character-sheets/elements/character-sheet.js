@@ -1,7 +1,8 @@
 define([
-    'lovesyou_util',
-    'lovesyou_template'
-], function (util, LYTemplate) {
+    'lovesyou_util'
+    ,'lovesyou_template'
+    ,'lovesyou_table'
+], function (util, LYTemplate, tbl) {
 
     var template = new LYTemplate();
     template.content_url = 'site/dungeons-dragons/character-sheets/elements/character-sheet.html';
@@ -51,13 +52,19 @@ define([
         set('WisdomSave', data.Saves.Wisdom.Bonus);
         set('CharismaSave', data.Saves.Charisma.Bonus);
 
-        let obj = data.Skills;
-        let tbl = document.getElementById('table-skills');
-        util.fill_table({
-            columns: ['Name', 'Ability', 'Trained', 'Bonus'],
-            data: obj,
-            table: tbl
+        let _skills = [];
+        for(let s in data.Skills) _skills.push(data.Skills[s]);
+        let skillstable = new tbl({
+            container : document.getElementById('skills_container'),
+            data : _skills,
+            columns : [
+                { data_field : 'Name' },
+                { data_field : 'Ability' },
+                { data_field : 'Trained' },
+                { data_field : 'Bonus'}
+            ]
         });
+        skillstable.draw();
 
         let features = document.getElementById('character_features');
         if(features.length === 0)
@@ -69,37 +76,50 @@ define([
             features.appendChild(span);
         }
 
-        obj = data.Items;
-        if(obj.length === 0)
-            document.querySelector('#items_tab').style.display = 'none';
-        tbl = document.getElementById('table-items');
-        util.fill_table({
-            columns: ["Name", "Count", "Value", "Weight"],
-            data: obj,
-            table: tbl
+        let _items = [];
+        for(let i in data.Items) {
+            if(typeof(data.Items[i])!=='object') continue;
+            _items.push(data.Items[i]);
+        }
+        let items_table = new tbl({
+            container : document.getElementById('items_container'),
+            data : _items,
+            columns : [
+                { data_field : 'Name' },
+                { data_field : 'Count' },
+                { data_field : 'Value' },
+                { data_field : 'Weight' }
+            ]
         });
+        items_table.draw();
 
         let totalWeight = 0;
-        for (let i in obj) {
-            totalWeight += obj[i].Weight || 0;
+        for (let i in _items) {
+            totalWeight += _items[i].Weight || 0;
         }
         let lblItems = document.getElementById('label-items');
         lblItems.innerHTML = lblItems.innerHTML + ' ' + totalWeight + '/' + data.Carry_Weight;
 
-        obj = data.Spells;
-        if(obj.length === 0)
-            document.querySelector('#spells_tab').style.display = 'none';
-        tbl = document.getElementById('table-spells');
-        util.fill_table({
-            columns: ["Name", 'Level', 'Casting Time', 'Range', 'Duration' /* Ritual */ ],
-            data: obj,
-            table: tbl
+        let _spells = [];
+        for(let s in data.Spells) {
+            if(typeof(data.Spells[s])!=='object') continue;
+            _spells.push(data.Spells[s]);
+        }
+        let spells_table = new tbl({
+            container : document.getElementById('spells_container'),
+            data : _spells,
+            columns : [
+                { data_field : 'Name' },
+                { data_field : 'Level' },
+                { data_field : 'Casting Time' },
+                { data_field : 'Range' },
+                { data_field : 'Duration' } 
+            ]
         });
-        // on-click spell descriptions.
-        for (let i = 1; i < tbl.rows.length; i++) {
-            let row = tbl.rows[i];
-            let cell = row.cells[0];
-            cell.addEventListener('click', (e) => {
+        spells_table.draw();
+
+        Array.from(spells_table.table.rows).forEach((row,r)=>{
+            row.cells[0].addEventListener('click', (e)=>{
                 let spell = e.target.innerHTML;
 
                 require(['site/common/modal/modal',
@@ -117,9 +137,9 @@ define([
                     modal.container = document.getElementById('spellbox-container');
                     modal.attach();
                     
-                });
-            });
-        }
+                });      
+            })
+        });
     }
     template.onContentBound = function () {
         var fileref = document.createElement("link");

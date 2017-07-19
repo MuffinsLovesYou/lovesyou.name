@@ -34,28 +34,6 @@ define([],()=>{
 			}
 		});
 		
-		
-		/* this is really limited right now */
-		util.fill_table = function(args){
-			let tb = args.table.createTBody();
-			let th = args.table.createTHead();
-			let hr = th.insertRow(0);
-			for(let c in args.columns){
-				let hc = hr.insertCell(c);
-				hc.innerHTML = '<strong>'+args.columns[c]+'</strong>';
-			}
-			for(let r in args.data){
-				let row = args.data[r];
-				if(typeof(row) !== 'object') { continue; }
-				let tr = tb.insertRow();
-				args.columns.forEach((col)=>{
-					let tc = tr.insertCell(tr.cells.length);
-					let prop = typeof(col) === 'object' ? col.Property : col;
-					let value = row[prop];
-					tc.innerHTML = value;  
-				});
-			}
-		}
 		return util;
 	}
 
