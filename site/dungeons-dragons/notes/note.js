@@ -2,9 +2,9 @@ define([
     'lovesyou_util'
     ,'lovesyou_template'
     ,'scripts/homerolled/markdown-parser'
-], function (util, LYTemplate, md) {
+], function (util, LYT, md) {
     
-    var template = new LYTemplate();
+    var template = new LYT();
     template.initialize = function(){
         var _this = this;
         let note = window.location.hash.split('/').pop();

@@ -1,5 +1,7 @@
 define([],()=>{
 
+    // sorting. 
+
     // stripped down html table builder 
     let LYT = function(options){
         let lyt = this;
@@ -13,6 +15,7 @@ define([],()=>{
             while(lyt.container.firstChild)
                 lyt.container.removeChild(lyt.container.firstChild);
             lyt.table = document.createElement('table');
+
             let table = lyt.table;
             let r1 = lyt.data[0];
             table.id = lyt.container.id + '_t';
@@ -21,7 +24,7 @@ define([],()=>{
             let hr = th.insertRow(0);
             lyt.columns.forEach((c, i)=>{
                 let hc = hr.insertCell(i);
-                hc.innerHTML = c.header || c.data_field;
+                hc.innerHTML = c.header || c.field;
                 hc.style = c.header_style;
             });
             
@@ -32,8 +35,9 @@ define([],()=>{
                 lyt.columns.forEach((col,c)=>{
                     let tc = tr.insertCell(c);
                     tc.id = tr.id + '_c'+c;
-                    tc.innerHTML = row[col.data_field];
+                    tc.innerHTML = row[col.field];
                     tc.style = col.column_style;
+                    if(col.click) tc.addEventListener('click',col.click);
                 });
             });
 

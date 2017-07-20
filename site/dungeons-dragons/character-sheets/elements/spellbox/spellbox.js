@@ -2,9 +2,9 @@ define([
     'lovesyou_util'
     ,'lovesyou_template'
     ,'5e/spells'
-], function (util, LYTemplate, spells) {
+], function (util, LYT, spells) {
 
-    var template = new LYTemplate();
+    var template = new LYT();
     template.initialize = function() {
         this.content_url = 'site/dungeons-dragons/character-sheets/elements/spellbox/spellbox.html';
     }

@@ -1,9 +1,9 @@
 define([
     'lovesyou_template'
     ,'elements/character-sheet'
-], function (LYTemplate, Character) {
+], function (LYT, Character) {
 
-    let template = new LYTemplate();
+    let template = new LYT();
     template.initialize = function(){
         let _this = this;
         _this.char = Character.new();

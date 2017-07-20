@@ -1,10 +1,10 @@
 define([
     'lovesyou_util',
     'lovesyou_template'
-], function (util, LYTemplate) {
+], function (util, LYT) {
 
 
-    var template = new LYTemplate();
+    var template = new LYT();
     template.content_url = 'site/common/modal/modal.html';
     template._onContentBound = ()=>{};
     Object.defineProperty(template, 'onContentBound', {

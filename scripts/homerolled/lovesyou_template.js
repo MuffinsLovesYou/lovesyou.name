@@ -4,7 +4,7 @@ define([
     ,'dtf'
 ], function (util, xhr, dtf) {
 
-    let LYTemplate = function (args) {
+    let LYT = function (args) {
         let template = this;
 
         // data members
@@ -106,5 +106,5 @@ define([
         return template;
     }
 
-    return LYTemplate;
+    return LYT;
 });

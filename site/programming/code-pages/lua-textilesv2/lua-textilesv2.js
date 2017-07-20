@@ -1,13 +1,13 @@
 define([
     'lovesyou_util', 'lovesyou_template', 'tiles'
-], function (util, LYTemplate, tiles) {
+], function (util, LYT, tiles) {
 
-    var template = new LYTemplate();
+    var template = new LYT();
     template.content_url = util.context+'lua-textilesv2.html';
     template.onContentBound = function () {
 
         let caller_block = document.getElementById('code-page-lua-textilesv2-caller-code-block');
-        let caller_template = new LYTemplate();
+        let caller_template = new LYT();
         caller_template.content_url = 'https://raw.githubusercontent.com/MuffinsLovesYou/Code-Samples/master/DFHack/Textiles/scripts/clothing.lua';
         caller_template.onContentBound = function(){
             caller_template.content_formatter = function(data){
@@ -22,7 +22,7 @@ define([
 
         let module_block = document.getElementById('code-page-lua-textilesv2-module-code-block');
 
-        var module_template = new LYTemplate();
+        var module_template = new LYT();
         module_template.content_url = 'https://raw.githubusercontent.com/MuffinsLovesYou/Code-Samples/master/DFHack/Textiles/lovesyou/textiles.lua';
         module_template.onContentBound = function(){
             module_template.content_formatter = function(data){

@@ -1,13 +1,13 @@
 define([
     'lovesyou_util', 'lovesyou_template', 'tiles'
-], function (util, LYTemplate, tiles) {
+], function (util, LYT, tiles) {
 
-    var template = new LYTemplate();
+    var template = new LYT();
     template.content_url = util.context+'lovesyou.name.html';
     template.onContentBound = function () {
 
         let router_block = document.getElementById('code-page-router-code-block');
-        let router_template = new LYTemplate();
+        let router_template = new LYT();
         router_template.content_url = 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/scripts/homerolled/lovesyou_router.js';
         router_template.onContentBound = function(){
             router_template.content_formatter = function(data){
@@ -21,7 +21,7 @@ define([
         router_template.attach();
     
         let template_block = document.getElementById('code-page-template-code-block');
-        let template_template = new LYTemplate();
+        let template_template = new LYT();
         template_template.content_url = 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/scripts/homerolled/lovesyou_template.js';
         template_template.onContentBound = function(){
             template_template.content_formatter = function(data){

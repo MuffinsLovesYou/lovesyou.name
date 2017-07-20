@@ -1,13 +1,13 @@
 define([
     'lovesyou_util', 'lovesyou_template', 'tiles'
-], function (util, LYTemplate, tiles) {
+], function (util, LYT, tiles) {
 
-    var template = new LYTemplate();
+    var template = new LYT();
     template.content_url = util.context+'lua-actions.html';
     template.onContentBound = function () {
 
         let code_block = document.getElementById('code-page-lua-actions-code-block');
-        let actions_template = new LYTemplate();
+        let actions_template = new LYT();
         actions_template.content_url = 'https://raw.githubusercontent.com/MuffinsLovesYou/Code-Samples/master/DFHack/Textiles/lovesyou/actions.lua';
         actions_template.onContentBound = function(){
             actions_template.content_formatter = function(data){

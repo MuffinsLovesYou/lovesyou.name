@@ -2,22 +2,13 @@ define([
     'lovesyou_util'
     ,'lovesyou_template'
     ,'lovesyou_table'
-], function (util, LYTemplate, tbl) {
+    ,'site/dungeons-dragons/character-sheets/elements/stats'
+    ,'site/common/modal/modal'
+    ,'site/dungeons-dragons/character-sheets/elements/spellbox/spellbox'
+    ,'5e/spells'
+], function (util, Template, tbl, stats, modal, spellbox, spells) {
 
-    var template = new LYTemplate();
-    template.content_url = 'site/dungeons-dragons/character-sheets/elements/character-sheet.html';
-    template.onDataBound = function () {
-        var _this = this;
-        let set = (id, val) => {
-            document.getElementById('character_' + id).innerHTML = val;
-        }
-        let data = _this.data;
-        set('Name', data.Name);
-        set('Race', data.Race);
-        set('Class', data.ClassName);
-        set('Background', data.Background);
-        set('XP', data.XP);
-
+    let personality_tab = (data)=>{
         var personality = document.getElementById('character_personality');
         if(data.Personality.isEmpty()) { 
             document.querySelector('#personality_tab').style.display = 'none';
@@ -35,47 +26,23 @@ define([
             div.appendChild(rspan);
             personality.appendChild(div);
         }
-
-        set('Strength', data.Stats.Strength);
-        set('Dexterity', data.Stats.Dexterity);
-        set('Constitution', data.Stats.Constitution);
-        set('Intelligence', data.Stats.Intelligence);
-        set('Wisdom', data.Stats.Wisdom);
-        set('Charisma', data.Stats.Charisma);
-
-        set('HP', data.HP);
-        set('AC', data.AC);
-        set('StrengthSave', data.Saves.Strength.Bonus);
-        set('DexteritySave', data.Saves.Dexterity.Bonus);
-        set('ConstitutionSave', data.Saves.Constitution.Bonus);
-        set('IntelligenceSave', data.Saves.Intelligence.Bonus);
-        set('WisdomSave', data.Saves.Wisdom.Bonus);
-        set('CharismaSave', data.Saves.Charisma.Bonus);
-
+    }
+    let skills_tab = (data)=>{
         let _skills = [];
         for(let s in data.Skills) _skills.push(data.Skills[s]);
         let skillstable = new tbl({
             container : document.getElementById('skills_container'),
             data : _skills,
             columns : [
-                { data_field : 'Name' },
-                { data_field : 'Ability' },
-                { data_field : 'Trained' },
-                { data_field : 'Bonus'}
+                { field : 'Name' },
+                { field : 'Ability' },
+                { field : 'Trained' },
+                { field : 'Bonus'}
             ]
         });
         skillstable.draw();
-
-        let features = document.getElementById('character_features');
-        if(features.length === 0)
-            document.querySelector('#features_tab').style.display = 'none';
-        for (let f in data.Features) {
-            let feature = data.Features[f];
-            let span = document.createElement('span')
-            span.innerHTML = feature + ' <br/>';
-            features.appendChild(span);
-        }
-
+    }
+    let items_tab = (data)=>{
         let _items = [];
         for(let i in data.Items) {
             if(typeof(data.Items[i])!=='object') continue;
@@ -85,10 +52,10 @@ define([
             container : document.getElementById('items_container'),
             data : _items,
             columns : [
-                { data_field : 'Name' },
-                { data_field : 'Count' },
-                { data_field : 'Value' },
-                { data_field : 'Weight' }
+                { field : 'Name' },
+                { field : 'Count' },
+                { field : 'Value' },
+                { field : 'Weight' }
             ]
         });
         items_table.draw();
@@ -99,7 +66,9 @@ define([
         }
         let lblItems = document.getElementById('label-items');
         lblItems.innerHTML = lblItems.innerHTML + ' ' + totalWeight + '/' + data.Carry_Weight;
+    }
 
+    let spells_tab = (data)=>{
         let _spells = [];
         for(let s in data.Spells) {
             if(typeof(data.Spells[s])!=='object') continue;
@@ -109,37 +78,57 @@ define([
             container : document.getElementById('spells_container'),
             data : _spells,
             columns : [
-                { data_field : 'Name' },
-                { data_field : 'Level' },
-                { data_field : 'Casting Time' },
-                { data_field : 'Range' },
-                { data_field : 'Duration' } 
+                { 
+                    field : 'Name', 
+                    click: (e)=>{ 
+                        let _spell = spells[e.target.innerHTML];
+                        let _modal=modal.new();
+                        _modal.onContentBound = ()=>{
+                            let _spellbox = spellbox.new();
+                            _spellbox.data = _spell;
+                            _spellbox.container = document.getElementById('modal-content');
+                            _spellbox.attach();
+                        }
+                        _modal.container = document.getElementById('spellbox-container');
+                        _modal.attach();
+                    } 
+                },
+                { field : 'Level' },
+                { field : 'Casting Time' },
+                { field : 'Range' },
+                { field : 'Duration' } 
             ]
         });
         spells_table.draw();
+        if(_spells.length===0) document.getElementById('spells_tab').style.display = 'none';
+    }
 
-        Array.from(spells_table.table.rows).forEach((row,r)=>{
-            row.cells[0].addEventListener('click', (e)=>{
-                let spell = e.target.innerHTML;
+    var template = new Template();
+    template.content_url = 'site/dungeons-dragons/character-sheets/elements/character-sheet.html';
+    template.onDataBound = function () {
+        var _this = this;
+        let data = _this.data;
+        
+        stats = stats.new();
+        stats.container = document.getElementById('character_stats_container');
+        stats.data = data;
+        stats.attach();
 
-                require(['site/common/modal/modal',
-                    'site/dungeons-dragons/character-sheets/elements/spellbox/spellbox',
-                    '5e/spells'
-                ], (modal, spellbox, spells) => {
-                    spell = spells[spell];
-                    modal = modal.new();
-                    modal.onContentBound = () => {
-                        spellbox = spellbox.new();
-                        spellbox.data = spell;
-                        spellbox.container = document.getElementById('modal-content');
-                        spellbox.attach();
-                    };
-                    modal.container = document.getElementById('spellbox-container');
-                    modal.attach();
-                    
-                });      
-            })
-        });
+        personality_tab(data);
+        skills_tab(data);
+
+        let features = document.getElementById('character_features');
+        if(features.length === 0)
+            document.querySelector('#features_tab').style.display = 'none';
+        for (let f in data.Features) {
+            let feature = data.Features[f];
+            let span = document.createElement('span')
+            span.innerHTML = feature + ' <br/>';
+            features.appendChild(span);
+        }
+        
+        items_tab(data);
+        spells_tab(data);
     }
     template.onContentBound = function () {
         var fileref = document.createElement("link");

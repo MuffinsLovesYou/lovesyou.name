@@ -2,7 +2,7 @@ define([
     'lovesyou_util'
     ,'lovesyou_template'
     ,'5e/monsters'
-], function (util, LYTemplate, monsters) {
+], function (util, LYT, monsters) {
 
     let monster = window.location.hash.split('/');
     monster = monster[monster.length-1];
@@ -47,7 +47,7 @@ define([
         }
     }
 
-    var template = new LYTemplate();
+    var template = new LYT();
     template.content_url = 'site/dungeons-dragons/elements/monsterbox/monsterbox.html';
     
     template.onDataBound = function () {
