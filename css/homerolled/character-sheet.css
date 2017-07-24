@@ -31,10 +31,10 @@
 }
 
 
-#character_sections .character_section span:first-child {
+/*#character_sections .character_section span:first-child {
     display:inline-block;
     width:100px;
-}
+}*/
 #character_sections .character_section span:nth-child(2){
     display:inline;
 }
@@ -55,10 +55,4 @@
 
 #character_sections .character_section table {
     border-spacing:0;
-}
-
-#character_sections .character_section td {
-    border-bottom:solid thin;
-    margin:0px;
-    padding: .4rem .5rem;
 }

@@ -29,16 +29,18 @@ define([
     }
     let skills_tab = (data)=>{
         let _skills = [];
+
+        // kk lets move away from blanket page stylings. 
         for(let s in data.Skills) _skills.push(data.Skills[s]);
         let skillstable = new tbl({
             container : document.getElementById('skills_container'),
             data : _skills,
             columns : [
-                { field : 'Name' },
-                { field : 'Ability' },
-                { field : 'Trained' },
-                { field : 'Bonus'}
-            ]
+                { field : 'Name', style : 'text-align:left', sort:true },
+                { field : 'Ability', sort:true },
+                { field : 'Trained', format : (x)=>{ return x?'Yes':'No'; }, sort:true },
+                { field : 'Bonus', style : 'text-align:right', sort:true}
+            ],
         });
         skillstable.draw();
     }
@@ -52,11 +54,11 @@ define([
             container : document.getElementById('items_container'),
             data : _items,
             columns : [
-                { field : 'Name' },
-                { field : 'Count' },
-                { field : 'Value' },
-                { field : 'Weight' }
-            ]
+                { field : 'Name', style : 'text-align:left', sort:true },
+                { field : 'Count', style : 'text-align:right' },
+                { field : 'Value', sort:true },
+                { field : 'Weight', style : 'text-align:right', sort:true }
+            ],
         });
         items_table.draw();
 
@@ -80,6 +82,8 @@ define([
             columns : [
                 { 
                     field : 'Name', 
+                    style : 'text-align:left; text-decoration:underline',
+                    sort : true,
                     click: (e)=>{ 
                         let _spell = spells[e.target.innerHTML];
                         let _modal=modal.new();
@@ -93,11 +97,11 @@ define([
                         _modal.attach();
                     } 
                 },
-                { field : 'Level' },
-                { field : 'Casting Time' },
+                { field : 'Level', sort:true },
+                { field : 'Casting Time', style : 'max-width:300px; text-align:left' },
                 { field : 'Range' },
                 { field : 'Duration' } 
-            ]
+            ],
         });
         spells_table.draw();
         if(_spells.length===0) document.getElementById('spells_tab').style.display = 'none';
