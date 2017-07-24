@@ -1059,6 +1059,12 @@ let Items = {
         "dmgType": "S",
         "property": "F,R"
     },
+    'Bracers of Archery' : {
+        'Name' : 'Bracers of Arhery',
+        'Value' : 'Uncommon',
+        'Weight' : '2',
+        'property' : '+2 to ranged damage.'
+    },
     "Breastplate": {
         "Name": "Breastplate",
         "Value": "400gp",

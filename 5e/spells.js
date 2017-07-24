@@ -102,6 +102,17 @@ let Spells = {
       "Range" : "Self",
       "School" : "Illusion"
    },
+   'Branding Smite' : {
+    'Casting Time' : '1 bonus actions',
+    'Components' : 'V',
+    'Description' : `The next time you hit a crealure with a weapon attack before this spell ends, lhe weapon gleams wilh astral radiance as you strike, The attack deals an extra 2d6
+    radiant damage to the target, which becomes visible if it's invisibie, and the target sheds dim light in a 5 foot radius and can't become invisible until the spell ends.
+    <br><b>At Higher Levels.</b> When you cast this spell using a spell slot of 3rd level or higher, the extra damage increases by ld6 for each slot level above 2nd.`,
+    'Duration' : 'Concentration up to 1 minute',
+    'Level' : 2,
+    'Range' : 'Self',
+    'School' : 'Evocation'
+   },
    "Burning Hands" : {
       "Casting Time" : "1 action",
       "Components" : "V, S",
@@ -309,6 +320,35 @@ let Spells = {
       "Range" : "500 feet",
       "School" : "Evocation"
    },
+   "Enhance Ability" : {
+       'Casting Time' : '1 action',
+       'Components' : 'V, S, M (fur or a feather from a beast)',
+       'Description' : `You touch a creature and bestow upon it a magical
+enhancement. Choose one of the following effects; the
+target gains that effect until the spell ends.
+<br><b>Bear's Endurance.</b> The target has advantage on
+Constitution checks. lt also gains 2d6 temporary hit
+points, which are lost when the spell ends.
+<br><b>Bull's Strength.</b> The target has advantage
+on strength checks, and his or her carrying
+capacity doubles.
+<br><b>Cat's Grace.</b> The target has advantage on Dexterity
+checks. lt also doesn't take damage from falling 20 feet
+or less if it isn't incapacitated.
+<br><b>Eagle's Splendor.</b> The target has advantage on
+Charisma checks.
+<br><b>Fox's Cunning.</b> The target has advantage on
+Intelligence checks.
+<br><b>Owl's Wisdom.</b> The target has advantage on
+Wisdom checks.
+At Higher LeveIs. When you cast this spell using
+a spell slot of 3rd level or higher, you can target one
+additional creature for each slot leveIabove 2nd.`,
+    'Duration' : 'Contentration, up to one hour.',
+    'Level' : 2,
+    'Range' : 'Touch',
+    'School' : 'Transmutation'
+   },
    "Etherealness" : {
       "Casting Time" : "1 action",
       "Components" : "V, S",
@@ -335,6 +375,19 @@ let Spells = {
       "Level" : 6,
       "Range" : "Self",
       "School" : "Divination"
+   },
+   'Find Steed' :{
+    'Casting Time' : '10 minutes',
+    'Components' : 'V,S', 
+    'Description' : `You summon a spirit that assumes the form of an unusually intelligent, strong, and loyal steed, creating a long-lasting bond with it. Appearing in an unoccupied space within range, the steed takes on a form that you choose, such as a warhorse, a pony, a camel, an elk, or a mastiff. (Your DM might allow other animais to be summoned as steeds.) The steed has the statistics of the chosen form, though it is a celestial, fey,or fiend (your choice) instead of its normal type. Additionally, if your steed has an Intelligence of 5 or less, its Intelligence becomes 6, and it gains the ability to understaod one language of your choice that you speak. 
+    <br>Your steed serves you as a mount, both in combat and out, and you have an instinctive bond with it that allows you to fight as a seamless unit. While mounted on your steed, you can make any spell you cast that targets only you also target your steed.
+    <br>When the steed drops to O hit points, it disappears, leaving behind no physical form, you can also dismiss your steed at any time as an action, causing it to disappear. In either case, casting this spell again summons the same steed, restored to its hit point maximum.
+    <br>While your steed is within 1 mile of you, you can communicate with it telepathically.
+    <br>You can't have more than one steed bonded by this spell at a time. As an action, you can release the steed from its bond at any time, causing it to disappear.`,
+    'Duration' : 'Instantaneous',
+    'Level' : 2,
+    'Range' : '30 feet',
+    'School' : 'Conjuration',
    },
    "Finger of Death" : {
       "Casting Time" : "1 action",
@@ -852,6 +905,16 @@ additional creature for each slot level above 1st.`,
       "Range" : "Touch",
       "School" : "Abjuration"
    },
+   'Protection from Evil and Good' : {
+       'Casting Time' : '1 action',
+       'Components' : 'V,S,M',
+       'Description' : `Until the spell ends, one willing creature you touch is protected against certain types of creatures: aberrations, celestials, elementals, fey, fiends, and undead.
+        <br>The protection grants several benefits. Creatures of those types have disadvantage on attack rolls against the target. The target also can't be charmed, frightened, or possessed by them. Ir the target is already charmed, frightened, or possessed by such a creature, the target has advantage on any new saving throw against the relevant effect.`,
+       'Duration' : 'Concentration, up to 10 minutes',
+       'Level' : 1,
+       'Range' : 'Touch',
+       'School' : 'Abjuration'
+   },
    "Raise Dead" : {
       "Casting Time" : "1 hour",
       "Components" : "V, S, M (a diamond worth at least 500 gp, which the spell consumes)",
@@ -1086,6 +1149,16 @@ additional creature for each slot level above 1st.`,
       "Range" : "30 feet",
       "School" : "Transmutation"
    },
+   'Thunderous Smite' : {
+       'Casting Time' : '1 bonus action',
+       'Components' : 'V',
+       'Description' : `The first time you hit with a melee weapon attack during this spell's duration, your weapon rings with thunder that is audible within 300 feet of you, and the attack deals an extra 2d6 thunder damage to the target.
+        Additionally, if the target is a creature, it must succeed on a Strength saving throw or be pushed 10 feet away from you and knocked prone.`,
+       'Duration' : 'Concentration, up to 1 minute',
+       'Level' : '1',
+       'Range' : 'self',
+       'School' : 'Evocation'
+   },
    "Thunderwave" : {
       "Casting Time" : "1 action",
       "Components" : "V, S",
@@ -1157,6 +1230,15 @@ additional creature for each slot level above 1st.`,
       "Level" : 2,
       "Range" : "60 feet",
       "School" : "Conjuration"
+   },
+   'Zone of Truth' : {
+       'Casting Time' : '1 action',
+       'Components' : 'V,S',
+       'Description' : `You create a magical zone that guards against deception in a 15-foot-radius sphere centered on a point of your choice within range. Until the spell ends, a creature that enters the spell's area for the first time on a turn or starts its tum there must make a Charisma saving throw. On a failed save, a creature can't speak a deliberate lie while in the radius. You know whether each creature succeeds or fails on its saving throw. An affected creature is aware of the spell and can thus avoid answering questions to which it would normally respond with a lie. Such a creature can be evasive in its answers as long as it remains within the boundaries of the truth.`,
+       'Duration' : '10 minutes',
+       'Level' : '2',
+       'Range' : '60 feet',
+       'School' : 'Enchantment'
    }
 }
 
