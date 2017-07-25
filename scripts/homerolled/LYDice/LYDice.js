@@ -1,42 +1,37 @@
 
-	let LYDiceRoller_Config = {
+	let LYDice_Config = {
 		dev : false
 	}
 
 
-	let LYDiceRoller = function(config){
+	let LYDice = function(config){
 		let roller = this;
 		roller.config = config || { dev:true };
 		let dev = roller.config.dev || false;// Development mode for debugging and testing
 		let log = (x) => { if(dev){ console.log(x); } };
 		
-		roller.Controls = {}
+		roller.controls = {}
 		// Initialization of UI controls if present.
 		roller.onDOMContentLoaded = roller.init;
 		roller.init = function(){
-			roller.Controls.Input = document.getElementById('DiceRoller_Input')/*text type input*/
-			roller.Controls.Button = document.getElementById('DiceRoller_Button')/*button type input*/
-			roller.Controls.Output = document.getElementById('DiceRoller_Output')/*text area*/
+			log('Initializing DiceRoller controls.');
+			roller.controls.input = document.getElementById('DiceRoller_Input')/*text type input*/
+			roller.controls.button = document.getElementById('DiceRoller_Button')/*button type input*/
+			roller.controls.output = document.getElementById('DiceRoller_Output')/*text area*/
 
-
-			log('Initializing DiceRoller Controls.');
-			let control_load_message = '';
-
-			if(!roller.Controls.Input || !roller.Controls.Output || !roller.Controls.Button){
-				log('Could not identify controls needed for UI');
+			if(!roller.controls.input || !roller.controls.output || !roller.controls.button)
+				return log('Could not identify controls needed for UI');
+			
+			let handleInput = ()=>{
+				let input = roller.controls.input.value.toLowerCase();
+				let output = roller.resolve(input);
+				roller.controls.output.value = output + roller.controls.output.value;
 			}
-			else {
-				let handleInput = ()=>{
-					let input = roller.Controls.Input.value.toLowerCase();
-					let output = roller.resolve(input);
-					roller.Controls.Output.value = output + roller.Controls.Output.value;
-				}
 
-				roller.Controls.Input.value = '--help--'; 
-				roller.Controls.Input.onkeydown = function(e){ if((e.keyCode||e.which)===13){ handleInput(); } }
-				roller.Controls.Button.onclick = function(){ handleInput(); } 
-				roller.Controls.Output.value = ''; 
-			}	
+			roller.controls.input.placeholder = '--help--'; 
+			roller.controls.input.onkeydown = (e)=>{ if((e.keyCode||e.which)===13){ handleInput(); } }
+			roller.controls.button.onclick = handleInput 
+			roller.controls.output.value = ''; 			
 		}
 
 		// TODO: we may need something smarter than just returning a value and concatenating it in. 
@@ -45,12 +40,12 @@
 		// Loops over the roller's commands and applies them to input equation
 		roller.resolve = function(equation){
 			let result = '';
-			for(let c=0; c< roller.Commands.order.length; c++){
-				let order = roller.Commands.order[c];
-				let command = roller.Commands[order];
+			for(let c=0; c< roller.commands.order.length; c++){
+				let order = roller.commands.order[c];
+				let command = roller.commands[order];
 				if(!command || !command.search){ continue; }
 				if(command.search(equation)){
-					let r = command.evaluate(equation);
+					let r = command.execute(equation);
 					result += r.value;
 					if(r.break) { break; }
 				}
@@ -58,18 +53,19 @@
 			return result;
 		}
 
-		/*	A pair of functions to test input and perform a task
-			search: a string to search for or a search function to evaluate against the input string
-			evaluate: a function(input) that performs a task and returns a message.
-			description: description text for the generated 'help' message */
-		roller.Command = function(search, evaluate, description){
+		/* Commands execute in the order they have been added.
+		search: a search function or value to look for, returns boolean
+		execute: code to execute if value is found
+		description: what the command does (text for 'help' command) */
+		roller.Command = function(search, execute, description){
 			let com = this;
 			
-			com.search = (typeof(search)==='function') ? search :
+			com.search = (typeof(search)==='function') ? 
+				search :
 				(i) => { return i.includes(search); };
 			
-			com.evaluate = function(input){
-				let value = evaluate(input);
+			com.execute = function(input){
+				let value = execute(input);
 
 				// this feels hacky, lets think clearly about how we want to be returning values.
 				if(typeof(value)!== 'object') { value = { 'value' : value, 'break' : true }; }
@@ -80,174 +76,136 @@
 		}
 
 		// Commands are stored by name and their order of operations is preserved via array
-		roller.Commands = {order : []};
-		/*	Name: a key for the command to be stored under 
-			Command: a roller.Command object */
-		roller.Commands.Add = function(name, command){
-			roller.Commands.order.unshift(name);
-			roller.Commands[name] = command;
+		roller.commands = {order : []};
+		/*	name: a key for the command to be stored under 
+			command: a roller.Command object */
+		roller.commands.add = function(name, command){
+			roller.commands.order.unshift(name);
+			roller.commands[name] = command;
 		}
 
 		/* Default command: solve
-			Silently invoked command that calls roller.solve(i) that processes dice input.
-		*/ 
-		roller.Commands.Add('solve',new roller.Command(()=>{return true;}, (input)=>{
+			Silently invoked command that calls roller.solve(i) that processes dice input. */ 
+		roller.commands.add('solve',new roller.Command(()=>{return true;}, (input)=>{
 			let solved = '';
 			solved = roller.solve(input);
 			return { 'value':solved+'\n', 'break':false };
 		}));
 
-
-		roller.saved = [];
-
-		/* 
-			The core of the dice-roller.  Loops through all Operations in order 
-			Each operation tests the input to see if it is applicable and then modifies it if so.
-			equation: the input to evaluate.
-			returns: the modified input after all operations have been performed
-		*/
+		/*  Last command to run and core of the dice roller.
+			loops through operations in order and resolves them against the input */
 		roller.solve = function(equation) {
 			log('Solving for: ' + equation);
 			// an object to store the state and steps of the input as it is procesed
 			let eq = { 
 					input: equation, // unmodified input 
 					working: equation, // input as it is modified step-by-step 
-					outputfuncs : [],
-					getoutput : null,
+					//output_funcs : [], 
+					get_output : null,
 					output : null
 			};
-			eq.getoutput = ()=>{
-				for(let i = 0; i < eq.outputfuncs.length; i++){
-					eq.outputfuncs[i]();
-				}
+			eq.get_output = ()=>{
+				//eq.output_funcs.forEach((f)=>{ f(); });
 				eq.output = eq.working;
 			}
-
-			// equation object 
-			// stores initial input 
-			// can store each iteration and response. 
-
-			for(let i = 0; i < roller.Operations.order.length; i++){
-				let o = roller.Operations.order[i];
-				eq = roller.Operations[o].resolve(eq);
-			}
-			eq.getoutput();
+			roller.operations.order.forEach((o)=>{ eq = roller.operations[o].resolve(eq); });
+			
+			eq.get_output();
 			log('Returning result: ' + eq.output); 
 			return eq.output;
 		}
 
 		let helpfunc =()=>{
 			let helpMessage = 'Commands:\n';
-			for(let c in roller.Commands){
-				let command = roller.Commands[c];
-				if(c==='solve' || !command.evaluate){continue;}
+			roller.commands.forEach((com, c)=>{
+				if(c==='solve'||!com.execute) return;
 				helpMessage += c + ': ' + (command.description||'')+'\n';
-			}
+			});
 			return helpMessage;
 		}
 		let help = new roller.Command('help', helpfunc, 'Displays this message');
-		roller.Commands.Add('help', help);
+		roller.commands.add('help', help);
 	
 
 		// TODO: better tracking and record keeping. 
 		roller.rolls = { }
 		
-		/*  Mathematical operation.  Searches for operator and operands and 
-			executes function if they are found.
-			usage: let op = new operation(...); roller.Operations.Add(op);
-			pattern: regex pattern or search function to find operators and operands
-			expression: delegate function to perform on found values 
+		/*  seek a value, parse it, and alter operation
+			search : what to look for
+				a function, regex, or value to look for and return if found
+			execute: what to do with what is found
 		*/
-		roller.Operation = function(search, expression){
+		roller.Operation = function(search, execute){
 			let op = this;	
 			
-			/* search the input for a pattern
-				return first occurance if found, else return null */
 			op.search = function(input){
 				if(typeof(search)==='function'){ return search(input); }
-
-				let rgx = search;
-				if(['string','number'].includes(typeof(search))){ rgx = new RegExp(''+search); }
-				if(rgx.exec){ 
-					let val = rgx.exec(input);// exec returns null or an array
-					return val;
-					//return val ? val[0] : val;// so return 0 index of array or null
-				}
-
-				return null;// we did not get a string, a regex object, or a function
+				if(['string','number'].includes(typeof(search))){ search = new RegExp(''+search); }
+				if(search.exec){ search.lastIndex=0; return search.exec(input); }
+				return null;// could not interpret search
 			}
 
-			/* 	attempts to extract parameters for .evaluate from the matched string
+			/*  parse the return value of search into parameters for execute
 				default behavior: it is looking for one or two integers 
 				and one non-integer symbol 
 				returns: a 3-item array [int||null, int, symbol] */
-			op.getTerms = function(match){
-				let digits = [], symbol, get = null;
-				let d = /(-?\d+)/g; // 0-1 minus symbols and one or more digits
+			op.get_terms = function(match){
+				let digits = [], get = null;
+				let d = /(-?\d+)/g; // find positive or negative integer
 
-				while((get = d.exec(match)) !== null){
+				while((get = d.exec(match)) !== null)
 					digits.push(+get[0]);
-				}
-				// if we have only one digit (d4 is valid input to represent 1d4)
-				// we fill the 0 index with a null
+				// if we found just one integer, digits = [null, int]
 				if(digits.length===1){ digits.unshift(null) }; 
-
-				let nd = /[^-\d]/; // find the non-digit, non minus sign symbol
+				
+				let nd = /[^-\d]/; // any symbol that isn't a digit or - 
 				get = nd.exec(match);
 				// if we are subtracting i.e. 3-4 this converts it to 3+-4
-				symbol = get ? get[0] : '+';
+				let symbol = get ? get[0] : '+';
 
 				return digits.concat(symbol);
 			}
 
-			// no default code for expression, it accepts the parameters from getTerms
-			op.expression = expression || (()=>{ log('no function found in operation'); })
+			// no default code for execute, it accepts the parameters from get_terms
+			op.execute = execute || (()=>{ log('no function found in operation'); })
 
-			/*	calls op.search to find matches in the input string
-				calls op.getTerms to retrieve the operator and operands
-				calls op.expression to perform the operation and return a value */
 			op.resolve = function(eq){
 				let get = null;
 				while((get = op.search(eq.working)) !== null){// search for pattern match
 					log('Found match, beginning operation on input string.')
 
-					let terms = op.getTerms(get);
+					let terms = op.get_terms(get);
 					log('Retrieved terms: ' + terms);
-					let x = terms[0],
-						y = terms[1],
-						z = terms[2];// destructure/unpack into parameters
 					
-					let value = op.expression(x,y,z);
+					let value = op.execute.apply(op, terms);
 					log('Evaluated for: ' + value);
 
 					eq.working = eq.working.replace(get,value);
-					log('updating input: '+eq.working);
-
 				}
 				return eq;
 			}
 		}
 
-		roller.Operations = { order : [] };
+		roller.operations = { order : [] };
 
 		/*	name: key to store the operation under
 			operation(required): Operation() object */
-		roller.Operations.Add = function(name, operation){
-			let ops = roller.Operations;
-			// Operations are executed as a stack (first in last out)
+		roller.operations.add = function(name, operation){
+			let ops = roller.operations;
+			// operations are executed as a stack (first in last out)
 			// The exception to this is the base dice-roll which is preserved as first to execute
-			if(name==='Dice') { roller.Operations.order.push(name); }
-			else { roller.Operations.order.splice(1,0,name); }
-			roller.Operations[name] = operation;
+			if(name==='Dice') { roller.operations.order.push(name); }
+			else { roller.operations.order.splice(1,0,name); }
+			roller.operations[name] = operation;
 		}
 
 		/*	Default dice-roll operation
 			matches patterns d# (i.e. d4, d6) or #d# (1d6, 3d4) */
 		let dice_roll = new roller.Operation(/[\d]{0,}[d][\d]{1,}/g);
-		dice_roll.expression = (rolls, facets) => {
+		dice_roll.execute = (rolls, facets) => {
 			if(!rolls){ rolls=1; } // e.g. translate d4 to 1d4 
 			let value = 0;
-			if(!roller.rolls[facets]){roller.rolls[facets] = []; }
+			if(!roller.rolls[facets]){ roller.rolls[facets] = []; }
 			for(let i = 0; i < rolls ; i++){
 				let roll = Math.floor((Math.random()*facets)+1);
 				roller.rolls[facets].push(roll);
@@ -255,26 +213,25 @@
 			}
 			return value;
 		}
-		roller.Operations.Add('Dice', dice_roll);
+		roller.operations.add('Dice', dice_roll);
 		return roller;
-
 	}
 
-	let DiceRoller = new LYDiceRoller(LYDiceRoller_Config);
+	let DiceRoller = new LYDice(LYDice_Config);
 
 	/* Math module: extends roller with basic PEMDAS operations */
 	(()=>{
-		DiceRoller.Operations.Add('AddSubtract', new DiceRoller.Operation(
+		DiceRoller.operations.add('AddSubtract', new DiceRoller.Operation(
 			/-?\d+[+-]\d+/g, 
 			(x,y)=>x+y 
 		));
 
-		DiceRoller.Operations.Add('MultiplyDivide', new DiceRoller.Operation(
+		DiceRoller.operations.add('MultiplyDivide', new DiceRoller.Operation(
 			/-?\d+[*//]-?\d+/g,
 			(x,y,z)=>{ return z==='*' ? x*y : (x/y).toFixed(2); }
 		));
 
-		DiceRoller.Operations.Add('Exponents', new DiceRoller.Operation(
+		DiceRoller.operations.add('Exponents', new DiceRoller.Operation(
 			/-?\d+\^-?\d+/g,
 			(x,y)=>Math.pow(x,y)
 		));
@@ -283,11 +240,11 @@
 			/\([^()]+\)/g,
 			(x)=>{ return DiceRoller.solve(x); }
 		);
-		parens.getTerms = (match)=>{
+		parens.get_terms = (match)=>{
 			match = match[0].replace(/[()]/g, '');
 			return [match];
 		}
-		DiceRoller.Operations.Add('Parentheses', parens);
+		DiceRoller.operations.add('Parentheses', parens);
 	})();
 
 
@@ -302,14 +259,18 @@
 			/\d+xd\d+/g, // matches nxdn pattern i.e. 2xd20 or 5xd6
 			(x,y)=>{ let arr = []; for(let i = 0; i < x; i++){ arr.push(+DiceRoller.solve(y)); } return arr.sort((x,y)=>+x<+y) }
 		);
-		advantage.getTerms = (match) => {
+		advantage.get_terms = (match) => {
 			let repeat = /\d+/.exec(match)[0];
 			let dice = /d\d+/.exec(match)[0];
 			return [repeat,dice,];
 		}
-		// this precedes dice rolling, so we bypass the normal .Add() function
-		DiceRoller.Operations.order.unshift('Advantage');
-		DiceRoller.Operations['Advantage'] = advantage;
+		// this precedes dice rolling, so we bypass the normal .add() function
+		DiceRoller.operations.order.unshift('Advantage');
+		DiceRoller.operations['Advantage'] = advantage;
+
+		// crits, 
+		// rerolls 
+
 
 	})()
 
