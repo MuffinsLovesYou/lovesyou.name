@@ -60,7 +60,7 @@ define([], () => {
 			'chars/maximilien' : {"byPalette":{"pri":["#6B532B","#BDAC8F","#8D7955","#4D360E","#221600"]},"byLum":{"pri":["#BDAC8F","#8D7955","#6B532B","#4D360E","#221600"]}}
 			,'chars/law' : {"byPalette":{"pri":["#607070","#ABB1B1","#7D8888","#485C5C","#314646"]},"byLum":{"pri":["#ABB1B1","#7D8888","#607070","#485C5C","#314646"]}}
 			,'chars/barbican-brady' : {"byPalette":{"pri":["#362200","#180F00","#402C0A","#AB6D00","#FFA200"]},"byLum":{"pri":["#FFA200","#AB6D00","#402C0A","#362200","#180F00"]}} 
-
+			,'chars/lance' : {"byPalette":{"pri":["#6B5F2B","#978D5F","#716941","#5C5019","#453A08"]},"byLum":{"pri":["#978D5F","#716941","#6B5F2B","#5C5019","#453A08"]}}
 		}
 		
 		var setlocals = function(){

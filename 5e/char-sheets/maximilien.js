@@ -45,9 +45,22 @@ define([
 	Max.Skills.Survival.Trained = true; // Human
 
 	let items = Max.Items;
-	// 300 gp and a magic item. 
-
-	items.Add('Gold', 880);
+	items.Add('Plate Armor');
+	items.Add('Shield');
+	items.Add('Long Sword');
+	items.Add('Everburning Torch');
+	items.Add('Backpack');
+	items.Add('Rations (1 day)', 10);
+	items.Add('Waterskin');
+	items.Add('Hammock');
+	items.Add('Mess Kit');
+	items.Add('Tinderbox');
+	items.Add('Pouch', 2);
+	items.Add('Tent');
+	items.Add('Block and Tackle');
+	items.Add('Steel Mirror');
+	
+	items.Add('Gold', 50);
 	
 	return Max;
 

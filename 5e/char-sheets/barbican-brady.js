@@ -71,11 +71,11 @@ define([
 	Brady.Spells.Add('Enhance Ability');
 	Brady.Spells.Add('Identify');
 
-	items.Add('Gold', 30);
+	items.Add('Gold', 41);
 	items.Add('Breastplate');
 	items.Add('Immovable Rod');
 	items.Add('Handaxe', 2);
-	items.Add(`Everburning Torch`);
+	items.Add('Everburning Torch');
 	items.Add('Backpack');
 	items.Add('Rations (1 day)', 10);
 	items.Add('Waterskin');
@@ -88,5 +88,43 @@ define([
 	items.Add('Steel Mirror');
 	items.Add('Pole (10-foot)')
 	return Brady;
+
+	let notes = {
+		team : 
+			{
+				NoNo : `Gnome crossdressing wizard
+					knows and has a history with Zotesh`,
+				Flameo : `Half-elf sorcerer, spaz`,
+				Kevdak : `Elf rogue (scout, UE)`,
+				Zotesh : `Minotaur cleric likes a fight. 
+					Follows war and brings war. 
+				`,
+				Froggo : `Bullywug squire. `
+			},
+		locations : {
+			'Big Muddy' : `Giant river and swamp, 300 miles diameter or so.`,
+			Greensport : `
+				Mid-sized town in the middle of a giant swamp. 
+				We are on a eastward road nexgt to the Big Muddy. It is currently the dry season, 
+				so it is navigable. It has pallisades and is resting on a solid plateau that rises 
+				some 10-15 feet and has about a 10 mile diameter.
+				It currently has a travelling carnival and soldiers with imperial insignia.  
+			`,
+			Desert : `To the northeast. There is word of large storms, active volcanoes, and more lizards.`,
+			'Hemlock Forest' : `About 40 miles north of Greensport `,
+			'Dragonfel Jungle' : ``
+		},
+		sessions : {
+			One : ``,
+			Two : `
+			We rest and meet Zotesh. I build rapport with Froggo. 
+			`
+		}
+	}
+
+
+	let x = `Notes two:
+		we start camp: Zotesh shows up 
+	`
 
 });
