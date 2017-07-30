@@ -29,6 +29,7 @@ define([], function(){
                     if(options.failure)
                         options.failure(xhr.error);
                     else {
+                        console.log(url, success, options);
                         console.log(xhr, options, xhr.error);
                     }
                 }

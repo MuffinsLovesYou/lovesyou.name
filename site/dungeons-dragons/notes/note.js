@@ -11,7 +11,11 @@ define([
         _this.content_url = '5e/notes/'+note+'.md'; 
     }
     template.content_formatter = function(){
-        this.content = md.Parse(this.content);
+        let mdparsed = md.Parse(this.content);
+        this.content = `
+        <div><a href='https://www.dandwiki.com/wiki/5e_SRD:Monsters' target='_blank'>Monsters</a>
+        <a href='http://npcgenerator.azurewebsites.net/' target='_blank'>NPC generator</a></div>
+        `+mdparsed;
     }
 
     return template;

@@ -138,12 +138,6 @@ define([
         spells_tab(data);
     }
     template.onContentBound = function () {
-        var fileref = document.createElement("link");
-        fileref.rel = "stylesheet";
-        fileref.type = "text/css";
-        fileref.href = 'css/homerolled/character-sheet.css';
-        document.getElementsByTagName("head")[0].appendChild(fileref)
-
         require(['scripts/homerolled/character-sheet-styler'], (sheet_styler) => {
             sheet_styler.stylize();
         });
