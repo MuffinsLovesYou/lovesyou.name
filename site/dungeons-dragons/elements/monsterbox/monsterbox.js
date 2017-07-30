@@ -9,8 +9,7 @@ define([
     monster = monster.replace(/%20/g, ' ',);
     monster = monsters[monster];
     
-    let objectToHtml = (obj, container) => {
-        
+    let objectToHtml = (obj, container) => {    
         for(let prop in obj){
             let dv = document.createElement('div');
             let spkey = document.createElement('span');
@@ -49,14 +48,13 @@ define([
 
     var template = new LYT();
     template.content_url = 'site/dungeons-dragons/elements/monsterbox/monsterbox.html';
-    
+    template.data = monster;
     template.onDataBound = function () {
         let data = template.data;
         let mb = document.getElementById('mb');
         
         objectToHtml(data, mb);
-
-
+        
         for(let p in data){
             let elem = document.getElementById('monster-'+p);
             if(elem){

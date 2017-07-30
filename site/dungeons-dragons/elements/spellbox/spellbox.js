@@ -6,7 +6,7 @@ define([
 
     var template = new LYT();
     template.initialize = function() {
-        this.content_url = 'site/dungeons-dragons/character-sheets/elements/spellbox/spellbox.html';
+        this.content_url = 'site/dungeons-dragons/elements/spellbox/spellbox.html';
     }
     template.onDataBound = function () {
         let data = this.data;

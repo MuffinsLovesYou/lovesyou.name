@@ -31,11 +31,6 @@ define([
             ,'code-pages/lvlr' : router.paths.code + 'lvlr/lvlr'
             ,'code-pages/lovesyou.name' : router.paths.code + 'lovesyou.name/lovesyou.name'
 
-            /* */
-            ,'maximilien' : router.paths.sheets + 'maximilien-robert'
-            ,'barbican-brady' : router.paths.sheets + 'barbican-brady'
-            ,'law' : router.paths.sheets + 'law'
-            ,'krismorel' : router.paths.sheets + 'krismorel'
         }
         router.main_content = document.getElementById('main-content');
 

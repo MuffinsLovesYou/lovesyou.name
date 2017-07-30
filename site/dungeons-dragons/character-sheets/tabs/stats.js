@@ -4,7 +4,7 @@ define([
 ], function(util, LYT){
 
     let template = new LYT();
-    template.content_url = 'site/dungeons-dragons/character-sheets/elements/stats.html'
+    template.content_url = 'site/dungeons-dragons/character-sheets/tabs/stats.html'
 
     template.onDataBound = function(){
         let set = (id, val) => {
