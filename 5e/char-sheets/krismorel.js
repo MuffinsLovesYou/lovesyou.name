@@ -44,9 +44,31 @@ define([
 	items.Add('Plate Armor');
 	items.Add('Longsword');
 	
+	// 14 spells 
 	//Krismorel.Spells.Add('Any Paladin spell.');
+	Krismorel.Spells.Add('Compelled Duel');
+	Krismorel.Spells.Add('Detect Magic');
+	Krismorel.Spells.Add('Lesser Restoration');
+	Krismorel.Spells.Add('Find Steed');
+	Krismorel.Spells.Add('Daylight');
+	Krismorel.Spells.Add('Aura of Viality');
+	Krismorel.Spells.Add('Aura of Purity');
+	Krismorel.Spells.Add('Locate Creature');
+	Krismorel.Spells.Add('Destructive Wave');
+	Krismorel.Spells.Add('Raise Dead');
+	Krismorel.Spells.Add('Shield of Faith');
+	Krismorel.Spells.Add('Cure Wounds');
+	Krismorel.Spells.Add('Ensnaring Strike');
+	Krismorel.Spells.Add('Speak with Animals');
+	Krismorel.Spells.Add('Moonbeam');
+	Krismorel.Spells.Add('Misty Step');
+	Krismorel.Spells.Add('Protection from Energy');
+	Krismorel.Spells.Add('Plant Growth');
+	Krismorel.Spells.Add('Stoneskin');
+	Krismorel.Spells.Add('Ice Storm');
+	Krismorel.Spells.Add('Commune With Nature');
+	Krismorel.Spells.Add('Tree Stride');
 
-	console.log(Krismorel)
 	return Krismorel;
 
 });

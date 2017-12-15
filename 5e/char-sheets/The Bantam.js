@@ -1,4 +1,7 @@
 
+define([
+	'5e/character.js'
+],(Character)=>{
 
  colorCookie = {"byPalette":{"pri":["#343628","#B5B9A2","#767A63","#323817","#222804"]},"byLum":{"pri":["#B5B9A2","#767A63","#343628","#323817","#222804"]}};
 
@@ -100,4 +103,5 @@
 
 	items.Add('Gold', 90);
 	
-	let character = TheBantam;
+	return TheBantam;
+});

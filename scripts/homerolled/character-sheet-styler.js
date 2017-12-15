@@ -5,8 +5,6 @@ define([],()=>{
         let styler = this;
 
         styler.tabs = { }
-
-
         styler.stylize = function(){
             var fileref = document.createElement("link");
             fileref.rel = "stylesheet";
@@ -36,18 +34,11 @@ define([],()=>{
                     }
                 });
             }
-
             tabs[0].click();
-
         }
-
-
         return styler;
     }
-
-
     return new Styler();
-
 });
 
 
