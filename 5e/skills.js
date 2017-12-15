@@ -29,7 +29,8 @@ define([], () => {
                 }
                 if(skill.Expertise) { skillBonus += char.Proficiency; }
                 return skillBonus;
-            }
+            },
+            enumerable : true
         });
     }
 
