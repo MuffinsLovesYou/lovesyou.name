@@ -103,6 +103,7 @@ define([
             }
         });
 
+        char._extra_hp = 0;
         Object.defineProperty(char, 'HP', {
             enumerable: true,
             get: function () {
@@ -113,6 +114,7 @@ define([
                     if(i===0){ hp+=((_class.HD/2)-1); }
                 });
                 hp += char.Stats.Constitution.Bonus() * char.Level;
+                hp += char._extra_hp;
                 return hp;
             }
         });
