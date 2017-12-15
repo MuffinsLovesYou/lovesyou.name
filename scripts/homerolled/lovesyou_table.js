@@ -1,6 +1,6 @@
 define([],()=>{
 
-    // sorting. 
+    // big ol work in progress, gotta clean it up a lot. 
 
     // stripped down html table builder 
     let LYT = function(options){
@@ -8,7 +8,13 @@ define([],()=>{
         options = options || {};
         
         lyt.container = options.container;// html container
-        lyt.data = options.data; // json object 
+        
+        options.data = JSON.parse(JSON.stringify(options.data)); // clear references 
+        lyt.base_data = {};
+        if(!Array.isArray(options.data)) lyt.base_data = options.data;
+        else options.data.forEach((e,i)=>{ lyt.base_data[i] = e; }); 
+        lyt.data = JSON.parse(JSON.stringify(options.data));
+
         lyt.columns = options.columns; // array of column options/definitions 
         lyt.all_col = options.all_col || {}; // style for every column,
         let td_defaults = 'text-align:center; padding: .04rem .05rem; border-bottom:solid thin'// bit hacky right now.
@@ -21,7 +27,6 @@ define([],()=>{
             });
             style.forEach((kv)=>{ elem.style[kv[0]] = kv[1]; });
         }
-
 
         let col_sort = function(property){
             let e = ()=>{ 
@@ -37,8 +42,74 @@ define([],()=>{
             }
             return e;
         }
+        lyt.indexes = {};
+        lyt.filters = {
+            _filters : {},
+            add : function(field, filter, options){// 
+                let _filters = lyt.filters._filters;
+                if(typeof(filter)!=='function'){
+                    let val = filter;
+                    filter = (item)=>{
+                        if(typeof(item)!=='object'|| !item.hasOwnProperty(field))
+                            return false;
+                        return item[field] == val;
+                    }
+                }
+                _filters[field] = filter;
 
-        // need a sortable.   
+                if(options.create_index){
+                    let idx = {};
+                    for(let d in lyt.data){
+                        let val = lyt.data[d][field];
+                        if(!idx.hasOwnProperty(val)) idx[val] = [];
+                        idx[val].push(val);
+                    }
+                    lyt.indexes[field] = idx;
+                }
+
+                lyt.filters.apply();
+            },
+            remove : function(name){
+                let _filters = lyt.filters._filters;
+                delete _filters[name];
+                lyt.filters.apply();
+            },
+            apply : function() {
+                let _filters = lyt.filters._filters;
+                lyt.data = JSON.parse(JSON.stringify(lyt.base_data));
+                let isarr = Array.isArray(lyt.data);
+                let t1 = new Date();
+
+                // so its a column index store, but even then
+                    // we need row ids 
+
+                for(let i in lyt.indexes){
+                    let idx = lyt.indexes[i];
+                    let filter = _filters[i];
+                    if(!filter) continue;
+
+                }
+
+
+                
+
+
+                for(let d = lyt.data.length-1; d>=0; d--){
+                    for(let f in _filters){
+                        if(!_filters[f](lyt.data[d])){
+                            if(isarr)
+                                lyt.data.splice(d,1);
+                            else 
+                                delete lyte.data[d];
+                            break;
+                        }
+                    }
+                }
+                lyt.draw();
+                let t2 = new Date();
+                console.log(t2-t1);
+            }
+        }
 
         lyt.draw = function(){
             while(lyt.container.firstChild)
