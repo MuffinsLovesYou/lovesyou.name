@@ -59,14 +59,14 @@ define([
         let _this = this;
         let data = _this.data;
         stats = stats.new();
-        stats.container = document.getElementById('monster_stats_container');
+        stats.container = document.getElementById('stats_container');
         stats.data = data;
         stats.attach();
         
-        let traits_container = document.getElementById('monster_traits');
+        let traits_container = document.getElementById('traits_container');
         objectToHtml(data.trait , traits_container)
 
-        let actions_container = document.getElementById('monster_actions');
+        let actions_container = document.getElementById('actions_container');
         objectToHtml(data.action, actions_container);
         if(data.spells)
             spells_tab(data);
@@ -76,8 +76,8 @@ define([
     }
     template.onContentBound = function () {
         template.data = monster;
-        require(['scripts/homerolled/monsterbox-styler'], (sheet_styler) => {
-            sheet_styler.stylize();
+        require(['scripts/homerolled/lovesyou_tabs'], (styler) => {
+            new styler().stylize();
         });
     }
 
@@ -108,7 +108,7 @@ define([
                             _spellbox.container = document.getElementById('modal-content');
                             _spellbox.attach();
                         }
-                        _modal.container = document.getElementById('spellbox-container');
+                        _modal.container = document.getElementById('spellbox_container');
                         _modal.attach();
                     } 
                 },
