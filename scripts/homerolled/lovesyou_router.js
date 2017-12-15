@@ -14,6 +14,7 @@ define([
         router.map = {
             'landing' : 'landing/landing'
             ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'
+            ,'lookups' : 'dungeons-dragons/lookups/lookups'
             ,'notes' : 'dungeons-dragons/notes/notes'
             ,'note' : 'dungeons-dragons/notes/note'
             ,'maps' : 'dungeons-dragons/maps/maps'
