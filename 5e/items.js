@@ -359,6 +359,11 @@ let Items = {
         Value : '50sp',
         Weight : '1'
     },
+    'Hat of Disguise' : {
+        Name : 'Hat of Disguise',
+        Value : 'Uncommon',
+        Weight : '2'
+    },
     "Healer's Kit": {
         "Name": "Healer's Kit",
         "Value": "5gp",
