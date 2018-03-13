@@ -1,68 +1,42 @@
 define([
     'colorizer'
 ], (colorizer) => {
+    // migrate out. 
     colorizer.load();
 
-    let Router = function () {
-        let router = this;
-        router.baseUrl = 'site/';
-        router.paths = {
-            base : 'site/'
-            ,sheets :'dungeons-dragons/character-sheets/sheets/'
-            ,code : 'programming/code-pages/'
-        }
-        router.map = {
-            'landing' : 'landing/landing'
-            ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'
-            ,'lookups' : 'dungeons-dragons/lookups/lookups'
-            ,'notes' : 'dungeons-dragons/notes/notes'
-            ,'note' : 'dungeons-dragons/notes/note'
-            ,'maps' : 'dungeons-dragons/maps/maps'
-            ,'monsterbox' : 'dungeons-dragons/elements/monsterbox/monsterbox'
-            ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
-            ,'character-sheet' : 'dungeons-dragons/character-sheets/character-sheet'
-            ,'programming' : 'programming/programming'
-            ,'test' : 'test/test'
-            /* */
-            ,'code-pages/character' : router.paths.code + 'character/character'
-            ,'code-pages/dice-roller' : router.paths.code + 'dice-roller/dice-roller'
-            ,'code-pages/lua-actions' : router.paths.code + 'lua-actions/lua-actions'
-            ,'code-pages/lua-textiles' : router.paths.code + 'lua-textiles/lua-textiles'
-            ,'code-pages/lua-textilesv2' : router.paths.code + 'lua-textilesv2/lua-textilesv2'
-            ,'code-pages/lvlr' : router.paths.code + 'lvlr/lvlr'
-            ,'code-pages/lovesyou.name' : router.paths.code + 'lovesyou.name/lovesyou.name'
+    let Router = function (options={}) {
+        let _router = this;
+        _router.base_url = options.base_url || '';
+        _router.start_page = options.start_page || 'index'
+        _router.paths = options.paths || {};
+        _router.main_content = options.content_holder_id || 'main'
+        _router.main_content = document.getElementById(_router.main_content);
 
-        }
-        router.main_content = document.getElementById('main-content');
-
-        router.clean_url = function () {
+        _router.clean_url = function () {
             try {
                 let url = window.location.toString()
                     .replace('.html', '');
                 window.history.replaceState(null, null, url);
             } catch (e) { /*fails on local browser during dev*/ }
         }
-        router.navigate = function () {
+        
+        _router.navigate = function () {
             router.clean_url();
+            // migrate out 
             colorizer.on_navigate();
-            let key = window.location.hash.slice(1).toLowerCase();
-            if(!key){ key = 'landing'; }
-            if(key.substr(0,6)==='notes/'){ key = 'note'; }
-            else if (key.substr(0,6)==='chars/') { key = 'character-sheet'; }
-            else if(key.substr(0,10)==='monsterbox'){ key = 'monsterbox'; }
-            if (!router.map[key]) return;
-            let route = router.baseUrl + router.map[key];
+            let hash = window.location.hash.slice(1).toLowerCase().split`/`[0]
+                || _router.start_page;
+            if(!_router.paths[hash]) return; // 404?
+
+            let route = _router.base_url + _router.paths[hash];
             require([route], function (template) {
                 template = template.new();
-                template.container = router.main_content;
+                template.container = _router.main_content;
                 template.attach();
-            });
+            });            
         }
-
-        return router;
+        window.onhashchange = _router.navigate;
+        return _router;
     }
-    let router = new Router();
-    window.onhashchange = router.navigate;
-    router.navigate();
-    return router;
+    return Router;
 });

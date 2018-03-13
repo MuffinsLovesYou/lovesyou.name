@@ -18,10 +18,9 @@ requirejs.config({
 });
 
 require([
-	'router',
 	'scripts/initialize'
-],(router, initializer)=>{
+],(initializer)=>{
 	console.log('rqmain.js application entry point');
 	initializer.init();
-	router.navigate()
+	//router.navigate()
 });
