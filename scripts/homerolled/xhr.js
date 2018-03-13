@@ -3,14 +3,12 @@ define([], function(){
     let XHR = function() {
         let _xhr = this;
 
-        _xhr.get = function(url, success, options){
-            options = options || {};
+        _xhr.get = function(url, success, options={}){
             options.method = 'GET'
             return _xhr.call(url, success, options);
         }
 
-        _xhr.call = function(url, success, options){
-            options = options||{};
+        _xhr.call = function(url, success, options={}){
             let xhr = new XMLHttpRequest();
             xhr.open(
                 options.method || 'GET',
@@ -18,13 +16,12 @@ define([], function(){
                 (options.hasOwnProperty('async') ? options.async : true)
             );
             xhr.responseType = options.responseType || 'text';
-            xhr.onreadystatechange = () => {
+            xhr.onreadystatechange = function() {
                 if(+xhr.readyState !== 4) 
                     return;
-                if(+xhr.status === 200){
-                    if(typeof(success)==='function')
+                if(+xhr.status === 200)
+                    if(typeof(success) === 'function')
                         success(xhr.response);
-                }
                 else {
                     if(options.failure)
                         options.failure(xhr.error);
@@ -37,7 +34,6 @@ define([], function(){
             xhr.send();
             return xhr;
         }
-
         return _xhr;
     }
 

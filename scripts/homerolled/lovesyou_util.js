@@ -1,17 +1,17 @@
 /*
-	unassorted UI helpers and utility functions
+	unassorted UI helpers and utility functions that don't have better homes. con
 */
 define([],()=>{
 
 	let Util = function(){
-		let util = this;
+		let _util = this;
 
 		// parses ?urlParam=value into { urlParam : value } dictionary
-		util._url_parameters;
-		Object.defineProperty(util, 'url_parameters',{
+		_util._url_parameters;
+		Object.defineProperty(_util, 'url_parameters',{
 			get : ()=>{
-				if(!util._url_parameters){
-					util._url_parameters = {};
+				if(!_util._url_parameters){
+					_util._url_parameters = {};
 					let search  = /([^&=]+)=?([^&]*)/g;
 					let query = window.location.search.substring(1);
 
@@ -19,14 +19,15 @@ define([],()=>{
 					while(match = search.exec(query)){
 						let k = decodeURIComponent(match[1]);
 						let v = decodeURIComponent(match[2]);
-						util._url_parameters[k] = v;
+						_util._url_parameters[k] = v;
 					}
 				}
-				return util._url_parameters
+				return _util._url_parameters
 			}
 		});
+		
 		// gets the uri of the currently executing script
-		Object.defineProperty(util, 'context', {
+		Object.defineProperty(_util, 'context', {
 			get : function() {		
 				return ((x=document.getElementsByTagName('script'))=>{
 					return x[x.length-1].src.split('/').slice(0,-1).join('/')+'/';
@@ -34,7 +35,7 @@ define([],()=>{
 			}
 		});
 		
-		return util;
+		return _util;
 	}
 
 	return new Util();

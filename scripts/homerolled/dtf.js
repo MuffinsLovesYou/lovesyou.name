@@ -1,6 +1,6 @@
 define([], function () {
     /*
-        do this first (alpha 0.2.0)
+        'do this first' (alpha 0.2.0)
         I don't really care for native Promises syntax enough that I rarely want to use it. This is a 
         functional style wrapper for asynchronous and promise-like events that's more to my tastes. 
 
@@ -10,43 +10,42 @@ define([], function () {
             .then((foo,bar)=> { console.log(foo, bar); }); 
         
         todo: 
-            add error handling and bubbling. 
-
-        
+            add error handling and bubbling.   
     */
     let DTF = function () {
-        let dtf = this;
+        let _dtf = this;
 
-        dtf._handlers = {}
-        dtf.addHandler = function (type, comparer, resolver) {
-            dtf._handlers[type] = {
+        _dtf._handlers = {}
+        _dtf.addHandler = function (type, comparer, resolver) {
+            _dtf._handlers[type] = {
                 compare: comparer,
                 resolve: resolver
             }
         }
 
-        let tasklist = function () {
-            this.id = 1; // number of requests
-            this.active = 1; // unresolved requests
-            this.results = []; // results/responses
-            this.callback = () => {}; // final callback
-            this.result = (id, v) => {
-                this.active--; // decrement unresolved
-                this.result[id - 1] = v; // add result
-                this.resolve();
+        let TaskList = function () {
+            let _tl = this;
+            _tl.id = 1; // number of requests
+            _tl.active = 1; // unresolved requests
+            _tl.results = []; // results/responses
+            _tl.callback = () => {}; // final callback
+            _tl.result = (id, v) => {
+                _tl.active--; // decrement unresolved
+                _tl.result[id - 1] = v; // add result
+                _tl.resolve();
             };
-            this.resolve = () => { // if none active callback(results)
-                if (!this.active) this.callback.apply(this, this.results);
+            _tl.resolve = () => { // if none active callback(results)
+                if (!_tl.active) _tl.callback.apply(_tl, _tl.results);
             }
-            return this;
+            return _tl;
         }
 
-        dtf.do = function (req) {
-            let tl = this instanceof tasklist ? this : new tasklist();
+        _dtf.do = function (req) {
+            let tl = this instanceof TaskList ? this : new TaskList();
 
-            for (h in dtf._handlers) 
-                if (dtf._handlers[h].compare(req)) {
-                    dtf._handlers[h].resolve(tl, req, tl.id);
+            for (let h in _dtf._handlers) 
+                if (_dtf._handlers[h].compare(req)) {
+                    _dtf._handlers[h].resolve(tl, req, tl.id);
                     break;
                 }
 
@@ -54,12 +53,12 @@ define([], function () {
                 and: (req) => {
                     tl.id++;
                     tl.active++;
-                    return dtf.do.bind(tl)(req);
+                    return _dtf.do.bind(tl)(req);
                 },
                 then: (func) => {
                     tl.callback = func;
                     tl.resolve();
-                    return dtf;
+                    return _dtf;
                 }
             }
         }
@@ -83,7 +82,6 @@ define([], function () {
                         tl.result(id, xhr.response);
                 }
             }
-
         }
     );
     dtf.addHandler('promise',

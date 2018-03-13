@@ -8,7 +8,7 @@ requirejs.config({
 		'colorizer' : 'scripts/vendor/paletton'
 		,'dice' : 'scripts/homerolled/LYDice/LYDice'
 		,'elements' : 'site/dungeons-dragons/character-sheets/elements/'
-		,'lovesyou_router' : 'scripts/homerolled/lovesyou_router'
+		,'router' : 'scripts/homerolled/router'
 		,'lovesyou_template' : 'scripts/homerolled/lovesyou_template'
 		,'lovesyou_util' : 'scripts/homerolled/lovesyou_util'
 		,'prism' : 'scripts/vendor/prism'
@@ -20,12 +20,12 @@ requirejs.config({
 
 });
 
-require(['lovesyou_util',
+require([
+	'router',
 	'lovesyou_template',
-	'lovesyou_router',
-	'tiles'],()=>{
-	
+	'tiles'],(router)=>{
 		console.log('rqmain.js application entry point');
+		router.navigate()
 	
 		var emojis = [
 		"\\ \\ \\٩(｡•ㅅ•｡)و/ / /"
@@ -36,10 +36,5 @@ require(['lovesyou_util',
 		,"(︶｡︶✽)"
 		,"(￣(エ)￣)ゞ"
 		];
-		
 		document.title = emojis[Math.floor(Math.random()*emojis.length)];
-	
-	if(require.loaded){
-		require.loaded();
-	}
 });

@@ -3,7 +3,7 @@ define([
     'lovesyou_template', 
     'tiles'
 ], function (util, LYT, tiles) {
-    
+
     var template = new LYT();
     template.content_url = util.context+'landing.html';
     template.onContentBound = function () {
@@ -12,6 +12,5 @@ define([
             , { title : 'dungeons and dragons', alt : 'characters, notes', href : '#DungeonsDragons' }
         ]);
     }
-
     return template;
 });

@@ -37,8 +37,8 @@ define([
 
         router.clean_url = function () {
             try {
-                let url = window.location.toString();
-                url = url.replace('.html', '');
+                let url = window.location.toString()
+                    .replace('.html', '');
                 window.history.replaceState(null, null, url);
             } catch (e) { /*fails on local browser during dev*/ }
         }
@@ -51,7 +51,6 @@ define([
             else if (key.substr(0,6)==='chars/') { key = 'character-sheet'; }
             else if(key.substr(0,10)==='monsterbox'){ key = 'monsterbox'; }
             if (!router.map[key]) return;
-            
             let route = router.baseUrl + router.map[key];
             require([route], function (template) {
                 template = template.new();
@@ -63,11 +62,7 @@ define([
         return router;
     }
     let router = new LYR();
-
     window.onhashchange = router.navigate;
-
     router.navigate();
-
     return router;
-
 });

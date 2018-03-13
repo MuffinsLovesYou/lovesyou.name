@@ -8,7 +8,7 @@ define([
 
         let router_block = document.getElementById('code-page-router-code-block');
         let router_template = new LYT();
-        router_template.content_url = 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/scripts/homerolled/lovesyou_router.js';
+        router_template.content_url = 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/scripts/homerolled/router.js';
         router_template.onContentBound = function(){
             router_template.content_formatter = function(data){
                 data = data.replace('/[<]/g', '&lt;');
