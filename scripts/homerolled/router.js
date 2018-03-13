@@ -3,7 +3,7 @@ define([
 ], (colorizer) => {
     colorizer.load();
 
-    let LYR = function () {
+    let Router = function () {
         let router = this;
         router.baseUrl = 'site/';
         router.paths = {
@@ -61,7 +61,7 @@ define([
 
         return router;
     }
-    let router = new LYR();
+    let router = new Router();
     window.onhashchange = router.navigate;
     router.navigate();
     return router;
