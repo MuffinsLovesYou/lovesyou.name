@@ -1,6 +1,4 @@
-// Using require.js
-
-
+// using require.js
 requirejs.config({
 	baseUrl : "", // root.
 
@@ -17,24 +15,13 @@ requirejs.config({
 		,'xhr' : 'scripts/homerolled/xhr'
 		,'lovesyou_table' : 'scripts/homerolled/lovesyou_table'
 	},
-
 });
 
 require([
 	'router',
-	'lovesyou_template',
-	'tiles'],(router)=>{
-		console.log('rqmain.js application entry point');
-		router.navigate()
-	
-		var emojis = [
-		"\\ \\ \\٩(｡•ㅅ•｡)و/ / /"
-		,"(ﾉ･ｪ･)ﾉ"
-		,"(ﾉ^∇^)ﾉﾟ"
-		,"ヾ(￣◇￣)ノ"
-		,"(°◡°♡).:｡"
-		,"(︶｡︶✽)"
-		,"(￣(エ)￣)ゞ"
-		];
-		document.title = emojis[Math.floor(Math.random()*emojis.length)];
+	'scripts/initialize'
+],(router, initializer)=>{
+	console.log('rqmain.js application entry point');
+	initializer.init();
+	router.navigate()
 });
