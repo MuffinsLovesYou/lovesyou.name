@@ -1,5 +1,5 @@
 define([], function(){
-
+    
     let XHR = function() {
         let _xhr = this;
 

@@ -3,7 +3,7 @@ define([],()=>{
     // big ol work in progress, gotta clean it up a lot. 
 
     // stripped down html table builder 
-    let LYT = function(options){
+    let Lite = function(options){
         let lyt = this;
         options = options || {};
         
@@ -166,5 +166,5 @@ define([],()=>{
     } 
 
 
-    return LYT;
+    return Lite;
 });

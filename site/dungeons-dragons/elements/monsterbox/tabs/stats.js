@@ -1,9 +1,9 @@
 define([
     'lovesyou_util'
-    ,'lovesyou_template'
-], function(util, LYT){
+    ,'lite'
+], function(util, Lite){
 
-    let template = new LYT();
+    let template = Lite.extend();
     template.content_url = 'site/dungeons-dragons/elements/monsterbox/tabs/stats.html'
 
     template.onDataBound = function(){

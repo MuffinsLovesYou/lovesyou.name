@@ -1,9 +1,9 @@
 define([
     'lovesyou_util',
-    'lovesyou_template', 'tiles'
-], function (util, LYT, tiles) {
+    'lite', 'tiles'
+], function (util, Lite, tiles) {
 
-    var template = new LYT();
+    var template = Lite.extend();
     template.content_url = util.context+'maps.html';
     template.onContentBound = function () {
         tiles.decorate();

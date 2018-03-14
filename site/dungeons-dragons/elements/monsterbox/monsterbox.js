@@ -1,13 +1,12 @@
 define([
-    'lovesyou_util'
-    ,'lovesyou_template'
+    ,'lite'
     ,'5e/monsters'
     ,'site/dungeons-dragons/elements/monsterbox/tabs/stats'
     ,'lovesyou_table'
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
     ,'site/common/modal/modal'
-], function (util, LYT, monsters, stats, tbl, spellbox, spells, modal) {
+], function (Lite, monsters, stats, tbl, spellbox, spells, modal) {
 
     let monster = window.location.hash.split('/');
     monster = monster[monster.length-1];
@@ -52,7 +51,7 @@ define([
         container.appendChild(dv);
     }
 
-    let template = new LYT();
+    let template = Lite.extend();
     template.content_url = 'site/dungeons-dragons/elements/monsterbox/monsterbox.html';
     template.data = monster;
     template.onDataBound = function () {

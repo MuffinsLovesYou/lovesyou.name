@@ -1,26 +1,23 @@
 define([
-    'lovesyou_util', 'lovesyou_template', 'tiles'
-], function (util, LYT, tiles) {
+    'lite'
+], function (Lite) {
 
-    var template = new LYT();
-    template.content_url = util.context+'lua-actions.html';
-    template.onContentBound = function () {
-
-        let code_block = document.getElementById('code-page-lua-actions-code-block');
-        let actions_template = new LYT();
-        actions_template.content_url = 'https://raw.githubusercontent.com/MuffinsLovesYou/Code-Samples/master/DFHack/Textiles/lovesyou/actions.lua';
-        actions_template.onContentBound = function(){
-            actions_template.content_formatter = function(data){
-                data = data.replace('/[<]/g', '&lt;');
-                data = data.replace('/[>]/g', '&gt;');
-                return data;
-            }
-            require(['prism'], ()=>{ Prism.highlightElement(code_block); });
-        }   
-        actions_template.container = code_block;
-        actions_template.attach();
-    };
-
-
-    return template;
+    return Lite.extend({
+        content_url : 'site/programming/code-pages/lua-actions/lua-actions.html',
+        onContentBound : function() {
+            let lua = Lite.extend({
+                container : document.getElementById('code-page-lua-actions-code-block'),
+                content_url : 'https://raw.githubusercontent.com/MuffinsLovesYou/Code-Samples/master/DFHack/Textiles/lovesyou/actions.lua',
+                onContentLoaded : function(content){
+                    this.content = content
+                        .replace('/[<]/g', '&lt;')
+                        .replace('/[>]/g', '&gt;');
+                },
+                onContentBound : function() {
+                    require(['prism'], ()=>{ Prism.highlightElement(this.container); });
+                }
+            });
+            new lua().attach();
+        }
+    });
 });

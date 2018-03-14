@@ -1,40 +1,37 @@
 define([
-    'lovesyou_util', 'lovesyou_template', 'tiles'
-], function (util, LYT, tiles) {
+    'lite'
+], function (Lite) {
 
-    var template = new LYT();
-    template.content_url = util.context+'character.html';
-    template.onContentBound = function () {
+    return Lite.extend({
+        content_url : 'site/programming/code-pages/character/character.html',
+        onContentBound : function () {
+            let view = Lite.extend({
+                container : document.getElementById('code-page-character-view-code-block'),
+                content_url : 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/site/dungeons-dragons/character-sheets/character-sheet.js',               
+                onContentLoaded : function(content){
+                    this.content = content
+                        .replace('/[<]/g', '&lt;')
+                        .replace('/[>]/g', '&gt;');
+                },
+                onContentBound : function() {
+                    require(['prism'], ()=>{ Prism.highlightElement(this.container); });
+                }
+            });
+            new view().attach();
 
-        let view_block = document.getElementById('code-page-character-view-code-block');;
-        let view_template = new LYT();
-        view_template.content_url = 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/site/dungeons-dragons/character-sheets/elements/character-sheet.js';                
-        view_template.onContentBound = function(){
-            view_template.content_formatter = function(data){
-                data = data.replace('/[<]/g', '&lt;');
-                data = data.replace('/[>]/g', '&gt;');
-                return data;
-            }
-                require(['prism'], ()=>{ Prism.highlightElement(view_block); });    
+            let char = Lite.extend({
+                container : document.getElementById('code-page-character-model-code-block'),
+                content_url : 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/5e/character.js',
+                onContentLoaded : function(content){
+                    this.content = content
+                        .replace('/[<]/g', '&lt;')
+                        .replace('/[>]/g', '&gt;');
+                },
+                onContentBound : function() {
+                    require(['prism'], ()=>{ Prism.highlightElement(this.container); });    
+                }               
+            });
+            new char().attach();
         }
-        view_template.container = view_block;
-        view_template.attach();
-
-        let character_block = document.getElementById('code-page-character-model-code-block');;
-        let character_template = new LYT();
-        character_template.content_url = 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/5e/character.js';                
-        character_template.onContentBound = function(){
-            character_template.content_formatter = function(data){
-                data = data.replace('/[<]/g', '&lt;');
-                data = data.replace('/[>]/g', '&gt;');
-                return data;
-            }
-            require(['prism'], ()=>{ Prism.highlightElement(character_block); });    
-        }
-        character_template.container = character_block;
-        character_template.attach();
-
-    };
-
-    return template;
+    });
 });

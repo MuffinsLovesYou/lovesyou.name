@@ -29,10 +29,8 @@ define([
             if(!_router.paths[hash]) return; // 404?
 
             let route = _router.base_url + _router.paths[hash];
-            require([route], function (template) {
-                template = template.new();
-                template.container = _router.main_content;
-                template.attach();
+            require([route], function (lite) {
+                new lite().attach(_router.main_content);
             });            
         }
         window.onhashchange = _router.navigate;

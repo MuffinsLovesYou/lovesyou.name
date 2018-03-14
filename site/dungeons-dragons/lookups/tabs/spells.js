@@ -1,10 +1,10 @@
 define([
-    'lovesyou_template'
+    'lite'
     ,'lovesyou_table'
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
-], (lyt, tbl, modal, spellbox, spells)=>{
+], (Lite, tbl, modal, spellbox, spells)=>{
 
     let draw_table = function(_spells){
         let spells_table = new tbl({
@@ -40,7 +40,7 @@ define([
 
 
 
-    let view = new lyt();
+    let view = Lite.extend();
     view.content_url = 'site/dungeons-dragons/lookups/tabs/spells.html'
 
     view.onContentBound = function() {

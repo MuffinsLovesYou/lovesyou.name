@@ -1,10 +1,14 @@
 define([
-    'lovesyou_util'
-    ,'lovesyou_template'
+    'lite'
     ,'5e/spells'
-], function (util, LYT, spells) {
+], function (Lite, spells) {
 
-    var template = new LYT();
+    return Lite.extend({
+        content_url : 'site/dungeons-dragons/elements/spellbox/spellbox.html',
+
+    });
+
+    /*var template = Lite.extend();
     template.initialize = function() {
         this.content_url = 'site/dungeons-dragons/elements/spellbox/spellbox.html';
     }
@@ -21,5 +25,5 @@ define([
     }
     template.onContentBound = function () { }
 
-    return template;
+    return template;*/
 });

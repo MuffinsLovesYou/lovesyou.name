@@ -1,8 +1,4 @@
 
-scripts/homerolled/router.js has too many hard-coded assumptions. 
-It also shouldn't have the colorizer embedded in it, that was a hack to get the 
-char sheets individually colored and needs a better solution. 
-
 template loader still has obvious bugs when switching between character sheets. 
 need to revisit order-of-operations and state cleanup
 
@@ -16,3 +12,4 @@ expand title emoji list
 expand images and see if we can change which 'corner' of the image we see. 
 
 create wrapper class for palleton so we aren't modifying its code directly. 
+Remove reference to colorizor from router 

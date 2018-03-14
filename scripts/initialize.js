@@ -1,9 +1,9 @@
 define([
     'router',
-    'lovesyou_template',
+    'lite',
 	'tiles'
 ],(Router)=>{
-
+    
     let initializer = {
         init : function(){
             initializer.set_title();
@@ -39,14 +39,15 @@ define([
                     ,'character' : 'dungeons-dragons/character-sheets/character-sheet'
                     ,'programming' : 'programming/programming'
                     ,'test' : 'test/test'
-                         
-                    ,'code-pages/character' : code_path + 'character/character'
-                    ,'code-pages/dice-roller' : code_path + 'dice-roller/dice-roller'
-                    ,'code-pages/lua-actions' : code_path + 'lua-actions/lua-actions'
-                    ,'code-pages/lua-textiles' : code_path + 'lua-textiles/lua-textiles'
-                    ,'code-pages/lua-textilesv2' : code_path + 'lua-textilesv2/lua-textilesv2'
-                    ,'code-pages/lvlr' : code_path + 'lvlr/lvlr'
-                    ,'code-pages/lovesyou.name' : code_path + 'lovesyou.name/lovesyou.name'
+
+                    ,'code-pages' : 'programming/code-pages/'  
+                    ,'code-pages-character' : code_path + 'character/character'
+                    ,'code-pages-dice-roller' : code_path + 'dice-roller/dice-roller'
+                    ,'code-pages-lua-actions' : code_path + 'lua-actions/lua-actions'
+                    ,'code-pages-lua-textiles' : code_path + 'lua-textiles/lua-textiles'
+                    ,'code-pages-lua-textilesv2' : code_path + 'lua-textilesv2/lua-textilesv2'
+                    ,'code-pages-lvlr' : code_path + 'lvlr/lvlr'
+                    ,'code-pages-lovesyou.name' : code_path + 'lovesyou.name/lovesyou.name'
 
                 }
             });

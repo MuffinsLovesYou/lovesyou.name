@@ -1,12 +1,11 @@
 define([
-    'lovesyou_util'
-    ,'lovesyou_template'
+    ,'lite'
     ,'lovesyou_table'
     ,'site/dungeons-dragons/character-sheets/tabs/stats'
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
-], function (util, Template, tbl, stats, modal, spellbox, spells) {
+], function (Lite, tbl, stats, modal, spellbox, spells) {
 
     let personality_tab = (data)=>{
         var personality = document.getElementById('character_personality');
@@ -107,7 +106,7 @@ define([
         if(_spells.length===0) document.getElementById('spells_tab').style.display = 'none';
     }
 
-    var template = new Template();
+    var template = Lite.extend();
     template.content_url = 'site/dungeons-dragons/character-sheets/character-sheet.html';
     let character_url = window.location.hash.split('/').pop();
     template.data_url = '5e/char-sheets/'+character_url+'.js'; 

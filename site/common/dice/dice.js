@@ -1,14 +1,12 @@
 define([
-    'lovesyou_util'
-    ,'lovesyou_template'
+    'lite'
     ,'dice'
-], function (util, LYT) {
+], function (Lite) {
 
-    var template = new LYT();
-    template.content_url = 'site/common/dice/dice.html';
-    template.onContentBound = function () {
-        DiceRoller.init();
-    } 
-    return template;
-    
+    return Lite.extend({
+        content_url : 'site/common/dice/dice.html',
+        onContentBound : function() {
+            DiceRoller.init();// ew global
+        }
+    });
 });

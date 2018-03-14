@@ -7,10 +7,10 @@ requirejs.config({
 		,'dice' : 'scripts/homerolled/LYDice/LYDice'
 		,'elements' : 'site/dungeons-dragons/character-sheets/elements/'
 		,'router' : 'scripts/homerolled/router'
-		,'lovesyou_template' : 'scripts/homerolled/lovesyou_template'
+		,'lite' : 'scripts/homerolled/lite'
 		,'lovesyou_util' : 'scripts/homerolled/lovesyou_util'
 		,'prism' : 'scripts/vendor/prism'
-		,'dtf' : 'scripts/homerolled/dtf'
+		,'please' : 'scripts/homerolled/please'
 		,'tiles' : 'scripts/homerolled/tiles'
 		,'xhr' : 'scripts/homerolled/xhr'
 		,'lovesyou_table' : 'scripts/homerolled/lovesyou_table'
@@ -22,5 +22,4 @@ require([
 ],(initializer)=>{
 	console.log('rqmain.js application entry point');
 	initializer.init();
-	//router.navigate()
 });

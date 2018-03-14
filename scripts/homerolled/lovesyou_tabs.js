@@ -1,6 +1,6 @@
 define([],()=>{
 
-    let LYTabs = function(){
+    let Liteabs = function(){
         let tabs = this;
 
         let _tabs = {};
@@ -39,7 +39,7 @@ define([],()=>{
             });
         }
     }
-    return LYTabs;
+    return Liteabs;
 });
 
 

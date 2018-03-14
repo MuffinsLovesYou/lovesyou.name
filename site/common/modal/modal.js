@@ -1,10 +1,17 @@
 define([
-    'lovesyou_util',
-    'lovesyou_template'
-], function (util, LYT) {
+    'lite'
+], function (Lite) {
+
+    return Lite.extend({
+        content_url : 'site/common/modal/modal.html',
+        onContentBound : function() {
+            // wew, what was I doing in here!
+
+        }
+    });
 
 
-    var template = new LYT();
+    /*var template = Lite.extend();
     template.content_url = 'site/common/modal/modal.html';
     template._onContentBound = ()=>{};
     Object.defineProperty(template, 'onContentBound', {
@@ -29,7 +36,7 @@ define([
                 func();
             }
         }
-    });
+    });()*/
 
     return template;
 });
