@@ -6,6 +6,7 @@ define([],()=>{
 
         styler.tabs = { }
         styler.stylize = function(){
+            
             var fileref = document.createElement("link");
             fileref.rel = "stylesheet";
             fileref.type = "text/css";
@@ -13,6 +14,7 @@ define([],()=>{
             document.getElementsByTagName("head")[0].appendChild(fileref)
 
             let tabs = document.querySelectorAll('#character_tabs span');
+            
             for(let t = 0; t < tabs.length; t++){
                 let tab = tabs[t];
                 tab.style.display='inline-block;'
@@ -23,7 +25,7 @@ define([],()=>{
                     'tab' : tab
                     ,'container' : container
                 }
-
+            
                 tab.addEventListener('click', (e)=>{
                     let inner = e.target.innerHTML;
                     for(let t in styler.tabs){
@@ -33,6 +35,7 @@ define([],()=>{
                         t.container.style.display = (selected) ? 'block' : 'none';
                     }
                 });
+            
             }
             tabs[0].click();
         }

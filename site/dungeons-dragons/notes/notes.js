@@ -2,6 +2,7 @@ define([
     'lite'
     ,'tiles'
 ], function (Lite, tiles) {
+    
     return Lite.extend({
         content_url : 'site/dungeons-dragons/notes/notes.html',
         onContentBound : function() {

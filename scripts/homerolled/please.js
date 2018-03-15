@@ -3,7 +3,7 @@ define([], function () {
         I don't really like native Promise syntax, so I wrote this as a way to do promises with a light functional syntax.
 
         Usage example: 
-        Please.do(xhr.get('scripts/homerolled/foo.js'))
+        please.do(xhr.get('scripts/homerolled/foo.js'))
             .and(xhr.get('scripts/homerolled/bar.js'))
             .then((foo,bar)=> { console.log(foo, bar); }); 
         
@@ -29,7 +29,7 @@ define([], function () {
             _tl.callback = () => {}; // final callback
             _tl.result = (id, v) => {
                 _tl.active--; // decrement unresolved
-                _tl.result[id - 1] = v; // add result
+                _tl.results[id - 1] = v; // add result
                 _tl.resolve();
             };
             _tl.resolve = () => { // if none active callback(results)
@@ -39,6 +39,7 @@ define([], function () {
         }
 
         _please.do = function (req) {
+            // does this instantiate itself automatically 
             let tl = this instanceof TaskList ? this : new TaskList();
 
             for (let h in _please._handlers) 
@@ -66,9 +67,8 @@ define([], function () {
     let please = new Please();
     please.addHandler('null',
         (req) => { return !req; },
-        (tl, _, id) => { tl.result(id, undefined); }
-    );
-
+        (tl, _, id) => { tl.result(id, undefined); } );
+    
     please.addHandler('xhr',
         (xhr) => { return xhr instanceof XMLHttpRequest; },
         (tl, xhr, id) => {
@@ -86,8 +86,12 @@ define([], function () {
     );
     please.addHandler('promise',
         (prm) => { return prm instanceof Promise; },
-        (tl, prm, id) => { prm.then((res) => { tl.result(id, res); }); }
-    );
+        (tl, prm, id) => { prm.then((res) => { tl.result(id, res); }); } );
+    
+    // Unknown type, pass through
+    please.addHandler('zundefined',
+        (udf) => { return true; },
+        (tl, udf, id) => { tl.result(id, udf); } );
 
     return please;
 });
