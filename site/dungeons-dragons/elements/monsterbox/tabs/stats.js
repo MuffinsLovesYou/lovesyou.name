@@ -1,7 +1,6 @@
 define([
-    'lovesyou_util'
-    ,'lite'
-], function(util, Lite){
+    'lite'
+], function(Lite){
 
     let template = Lite.extend();
     template.content_url = 'site/dungeons-dragons/elements/monsterbox/tabs/stats.html'
