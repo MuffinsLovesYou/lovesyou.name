@@ -1,10 +1,13 @@
 
-template loader still has obvious bugs when switching between character sheets. 
-need to revisit order-of-operations and state cleanup
-
 expand title emoji list
 
 expand images and see if we can change which 'corner' of the image we see. 
 
 create wrapper class for palleton so we aren't modifying its code directly. 
 Remove reference to colorizor from router 
+
+improve grid: 
+    * better default style rules 
+    * better filtering rules, consider adding partial text filters
+    * play with alternate filtering methodology (toggling display rather than redrawing)
+    * consider less stateful paradigm 

@@ -27,8 +27,8 @@ define([],()=>{
             for(let t in _tabs){
                 let tab = _tabs[t];
                 let selected = (tab.el.innerHTML === inner);
-                t.el.className = (selected) ? 'selected' : '';
-                t.container.style.display = (selected) ? 'block' : 'none'
+                tab.el.className = (selected) ? 'selected' : '';
+                tab.container.style.display = (selected) ? 'block' : 'none'
             }
         }
         tabs.load_css = function() {

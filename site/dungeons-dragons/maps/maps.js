@@ -2,11 +2,10 @@ define([
     'lite', 'tiles'
 ], function (Lite, tiles) {
 
-    var template = Lite.extend();
-    template.content_url = 'site/dungeons-dragons/maps/maps.html';
-    template.onContentBound = function () {
-        tiles.decorate();
-    }
-
-    return template;
+    return Lite.extend({
+        content_url : 'site/dungeons-dragons/maps/maps.html',
+        onContentBound : function () {
+            tiles.decorate();
+        }
+    });
 });
