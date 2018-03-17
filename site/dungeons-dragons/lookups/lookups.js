@@ -9,8 +9,9 @@ define([
         content_url : 'site/dungeons-dragons/lookups/lookups.html',
         onContentBound : function() {
             new tabs().stylize();
-            spells.container = document.getElementById('spells_container');
-            spells.attach();
+            new spells({
+                container : document.getElementById('spells_container')
+            }).attach();
         }
     });
 });

@@ -1,10 +1,9 @@
 define([
-    'lovesyou_util',
     'lite', 'tiles'
-], function (util, Lite, tiles) {
+], function (Lite, tiles) {
 
     var template = Lite.extend();
-    template.content_url = util.context+'maps.html';
+    template.content_url = 'site/dungeons-dragons/maps/maps.html';
     template.onContentBound = function () {
         tiles.decorate();
     }

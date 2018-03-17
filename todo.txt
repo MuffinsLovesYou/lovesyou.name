@@ -2,11 +2,6 @@
 template loader still has obvious bugs when switching between character sheets. 
 need to revisit order-of-operations and state cleanup
 
-move util.context to template, name it better, and convert it to a function. 
-
-drop util entirely.  url params isn't used, and could be moved to the template or router 
-context needs to be moved. 
-
 expand title emoji list
 
 expand images and see if we can change which 'corner' of the image we see. 
