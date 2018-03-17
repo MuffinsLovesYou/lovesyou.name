@@ -1,43 +1,49 @@
 
 define([],()=>{
-
+    // some of this is redundant with tabs script. 
     let Styler = function(){
         let styler = this;
 
         styler.tabs = { }
         styler.stylize = function(){
-            
-            var fileref = document.createElement("link");
-            fileref.rel = "stylesheet";
-            fileref.type = "text/css";
-            fileref.href = 'css/homerolled/character-sheet.css';
-            document.getElementsByTagName("head")[0].appendChild(fileref)
-
+            styler.load_css();            
             let tabs = document.querySelectorAll('#character_tabs span');
-            
-            for(let t = 0; t < tabs.length; t++){
-                let tab = tabs[t];
+            Array.from(tabs).forEach((tab)=>{
                 tab.style.display='inline-block;'
                 let inner = tab.innerHTML;
                 let container = document.getElementById('character_'+inner);
                 container.style.display = 'none';
                 styler.tabs[inner] = {
-                    'tab' : tab
+                    'el' : tab
                     ,'container' : container
                 }
             
                 tab.addEventListener('click', (e)=>{
-                    let inner = e.target.innerHTML;
-                    for(let t in styler.tabs){
-                        t = styler.tabs[t];
-                        let selected = (t.tab.innerHTML === inner);
-                        t.tab.className = (selected) ? 'selected' : '';
-                        t.container.style.display = (selected) ? 'block' : 'none';
-                    }
-                });
-            
-            }
+                    styler.tab_on_click(e);
+                });       
+            });
             tabs[0].click();
+        }
+        styler.tab_on_click = function(event){
+            let inner = event.target.innerHTML;
+            for(let k in styler.tabs){
+                let tab = styler.tabs[k];
+                let selected = (tab.el.innerHTML === inner);
+                tab.el.className = (selected) ? 'selected' : '';
+                tab.container.style.display = (selected) ? 'block' : 'none';
+            }
+        }
+        styler.load_css = function() {
+            var css = document.createElement("link");
+            css.rel = "stylesheet";
+            css.type = "text/css";
+            css.href = 'css/homerolled/character-sheet.css';
+            let head = document.getElementsByTagName('head')[0];
+            let links = document.getElementsByTagName('link');
+            let has = Array.from(links).some((link)=>{
+                return link.href === css.href;
+            });
+            if(!has) head.appendChild(css);            
         }
         return styler;
     }
