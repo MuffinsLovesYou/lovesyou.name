@@ -16,10 +16,12 @@ define([
             });
 
             require(['site/common/dice/dice'], (dice) => {
-                dice.attach(document.getElementById('dice-container'));
+                new dice().attach(document.getElementById('dice-container'));
             });
         }
-        , data_url : '5e/char-sheets/'+window.location.hash.split('/').splice(-1)+'.js'
+        , initialize : function() {
+            this.data_url = '5e/char-sheets/'+window.location.hash.split('/').splice(-1)+'.js'
+        }
         , onDataBound : function (data) {
             var view = this;
             view.stats_tab(data);
@@ -112,15 +114,14 @@ define([
                         sort : true,
                         click: (e)=>{ 
                             let _spell = spells[e.target.innerHTML];
-                            let _modal = modal.new();
-                            _modal.onContentBound = ()=>{
-                                let _spellbox = spellbox.new();
-                                _spellbox.data = _spell;
-                                _spellbox.container = document.getElementById('modal-content');
-                                _spellbox.attach();
-                            }
-                            _modal.container = document.getElementById('spellbox-container');
-                            _modal.attach();
+                            new modal({
+                                onDataBound : function(){
+                                    new spellbox({
+                                        data : _spell,
+                                        container : document.getElementById('modal-content'),
+                                    }).attach();
+                                }
+                            }).attach();
                         } 
                     },
                     { field : 'Level', sort:true },
