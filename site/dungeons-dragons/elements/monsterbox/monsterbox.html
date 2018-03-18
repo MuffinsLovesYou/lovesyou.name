@@ -1,17 +1,83 @@
-<div class='tabs'>
-	<span>stats</span>
-	<span>traits</span>
-	<span>actions</span>
-	<span id='monster_spells_tab'>spells</span>
-</div>
-<div id='monster_sections'>
-	<div class='section' id='stats_container'>
+<div id='monsterbox'>
+	<div>
+		<span id='Name' bind class='monster_name'></span>
 	</div>
-	<div class='section' id='traits_container'>
+	<div style='font-style:italic;'>
+		<span id='Size' bind></span>
+		<span id='Type' bind></span><span>,</span>
+		<span id='Alignment' bind></span>
 	</div>
-	<div class='section' id='actions_container'>
+	<div class='monster_divider'></div>
+	<div>
+		<span class='monster_red_left'>Saving Throws </span>
+		<span id='Save' bind>
 	</div>
-	<div class='section' id='spells_container'>
-		<div id='spellbox_container'></div>
+	<div>
+		<span class='monster_red_left'>Damage Immunities </span>
+		<span id='Immune' bind>
 	</div>
+	<div>
+		<span class='monster_red_left'>Condition Immunities </span>
+		<span id='ConditionImmune' bind>
+	</div>
+	<div>
+		<span class='monster_red_left'>Armor Class </span>
+		<span id='Ac' bind>
+	</div>
+	<div>
+		<span class='monster_red_left'>Hit Points </span>
+		<span id='Hp' bind></span>
+	</div>
+	<div>
+		<span class='monster_red_left'>Speed </span>
+		<span id='Speed' bind></span>
+	</div>
+	<div class='monster_divider'></div>
+	<div>
+		<div>
+			<span class='monster_stat_label'>STR</span>
+			<span class='monster_stat_label'>DEX</span>
+			<span class='monster_stat_label'>CON</span>
+			<span class='monster_stat_label'>INT</span>
+			<span class='monster_stat_label'>WIS</span>
+			<span class='monster_stat_label'>CHA</span>	
+		</div>
+		<div>
+			<span id='Str' bind class='monster_stat_value'></span>
+			<span id='Dex' bind class='monster_stat_value'></span>
+			<span id='Con' bind class='monster_stat_value'></span>
+			<span id='Int' bind class='monster_stat_value'></span>
+			<span id='Wis' bind class='monster_stat_value'></span>
+			<span id='Cha' bind class='monster_stat_value'></span>
+		</div>
+	</div>
+	<div class='monster_divider'></div>
+	<div>
+		<span class='monster_red_left'>Senses </span>
+		<span id='Senses' bind></span>
+	</div>
+	<div>
+		<span class='monster_red_left'>Languages </span>
+		<span id='Languages' bind></span>
+	</div>
+	<div>
+		<span class='monster_red_left'>Challenge </span>
+		<span id='Cr' bind></span>
+	</div>
+	<div class='monster_divider'></div>
+	<div id='monster-traits'>
+	</div>
+	<div id='monster-actions'>
+		<span class='monster_red_left'>Actions</span>
+		<div class='monster_divider'></div>
+	</div>
+	<div id='monster-reactions'>
+		<span class='monster_red_left'>Reactions</span>
+		<div class='monster_divider'></div>
+	</div>
+	<div id='monster-legendary'>
+		<span class='monster_red_left'>Legendary Actions</span>
+		<div class='monster_divider'></div>
+	</div>
+	
 </div>

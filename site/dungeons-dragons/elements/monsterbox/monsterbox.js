@@ -9,118 +9,144 @@ define([
     ,'scripts/homerolled/lovesyou_tabs'
 ], function (Lite, monsters, stats, tbl, spellbox, spells, modal, tabs) {
 
-   
     return Lite.extend({
         content_url : 'site/dungeons-dragons/elements/monsterbox/monsterbox.html'
         , initialize : function() {
             let monster = window.location.hash.split('/').pop().replace(/%20/g,' ');
             this.data = monsters[monster];
+            this.load_css();
+        }
+        , load_css : function() {
+            var css = document.createElement("link");
+            css.rel = "stylesheet";
+            css.type = "text/css";
+            css.href = 'css/homerolled/dnd.css';
+            let head = document.getElementsByTagName('head')[0];
+            let links = document.getElementsByTagName('link');
+            let has = Array.from(links).some((link)=>{
+                return link.href === css.href;
+            });
+            if(!has) head.appendChild(css);            
+        }
+        , onDataLoaded : function(data){
+            let view = this;
+            view.data = view.prepare_data(data);
+            console.log('data', view.data);
+        }
+        , prepare_data : function(data) {
+            let view = this;
+            for(let k in data) {
+                data[k[0].toUpperCase()+k.substr(1)] = data[k];
+                delete data[k];
+            }
+            if(data.Action && !Array.isArray(data.Action))
+                data.Action = [data.Action];
+            if(data.Trait && !Array.isArray(data.Trait))
+                data.Trait = [data.Trait];
+            if(data.Reaction && !Array.isArray(data.Reaction))
+                data.Reaction = [data.Reaction];
+
+            data.Size = {
+                T : 'Tiny', S : 'Small', M : 'Medium', 
+                L : 'Large', H : 'Huge', G : 'Gargantuan'
+            }[data.Size] || data.Size;
+            view.format_spells(data);
+            data = view.set_stats(data);
+            return data;
+        }
+        , format_spells : function(data){
+            if(!data.Trait) return;
+            let spellcasting = data.Trait.find((trait)=>{
+                return trait.name === 'Spellcasting'
+            })
+            if(!spellcasting) return;
+
+            spellcasting.text = spellcasting.text.map((item, idx)=>{
+                return idx ? item.substr(4) : item;
+            })
+            spellcasting.text = spellcasting.text.join('<br>');
+        }
+        , set_stats : function(data){
+            let bonus = (x)=> x + '('+((x>=10)?'+':'') + Math.floor((+x-10)/2) +')'
+            data.Str = bonus(data.Str)
+            data.Dex = bonus(data.Dex);
+            data.Con = bonus(data.Con);
+            data.Int = bonus(data.Int);
+            data.Wis = bonus(data.Wis);
+            data.Cha = bonus(data.Cha);
+            return data;
         }
         , onContentBound : function () {
             new tabs().stylize();
+            let view = this;
+            view.toggle_divs();
+            view.build_traits();
+            view.build_actions();
+            view.build_reactions();
+            view.build_legendary();
         }
-        , onDataBound : function () {
+        , toggle_divs : function() {
             let view = this;
             let data = view.data;
-            console.log(data)
-            new stats({
-                container : document.getElementById('stats_container')
-                , data : view.data
-            }).attach();
-            console.log('wert')
-
-            view.objectToHtml(data.trait , document.getElementById('traits_container'))
-            view.objectToHtml(data.action, document.getElementById('actions_container'));
-            
-            if(data.spells)
-                view.spells_tab(data);
-            else
-                document.getElementById('monster_spells_tab').style.display = 'none';
-        
+            let hide = (id)=>document.getElementById(id).parentElement.style.display = 'none'
+            if(!data.Save) hide('Save');
+            if(!data.Immune) hide('Immune');
+            if(!data.ConditionImmune) hide('ConditionImmune')
+            if(!data.Reaction) document.getElementById('monster-reactions').style.display = 'none'
+            if(!data.Legend) document.getElementById('monster-legendary').style.display = 'none'    
         }
-        // This was a quick-to-market hack, lets do it a lot cleaner. 
-        , objectToHtml : function(obj, container) {   
-            let dv = document.createElement('div');
-            if (Array.isArray(obj)){
-                let ul = document.createElement('ul');
-                obj.forEach((e,i)=>{
-                    let li = document.createElement('li');
-                    if(typeof(e)!=='object')
-                        li.innerHTML = e;
-                    else 
-                        objectToHtml(e, li);
-                    ul.appendChild(li);
-                });
-                dv.appendChild(ul);
-            }
-            else if (typeof(obj)==='object'){
-                for(let p in obj){
-                    let dv2 = document.createElement('div');
-                    let spkey = document.createElement('span');
-                    spkey.innerHTML = p+': ';
-                    spkey.style.minWidth = '90px';
-                    spkey.style.display ='inline-block'
-                    spkey.style.fontWeight = 'bold';
-                    dv2.appendChild(spkey);
-                    
-                    let val = obj[p];
-                    if(typeof(val)!=='object'){
-                        let spval = document.createElement('span');
-                        spval.innerHTML = val;
-                        dv2.appendChild(spval);
-                    }
-                    else 
-                        objectToHtml(val, dv2);
-                    dv.appendChild(dv2);
+        , build_dynamic_item : function(name, text){
+            let new_item = document.createElement('div');
+            let label = new_item.appendChild(document.createElement('span'));
+            let description = new_item.appendChild(document.createElement('span'));
+            label.className = 'monster_grey_left';
+            label.innerHTML = name + '. ';
+            description.innerHTML = text;
+            return new_item;
+        }
+        , build_traits : function() {
+            let view = this;
+            let traits = view.data.Trait;
+            if(!traits) return;
+            let traits_div = document.getElementById('monster-traits');
+            traits.forEach((trait)=>{ 
+                traits_div.appendChild(view.build_dynamic_item(trait.name, trait.text)) 
+            });
+        }
+        , build_actions : function() {
+            let view = this;
+            let actions = view.data.Action;
+            if(!actions) return;
+            let actions_div = document.getElementById('monster-actions');
+            actions.forEach((action)=>{
+                if(Array.isArray(action.text)){
+                    action.text = action.text.map((item, idx)=>{ 
+                        if(!idx) return item;
+                        item = item.split('.');
+                        return '<b>'+item[0]+'.</b>'+item.slice(1).join('.');
+                    });
+                    action.text = action.text.join('<br>')
                 }
-            }
-            container.appendChild(dv);
-        } 
-        , spells_tab : function(data){
-            let _dspells = data.spells.split(', ');
-            for(let s in spells){
-                spells[s.toLowerCase()] = spells[s];
-            }
-            let _spells = [];
-            _dspells.forEach((s)=>{
-                _spells.push(spells[s]);
+                actions_div.appendChild(view.build_dynamic_item(action.name, action.text));
             });
-            let spells_table = new tbl({
-                container : document.getElementById('spells_container'),
-                data : _spells,
-                columns : [
-                    { 
-                        field : 'Name', 
-                        style : 'text-align:left; text-decoration:underline',
-                        sort : true,
-                        click: (e)=>{ 
-                            new modal({
-                                onContentBound : function(){
-                                    new spellbox({
-                                        data : _spells[e.target.innerHTML]
-                                        , container : document.getElementById('spellbox_container')
-                                    }).attach();
-                                }
-                            })
-                            /*let _spell = spells[e.target.innerHTML];
-                            let _modal = modal.new();
-                            _modal.onContentBound = ()=>{
-                                let _spellbox = spellbox.new();
-                                _spellbox.data = _spell;
-                                _spellbox.container = document.getElementById('modal-content');
-                                _spellbox.attach();
-                            }
-                            _modal.container = document.getElementById('spellbox_container');
-                            _modal.attach();*/
-                        } 
-                    },
-                    { field : 'Level', sort:true },
-                    { field : 'Casting Time', style : 'max-width:300px; text-align:left' },
-                    { field : 'Range' },
-                    { field : 'Duration' } 
-                ],
+        }
+        , build_reactions : function() {
+            let view = this;
+            let reactions = view.data.Reaction;
+            if(!reactions) return;
+            let reactions_div = document.getElementById('monster-reactions');
+            reactions.forEach((reaction)=>{
+                reactions_div.appendChild(view.build_dynamic_item(reaction.name, reaction.text));
             });
-            spells_table.draw();
+        }
+        , build_legendary : function() {
+            let view = this;
+            let legendary = view.data.Legendary;
+            if(!legendary) return;
+            let legendary_div = document.getElementById('monster-legendary');
+            legendary.forEach((legend)=>{
+                legendary_div.appendChild(view.build_dynamic_item(legend.name, legend.text));
+            })
         }
     });
 });

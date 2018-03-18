@@ -12,7 +12,6 @@ define([
         onContentBound : function() {
             let view = this;
             let grid = view.draw_table(spells);
-
             document.getElementById('filter_level')
                 .addEventListener('change', (e, val=e.target.value)=>{
                     val ? grid.filters.add('Level', val) : grid.filters.remove('Level');
@@ -26,7 +25,6 @@ define([
             view.init_cast_time_selector(spells_table);
             view.init_duration_selector(spells_table);
             view.init_range_selector(spells_table);
-
         },
         draw_table : function(_spells){
             let spells_table = new tbl({
