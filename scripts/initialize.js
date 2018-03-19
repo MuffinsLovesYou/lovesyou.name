@@ -31,6 +31,7 @@ define([
                     'landing' : 'landing/landing'
                     ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'
                     ,'lookups' : 'dungeons-dragons/lookups/lookups'
+                    ,'2017-notes' : 'dungeons-dragons/notes/2017'
                     ,'notes' : 'dungeons-dragons/notes/notes'
                     ,'note' : 'dungeons-dragons/notes/note'
                     ,'maps' : 'dungeons-dragons/maps/maps'

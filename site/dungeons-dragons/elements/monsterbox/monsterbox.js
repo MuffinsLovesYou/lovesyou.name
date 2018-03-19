@@ -31,7 +31,6 @@ define([
         , onDataLoaded : function(data){
             let view = this;
             view.data = view.prepare_data(data);
-            console.log('data', view.data);
         }
         , prepare_data : function(data) {
             let view = this;
@@ -45,6 +44,7 @@ define([
                 data.Trait = [data.Trait];
             if(data.Reaction && !Array.isArray(data.Reaction))
                 data.Reaction = [data.Reaction];
+            data.Type = data.Type.split(',')[0]
 
             data.Size = {
                 T : 'Tiny', S : 'Small', M : 'Medium', 
@@ -89,7 +89,9 @@ define([
             let view = this;
             let data = view.data;
             let hide = (id)=>document.getElementById(id).parentElement.style.display = 'none'
+            if(!data.Languages) hide('Languages');
             if(!data.Save) hide('Save');
+            if(!data.Senses) hide('Senses')
             if(!data.Immune) hide('Immune');
             if(!data.ConditionImmune) hide('ConditionImmune')
             if(!data.Reaction) document.getElementById('monster-reactions').style.display = 'none'

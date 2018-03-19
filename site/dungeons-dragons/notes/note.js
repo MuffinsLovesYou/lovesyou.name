@@ -5,7 +5,8 @@ define([
     
     return Lite.extend({
         initialize : function() {
-            this.content_url = '5e/notes/'+window.location.hash.split('/').pop()+'.md';  
+            let file = window.location.hash.split('/').slice(1).join('/')+'.md';
+            this.content_url = '5e/notes/'+file;  
         }
         ,onContentLoaded : function(content){
             let mdparsed = md.Parse(content);
