@@ -38,8 +38,10 @@ define([
                     ,'monsterbox' : 'dungeons-dragons/elements/monsterbox/monsterbox'
                     ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
                     ,'character' : 'dungeons-dragons/character-sheets/character-sheet'
+                    ,'places' : 'dungeons-dragons/notes/places/places'
                     ,'programming' : 'programming/programming'
                     ,'test' : 'test/test'
+                    ,'timeline' : 'dungeons-dragons/notes/timeline/timeline'
 
                     ,'code-pages' : 'programming/code-pages/'  
                     ,'code-pages-character' : code_path + 'character/character'
