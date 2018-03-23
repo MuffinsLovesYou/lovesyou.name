@@ -7,7 +7,7 @@ fairly rare.
 Claw mountain was a historical anomaly. A town with several thousand inhabitants in the middle 
 of nowhere that was also home to a conclave of moon circle druids ranging from ancient and powerful 
 arch druids to novices struggling to learn their first cantrips.  
-Claw mountain is actually a ring of elevated cliffs and hills about 50 miles in diameter; the caldera 
+Claw mountain is actually a ring of elevated cliffs and hills about 30 miles in diameter; the caldera 
 of a long-dormant supervolcano. It is surrounded on most sides by the Blackmire, a vast swamp and 
 rainforest. To its south are the foothills of the rust mountains, which are arid, hot, and nearly 
 impossible to navigate with carts. 

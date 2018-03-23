@@ -36,6 +36,8 @@ define([
             please.do(_loadContent())
                 .and(_loadData())
                 .then((x, y)=>{
+
+
                     _bindContent(x);
                     _bindData(y);
                 });
@@ -67,8 +69,9 @@ define([
         }
         let _loadData = function() {
             let data_loaded = function(data){
+                _lite.data = data;
                 _lite.onDataLoaded(data);
-                return _lite.data = data;
+                return _lite.data;
             }
             
             if(_lite.data_url.slice(-3)==='.js') 
@@ -81,7 +84,7 @@ define([
             if(!_lite.data_url && _lite.data) 
                 return data_loaded(_lite.data);
             
-            if(_lite.data_url) xhr.get(_lite.data_url, (data)=>{ data_loaded(data);});        
+            if(_lite.data_url) return xhr.get(_lite.data_url, (data)=>{ data_loaded(data);});        
         }
        
        let _bindData = function(data) {

@@ -40,6 +40,7 @@ define([
                     ,'character' : 'dungeons-dragons/character-sheets/character-sheet'
                     ,'places' : 'dungeons-dragons/notes/places/places'
                     ,'programming' : 'programming/programming'
+                    ,'recap-claw-mountain' : 'dungeons-dragons/notes/recap-claw-mountain/recap-claw-mountain' 
                     ,'test' : 'test/test'
                     ,'timeline' : 'dungeons-dragons/notes/timeline/timeline'
 
