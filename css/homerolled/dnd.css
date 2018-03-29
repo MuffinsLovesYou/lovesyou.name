@@ -1,4 +1,8 @@
 
+#monsterbox { 
+    text-align: left
+}
+
 .monster_name {
     color : darkred;
     font-size : large;
