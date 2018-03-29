@@ -2,15 +2,19 @@ define([
     'lite'
     ,'scripts/homerolled/lovesyou_tabs'
     ,'site/dungeons-dragons/lookups/tabs/spells'
-    ,'5e/monsters'
-],(Lite, tabs, spells, monsters)=>{
+    ,'site/dungeons-dragons/lookups/tabs/monsters'
+],(Lite, tabs, Spells, Monsters)=>{
 
     return Lite.extend({
         content_url : 'site/dungeons-dragons/lookups/lookups.html',
         onContentBound : function() {
             new tabs().stylize();
-            new spells({
-                container : document.getElementById('spells_container')
+            new Spells({
+                container : document.getElementById('spells-content')
+            }).attach();
+
+            new Monsters({
+                container : document.getElementById('monsters-content')
             }).attach();
         }
     });

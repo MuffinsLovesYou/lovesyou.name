@@ -1,19 +1,15 @@
 define([
     'lite'
     ,'5e/monsters'
-    ,'site/dungeons-dragons/elements/monsterbox/tabs/stats'
     ,'lovesyou_table'
-    ,'site/dungeons-dragons/elements/spellbox/spellbox'
-    ,'5e/spells'
     ,'site/common/modal/modal'
-    ,'scripts/homerolled/lovesyou_tabs'
-], function (Lite, monsters, stats, tbl, spellbox, spells, modal, tabs) {
+], function (Lite, monsters, tbl, modal) {
 
     return Lite.extend({
         content_url : 'site/dungeons-dragons/elements/monsterbox/monsterbox.html'
         , initialize : function() {
             let monster = window.location.hash.split('/').pop().replace(/%20/g,' ');
-            this.data = monsters[monster];
+            if(!this.data) this.data = monsters[monster];
             this.load_css();
         }
         , load_css : function() {
@@ -77,7 +73,6 @@ define([
             return data;
         }
         , onContentBound : function () {
-            new tabs().stylize();
             let view = this;
             view.toggle_divs();
             view.build_traits();

@@ -4,8 +4,7 @@ define([
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
-], (Lite, tbl, modal, spellbox, spells)=>{
-
+], (Lite, tbl, Modal, Spellbox, spells)=>{
 
     return Lite.extend({
         content_url : 'site/dungeons-dragons/lookups/tabs/spells.html',
@@ -36,9 +35,9 @@ define([
                         style : 'text-align:left; text-decoration:underline',
                         sort : true,
                         click: (e)=>{ 
-                            new modal({
+                            new Modal({
                                 onDataBound : function(){
-                                    new spellbox({
+                                    new Spellbox({
                                         data : spells[e.target.innerHTML],
                                         container : document.getElementById('modal-content'),
                                     }).attach();

@@ -8,6 +8,9 @@ Remove reference to colorizor from router
 
 improve grid: 
     * better default style rules 
+    
     * better filtering rules, consider adding partial text filters
+
     * play with alternate filtering methodology (toggling display rather than redrawing)
+    
     * consider less stateful paradigm 
