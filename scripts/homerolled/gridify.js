@@ -149,8 +149,8 @@ define([],()=>{
         grid.styling = {
             defaults : { 
                 tbody : {
-                    tr : ``
-                    , td : `text-align:center; padding: .04rem .05rem; border-bottom:solid thin`
+                    tr : `` // border bottom
+                    , td : `border-bottom:solid thin;padding:.08rem .25rem;overflow:hidden;text-align:left;text-overflow:ellipses;white-space:nowrap`
                 }
                 , thead : {
                     tr : ``
@@ -214,7 +214,7 @@ define([],()=>{
         let filter_delay = function(callback) {
             return function(field_value, filter_value) {
                 clearTimeout(filter_pending);
-                filter_pending = setTimeout(()=>{ callback(field_value, filter_value); }, 250);
+                filter_pending = setTimeout(()=>{ callback(field_value, filter_value); }, 150);
             }
         }
         grid.filtering = { 
@@ -225,7 +225,6 @@ define([],()=>{
                 control.rule = rule;
                 control.property = column_definition.field;
                 control.addEventListener('keyup', filter_delay(grid.filtering.filter_callback));  
-
                 filter_cell.appendChild(control);
             }
             , _default_filter_rule : function(x, y){ 
@@ -235,6 +234,9 @@ define([],()=>{
                 let control = document.createElement('input');
                 control.type = 'text';
                 control.id = _table().id + '_filter_' + property_name;
+                control.style.width = '80%';
+                control.style.display = 'block';
+                control.style.margin = 'auto';
                 return control;
             }
             , filter_callback : function() {
