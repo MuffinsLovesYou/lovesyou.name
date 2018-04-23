@@ -39,12 +39,15 @@ define([],()=>{
                 });
             }
             , get_fields : function() {
-                return Array.from(_table().tHead.rows[0].cells)
-                    .map(x => x.id.split('_').slice(-1));
+                return _header_cells().map(x => x.id.split('_').slice(-1));
             }
         }
         let _clear = (container)=> { if(!container) return; while(container.firstChild) container.removeChild(container.firstChild); }
         let _table = () => grid.container.firstChild;
+        let _header_cells = () => Array.from(_table().tHead.rows[0].cells);
+        let _filter_cells = () => Array.from(_table().tHead.rows[1].cells);
+        let _table_rows = () => Array.from(_table().tBodies[0].rows);
+
 
         grid.columns = {
             set : function(column_definitions) {
@@ -73,7 +76,6 @@ define([],()=>{
                 grid.columns._set_column_filter(filter_cell, column_definition);
                 
                 grid.body.seed_row.add_column(column_definition);
-                // add to seed row here 
                 return grid;
             }
             , _set_header_label : function(header_cell, column_definition) {
@@ -93,7 +95,7 @@ define([],()=>{
             , _set_column_filter : function(filter_cell, column_definition) {
                 if(!column_definition.filter) return;
                 filter_cell.id = _table().id+'_filter_columns_'+column_definition.field;
-                grid.filtering.add_filter(column_definition)
+                grid.filtering.add_filter(filter_cell, column_definition)
             } 
         }
 
@@ -104,6 +106,7 @@ define([],()=>{
                 let seed = table.createTBody();
                 let seed_row = seed.insertRow();
                 seed_row.id = _table().id+'_seed'
+                seed_row.style.display = 'none';
             }
             , _set_body_cell : function(body_cell, value, column_definition) {
                 let label = body_cell.appendChild(document.createElement('span'));
@@ -206,49 +209,45 @@ define([],()=>{
             
         }
 
-        grid.filtering = { 
-            add_filter : function(column_definition) {
-                console.log('a', column_definition)
-                window.def = column_definition
-                var rule = column_definition.filter == true ? grid.filtering._default_filter_rule : column_definition.filter;
-                var control = column_definition.filter_control || grid.filtering._default_filter_control(column_definition.field);
-                control.filter_rule = rule;
-                control.filter_property = column_definition.field;
-                control.addEventListener('change', grid.filtering.filter_callback)                
-                console.log('b');
-                // attach the control !
-                Array.from(_table().tHead.rows[1].cells).forEach((cell)=>{
-                    console.log(cell)
-                    window.cell = cell
-                    if(cell.id.split('_').slice(-1) == column_definition.field){
-                        cell.appendChild(control);
-                    }
-                });
+
+        let filter_pending = 0;
+        let filter_delay = function(callback) {
+            return function(field_value, filter_value) {
+                clearTimeout(filter_pending);
+                filter_pending = setTimeout(()=>{ callback(field_value, filter_value); }, 250);
             }
-            , _default_filter_rule : function(x, y){
-                return (''+x).includes(y);
+        }
+        grid.filtering = { 
+            add_filter : function(filter_cell, column_definition) {
+                let rule = column_definition.filter == true ? grid.filtering._default_filter_rule : column_definition.filter;
+                let control = column_definition.filter_control || grid.filtering._default_filter_control(column_definition.field);
+
+                control.rule = rule;
+                control.property = column_definition.field;
+                control.addEventListener('keyup', filter_delay(grid.filtering.filter_callback));  
+
+                filter_cell.appendChild(control);
+            }
+            , _default_filter_rule : function(x, y){ 
+                return (''+x).toLowerCase().substr(0, y.length) == y.toLowerCase();
             }
             , _default_filter_control : function(property_name){
-                var control = document.createElement('input');
+                let control = document.createElement('input');
                 control.type = 'text';
                 control.id = _table().id + '_filter_' + property_name;
                 return control;
             }
             , filter_callback : function() {
-                var rules = Array.from(_table().tHead.rows[1].cells)
+                let filter_controls = _filter_cells()
                     .map((cell) => { return cell.firstChild; })
                     .filter(x => !!x);
-                Array.from(_table().tBodies[0].rows).forEach((row)=>{
-                    var hide = rules.some((filter_control)=>{
-                        return !filter_control.filter_rule(filter_control.value, get_cell_value(row, filter_control.filter_property))
+                _table_rows().forEach((row)=>{
+                    let filtered_out = filter_controls.some((filter_control)=>{
+                        return !filter_control.rule(get_cell_value(row, filter_control.property), filter_control.value)
                     });
-                    row.style.display = hide ? 'none' : ''
+                    row.style.display = filtered_out ? 'none' : ''
                 });
-
-                
             }
-
-            
         }
         return grid;
     }
