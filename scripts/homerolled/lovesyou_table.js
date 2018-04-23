@@ -1,5 +1,15 @@
 define([],()=>{
 
+    // table 
+    // grid 
+    // matrix 
+
+    // small
+    // lightweight 
+    // 
+
+    
+
     // big ol work in progress, gotta clean it up a lot. 
     // The name does not mean anything.  
     // It is eGrid backwards, but that still means nothing. 
@@ -16,18 +26,31 @@ define([],()=>{
             for(let k in options.data) grid.base_data.push(options.data[k]);
         grid.data = JSON.parse(JSON.stringify(grid.base_data));
 
+        /*
+        Needs improved default stylings. 
+        Needs stylings for tables, rows, and columns 
+        Needs better 'all column' styling option. 
+        */
         grid.all_col = options.all_col || {}; // style for every column,        
         grid.style = {
             td_default : 'text-align:center; padding: .04rem .05rem; border-bottom:solid thin',// bit hacky right now.
             th_default : 'font-weight:bold; text-align:center; padding:4px 16px 4px 16px;',
-
+            
             stylize : function(el, style){
                 (style||'').split(';')
                     .map(x=>x.trim().split(':'))
                     .forEach(kv=>el.style[kv[0]]=kv[1])
             }
+            , stylize_header_cell : function(header_cell, column_def){
+                grid.style.stylize(header_cell, grid.style.th_default);
+                //grid.style.stylize(hc, all_col.hstyle);
+                grid.style.stylize(header_cell, column_def.hstyle);          
+            }
         }
 
+        /*
+        Need ability to provide override sort function for columns. 
+        */
         grid.sorting = {
             default_sort : function(){
 
@@ -62,23 +85,67 @@ define([],()=>{
                     grid.container.removeChild(grid.container.firstChild);
             }
             , build_thead : function(table) {
-                let hrow = table.createTHead().insertRow(0);
-                grid.columns.forEach((c, i)=>{
-                    let hcell = hrow.insertCell(i);
-                    let span = hcell.appendChild(document.createElement('span'));
-                    span.innerHTML = c.header || c.field;
+                grid.rendering.add_header_labels(table);
+                grid.rendering.set_header_styles(table);
+                grid.rendering.set_sortable_columns(table);
+                grid.rendering.set_filterable_columns(table);
+                //let hrow = table.createTHead().insertRow(0);
+                //grid.columns.forEach((c, i)=>{
+                //    let hcell = hrow.insertCell(i);
+                //    let span = hcell.appendChild(document.createElement('span'));
+                //    span.innerHTML = c.header || c.field;
                 
-                    grid.style.stylize(hcell, grid.style.th_default);
-                    //grid.style.stylize(hc, all_col.hstyle);
-                    grid.style.stylize(hcell, c.hstyle);
-                
-                    if(c.sort){
-                        let s = span.appendChild(document.createElement('span'))
-                        s.className = 'sort';
-                        hcell.style.paddingRight = '30px';
-                        hcell.addEventListener('click', grid.sorting.col_sort(c.field, c.sort));
-                    }
+                   // grid.style.stylize_header_cell(hcell, c);
+                    
+                  //  if(c.sort) 
+                 //       grid.rendering.make_sortable(c, hcell, span);
+                    //if(c.filter)
+
+                //});
+            }
+            , add_header_labels : function(table) {
+                let header_row = table.createTHead().insertRow(0);
+                grid.columns.forEach((col, cidx)=>{
+                    let header_cell = header_row.insertCell(cidx);
+                    let label = header_cell.appendChild(document.createElement('span'));
+                    label.innerHTML = col.header || col.field;             
+               });
+            }
+            , set_header_styles : function(table){
+                let header_row = table.tHead.rows[0].cells;
+                grid.columns.forEach((col, cidx)=>{
+                    grid.style.stylize_header_cell(header_row[cidx], col);
                 });
+            }
+            , set_sortable_columns : function(table){
+                let header_row = table.tHead.rows[0].cells;
+                grid.columns.forEach((col, cidx)=>{
+                    if(!col.sort) return;
+                    let sort_icon = header_row[cidx].firstChild.appendChild(document.createElement('span'));
+                    sort_icon.className = 'sort';
+                    header_row[cidx].style.paddingRight = '30px';
+                    header_row[cidx].addEventListener('click', grid.sorting.col_sort(col.field, col.sort));
+                });
+            }
+            , set_filterable_columns : function(table){
+                if(!grid.columns.some(c=>c.filter)) return;
+                window.table = table;
+                let filter_row = table.tHead.insertRow(1);
+                grid.columns.forEach((col, cidx)=>{
+                    let filter_cell = filter_row.insertCell(cidx);
+                    if(!col.filter) return;
+                    let filter_box = filter_cell.appendChild(document.createElement('input'));
+                    // default behavior : textbox with wildcard search 
+                    filter_box.type = 'text';
+                    filter_box.style = 'width:90%; margins:auto;'
+                    filter_box.addEventListener('keyup', (e)=>{
+                        let val = filter_box.value;
+                        val ? grid.filters.add(col.field, (item)=>{
+                            return (''+item[col.field]).includes(val);
+                        }) : grid.filters.remove(col.field);
+                    });
+                });
+                console.log('hai')
             }
             , build_tbody : function(table){
                 let tb = table.createTBody();
@@ -104,12 +171,23 @@ define([],()=>{
         }
         grid.draw = grid.rendering.build;
         
+        /*
+        Need to establish default filter functionality with wildcard text input search as 
+        part of column header. 
+        Ability to provide overrides with custom controls in header row to perform alternate searches 
+        */
+
+        // so default behavior: 
+        // if filter : true on a column 
+        // need a second header row (is that legit?)
+
+        /*
+        Need to consider alternative method where filtered-out rows are hidden 
+            rather than working with a cloned and filtered dataset. this would 
+            allow for the possibility of a less stateful grid if that is desirable.
+        When we start filtering monsters, might need to tweak performance. 
+        */
         let _filters = {}
-        // current methodology: 
-        // keep the original data source, 
-        // clone it, filter it, redraw based on that. 
-        // aternative method: 
-        // go through rows, apply filters to them, hide/show rows 
         grid.filters = {
             add : function(field, filter, options) {
                 if(typeof(filter)!=='function'){
