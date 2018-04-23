@@ -6,7 +6,7 @@ define([
 
 	Pepper.Name = 'Pepper';
 	Pepper.Race = 'Hill Dwarf';
-	Pepper.Classes.Add('Cleric', 2);
+	Pepper.Classes.Add('Cleric', 3);
     
 	Pepper.Background = 'Soldier';
 	Pepper.XP = 0;
@@ -102,6 +102,9 @@ define([
             'Bo Bodkin' : {
                 Desc : `Human fighter, local folkhero for telling off a shipcaptain.. 
                 a story for another time`,
+            },
+            'Lidda' : {
+                Desc : `Halfling rogue `
             }
 
         }
@@ -124,7 +127,8 @@ define([
             'Eva' : 'Mother of kids (charlie and leanne), first quest', 
             'Sister Thea' : 'Acolyte of Timera, rescued from gobbos',
             'Sister Garael' : 'At the shrine of luck',
-            'Gundran, Tharden, Nundro' : 'Brother dwarves, cousins of Pepper',
+            'Gundran, Tharden, Nundro' : `Brother dwarves, cousins of Pepper, Gundran is still captured at cragmaw
+            `,
             'Sildar' : 'bodyguard of Gundran, was seeking a mage who ended up being Earno GlassStaff',
             'Earno Albek' : `Wizard in Phandoin `, 
             'Linene' : 'Proprietor of lionshield costor',
@@ -137,16 +141,16 @@ define([
             'Harbin, townmaste of phandelin ' : `Was really timid about dealing with the redbrands.`
         }
         , Quests : {
-            'Take care of GlassStaff' : `Kill the leader of the Redbrands -> at the manor most likely `,
+            //'Take care of GlassStaff' : `Kill the leader of the Redbrands -> at the manor most likely `,
         
         
             // done
             'Guard Gundran Rockseeker' : {
                 Desc : 'gundran is missing, we ',
                 Reward : '10gp upon delivery to place '
-            },
+            }
             // done
-            'Deliver the Bejeweled Comb' : `Deliver to Phandelin, 10gp/ea, found gundrans cart`
+            //'Deliver the Bejeweled Comb' : `Deliver to Phandelin, 10gp/ea, found gundrans cart`
             ,'Deliver comb to banshee' : `banshee is answering question for timeric clerics about 
             a day's trip away "coneyberry" banshee is agatha, 3x potions of healing reward for learning 
             where beaugentle's spellbook is `,
@@ -157,11 +161,13 @@ define([
 
             , 'shit' : `Ermon tome: ther was a mace named lightbringer, from the forge of spells, was lost 
             when the mine and cave were lost. 1 bottle mercury, 1 bottle dragon bile, 1 bottle powdered nightshade (25gp/ea)`
-            , 'Group Coin' : '152 copper, 37ep,  400 silver, 382gp'
-            , 'Potions' : '2x Healing'
-            , 'Weapons' : `11 short swords 4 long swords`
-            , 'Art objects' : 'jade frog (50g), pair of gold earrings with rubies (30gp), 40gp stones,'
-            , 'Gems' : '2 garnets (2gp), 5 carnelias (10gp), 2 peridots (15gp)'
+            , 'Group Coin' : '52 copper, 83 silver, 478gp'
+            , 'Potions' : ``
+            , 'Armor' : `Chainmail 2`
+            , 'Weapons' : `Longsword 2, Longbow 2, Scimitar 5, Shortbow 6, `
+            , 'Tools' : `1 Manacles, Flask Oil 2, TinderBox`
+            , 'Art objects' : 'jade frog (50gp)'
+            , 'Gems' : '2 garnets (2gp), 5 carnelias (10gp), 2 peridots (15gp), 1 pearl (100gp)'
         }
         , Sessions : {
             1 : `The group met. We helped out a woman, retrieving her kids from some rampant goblins.  We got 

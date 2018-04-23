@@ -4,13 +4,15 @@ define([
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
-], (Lite, tbl, Modal, Spellbox, spells)=>{
+    ,'scripts/homerolled/gridify'
+], (Lite, tbl, Modal, Spellbox, spells, gridify)=>{
 
     return Lite.extend({
         content_url : 'site/dungeons-dragons/lookups/tabs/spells.html',
         onContentBound : function() {
             let view = this;
-            let grid = view.draw_table(spells);
+            view.test();
+            /*let grid = view.draw_table(spells);
             document.getElementById('filter_level')
                 .addEventListener('change', (e, val=e.target.value)=>{
                     val ? grid.filters.add('Level', val) : grid.filters.remove('Level');
@@ -23,7 +25,36 @@ define([
 
             view.init_cast_time_selector(spells_table);
             view.init_duration_selector(spells_table);
-            view.init_range_selector(spells_table);
+            view.init_range_selector(spells_table);*/
+        },
+        test : function() {
+            var grid = gridify('spells_table')
+            console.log(grid); 
+            grid.initialize({
+                data : spells,
+                columns : [
+                    { 
+                        field : 'Name', 
+                        style : 'text-align:left; text-decoration:underline',
+                        sort : true,
+                        filter : true,
+                        click: (e)=>{ 
+                            new Modal({
+                                onDataBound : function(){
+                                    new Spellbox({
+                                        data : spells[e.target.innerHTML],
+                                        container : document.getElementById('modal-content'),
+                                    }).attach();
+                                }
+                            }).attach();
+                        } 
+                    },
+                    { field : 'Level', sort:true, filter:true },
+                    { field : 'Casting Time', style : 'max-width:300px; text-align:left' },
+                    { field : 'Range', sort:true },
+                    { field : 'Duration' } 
+                ]
+            });
         },
         draw_table : function(_spells){
             let spells_table = new tbl({
