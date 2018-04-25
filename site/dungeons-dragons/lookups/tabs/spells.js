@@ -1,11 +1,10 @@
 define([
     'lite'
-    ,'lovesyou_table'
+    ,'scripts/homerolled/gridify'
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
-    ,'scripts/homerolled/gridify'
-], (Lite, tbl, Modal, Spellbox, spells, gridify)=>{
+], (Lite, gridify, Modal, Spellbox, spells)=>{
 
     return Lite.extend({
         content : `<div id='spells-table'></div><div id='spellbox-container'></div>`,
@@ -35,9 +34,10 @@ define([
                         } 
                     },
                     { field : 'Level', filter: true, sort:true, style:'width:40px;text-align:right' },
-                    { field : 'Casting Time', style : 'max-width:100px;' },
-                    { field : 'Range', sort:true, style:'width:50px;' },
-                    { field : 'Duration', } 
+                    { field : 'School', filter : true, sort : true, style : 'width:75px'},
+                    { field : 'Casting Time', filter : true, sort:true, style : 'max-width:75px;' },
+                    { field : 'Range', filter : true, sort:true, style:'width:50px;' },
+                    { field : 'Duration', filter : true, sort:true, } 
                 ]
             });
         }        

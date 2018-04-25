@@ -1,10 +1,10 @@
 define([
     'lite'
-    ,'lovesyou_table'
+    ,'scripts/homerolled/gridify'
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/monsterbox/monsterbox'
     , '5e/monsters'
-], (Lite, tbl, Modal, MonsterBox, monsters)=>{
+], (Lite, gridify, Modal, MonsterBox, monsters)=>{
 
     // bugs : 
     // tabs are resetting with modal pop
@@ -17,9 +17,9 @@ define([
             view.draw_table();
         }
         ,draw_table : function(_spells){
-            
-            let monsters_table = new tbl({
-                container : document.getElementById('monsters-table'),
+            let view = this;
+            var grid = gridify('monsters-table')
+            grid.initialize({
                 data : monsters,
                 columns : [
                     {
@@ -44,15 +44,19 @@ define([
                             }).attach();
                         }
                     }
-                    , { field : 'cr', header : 'CR', sort : (x)=>{ console.log('sort func', x) } }
-                    , { field : 'type', format : (v)=> { return v.split(',')[0]; }, header : 'Type', sort : true }
-                    , { field : 'alignment', header : 'Alignment', sort : true }
+                    , { field : 'cr', filter : true, header : 'CR', sort : view.challenge_rating_sort }
+                    , { field : 'type', filter : true, format : (v)=> { return v.split(',')[0]; }, header : 'Type', sort : true }
+                    , { field : 'alignment', filter : true, header : 'Alignment', sort : true }
                 ]
             });
-            monsters_table.draw();
-            return monsters_table;
         },
-        
+        challenge_rating_sort : function(a, b) {
+            let cr_to_dec = (cr) => { return ~cr.indexOf('/') ? 1/cr.split`/`[1] : +cr; }
+            a = cr_to_dec(a);
+            b = cr_to_dec(b);
+            if(a==b) return 0;
+            return a > b ? 1 : -1;
+        }
     });
 
 });

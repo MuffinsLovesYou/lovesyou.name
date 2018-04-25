@@ -185,26 +185,32 @@ define([],()=>{
         // we might try and consider making the sorting stable at some point. 
         grid.sorting = {
             sort : function(property_name, rule) {
-                // if property_name is present
-                // if grid has a sort field 
-                // if grid has an identity field 
-                // else col 0
-                let tbody = _table().tBodies[0];
-                let rows = Array.from(tbody.rows);
-                let v1 = get_cell_value(rows[0], property_name);
-                let v2 = get_cell_value(rows[rows.length-1], property_name);
-                let asc = v1<v2;
+                if(typeof(rule) !== 'function') rule = grid.sorting.default_sort_rule;
+                let asc = grid.sorting.column_sort_direction(property_name);
+                
+                let rows = _table_rows();
                 rows.sort((x,y)=>{
                     let xv = get_cell_value(x, property_name);
                     let yv = get_cell_value(y, property_name);
-                    return typeof(rule)==='function' ? 
-                        rule(xv, yv)?asc:!asc : xv <= yv ? asc : !asc;
+                    let compared = rule(xv, yv);
+                    return +compared * asc;
                 });
+                let tbody = _table().tBodies[0];
                 _clear(tbody);
                 rows.forEach(x=>tbody.appendChild(x));
             }
             , sort_callback : function(property_name, rule){
                 return ()=>{ grid.sorting.sort(property_name, rule); }
+            }
+            , default_sort_rule : function(a, b){
+                if(a===b) return 0;
+                return a<b ? -1 : 1;
+            }
+            , column_sort_direction : function(property_name) {
+                let rows = _table_rows();
+                let v1 = get_cell_value(rows[0], property_name);
+                let v2 = get_cell_value(rows[rows.length-1], property_name);
+                return v1 < v2 ? -1 : 1;
             }
             
         }
