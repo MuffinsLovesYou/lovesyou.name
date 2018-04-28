@@ -79,6 +79,7 @@ define([
             view.build_actions();
             view.build_reactions();
             view.build_legendary();
+            view.build_items();
         }
         , toggle_divs : function() {
             let view = this;
@@ -90,7 +91,8 @@ define([
             if(!data.Immune) hide('Immune');
             if(!data.ConditionImmune) hide('ConditionImmune')
             if(!data.Reaction) document.getElementById('monster-reactions').style.display = 'none'
-            if(!data.Legend) document.getElementById('monster-legendary').style.display = 'none'    
+            if(!data.Legendary) document.getElementById('monster-legendary').style.display = 'none' 
+            if(!data.Items) document.getElementById('monster-items').style.display = 'none'   
         }
         , build_dynamic_item : function(name, text){
             let new_item = document.createElement('div');
@@ -144,6 +146,15 @@ define([
             legendary.forEach((legend)=>{
                 legendary_div.appendChild(view.build_dynamic_item(legend.name, legend.text));
             })
+        }
+        , build_items : function() {
+            let view = this;
+            let items = view.data.Items;
+            if(!items) return;
+            let items_div = document.getElementById('monster-items');
+            items.forEach((item)=>{
+                items_div.appendChild(view.build_dynamic_item(item.name, item.text));
+            });
         }
     });
 });
