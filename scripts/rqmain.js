@@ -4,7 +4,7 @@ requirejs.config({
 
 	paths:{ // establishes shortcuts to relative paths. Gotta check this with URLs
 		'colorizer' : 'scripts/vendor/paletton'
-		,'dice' : 'scripts/homerolled/LYDice/LYDice'
+		,'dice' : 'scripts/homerolled/dice/dice'
 		,'elements' : 'site/dungeons-dragons/character-sheets/elements/'
 		,'router' : 'scripts/homerolled/router'
 		,'lite' : 'scripts/homerolled/lite'
