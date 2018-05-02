@@ -35,7 +35,7 @@ define([
         return Math.floor((this - 10) / 2);
     }
 
-    var Character = function () {
+    let Character = function () {
         let char = this;
 
         char.Name = '';

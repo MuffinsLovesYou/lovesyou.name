@@ -9,6 +9,7 @@ define([],()=>{
             Performs initial drawing and definitions. 
         */
         grid.initialize = function(options){
+            console.log('a')
             _clear(grid.container);
             let table = grid.container.appendChild(document.createElement('table'));
             table.id = container.id+'_table';
@@ -16,12 +17,7 @@ define([],()=>{
             grid.body.initialize();
             if(options.columns) grid.columns.set(options.columns);
             if(options.data) grid.data.set(options.data);
-            /*
-                will accept initialization parameters and 
-                draw grid onto the screen
-                needs to accept data 
-                grid and column definitions 
-            */
+            console.log('b');
         }
 
         grid.data = {

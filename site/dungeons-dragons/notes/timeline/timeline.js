@@ -6,11 +6,11 @@ define([
         content : `<div id='timeline' class='timeline'></div>`
         , data_url : '5e/notes/timeline.js'
         ,initialize : function() {
-            var view = this;
+            let view = this;
             this.load_css();
         }
         , load_css : function() {
-            var css = document.createElement("link");
+            let css = document.createElement("link");
             css.rel = "stylesheet";
             css.type = "text/css";
             css.href = 'css/homerolled/timeline.css';

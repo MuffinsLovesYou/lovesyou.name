@@ -1,13 +1,13 @@
 define([], function(){
     
-    var Tiles = function(options = {}){
-        var _tiles = this;
+    let Tiles = function(options = {}){
+        let _tiles = this;
         _tiles.image_directory = options.image_directory || 'images/';
         _tiles.image_count = options.image_count || 10;
 
         _tiles.get_image = function(src){
-            var rand = Math.floor(Math.random()*_tiles.image_count+1);
-            var img = document.createElement('img');
+            let rand = Math.floor(Math.random()*_tiles.image_count+1);
+            let img = document.createElement('img');
             img.alt = '';
             img.src = src || _tiles.image_directory+('00'+rand).slice(-3)+'.png';
             return img;

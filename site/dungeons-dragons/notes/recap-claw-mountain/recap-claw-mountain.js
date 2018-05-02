@@ -13,7 +13,7 @@ define([
             this.load_timeline();
 
             console.log('syntax check')
-            var hist = new Lite.extend({
+            let hist = new Lite.extend({
                 container : document.getElementById('history'),
                 data_url : '5e/notes/places/claw mountain.md',
                 content : `<div id='history-text'></div>`,

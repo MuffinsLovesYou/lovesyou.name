@@ -18,7 +18,7 @@ define([
         }
         ,draw_table : function(_spells){
             let view = this;
-            var grid = gridify('monsters-table')
+            let grid = gridify('monsters-table')
             grid.initialize({
                 data : monsters,
                 columns : [

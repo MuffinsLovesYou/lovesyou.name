@@ -13,7 +13,7 @@ define([
             view.draw_table();
         },
         draw_table : function() {
-            var grid = gridify('spells-table')
+            let grid = gridify('spells-table')
             grid.initialize({
                 data : spells,
                 columns : [

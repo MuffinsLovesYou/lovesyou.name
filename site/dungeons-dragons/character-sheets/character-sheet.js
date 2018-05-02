@@ -1,12 +1,12 @@
 define([
     'lite'
     ,'xhr'
-    ,'lovesyou_table'
+    ,'scripts/homerolled/gridify'
     ,'site/dungeons-dragons/character-sheets/tabs/stats'
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
-], function (Lite, xhr, tbl, Stats, modal, spellbox, spells) {
+], function (Lite, xhr, gridify, Stats, modal, spellbox, spells) {
     
     return Lite.extend({
         content_url : 'site/dungeons-dragons/character-sheets/character-sheet.html',
@@ -23,7 +23,7 @@ define([
             this.data_url = '5e/char-sheets/'+window.location.hash.split('/').splice(-1)+'.js'
         }
         , onDataBound : function (data) {
-            var view = this;
+            let view = this;
             view.stats_tab(data);
             view.personality_tab(data);
             view.skills_tab(data);
@@ -42,7 +42,7 @@ define([
                 return document.getElementById('personality_tab').style.display = 'none';
             
             let personality = document.getElementById('character_personality');
-            for (var t in data.Personality) {
+            for (let t in data.Personality) {
                 if(typeof(data.Personality[t]) !== 'string') continue;
                 let div = personality.appendChild(document.createElement('div'));
                 let lspan = div.appendChild(document.createElement('span'));
@@ -53,10 +53,9 @@ define([
         }
         , skills_tab : function(data){
             let _skills = [];
-
             for(let s in data.Skills) _skills.push(data.Skills[s]);
-            let skillstable = new tbl({
-                container : document.getElementById('skills_container'),
+
+            gridify('skills_container').initialize({
                 data : _skills,
                 columns : [
                     { field : 'Name', style : 'text-align:left', sort:true },
@@ -65,7 +64,6 @@ define([
                     { field : 'Bonus', style : 'text-align:right', sort:true}
                 ],
             });
-            skillstable.draw();
         }
         , features_tab : function(data){
             let features = document.getElementById('character_features');
@@ -82,8 +80,7 @@ define([
                 if(typeof(data.Items[i])!=='object') continue;
                 _items.push(data.Items[i]);
             }
-            let items_table = new tbl({
-                container : document.getElementById('items_container'),
+            gridify('items_container').initialize({
                 data : _items,
                 columns : [
                     { field : 'Name', style : 'text-align:left', sort:true },
@@ -92,8 +89,6 @@ define([
                     { field : 'Weight', style : 'text-align:right', sort:true }
                 ],
             });
-            items_table.draw();
-
             let totalWeight = _items.reduce((acc, item)=>{ return (acc+=(item.Weight||0)); }, 0);
             let lblItems = document.getElementById('label-items');
             lblItems.innerHTML = lblItems.innerHTML + ' ' + totalWeight + '/' + data.Carry_Weight;
@@ -104,8 +99,7 @@ define([
                 if(typeof(data.Spells[s])!=='object') continue;
                 _spells.push(data.Spells[s]);
             }
-            let spells_table = new tbl({
-                container : document.getElementById('spells_container'),
+            gridify('spells_container').initialize({
                 data : _spells,
                 columns : [
                     { 
@@ -130,7 +124,6 @@ define([
                     { field : 'Duration' } 
                 ],
             });
-            spells_table.draw();
             if(_spells.length===0) document.getElementById('spells_tab').style.display = 'none';    
         }
     });

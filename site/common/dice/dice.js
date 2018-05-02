@@ -24,12 +24,12 @@ define([
         }
         , initialize_table : function(){
             let view = this;
-            var grid = gridify('DiceRoller_Output_Table')
+            let grid = gridify('DiceRoller_Output_Table')
             grid.initialize({
                 data : view.rolls,
                 columns : [
-                    { field : 'Result', style : 'width:75px;text-align:left;border-bottom:none',},
-                    { field : 'Rolls',style: 'width:100px;text-align:left;border-bottom:none' }
+                    { field : 'Result', style : 'width:100px;text-align:left;border-bottom:none',},
+                    { field : 'Rolls',style: 'width:200px;text-align:left;border-bottom:none' }
                 ]
             });
         }
