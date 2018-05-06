@@ -83,15 +83,15 @@ define([
         , toggle_divs : function() {
             let view = this;
             let data = view.data;
-            let hide = (id)=>document.getElementById(id).parentElement.style.display = 'none'
+            let hide = (id)=>view.container.querySelector('#'+id).parentElement.style.display = 'none'
             if(!data.Languages) hide('Languages');
             if(!data.Save) hide('Save');
             if(!data.Senses) hide('Senses')
             if(!data.Immune) hide('Immune');
             if(!data.ConditionImmune) hide('ConditionImmune')
-            if(!data.Reaction) document.getElementById('monster-reactions').style.display = 'none'
-            if(!data.Legendary) document.getElementById('monster-legendary').style.display = 'none' 
-            if(!data.Items) document.getElementById('monster-items').style.display = 'none'   
+            if(!data.Reaction) view.container.querySelector('#monster-reactions').style.display = 'none'
+            if(!data.Legendary) view.container.querySelector('#monster-legendary').style.display = 'none' 
+            if(!data.Items) view.container.querySelector('#monster-items').style.display = 'none'  
         }
         , build_dynamic_item : function(name, text){
             let new_item = document.createElement('div');
@@ -106,16 +106,17 @@ define([
             let view = this;
             let traits = view.data.Trait;
             if(!traits) return;
-            let traits_div = document.getElementById('monster-traits');
+            let traits_div = view.container.querySelector('#monster-traits');
             traits.forEach((trait)=>{ 
                 traits_div.appendChild(view.build_dynamic_item(trait.name, trait.text)) 
             });
         }
         , build_actions : function() {
             let view = this;
+            window.view = view;
             let actions = view.data.Action;
             if(!actions) return;
-            let actions_div = document.getElementById('monster-actions');
+            let actions_div = view.container.querySelector('#monster-actions');
             actions.forEach((action)=>{
                 if(Array.isArray(action.text)){
                     action.text = action.text.map((item, idx)=>{ 
@@ -132,7 +133,7 @@ define([
             let view = this;
             let reactions = view.data.Reaction;
             if(!reactions) return;
-            let reactions_div = document.getElementById('monster-reactions');
+            let reactions_div = view.container.querySelector('#monster-reactions');
             reactions.forEach((reaction)=>{
                 reactions_div.appendChild(view.build_dynamic_item(reaction.name, reaction.text));
             });
@@ -141,7 +142,7 @@ define([
             let view = this;
             let legendary = view.data.Legendary;
             if(!legendary) return;
-            let legendary_div = document.getElementById('monster-legendary');
+            let legendary_div = view.container.querySelector('#monster-legendary');
             legendary.forEach((legend)=>{
                 legendary_div.appendChild(view.build_dynamic_item(legend.name, legend.text));
             })
@@ -150,7 +151,7 @@ define([
             let view = this;
             let items = view.data.Items;
             if(!items) return;
-            let items_div = document.getElementById('monster-items');
+            let items_div = view.container.querySelector('#monster-items');
             items.forEach((item)=>{
                 items_div.appendChild(view.build_dynamic_item(item.name, item.text));
             });
