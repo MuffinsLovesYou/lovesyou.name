@@ -1,14 +1,36 @@
 <div id='code-page-dice-roller-notes'>
-    <p>on-again off-again dice roller project since forever. This most recent build made all rules 
-        things that get injected into, and consumed by, the roller program. I want to experiment with 
-        installing different game rulesets as 'modules' to the roller to see how robust and flexible it is. 
+    <p>One of my first programs was an equation-based dice roller written in Objective-C. Every other year 
+        I like to revisit the program to either rewrite or refactor it. Two years ago (~2016) I rewrote it 
+        to use a sort of dependency injection model, where the main dice roller is a structure that takes 
+        applies a series of operations to an input, and where the operations are added in rather than 
+        being hard coded in.  
     </p>
-    <p>It is probably not IE/Edge friendly.</p>
+    <p>This year (4/18), I kept that base design. Instead of a rewrite, I tried to refactor it for clarity 
+        since it tends to be a bit arcane, and to add some unit and integration tests to help with its 
+        stability. 
+    </p>
 </div>
-<div class='code-page-dice-roller-code-div'>
-    <h2>roller</h2>
+<div>
+    <h2>main roller and operation object </h2>
+    <p>The main roller has a operations collection that can be used to modify its behavior by passing in 
+        new operations. It has one baked-in operation, which is to roll dice when provided input in the 
+        form of '2d6' where the 2 is the number of rolls and the 6 is the facets of the die. 
+        The Operation object shows the nuts and bolts. Each Operation can search an input string to see 
+        if it is an appropriate target, it can parse an identified substring of the input to retrieve 
+        operators and operands, and it can call its function with those as parameters to update the 
+        original input. 
+    </p>
     <pre style='overflow:auto; max-height:400px;'>
-        <code id='code-page-dice-roller-code-block' class='language-javascript'>
-        </code>
+        <code id='dice-roller-code' class='language-javascript'></code>
+    </pre>
+</div>
+<div>
+    <h2>math extensions</h2>
+    <p>The math extensions are a set of operations that provide basic PEMDAS functionality to the roller. 
+        With them added in, if an equation comes in like : 3*(2+4/2) it will be able to handle the math 
+        in the correct order of operations.  
+    </p>
+    <pre style='overflow:auto; max-height:400px;'>
+        <code id='math-extensions-code' class='language-javascript'></code>
     </pre>
 </div>

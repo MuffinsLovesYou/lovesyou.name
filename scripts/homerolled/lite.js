@@ -63,7 +63,7 @@ define([
                 while(_lite.container.firstChild)
                     _lite.container.removeChild(_lite.container.firstChild);
                 _lite.container.insertAdjacentHTML('afterbegin', _lite.content);
-                _lite.onContentBound();
+                _lite.onContentBound(_lite.content);
             }
             else throw`no container or no content for template`
         }

@@ -7,7 +7,7 @@ define([
         onContentBound : function () {
             let view = Lite.extend({
                 container : document.getElementById('code-page-character-view-code-block'),
-                content_url : 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/site/dungeons-dragons/character-sheets/character-sheet.js',               
+                content_url : 'https://raw.githubusercontent.com/MuffinsLovesYou/unstableconfiguration/master/site/dungeons-dragons/character-sheets/character-sheet.js',               
                 onContentLoaded : function(content){
                     this.content = content
                         .replace('/[<]/g', '&lt;')
@@ -21,7 +21,7 @@ define([
 
             let char = Lite.extend({
                 container : document.getElementById('code-page-character-model-code-block'),
-                content_url : 'https://raw.githubusercontent.com/MuffinsLovesYou/lovesyou.name/master/5e/character.js',
+                content_url : 'https://raw.githubusercontent.com/MuffinsLovesYou/unstableconfiguration/master/5e/character.js',
                 onContentLoaded : function(content){
                     this.content = content
                         .replace('/[<]/g', '&lt;')

@@ -29,30 +29,25 @@ define([
                 content_holder_id : 'main-content',
                 paths : {
                     'landing' : 'landing/landing'
+                    ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
                     ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'
                     ,'lookups' : 'dungeons-dragons/lookups/lookups'
                     ,'2017-notes' : 'dungeons-dragons/notes/2017'
-                    ,'notes' : 'dungeons-dragons/notes/notes'
-                    ,'note' : 'dungeons-dragons/notes/note'
                     ,'maps' : 'dungeons-dragons/maps/maps'
                     ,'monsterbox' : 'dungeons-dragons/elements/monsterbox/monsterbox'
-                    ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
+                    ,'notes' : 'dungeons-dragons/notes/notes'
+                    ,'note' : 'dungeons-dragons/notes/note'
                     ,'character' : 'dungeons-dragons/character-sheets/character-sheet'
                     ,'places' : 'dungeons-dragons/notes/places/places'
                     ,'programming' : 'programming/programming'
                     ,'recap-claw-mountain' : 'dungeons-dragons/notes/recap-claw-mountain/recap-claw-mountain' 
-                    ,'test' : 'test/test'
+                    ,'playtest' : 'dungeons-dragons/notes/play_test'
                     ,'timeline' : 'dungeons-dragons/notes/timeline/timeline'
 
                     ,'code-pages' : 'programming/code-pages/'  
                     ,'code-pages-character' : code_path + 'character/character'
                     ,'code-pages-dice-roller' : code_path + 'dice-roller/dice-roller'
-                    ,'code-pages-lua-actions' : code_path + 'lua-actions/lua-actions'
-                    ,'code-pages-lua-textiles' : code_path + 'lua-textiles/lua-textiles'
-                    ,'code-pages-lua-textilesv2' : code_path + 'lua-textilesv2/lua-textilesv2'
-                    ,'code-pages-lvlr' : code_path + 'lvlr/lvlr'
-                    ,'code-pages-lovesyou.name' : code_path + 'lovesyou.name/lovesyou.name'
-
+                    ,'code-pages-please' : code_path+'please/please'
                 }
             });
             window.router.navigate();

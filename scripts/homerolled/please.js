@@ -1,15 +1,5 @@
 define([], function () {
-    /*
-        I don't really like native Promise syntax, so I wrote this as a way to do promises with a light functional syntax.
 
-        Usage example: 
-        please.do(xhr.get('scripts/homerolled/foo.js'))
-            .and(xhr.get('scripts/homerolled/bar.js'))
-            .then((foo,bar)=> { console.log(foo, bar); }); 
-        
-        todo: 
-            add error handling and bubbling.   
-    */
     let Please = function () {
         let _please = this;
 
