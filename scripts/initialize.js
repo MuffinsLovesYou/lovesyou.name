@@ -48,6 +48,8 @@ define([
                     ,'code-pages-character' : code_path + 'character/character'
                     ,'code-pages-dice-roller' : code_path + 'dice-roller/dice-roller'
                     ,'code-pages-please' : code_path+'please/please'
+                    ,'code-pages-lite' : code_path+'lite/lite'
+                    ,'code-pages-gridify' : code_path+'gridify/gridify'
                 }
             });
             window.router.navigate();
