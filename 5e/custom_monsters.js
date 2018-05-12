@@ -110,33 +110,62 @@ So rather than just stacks of hit points. He will get lots of bonuses for mobili
 
     Defensive rating: 
         Hit points 
-            Modifiers 
+             1.25x for immunities and resistances
         AC 
 
     Offensive Rating: 
         Damage Per Round 
         Attack Modifier
 
-so lets think of what he can do, then do the hp and stuff after. 
+// why not exhausted, why not paralyzed, why not poisoned. 
 
-blinded
-charmed <- probably not immune, father's weakness 
-deafened
-exhausted
-frightened
-paralyzed
-petrified
-poisoned
+
 
 damage types
   */
 monsters.Kathuil = {
-    name : 'Kathuil, Lord of Dwarves', size : 'M', type : 'humanoid', alignment : 'lawful neutral', ac : '',
-    hp : '', speed : '', str : 26, dex : 22, con : 26, int : 25, wis : 25, cha : 30, 
-    save : "", skill : '', resist:"",immune:"",conditionImmune:"",senses:"",passive:"",languages:"all",cr:"",
+    name : 'Kathuil, Lord of Dwarves', size : 'M', type : 'humanoid', alignment : 'lawful neutral', ac : '24 (+1 st leather)',
+    hp : '400', speed : '40', str : 26, dex : 24, con : 24, int : 28, wis : 22, cha : 30, 
+    save : "Will +12, Cha +16", skill : 'athletics +14, acrobatics +13, perception +12, persuasion +16', 
+    resist:"bludgeoning, piercing, and slashing from non-magical weapons",
+    immune:"",conditionImmune:"exhausted, poisoned",
+    senses:"Darkvision 120",passive:"",languages:"all",cr:"? 20",
     trait : [
-        { name : '', text : ``},
-        { name : '', text : ``} 
+        { name : 'Two Hearted', text : `Kathuil is immune to exhaustion and poison and has advantage on saving throws against being 
+        paralyzed or put to sleep.`}
+        , { name : 'Aura of Awe', text : `Being near Kathuil fills people with awe and terror. All creatures within 60 feet of him must 
+        succeed a DC 24 Charisma saving throw or be charmed (if friendly) or frightened (if hostile). A creature that succeeds in its throw 
+        is immune to the effect for the next 24 hours. ` }
+        , { name : 'Siege Monster', text : `Kathuil does double damage against objects and structures` }
+        , { name : 'Innate Spellcasting', text : `Kathuil's spellcasting ability is charisma (spell save DC 24), he can 
+        innately cast the following spells with no material components needed.
+        <br>At will: Feather Fall, Jump, Crown of Madness
+        <br>3/day each: Blur, Counterspell, Lightning Bolt 
+        <br>2/day each: Freedom of Movement, Passwall, Dimension Door
+        <br>1/day each: Divine Word, Regenerate` }
+    ]
+    , action : [
+        { name : 'Multiattack', text : `Kathuil attacks once with Sky Skewer and twice with unarmed strikes.` },
+        { name : 'Sky Skewer', text : `Melee (reach 10 ft) or Ranged weapon attack (30/90 ft) +16 to hit, one target. Hit: 
+        15 (1d10+10) piercing damage. If made as a ranged attack, on a hit or a miss Kathuil can teleport to the spear.` },
+        { name : 'Unarmed strike', text : `Melee Weapon Attack, +14 to hit, one target. Hit : 12 (1d8+8) bludgeoning 
+        damage plus 7 (2d6) lightning damage and 6 (2d6) psychic damage.` },
+        { name : 'Full Sprint (recharge 5-6)', text : `Kathuil doubles his base movement speed for a round and doubles his jump distance.
+        While this is active, he ignores difficult terrain and can run along walls or over liquids. While sprinting, Kathuil can 
+        make one attack with advantage.`}
+    ]
+    , legendary : [
+        { name : 'Throw', text : `Kathuil can initiate a grapple with one adjacent enemy. His size category for this attempt is treated as 
+        large. If he succeeds the roll, rather than initiate a grapple, the opponent is moved up to 10 feet and knocked prone.` } 
+        ,{ name : 'Obeisence (2 actions)', text : `Kathuil focuses his gaze on one enemy within 60 feet. That opponent must succeed on a DC 20 wisdom saving 
+        throw or immediately be forced to kneel and have its movement set to 0 until the end of its next turn.` }
+        ,{ name : 'Gaze', text : `Kathuil can make a perception check for which he has True Sight (120 ft).` }
+    ]
+    , items : [
+        { name : 'Sky Skewer', text : `Legendary Pike. You gain +2 to attack and damage rolls when using this weapon. 
+        It has the thrown property with a normal range of 30 feet and a long range of 90. Upon 
+        hitting or missing a target, you can teleport to the location of the spear with it in your hands.` }  
+        , { name : 'Glamored Studded Leather', text : `+1 studded leather that can change its appearance.` }
     ]
 }
 /*
