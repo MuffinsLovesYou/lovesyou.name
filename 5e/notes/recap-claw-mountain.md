@@ -3,33 +3,32 @@
 At the capital, you has just finished helping aspirant Leopold put pressure on another for having dealings with a 
 group of rogue drow that were living under the city. Not being able to guaruntee your safety during the fallout, 
 Leopold suggested you leave the city. The enchanter Bockle, enjoying being part of the intrigue without having 
-to take on much risk himself, teleported you to Singedbrow, a quaint and relatively young school of the arcane 
+to take on risk himself, teleported you to Singedbrow, a quaint and relatively young school of the arcane 
 arts located at a trade hub north of the elven woods between the empires. There you gathered yourselves and set 
 out on the thousand-mile southeastward trek toward Claw Mountain. 
 ## Journey to the mountain.  
 The first couple hundred miles of the journey was over small trade roads, bouncing between small villages as you 
 headed south toward the woods. The woods used to extend much further north, but at the start of the war the empire 
-razed much of it in a southward pushing campaign. With the war ending about 40 years ago, much of the area has given 
-over to chaos and wildness as the vaccuum left by the armies vacating the space is filled with whatever moves in 
+razed much of it in a southward-pushing campaign. With the war ending about 40 years ago, much of the area has given 
+over to chaos and wildness as the vaccuum left by the armies vacating the space is filled with whatever moved in 
 quickest. Here, the group was chased by a large group of werewolves patrolling the lawless roads for sport. Fighting 
 off some of them, the group fled far offroad where they would be harder to track.  
 Travelling through the outer elven woods, the group had no road to follow, but was focused on heading southward. 
-The woods are notorious for being unmapped and difficult to navigate without a guide, but guides can usually be 
+The woods are notorious for being unmapped and difficult to navigate without a guide, but elves can usually be 
 found if you are patient and avoid getting turned around. During this time, the group was stalked and attacked by 
-a jeuvenile green dragon. The group pinned it when it landed and, possibly under the influence of the werewolf curse, 
-mercelessly executed it.  
+a jeuvenile green dragon. The group pinned it when it landed and mercelessly executed it.  
 Deeper in the woods, the group came across a small community that offered up a member to guide the group on the 
 two week trip down to the capital Larethian. The group traded and gifted trophies from the dragon, and eventually 
-made it to the city. There, they traded some goods, got decursed, and attended an audience with the archdruid 
+made it to the city. There, they visited some shops, got decursed, and attended an audience with the archdruid 
 Thoroar Dawnforger who offered up a hippogriph ride in exchange for investigating a dryad's request for help.  
 Some of the group went to investigate the dryad's grove while others attended business in town. The reason for 
 the dryad's request was apparent as her grove had been overrun by giant spiders and ettercaps and she needed them 
 cleared out to access her tree. The group burnt the webs and fought off the beasts, eventually uncovering the tree 
-and discovering that the dryad was a green hag named Mathilda Pigtooth who paid the group with a summoning stick they 
-could burn to request her presence. 
+and discovering that the dryad was a green hag named Wicked Mathilda Pigtooth who paid the group with a summoning 
+stick they could burn to request her presence. 
 The promised hippogriphs simplified the rest of the trip, bringing the group to the Rock Fort, home to the master 
-geomancer Rockfort and his apprentice. The flight let the group pass over the Blackmire, a large and untamed blend 
-of swamp and jungle that spans the southern border of the elvish woods, and be within eyesight of the mountain with 
+geomancer Rockfort. The flight let the group pass over the Blackmire, a large and untamed blend 
+of swamp and jungle that spans the southern border of the elven woods, and be within eyesight of the mountain with 
 just a sixty mile hike over relatively favorable land to go. A brief skirmish with some hill giants was the last bump 
 on the journey, and the group arrived at the mountain to begin investigating its current state. 
 ## At the mountain 
