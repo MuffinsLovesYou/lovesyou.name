@@ -15,7 +15,7 @@ monsters.Law = {
     ac : '18', hp : '115 20d10+20', speed : '30 ft,', str : 20, dex : 8, 
     con : 12, int : 8, wis : 14, cha : 20, save : 'Wis +5, Cha +11, Con +8', immune : 'Disease',
     conditionImmune : 'frightened', resist : 'cold', senses : '', passive : '5', languages : 'common',
-    cr : '?', trait : [
+    cr : '16', trait : [
         { name : 'lay on hands', text : [`Law has a pool of healing power up to 100hp. As an action he can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in her pool.`]},
         { name : 'Divine Smite', text : [`When Law hits a creature he can expend a spell slot to deal an additional 2d8 plus an additional 1d8 per spell slot level.`] },
         { name : 'Protection', text : [`Law has +5 to saves.`]},
@@ -129,7 +129,7 @@ monsters.Kathuil = {
     save : "Will +12, Cha +16", skill : 'athletics +14, acrobatics +13, perception +12, persuasion +16', 
     resist:"bludgeoning, piercing, and slashing from non-magical weapons",
     immune:"",conditionImmune:"exhausted, poisoned",
-    senses:"Darkvision 120",passive:"",languages:"all",cr:"? 20",
+    senses:"Darkvision 120",passive:"",languages:"all",cr:"20",
     trait : [
         { name : 'Two Hearted', text : `Kathuil is immune to exhaustion and poison and has advantage on saving throws against being 
         paralyzed or put to sleep.`}

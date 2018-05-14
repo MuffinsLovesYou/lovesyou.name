@@ -3,8 +3,8 @@ define([
     ,'scripts/homerolled/lovesyou_tabs'
     ,'site/dungeons-dragons/lookups/tabs/spells'
     ,'site/dungeons-dragons/lookups/tabs/monsters'
-],(Lite, tabs, Spells, Monsters)=>{
-
+    ,'site/dungeons-dragons/lookups/tabs/items'
+],(Lite, tabs, Spells, Monsters, Items)=>{
     return Lite.extend({
         content_url : 'site/dungeons-dragons/lookups/lookups.html',
         onContentBound : function() {
@@ -15,6 +15,10 @@ define([
 
             new Monsters({
                 container : document.getElementById('monsters-content')
+            }).attach();
+
+            new Items({
+                container : document.getElementById('items-content')
             }).attach();
         }
     });

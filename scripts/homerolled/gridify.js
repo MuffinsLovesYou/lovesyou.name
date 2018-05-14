@@ -175,35 +175,41 @@ define([],()=>{
             let cell = cells.find(x=>x.id.split('_').slice(-1)==property);
             return cell.innerText;
         }
-
-        // we might try and consider making the sorting stable at some point. 
+ 
         grid.sorting = {
-            sort : function(property_name, rule) {
-                if(typeof(rule) !== 'function') rule = grid.sorting.default_sort_rule;
-                let asc = grid.sorting.column_sort_direction(property_name);
+            sort : function(property_name, options) {
+                options = grid.sorting.set_default_options(options);
+                let asc = grid.sorting.column_sort_direction(property_name, options.parse);
                 
                 let rows = _table_rows();
                 rows.sort((x,y)=>{
                     let xv = get_cell_value(x, property_name);
                     let yv = get_cell_value(y, property_name);
-                    let compared = rule(xv, yv);
+                    let compared = options.compare(xv, yv, options);
                     return +compared * asc;
                 });
                 let tbody = _table().tBodies[0];
                 _clear(tbody);
                 rows.forEach(x=>tbody.appendChild(x));
             }
-            , sort_callback : function(property_name, rule){
-                return ()=>{ grid.sorting.sort(property_name, rule); }
+            , sort_callback : function(property_name, options){
+                return ()=>{ grid.sorting.sort(property_name, options); }
             }
-            , default_sort_rule : function(a, b){
-                if(a===b) return 0;
-                return a<b ? -1 : 1;
+            , set_default_options : function(options){
+                let sort_options = {}
+                sort_options.compare = options.compare || 
+                    function(a, b){ if(a==b)return 0; return a<b ? -1 : 1; };
+                sort_options.parse = options.parse || null;
+                return sort_options;
             }
-            , column_sort_direction : function(property_name) {
+            , column_sort_direction : function(property_name, parse) {
                 let rows = _table_rows();
                 let v1 = get_cell_value(rows[0], property_name);
                 let v2 = get_cell_value(rows[rows.length-1], property_name);
+                if(parse){
+                    v1 = parse(v1);
+                    v2 = parse(v2);
+                }
                 return v1 < v2 ? -1 : 1;
             }
             

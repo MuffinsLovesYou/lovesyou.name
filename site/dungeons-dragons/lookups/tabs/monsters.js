@@ -44,16 +44,23 @@ define([
                             }).attach();
                         }
                     }
-                    , { field : 'cr', filter : true, header : 'CR', sort : view.challenge_rating_sort }
+                    , { field : 'cr', filter : true, header : 'CR', 
+                        sort : { 
+                            compare : view.challenge_rating_sort ,
+                            parse : view.challenge_rating_parse
+                        }
+                    }
                     , { field : 'type', filter : true, format : (v)=> { return v.split(',')[0]; }, header : 'Type', sort : true }
                     , { field : 'alignment', filter : true, header : 'Alignment', sort : true }
                 ]
             });
-        },
-        challenge_rating_sort : function(a, b) {
-            let cr_to_dec = (cr) => { return ~cr.indexOf('/') ? 1/cr.split`/`[1] : +cr; }
-            a = cr_to_dec(a);
-            b = cr_to_dec(b);
+        }
+        ,challenge_rating_parse : function(cr){ return ~cr.indexOf('/') ? 1/cr.split`/`[1] : +cr; } 
+        ,challenge_rating_sort : function(a, b, options) {
+            if(options.parse) {
+                a = options.parse(a);
+                b = options.parse(b);
+            }
             if(a==b) return 0;
             return a > b ? 1 : -1;
         }
