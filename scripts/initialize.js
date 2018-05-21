@@ -35,7 +35,7 @@ define([
                     ,'test' : 'tests/runtests'
                     ,'2017-notes' : 'dungeons-dragons/notes/2017'
                     ,'maps' : 'dungeons-dragons/maps/maps'
-                    ,'monsterbox' : 'site/dungeons-dragons/elements/monsterbox/monsterbox'
+                    ,'monsterbox' : 'dungeons-dragons/elements/monsterbox/monsterbox'
                     ,'notes' : 'dungeons-dragons/notes/notes'
                     ,'note' : 'dungeons-dragons/notes/note'
                     ,'character' : 'dungeons-dragons/character-sheets/character-sheet'
