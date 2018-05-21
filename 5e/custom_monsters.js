@@ -89,40 +89,6 @@ monsters.Krismorel = {
     ]
 }
 
-/* Dwarven Demi-god. 
-Bastard son of an illicit affair between
-    Moradin : Law, Good, Protection, Tradition
-    and Deep Duerra : Conquest, Expansion, Psionics, Evil
-    Raised by Muamman Duathal : Good, Protection, Travel, Expatriates, Lightning
-Themes/concepts: 
-    Unbeknownst to him, the influence/corruption of his mother
-        Conquering 
-        Control - psychic control especially 
-    Known to him: Rejection of tradition and subversion of traditional iconography.
-        Dislikes static defenses and rigid formations. 
-    Known to him: Mobility and shock tactics.
-
-He should be fast and hard to pin down. As disruptive as he is hard hitting. 
-He should affect the minds and emotions of those around him. 
-We will aim for a overall CR of 26.  Functional 600hp, functional 200 damage per round
-So rather than just stacks of hit points. He will get lots of bonuses for mobility and resistances. 
-
-
-    Defensive rating: 
-        Hit points 
-             1.25x for immunities and resistances
-        AC 
-
-    Offensive Rating: 
-        Damage Per Round 
-        Attack Modifier
-
-// why not exhausted, why not paralyzed, why not poisoned. 
-
-
-
-damage types
-  */
 monsters.Kathuil = {
     name : 'Kathuil, Lord of Dwarves', size : 'M', type : 'humanoid', alignment : 'lawful neutral', ac : '24 (+1 st leather)',
     hp : '400', speed : '40', str : 26, dex : 24, con : 24, int : 28, wis : 22, cha : 30, 
@@ -168,9 +134,50 @@ monsters.Kathuil = {
         , { name : 'Glamored Studded Leather', text : `+1 studded leather that can change its appearance.` }
     ]
 }
-/*
-,"trait":[{"name":"Angelic Weapons","text":"The solar's weapon attacks are magical. When the solar hits with any weapon, the weapon deals an extra 6d8 radiant damage (included in the attack)."},{"name":"Divine Awareness","text":"The solar knows if it hears a lie."},{"name":"Innate Spellcasting","text":["The solar's spell casting ability is Charisma (spell save DC 25). It can innately cast the following spells, requiring no material components: ","At will: detect evil and good, invisibility (self only)","3/day each: blade barrier, dispel evil and good, resurrection","1/day each: commune, control weather"]},{"name":"Magic Resistance","text":"The solar has advantage on saving throws against spells and other magical effects."}],"action":[{"name":"Multiattack","text":"The solar makes two greatsword attacks."},{"name":"Greatsword","text":"Melee Weapon Attack: +15 to hit, reach 5 ft., one target. Hit: 22 (4d6 + 8) slashing damage plus 27 (6d8) radiant damage.","attack":"Greatsword|15|4d6+8+6d8"},{"name":"Slaying Longbow","text":"Ranged Weapon Attack: +13 to hit, range 150/600 ft., one target. Hit: 15 (2d8 + 6) piercing damage plus 27 (6d8) radiant damage. If the target is a creature that has 190 hit points or fewer, it must succeed on a DC 15 Constitution saving throw or die.","attack":"Slaying Longbow|13|2d8+6+6d8"},{"name":"Flying Sword","text":"The solar releases its greatsword to hover magically in an unoccupied space within 5 ft. of it. If the solar can see the sword, the solar can mentally command it as a bonus action to fly up to 50 ft. and either make one attack against a target or return to the solar's hands. If the hovering sword is targeted by any effect, the solar is considered to be holding it. The hovering sword falls if the solar dies."},{"name":"Healing Touch (4/Day)","text":"The solar touches another creature. The target magically regains 40 (8d8 + 4) hit points and is freed from any curse, disease, poison, blindness, or deafness."}],"legendary":[{"name":"Teleport","text":"The solar magically teleports, along with any equipment it is wearing or carrying, up to 120 ft. to an unoccupied space it can see."},{"name":"Searing Burst (Costs 2 Actions)","text":"The solar emits magical, divine energy. Each creature of its choice in a 10 -foot radius must make a DC 23 Dexterity saving throw, taking 14 (4d6) fire damage plus 14 (4d6) radiant damage on a failed save, or half as much damage on a successful one."},{"name":"Blinding Gaze (Costs 3 Actions)","text":"The solar targets one creature it can see within 30 ft. of it. If the target can see it, the target must succeed on a DC 15 Constitution saving throw or be blinded until magic such as the lesser restoration spell removes the blindness."}],"spells":"detect evil and good, invisibility, blade barrier, dispel evil and good, resurrection, commune, control weather"}
-*/
+
+monsters.Bockle = {
+    name : 'Bockle of the Ivory Tower', size : 'M', type : 'humanoid', alignment : 'true neutral', ac :'12'
+    , hp : '80', speed : '25', str : 9, dex : 14, con : 13, int : 20, wis : 15, cha : 11
+    , save : 'int +11, wis +8', skill : '', resist : '', immune : '', conditionImmune : '',
+    senses : 'darkvision 60ft', passive : '', languages : 'Gnomish, Dwarven, Common, Elven', cr : '10',
+    trait : [
+        { name : 'contingency', text : [`if attacked, Bockle has greater invisibility cast on himself automatically.`]}
+        , { name : 'clone', text : [`Bockle has a clone of himself at his atelier at the university.`]}
+    ]
+    , action : [
+        { name : 'Symbol : stun', text : [`Bockle opens his spellbook and speaks a password. The password 
+        activates a symbol of stunning that targets every creature in 60 feet that isn't him. Affected creatures must 
+        succeed on a dc19 will save or be stunned for 1 minute.`]},
+        { name : 'Spellcasting', text : [`Bockle is a 17th level spellcaster. His spellcasting aability is 
+        Intelligence (spell save DC 19, +11 to hit with spell attacks) he has the following spells prepared: 
+        <br> 1st level (4 slots): sleep*, shield, expeditious retreat 
+        <br> 2nd level (3 slots): hold person*, suggestion*, misty step,  
+        <br> 3rd level (3 slots): counterspell, dispel magic, fly
+        <br> 4th level (3 slots): greater invisibility, mordenkainen's hound, mordenkainen's private sanctum
+        <br> 5th level (2 slots): hold monster*, modify memory*
+        <br> 6th level (1 slots): disintegrate
+        <br> 7th level (1 slots): forcecage
+        <br> 8th level (1 slots): mind blank (already cast)
+        <br> 9th level (1 slots): time stop
+        `] }
+        
+    ]
+    , reaction : [
+        { name : 'Instinctive Charm', text : [`(Recharges after the Enchanter Casts an Enchantment Spell of 1st Level or Higher).
+         The enchanter tries to magically divert an attack made against it, provided that the
+        attacker is with in 30 feet of it and visible to it. The enchanter
+        must decide to do so before the attack hits or misses.
+        The attacker must make a DC 14 Wisdom saving throw. On a
+        failed save, the attacker targets the creature closest to it, other
+        than the enchanter or itself. If multiple creatures are closest,
+        the attacker chooses which one to target.`] }
+    ]
+    , items : [
+        { name : 'gem encrusted Bockle figurine', text : `1500gp art object, focus for contingency spell.`}
+    ]
+}
+
+
 return monsters;
 
 });
