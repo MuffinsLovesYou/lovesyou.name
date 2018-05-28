@@ -1,51 +1,92 @@
-## Ivory Tower 
+## Ivory Tower / The Capital
+  Miles before the city is in sight, all the western roads converge into a single paved one known as 
+The Right Way. It is fifty feet wide paved with carved, flattened stones rather than cobble, and 
+proceeds in a straight line, pushing the landscape aside. It is the clear flaunting of the wealth 
+and capability of an empire in its golden age.  
+  The straight path of the Way yields a vision of the western city walls. The walls, like the road, 
+have been constructed in the last fifty years after the city waws named as capital. They stand seventy 
+feet high and are fifteen feet thick, with boxy towers every five hundred feet and some taller-still 
+buildings visible over their tops. Instead of a gate, the walls bend inward at right angles, encasing 
+the road for a half mile, with ornately carved bridges passing overhead inviting all to look up and 
+feel humbled.  
 
-Whether coming from the west or the north, miles before the city is in sight all roads converge into a 
-single path known as The Way. It is 50 feet wide, paved with carved, flattened stone rather than 
-cobble and proceeds in a straight line, forcing the landscape itself aside to make way. It is the clear 
-flaunting of the wealth and capability of an empire in its golden age.  
+## Architecture and Layout
+  The city is divided into a couple distinct sections and has a very motley aesthetic ranging over 
+different styles from different decades and centuries. 
 
-The straigth path of The Way yields vision of the city walls. The walls, like the road, have been 
-constructed in the last fifty years since the city was named as the capital. They stand seventy feet 
-high and are fifteen feet thick with boxy towers every five hundred feet and taller-still buildings 
-visible over their tops. Instead of a gate, the walls bend inward at right angles, creating a half-mile 
-tunnel with ornately carved bridges passing overhead inviting all to look up and feel humbled.  
+#### Civic District  
+  Coming in from the west along The Way gives the clearest impression of the civic district. The 
+civic district is almost all new buildings, many of which are still under construction. It is north 
+of The Way and on the west side of [The River]. The style is grand and open. It is wrapped from the 
+north and west by the outer walls. It boasts a host of plazas, ampitheaters, and temples of various 
+styles, but mostly boasting prominent stonework and well maintained gardens. To its south are 
+several expensive townhouses for the incredibly wealthy and for prominent guests.
 
-When the walls yield to city, the roads split to the different sections of the city. The northwest 
-part of the city is the Plaza, the public part of the governmental area of the city, with the private 
-pacial area accessible through it to the south.  The northeast of the city is dominated by the Ivory Tower, 
-center of magic in the developed world. To the south is the Old City, with a thousand years of history 
-buried under its wild, organic chaos.  
+#### Palacial District 
+  Below the Civic District, on the south side of The Way is the palacial district. It is walled on 
+all sides, and is accessible via a series of bridges that pass over The Way. The paths from those 
+bridges have to pass through the training yard of the barracks on the east side 
+of the district. The barracks houses up to five thousand soldiers and its flat sanded training yard 
+almost always has several hundred soldiers training in it.  
+  On the west of the district is the palace, which when finished, will be a series of sixteen mansions 
+connected to one another wrapping around inside the walls of the district. Currently, thirteen have 
+been completed, eight of which house Aspirants. For space considerations, the mansions are of a 
+fairly uniform rectangular design.
 
-The Plaza and Palacial areas are large and rectangular, framed by the imposing city walls, with the palaces 
-acessible only via defensible bridges passing over the western road. It has been forty years since the 
-city was declared as the new capital and while several major construction projects have been completed, 
-many more remain to be finished. The areas inside of the walls are elevated  to make room for a combined 
-sewer, with additional space reserved for future catacombs or other underground structures. The walls 
-themselves extend two miles east-west across the north side, two miles north-south along the western side, 
-with the eastern side heading south, but tapering inward along a curve until it meets the western wall's 
-southern end.  
+#### University  
+  Before the city was declared as the capital, the university was the seat of power and wealth 
+of the city. It occupies the northeast corner of the city, east of [The River] across from the Civic 
+district, and north of the old walls. It has a lot of older, higher class town houses that are not a 
+part of the university, but gravitated toward it. These are a mixture of stone block apartments and 
+timber frame houses, some hundreds of years old.   
+  The university itself has a mixed architecture. The north campus, now wrapped up in the outer wall, 
+is devoted to several orchards and forests. Working with that, the buildings are multi-story wooden 
+pagodas to blend with the aesthetic. At the center of the campus is the tower itself, with an angular 
+three story zigurrat one 100 feet high, 150 feet wide and 200 feet long with dorms and workshops inside 
+and wrapped in covered areas supported by columns outside. Rising 300 feet above that is the tower 
+Inside the tower, the more prominent casters have extradimensional offices and chambers. There are other 
+notable buildings around the campus for different schools and type of study. There are a cluster 
+of shaped stone buildings made to look sort of like waves coming out of the ground at the southwest 
+of campus. On the southeast is a library done in a gothic style. 
 
-Where future ambitious projects are expected, large wooden structures have been erected. In the Plaza are 
-the public forums including two ampitheaters, the portal, an open air temple, a park, and housing for high 
-ranking families, distinguished guests, and their servants. One large (50 ft wide) bridge and several smaller 
-ones connect the Plaza to the Palacial area with all paths converging into a single path through the garrison. 
-Beyond the garrison are the palaces of which 13 have been built. The largest is the imperial palace, after which 
-are two for the most distinguished of guests, and ten for the Aspirants (potential successors to the reigning 
-emperor).  
+#### Old town 
+  The old town is the largest part of the city, larger than the rest of the districts combined. It is 
+a sprawling mess of self organizing and self disorganizing chaos with hundreds of years of history. It 
+lies mostly east of [The River] and south of the university. To the west of the river are a lot of 
+areas more decidated to storage and shipping.  
+  Further north and closer to the rivers are more middle and upper class areas, and the city gives way 
+to poorer areas the further it gets from the major points of goods distribution. There are several 
+wide curved streets that serve as main thoroughfares, that then branch off into many minor streets, 
+with split off neighborhoods the size of towns in themselves.  
+  Under the city is a network of unmapped catacombs with old sunken streets and buildings, tombs, 
+sewers, and other underground spaces.
 
-The Ivory Tower, both the tower and the school named after it are visible soon after entering the city. The 
-campus is dominated by the main building, on which the titular tower is built. The core of the building is a 
-three level ziggurat 100 feet high, 150 feet wide, and 200 feet long at the base, built out of imported and 
-uniformly shaped marble blocks. The buttressed and reinforced tower rises another 300 feet, dominating the horizon. 
-The building is wrapped in a broad covered area supported by columns where many casters gather during the day for 
-lessons.  
+## Culture and People
+  The city has a massive population of around seven hundred fifty thousand people. It is sustained 
+by large scale trade bringing in food and goods by ship and road daily. It has been fifty years 
+since construction started to make it into a political center, and the power dynamics are still 
+shifting in that direction. Before that for about two hundred years, its identity was defined by 
+the magical university, which had the goal of solidifying itself as the center of magical learning 
+in the world.  
+  The demographics are really spread out. It is in primarily human lands, but the size of the city, 
+the diversity of its needs, and the draw of the magical and now political nature of it, have given 
+it a wide spread of races. It is still majority human, but races and cultures from around the 
+world have some representation in the city and only the most outlandish of sights would draw 
+undue attention.  
 
-There are other structures of very distinct design throughout the grounds. The northern grounds have several wooden 
-pagodas in different elvish styles surrounded by well-maintained orchards and lawns. The southeast has a building 
-of strange bubble-shaped architecture where the transmuters, diviners, and illusionists often train. The southeast 
-corner has much more conventional architecture with pubs, dorms, and housing for any teachers that don't have permanent 
-residences in the tower.  
 
-	
-	
+## NPCs
+
+#### Bockle  
+Head enchanter at the university, the group first met Bockle under unfortunate cities as they were 
+all fleeing Ramshackle. He has since befriended the group and was amused by their work with Leopold.
+
+#### Leopold von Sacher
+Human champion. Aspirant and representative of the thousand kingdoms.
+
+#### Havlan Leuwitz 
+Leopold's attendant. Halfling Ranger
+
+#### Draco Ocul
+
+
