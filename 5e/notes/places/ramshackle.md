@@ -60,4 +60,15 @@ on to try and prevent the stone from buckling. Wooden posts buttress the walls a
 the carved names of locals.
 
 
+### NPCs  
 
+#### Anders
+Anders is a retired evoker from the Ivory Tower who currently sails the Estus Sea in his cutter 
+the 'Westlander's Pig'. 
+
+#### Sunny 
+Sunny is a very young mountain dwarf who is apprenticed to Anders. 
+
+#### Bockle 
+Bockle is a surly gnome wizard who currently works as one of the more prominent casters at 
+the Ivory Tower. He hitches a ride on Anders' boat.
