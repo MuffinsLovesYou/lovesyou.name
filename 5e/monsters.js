@@ -27,14 +27,14 @@ define(['5e/imported/monsters'],(imported)=>{
             // skill
             // passive
             monster.Senses = imp.senses
-            let bonus = (x)=> x+'('+((x>=10)?'+':'') + Math.floor((+x-10)/2)+')'
+            
             monster.Stats = {
-                Str : bonus(imp.str),
-                Dex : bonus(imp.dex),
-                Con : bonus(imp.con),
-                Int : bonus(imp.int),
-                Wis : bonus(imp.wis),
-                Cha : bonus(imp.cha) 
+                Str : imp.str,
+                Dex : imp.dex,
+                Con : imp.con,
+                Int : imp.int,
+                Wis : imp.wis,
+                Cha : imp.cha
             }
             monster.Defenses = {
                 Ac : imp.ac,
@@ -45,11 +45,11 @@ define(['5e/imported/monsters'],(imported)=>{
                 Vulnerable : imp.vulnerable,
                 Saves : imp.save,
             }
-            monster.Actions = [];
+            monster.Action = [];
             if(imp.action){
                 if(!Array.isArray(imp.action)) imp.action = [imp.action];
                 imp.action.forEach(a=>{
-                    monster.Actions.push({
+                    monster.Action.push({
                         Name : a.name,
                         Text : Array.isArray(a.text) ? a.text.join('<br>') : a.text
                     })

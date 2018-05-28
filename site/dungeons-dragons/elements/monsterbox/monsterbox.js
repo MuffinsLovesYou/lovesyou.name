@@ -1,15 +1,22 @@
 define([
     'lite'
     ,'5e/monsters'
+    ,'5e/custom_monsters/custom_monsters'
     ,'site/common/modal/modal'
-], function (Lite, monsters, modal) {
+], function (Lite, monsters, custom_monsters, modal) {
 
     return Lite.extend({
         content_url : 'site/dungeons-dragons/elements/monsterbox/monsterbox.html'
         , initialize : function() {
-            let monster = window.location.hash.split('/').pop().replace(/%20/g,' ');
-            if(!this.data) this.data = monsters[monster];
+            let view = this;
+            if(!view.data) view.data = view.load_monster();
             this.load_css();
+        }
+        , load_monster : function() {
+            let monster_name = window.location.hash.split('/').pop().replace(/%20/g,' ');
+            let monster = monsters[monster_name];
+            if(!monster) monster = custom_monsters[monster_name];
+            return monster;
         }
         , load_css : function() {
             let css = document.createElement("link");
@@ -27,15 +34,22 @@ define([
         , format_spells : function(data){
             if(!data.Trait) return;
             let spellcasting = data.Trait.find((trait)=>{
-                return trait.Name === 'Spellcasting'
+                return trait.Name === 'Spellcasting';
             });
             if(!spellcasting) return;
             spellcasting.Text = spellcasting.Text.replace(/â€¢/g, '');
+        }
+        , format_stats : function(data) {
+            let bonus = (x)=> x+'('+((x>=10)?'+':'') + Math.floor((+x-10)/2)+')'
+            for(let s in data.Stats){
+                data.Stats[s] = bonus(data.Stats[s]);
+            }
         }
         , onContentBound : function () {
             let view = this;
             view.toggle_divs();
             view.format_spells(view.data);
+            view.format_stats(view.data);
             view.build_traits();
             view.build_actions();
             view.build_reactions();
@@ -45,15 +59,15 @@ define([
         , toggle_divs : function() {
             let view = this;
             let data = view.data;
-            let hide = (id)=>view.container.querySelector('#'+id).parentElement.style.display = 'none'
+            let hide = (id)=>view.container.querySelector('#'+id).parentElement.style.display = 'none';
             if(!data.Languages) hide('Languages');
             if(!data.Save) hide('Save');
-            if(!data.Senses) hide('Senses')
+            if(!data.Senses) hide('Senses');
             if(!data.Immune) hide('Immune');
-            if(!data.ConditionImmune) hide('ConditionImmune')
-            if(!data.Reaction.length) view.container.querySelector('#monster-reactions').style.display = 'none'
-            if(!data.Legendary.length) view.container.querySelector('#monster-legendary').style.display = 'none' 
-            if(!data.Items) view.container.querySelector('#monster-items').style.display = 'none'  
+            if(!data.ConditionImmune) hide('ConditionImmune');
+            if(!data.Reaction.length) view.container.querySelector('#monster-reactions').style.display = 'none';
+            if(!data.Legendary.length) view.container.querySelector('#monster-legendary').style.display = 'none' ;
+            if(!data.Items) view.container.querySelector('#monster-items').style.display = 'none';
         }
         , build_dynamic_item : function(name, text){
             let new_item = document.createElement('div');
@@ -70,13 +84,13 @@ define([
             if(!traits) return;
             let traits_div = view.container.querySelector('#monster-traits');
             traits.forEach((trait)=>{ 
-                traits_div.appendChild(view.build_dynamic_item(trait.Name, trait.Text)) 
+                traits_div.appendChild(view.build_dynamic_item(trait.Name, trait.Text));
             });
         }
         , build_actions : function() {
             let view = this;
             window.view = view;
-            let actions = view.data.Actions;
+            let actions = view.data.Action;
             if(!actions) return;
             let actions_div = view.container.querySelector('#monster-actions');
             actions.forEach((action)=>{
@@ -86,7 +100,7 @@ define([
                         item = item.split('.');
                         return '<b>'+item[0]+'.</b>'+item.slice(1).join('.');
                     });
-                    action.text = action.text.join('<br>')
+                    action.text = action.text.join('<br>');
                 }
                 actions_div.appendChild(view.build_dynamic_item(action.Name, action.Text));
             });
@@ -107,7 +121,7 @@ define([
             let legendary_div = view.container.querySelector('#monster-legendary');
             legendary.forEach((legend)=>{
                 legendary_div.appendChild(view.build_dynamic_item(legend.Name, legend.Text));
-            })
+            });
         }
         , build_items : function() {
             let view = this;

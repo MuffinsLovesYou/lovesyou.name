@@ -12,7 +12,7 @@ define([
                 {title:'ging onol',href:'#note/places/gingonol', alt:'' },
                 {title:'ramshackle',href:'#note/places/ramshackle', alt:''},
                 {title:'toestub',href:'#note/places/toestub', alt:''},
-                {title:'the stick',href:'#notes/places/the stick',alt:''}
+                {title:'the stick',href:'#note/places/the stick',alt:''}
             ]);
         }
     });
