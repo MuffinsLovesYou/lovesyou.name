@@ -10,23 +10,23 @@
 	<div class='monster_divider'></div>
 	<div>
 		<span class='monster_red_left'>Saving Throws </span>
-		<span id='Save' bind>
+		<span id='Save' bind='Defenses.Saves'>
 	</div>
 	<div>
 		<span class='monster_red_left'>Damage Immunities </span>
-		<span id='Immune' bind>
+		<span id='Immune' bind='Defenses.Immune'>
 	</div>
 	<div>
 		<span class='monster_red_left'>Condition Immunities </span>
-		<span id='ConditionImmune' bind>
+		<span id='ConditionImmune' bind='Defenses.ConditionImmune'>
 	</div>
 	<div>
 		<span class='monster_red_left'>Armor Class </span>
-		<span id='Ac' bind>
+		<span id='Ac' bind='Defenses.Ac'>
 	</div>
 	<div>
 		<span class='monster_red_left'>Hit Points </span>
-		<span id='Hp' bind></span>
+		<span id='Hp' bind='Defenses.Hp'></span>
 	</div>
 	<div>
 		<span class='monster_red_left'>Speed </span>
@@ -43,12 +43,12 @@
 			<span class='monster_stat_label'>CHA</span>	
 		</div>
 		<div>
-			<span id='Str' bind class='monster_stat_value'></span>
-			<span id='Dex' bind class='monster_stat_value'></span>
-			<span id='Con' bind class='monster_stat_value'></span>
-			<span id='Int' bind class='monster_stat_value'></span>
-			<span id='Wis' bind class='monster_stat_value'></span>
-			<span id='Cha' bind class='monster_stat_value'></span>
+			<span id='Str' bind='Stats.Str' class='monster_stat_value'></span>
+			<span id='Dex' bind='Stats.Dex' class='monster_stat_value'></span>
+			<span id='Con' bind='Stats.Con' class='monster_stat_value'></span>
+			<span id='Int' bind='Stats.Int' class='monster_stat_value'></span>
+			<span id='Wis' bind='Stats.Wis' class='monster_stat_value'></span>
+			<span id='Cha' bind='Stats.Cha' class='monster_stat_value'></span>
 		</div>
 	</div>
 	<div class='monster_divider'></div>
@@ -62,7 +62,7 @@
 	</div>
 	<div>
 		<span class='monster_red_left'>Challenge </span>
-		<span id='Cr' bind></span>
+		<span id='Cr' bind='Challenge'></span>
 	</div>
 	<div class='monster_divider'></div>
 	<div id='monster-traits'>
