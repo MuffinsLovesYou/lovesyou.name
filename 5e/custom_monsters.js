@@ -135,6 +135,10 @@ monsters.Kathuil = {
     ]
 }
 
+/*
+    Master enchanter of the Ivory Tower. 
+    Dislikes fighting and will do whatever he can to get away.
+*/
 monsters.Bockle = {
     name : 'Bockle of the Ivory Tower', size : 'M', type : 'humanoid', alignment : 'true neutral', ac :'12'
     , hp : '80', speed : '25', str : 9, dex : 14, con : 13, int : 20, wis : 15, cha : 11
@@ -176,6 +180,43 @@ monsters.Bockle = {
         { name : 'gem encrusted Bockle figurine', text : `1500gp art object, focus for contingency spell.`}
     ]
 }
+
+/*
+    Hill Dwarf Cleric and minor Noble of Gingonol
+    Drew Ulric's attention for being a known as a practitioner of necromancy
+    Middle-Aged dwarven female. Short (4'0") and slight for a dwarf (~100lbs) 
+*/
+monsters.Rinarv = {
+    name : 'Rinarv Bittershaper', size : 'M', type : 'Humanoid',
+    alignment : 'Lawful Evil', ac : '14 (breastplate)', hp : '78', speed : 25,
+    str : 8, dex : 11, con : 12, int : 12, wis : 18, cha : 12,
+    save : '', skill : '', resist : '', immune : '', conditionImmune : '',
+    senses : 'darkvision 60', passive : '', languages : '', cr : '12',
+    trait : [
+        { name : 'Reaper 2/day', text : [`When Rinarv casts a spell level 0-5 that targets only 
+        one creature, she can instead target two creatures within range and within 5 feet of one another.`]}
+    ],
+    action : [
+        { name : 'Spellcasting', text : [`Rinarv is a 12th level spellcaster. Her 
+        spellcasting modifier is wisdom (spell save DC 16 +8 to hit with spell attacks).
+        <br>Cantrips (at will): chill touch, thaumaturgy, mending
+        <br>1st level (4 slots): ray of sickness, command, cure wounds
+        <br>2nd level (3 slots): ray of enfeeblement, blindness/deafness, augury
+        <br>3rd level (3 slots): dispel magic, spirit guardians, meld to stone
+        <br>4th level (3 slots): death ward, guardian of faith, divination
+        <br>5th level (2 slots): antilife shell, scrying
+        <br>6th level (1 slot): planar ally, heal`] }
+    ],
+    items : [
+        { name : 'augury tokens', text : `25gp art object. This is a set of 28 humanoid finger bones with 
+        dwarven runes inked in to them. `},
+        { name : 'divintion tokens x4', text : `25gp art object. Each token is a dried out eye doused in 
+        myrrh.`},
+        { name : 'Shield Guardian talisman', text : `1000gp pendant, can control her shield guardian.  
+        The guardian has the spell 'Spirit Guardians' stored.`},
+    ]
+}
+
 
 
 return monsters;

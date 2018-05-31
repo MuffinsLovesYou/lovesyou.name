@@ -72,34 +72,7 @@ define([
 
 	let items = OneTrick.Items;
 	items.Add('Gold', 20);
-    items.Add('Chain Mail');
-    items.Add('Shield');
-    items.Add('Holy Symbol (Amulet)');
-    items.Add('Pouch');
-    items.Add('Dagger');
-    // explorer's pack
-    items.Add('Backpack');
-    items.Add('Bedroll');
-    items.Add('Mess Kit');
-    items.Add('Rations', 10);
-    items.Add('Waterskin');
-    items.Add('Hempen Rope (50 feet)');
-    items.Add('Candle', 10);
-    items.Add('Playing Card Set');
-    items.Add('Sealing Wax');
-    items.Add('Chalk', 5);
-    items.Add('Steel Mirror');
-    items.Add('Fishing Tackle');
-    items.Add('Iron Pot');
-    items.Add('Common Clothes');
-    items.Add('Soap');
-    items.Add('Whetstone');
-    items.Add("Cook's Utensils");
-    items.Add("Map or Scroll Case"); // spices 
 	
 
 	return OneTrick;
-    // cragmaw
-
-
 });

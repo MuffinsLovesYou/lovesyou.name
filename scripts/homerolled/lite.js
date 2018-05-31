@@ -73,10 +73,9 @@ define([
                 _lite.onDataLoaded(data);
                 return _lite.data;
             }
-            
             if(_lite.data_url.slice(-3)==='.js') 
                 return new Promise((s, f)=>{
-                    require([_lite.data_url], (data)=>{ 
+                    require([_lite.data_url.slice(0, -3)], (data)=>{ 
                         s(data_loaded(data));
                     });
                 });
