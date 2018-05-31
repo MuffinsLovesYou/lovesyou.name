@@ -1,15 +1,22 @@
 define([
     'lite'
     ,'5e/monsters'
+    ,'5e/custom_monsters/custom_monsters'
     ,'site/common/modal/modal'
-], function (Lite, monsters, modal) {
+], function (Lite, monsters, custom_monsters, modal) {
 
     return Lite.extend({
         content_url : 'site/dungeons-dragons/elements/monsterbox/monsterbox.html'
         , initialize : function() {
-            let monster = window.location.hash.split('/').pop().replace(/%20/g,' ');
-            if(!this.data) this.data = monsters[monster];
+            let view = this;
+            if(!view.data) view.data = view.load_monster();
             this.load_css();
+        }
+        , load_monster : function() {
+            let monster_name = window.location.hash.split('/').pop().replace(/%20/g,' ');
+            let monster = monsters[monster_name];
+            if(!monster) monster = custom_monsters[monster_name];
+            return monster;
         }
         , load_css : function() {
             let css = document.createElement("link");
@@ -23,57 +30,26 @@ define([
             });
             if(!has) head.appendChild(css);            
         }
-        , onDataLoaded : function(data){
-            let view = this;
-            view.data = view.prepare_data(data);
-        }
-        , prepare_data : function(data) {
-            let view = this;
-            for(let k in data) {
-                data[k[0].toUpperCase()+k.substr(1)] = data[k];
-                delete data[k];
-            }
-            if(data.Action && !Array.isArray(data.Action))
-                data.Action = [data.Action];
-            if(data.Trait && !Array.isArray(data.Trait))
-                data.Trait = [data.Trait];
-            if(data.Reaction && !Array.isArray(data.Reaction))
-                data.Reaction = [data.Reaction];
-            data.Type = data.Type.split(',')[0]
-
-            data.Size = {
-                T : 'Tiny', S : 'Small', M : 'Medium', 
-                L : 'Large', H : 'Huge', G : 'Gargantuan'
-            }[data.Size] || data.Size;
-            view.format_spells(data);
-            data = view.set_stats(data);
-            return data;
-        }
+        , onDataLoaded : function(data){}
         , format_spells : function(data){
             if(!data.Trait) return;
             let spellcasting = data.Trait.find((trait)=>{
-                return trait.name === 'Spellcasting'
-            })
+                return trait.Name === 'Spellcasting';
+            });
             if(!spellcasting) return;
-
-            spellcasting.text = spellcasting.text.map((item, idx)=>{
-                return idx ? item.substr(4) : item;
-            })
-            spellcasting.text = spellcasting.text.join('<br>');
+            spellcasting.Text = spellcasting.Text.replace(/â€¢/g, '');
         }
-        , set_stats : function(data){
-            let bonus = (x)=> x + '('+((x>=10)?'+':'') + Math.floor((+x-10)/2) +')'
-            data.Str = bonus(data.Str)
-            data.Dex = bonus(data.Dex);
-            data.Con = bonus(data.Con);
-            data.Int = bonus(data.Int);
-            data.Wis = bonus(data.Wis);
-            data.Cha = bonus(data.Cha);
-            return data;
+        , format_stats : function(data) {
+            let bonus = (x)=> x+'('+((x>=10)?'+':'') + Math.floor((+x-10)/2)+')'
+            for(let s in data.Stats){
+                data.Stats[s] = bonus(data.Stats[s]);
+            }
         }
         , onContentBound : function () {
             let view = this;
             view.toggle_divs();
+            view.format_spells(view.data);
+            view.format_stats(view.data);
             view.build_traits();
             view.build_actions();
             view.build_reactions();
@@ -83,15 +59,15 @@ define([
         , toggle_divs : function() {
             let view = this;
             let data = view.data;
-            let hide = (id)=>view.container.querySelector('#'+id).parentElement.style.display = 'none'
+            let hide = (id)=>view.container.querySelector('#'+id).parentElement.style.display = 'none';
             if(!data.Languages) hide('Languages');
             if(!data.Save) hide('Save');
-            if(!data.Senses) hide('Senses')
+            if(!data.Senses) hide('Senses');
             if(!data.Immune) hide('Immune');
-            if(!data.ConditionImmune) hide('ConditionImmune')
-            if(!data.Reaction) view.container.querySelector('#monster-reactions').style.display = 'none'
-            if(!data.Legendary) view.container.querySelector('#monster-legendary').style.display = 'none' 
-            if(!data.Items) view.container.querySelector('#monster-items').style.display = 'none'  
+            if(!data.ConditionImmune) hide('ConditionImmune');
+            if(!data.Reaction.length) view.container.querySelector('#monster-reactions').style.display = 'none';
+            if(!data.Legendary.length) view.container.querySelector('#monster-legendary').style.display = 'none' ;
+            if(!data.Items) view.container.querySelector('#monster-items').style.display = 'none';
         }
         , build_dynamic_item : function(name, text){
             let new_item = document.createElement('div');
@@ -108,7 +84,7 @@ define([
             if(!traits) return;
             let traits_div = view.container.querySelector('#monster-traits');
             traits.forEach((trait)=>{ 
-                traits_div.appendChild(view.build_dynamic_item(trait.name, trait.text)) 
+                traits_div.appendChild(view.build_dynamic_item(trait.Name, trait.Text));
             });
         }
         , build_actions : function() {
@@ -124,18 +100,18 @@ define([
                         item = item.split('.');
                         return '<b>'+item[0]+'.</b>'+item.slice(1).join('.');
                     });
-                    action.text = action.text.join('<br>')
+                    action.text = action.text.join('<br>');
                 }
-                actions_div.appendChild(view.build_dynamic_item(action.name, action.text));
+                actions_div.appendChild(view.build_dynamic_item(action.Name, action.Text));
             });
         }
         , build_reactions : function() {
             let view = this;
             let reactions = view.data.Reaction;
-            if(!reactions) return;
+            if(!reactions.length) return;
             let reactions_div = view.container.querySelector('#monster-reactions');
             reactions.forEach((reaction)=>{
-                reactions_div.appendChild(view.build_dynamic_item(reaction.name, reaction.text));
+                reactions_div.appendChild(view.build_dynamic_item(reaction.Name, reaction.Text));
             });
         }
         , build_legendary : function() {
@@ -144,8 +120,8 @@ define([
             if(!legendary) return;
             let legendary_div = view.container.querySelector('#monster-legendary');
             legendary.forEach((legend)=>{
-                legendary_div.appendChild(view.build_dynamic_item(legend.name, legend.text));
-            })
+                legendary_div.appendChild(view.build_dynamic_item(legend.Name, legend.Text));
+            });
         }
         , build_items : function() {
             let view = this;
@@ -153,7 +129,7 @@ define([
             if(!items) return;
             let items_div = view.container.querySelector('#monster-items');
             items.forEach((item)=>{
-                items_div.appendChild(view.build_dynamic_item(item.name, item.text));
+                items_div.appendChild(view.build_dynamic_item(item.Name, item.Text));
             });
         }
     });

@@ -14,9 +14,9 @@ define([
 
         _router.clean_url = function () {
             try {
-                let url = window.location.toString()
-                    .replace('.html', '');
-                window.history.replaceState(null, null, url);
+                //let url = window.location.toString()
+                //    .replace('.html', '');
+                //window.history.replaceState(null, null, url);
             } catch (e) { /*fails on local browser during dev*/ }
         }
         
