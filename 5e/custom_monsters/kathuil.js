@@ -7,7 +7,7 @@ define([],()=>{
     , Alignment : 'lawful neutral'
     , Speed : 40
     , Save : 'Will +12, Cha +16'
-    , Skill : 'athletics +14, acrobatics +13, perception +12, persuasion +16'
+    , Skill : 'athletics +14, acrobatics +13, perception +12, persuasion +16, performance +16'
     , Senses : 'Darkvision 120'
     , Languages : 'all'
     , Challenge : '20'
