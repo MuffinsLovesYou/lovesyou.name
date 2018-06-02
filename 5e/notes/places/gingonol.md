@@ -64,16 +64,4 @@ Celebrating military might and victory.
 
 
 
-Location
-Function
-Reason 
-
-
-
-
-1 16-20th 
-10 11-15th 
-100 6-10th 
-1000 1-5th 
-100000 non-magical
 
