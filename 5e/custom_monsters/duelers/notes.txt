@@ -1,0 +1,65 @@
+
+Test rules:
+   We're typically avoiding builds tailor-made for the fight, focusing instead on either archetypical 
+   or well-balanced builds. 
+   We're mostly avoiding 'game over' spells and abilities. An example is hold person where, if the opponent 
+   does not have a significant will save, the fight is functionally over. 
+   Likewise we're avoiding flight. We gain nothing to learn that someone who can fly and has ranged attacks 
+   can beat someone on the ground.
+   The arena isn't clearly defined, but is assumed bounded similar to a larger mordenkainen's private sanctum. 
+   It should be large enough to allow some movement/positioning for ranged fighters, but small enough to 
+   discourage indefinite kiting. 
+
+Frenzy orc barbarian vs mountain dwarf Battlemaster fighter (great weapon):
+Tactics: 
+    Barbarian does reckless frenzy attacks with greataxe
+    Fighter: Attempts to disarm and push. Takes advantage of recklessness to spam great weapon fighter.
+Results: Barbarian crushes. 
+Analasys: Barbarian has higher HP, chance to hit, and has resistance against fighter damage granting massive 
+advantage in hit trading. Immunity to fear (berserker) and gigantic strength saves (advantage and +13) negate 
+any battlemaster tricks. 
+
+Next test: 
+    Orc champion fighter (sword n board) vs orc frenzy barbarian 
+Tactics:
+    Barbarian does reckless frenzy attacks with greataxe
+    Fighter: Uses bonus action to push with shield, otherwise basic attacks
+Analasys: Marginally more effective than battlemaster due to regen, higher ac, and crits. Shield push is as 
+weak as battlemaster's disarm/trip since the fighter has to beat 24 athletics to even force the barbarian to 
+roll. If the barbarian isn't prone, the fighter eats the retaliation attack.
+
+Next test: 
+    Polearm/Sentinel cheese eldritch knight vs orc berserker
+Tactics:
+    Barbarian does reckless frenzy attacks with greataxe
+    Fighter: Keeps distance with polearm. Fire shield for retaliatory damage. Witch bolt at lvl 2-3 slot 
+    for ticking damage. Other lvl 3 spell slots used for lightning bolt after hitting. Nickle and dime with 
+    melee. 
+Analasys: The fighter won, but not unanimously. A level 20 fighter attacks with roughly a +11 modifier, while 
+the barbarian has a natural armor of about 21. This makes the polearm defense about 50/50. If the barbarian 
+gets their full attack, they are likely going to hit with about 4 strikes of ~18 damage each, so it is very 
+expensive for the fighter to be hit. 
+Alternatively: If the fighter can take hits early to provoke reckless attacks, and leverage that to land a 
+level three witch bolt. They can run the clock down by kiting with misty step and dashing while letting the 
+3d12 lightning damage tick each round. The second level spell slots don't get used for much else and action 
+surge comes with a misty step effect, so the fighter can buy at least 6 rounds.
+
+Next test: 
+    Start on paladins with a oath of devotion pally vs orc berserker
+Tactics
+    Barbarian does reckless frenzy attacks with greataxe till it stops working, though this would be a legit 
+    hilarious time to grapple and negate the great weapon.
+    Paladin: Capitalizes on sacred weapon to spam great weapon mastery. Tries for holy weapon and a smite on 
+    each swing to try and max out on non physical damage. 
+Analasys: The barbarian still reigns. The paladin hits spectacularly hard when unleashing everything, but starts 
+with over 100 less hp and armor low enough the barbarian is basically getting free hits. Lay on hands only buys 
+time as the +100 is quickly met with a 60-70 damage burst. Adding mount could functionally give extra 'hp' to 
+the paladin and might make dropping flaming sword for smite spells viable. 
+
+Next test: 
+    Oath of ancients paladin vs orc berserker
+Tactics:
+    Barbarian: If it isn't broke.... Reckless frenzy spam to the face
+    Paladin: Much more tactical. Misty step provides mobility options and allows for regen tanking. Spells as 
+    bonus actions greatly improves offensive and tactical capabilities for a burstier and more mobile fight. 
+    Destructive wave and ice storm are musts as some of the only offensive spells.

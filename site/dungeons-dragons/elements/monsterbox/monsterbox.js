@@ -13,10 +13,18 @@ define([
             this.load_css();
         }
         , load_monster : function() {
-            let monster_name = window.location.hash.split('/').pop().replace(/%20/g,' ');
+            let view = this;
+            let monster_name = window.location.hash.split('/').slice(1).join('/').replace(/%20/g,' ');
             let monster = monsters[monster_name];
-            if(!monster) monster = custom_monsters[monster_name];
+            if(!monster) view.load_custom_monster(monster_name);
             return monster;
+        }
+        , load_custom_monster : function(monster_name){
+            let view = this;
+            custom_monsters.get_monster(monster_name, function(monster_data){
+                monsters[monster_name] = monster_data;
+                window.onhashchange();
+            });
         }
         , load_css : function() {
             let css = document.createElement("link");
@@ -42,7 +50,8 @@ define([
         , format_stats : function(data) {
             let bonus = (x)=> x+'('+((x>=10)?'+':'') + Math.floor((+x-10)/2)+')'
             for(let s in data.Stats){
-                data.Stats[s] = bonus(data.Stats[s]);
+                if(!isNaN(data.Stats[s])) 
+                    data.Stats[s] = bonus(data.Stats[s]);
             }
         }
         , onContentBound : function () {
@@ -61,10 +70,10 @@ define([
             let data = view.data;
             let hide = (id)=>view.container.querySelector('#'+id).parentElement.style.display = 'none';
             if(!data.Languages) hide('Languages');
-            if(!data.Save) hide('Save');
+            if(!data.Defenses.Save) hide('Save');
             if(!data.Senses) hide('Senses');
-            if(!data.Immune) hide('Immune');
-            if(!data.ConditionImmune) hide('ConditionImmune');
+            if(!data.Defenses.Immune) hide('Immune');
+            if(!data.Defenses.ConditionImmune) hide('ConditionImmune');
             if(!data.Reaction.length) view.container.querySelector('#monster-reactions').style.display = 'none';
             if(!data.Legendary.length) view.container.querySelector('#monster-legendary').style.display = 'none' ;
             if(!data.Items) view.container.querySelector('#monster-items').style.display = 'none';

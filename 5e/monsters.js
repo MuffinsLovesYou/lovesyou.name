@@ -1,5 +1,6 @@
 define(['5e/imported/monsters'],(imported)=>{
 
+
     let monsters = {};
 
     let map_imported = function(imported){
@@ -90,6 +91,7 @@ define(['5e/imported/monsters'],(imported)=>{
         }
     }
     map_imported(imported);
+
 
     return monsters;
 

@@ -1,5 +1,28 @@
 define([],()=>{
 
+/*
+    Moradin: Chief god of the dwarven pantheon. Protection, law, good, creation are his domains. He represents 
+    traditional dwarvendom. 
+    Deep Duerra: Duergar godess of psionics, conquest, and expansion. 
+    Muamman Duathal: Neutral good Dwarven god of wanderers, expatriates, and lightning. 
+    Thard Harr : Chaotic good dwarven god of the Jungle, Survival, and Hunting
+    Vergadain : True neutral dwarven god of Luck, Trickery, and Trade 
+
+    Who is Kathuil:
+    Kathuil is the bastard son of Moradin and Deep Duerra. When Kathuil was born, Moradin refused to acknowledge 
+    him or reveal who the mother was and instead cast him out to die. Kathuil was saved by Muamman Duathal, 
+    drawing the ire of Moradin and causing a minor rift in the pantheon. Thard Harr and Vergadain aligned 
+    themselves with Muamman's decision, deepening the rift even though they are relatively minor gods in 
+    the pantheon. 
+
+    Kathuil was handed to the wandering Muammian cleric Fonn Searbh and her aprentice Eberk. As foster mothers 
+    they raised him and kept him safe until he was old enough to choose a path for himself. When they heard of 
+    the great invasion that collapsed dwarven society, Kathuil was barely in his thirties. At that point he 
+    decided immediatley to make himself known to dwarves and to try to reunify them.
+
+*/
+
+
     return {
     Name : 'Kathuil, Dwarflord'
     , Size : 'Medium'

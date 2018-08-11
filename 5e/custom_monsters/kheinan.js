@@ -1,5 +1,6 @@
 define([],()=>{
 
+    // Captain Kheinan is a retired privateer
     return {
         Name : 'Captain Kheinan',
         Size : 'Medium',
