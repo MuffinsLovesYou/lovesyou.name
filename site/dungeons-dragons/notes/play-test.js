@@ -2,43 +2,57 @@ define([
     'lite'
     ,'site/common/dice/dice'
     ,'site/dungeons-dragons/elements/monsterbox/monsterbox'
+    ,'site/common/modal/modal'
     ,'5e/monsters'
-], (Lite, Dice, MonsterBox, monsters)=>{
+    ,'5e/custom_monsters/custom_monsters'
+], (Lite, Dice, MonsterBox, modal, monsters, custom_monsters)=>{
     
-    console.log('a');
     return Lite.extend({
         content : `
-        <div style='width:45%;display:inline-block;vertical-align:top'>
+        <div style='width:100%;display:inline-block;vertical-align:top'>
             <textarea></textarea>
             <div id='dice' style='display:inline-block;vertical-align:top'></div>
-        </div>
-        <div style='width:50%;display:inline-block;max-height:500px;overflow:auto'>
-            <div id='MonsterA'></div>
-            <div id='MonsterB'></div>
+            <div id='players_container' style='display:inline-block; width:5%; vertical-align:top'>
+                <ul id='players' style='display:inline-block'>
+                </ul>
+            </div>
         </div>`
         , onContentBound : function(){
             let view = this;
             view.bindDice();
-            view.bindMonsterA();
-            view.bindMonsterB();
+            let players = ['duelers/Paladin', 'duelers/Barbarian']
+            players.forEach(p => view.load_monster(p));
+            players.forEach(p => view.add_player_link(p));
+        }
+        , load_monster : function(monster_name){
+            let monster = monsters[monster_name]
+            if(monster) return monster;
+
+            let view = this;
+            custom_monsters.get_monster(monster_name, function(monster_data){
+                monsters[monster_name] = monster_data;
+            });
         }
         , bindDice : function() {
             new Dice({container:document.getElementById('dice')}).attach();
         }
-        , bindMonsterA :function(){
-            let A = new MonsterBox({
-                container : document.getElementById('MonsterA'),
-                data : monsters['Kathuil']
+        , add_player_link : function(player_name){
+            var ul = document.getElementById('players');
+            var player = ul.appendChild(document.createElement('li'));
+            player.innerHTML = player_name.replace('duelers/', '');
+            player.style['font-size'] = 'large';
+            player.style['text-decoration'] = 'underline'
+            player.addEventListener('click', function(){
+                let monster = monsters[player_name];
+                new modal({
+                    onDataBound : function(){
+                        new MonsterBox({
+                            data : monster,
+                            container : document.getElementById('modal-content'),
+                        }).attach();
+                    }
+                }).attach();
             });
-            A.attach();
-        }
-        , bindMonsterB : function(){
-            let B = new MonsterBox({
-                container : document.getElementById('MonsterB'),
-                data : monsters['Pit Fiend']
-            });
-            B.attach();
-        
         }
     });
 

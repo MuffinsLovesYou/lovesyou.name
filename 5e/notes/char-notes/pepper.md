@@ -33,20 +33,40 @@ magic items very quickly.
 * Deliver comb to banshee : 
     * Banshee is Agatha in Coneyberry. We deliver the comb in order to ask the banshee where Beaugentle's spellbook is 
     * Reward 3x healing pots 
-* Rescue dwarves : Gundran still missing!
+    * We can ask her a question: Answer a question about who owns a spellbook: Owned by a legendary mage named Beaugentle. 
+    Sister Gariel thinks that if we flatter agatha's vanity, we may be able to trade the comb for an answer. 
+    * Agatha says the Book was last left with Tsernoth, who was a necrodancer from the city of Eary-A-Bore one 
+    hundred years ago. 
+* (Complete) Rescue dwarves : 
+    * We got Sildar
+    * Nundro - is somewhere
+    * Tharden - is somewhere 
+    * We got Gundran
+* Map to Wave Echo Cave
+* Keleen (Lydia's aunt): has a longtime friend, a druid named rudolph. Suggested we look for a druid that knows the 
+location of cragmaw or wave echo
+* Townmaster's Hall: A signup for sommeone to head east along the tribor trail to deal with some orcs. 
+* Baron Edermath has an orchard: In the hills (east northeast) northeat of phandelin: rumors of someone digging in the ruins of 
+a watchtower. Other prospectors in the area have reported undead. In the area is a watchtower of an ancient civilization. 
+There might be something called old owl well there and some latent ancient magic there, and Eatermeth is worried about it. 
+The Watchtower might be ancient magic of the Nethiril.
+
+ 
 
 ### Personal Treasure : 
 * Coin : 10gp
 * Platinum signet, 50gp
+* Rations : 35 days of rations (Salted Pork, Beer, Kimchee) 
     
 ### Group Treasure : 
-* Coin : 52 copper, 83 silver, 478gp 
-* Potions : 
-* Armor : Chainmail x2 
-* Weapons : Longsword x2, Longbow x2, Scimitar x5, Shortbow x6 
+* Coin : 52 copper, 90 silver, 759gp
+* Potions : 2 potions of healing 
+* Armor :  
+* Weapons : Scimitar x3, Shortbow x3
 * Tools : Manacles x1, Oil Flask x2, Tinderbox 
 * Art : 50gp Jade Frog x1 
-* Gems : 2gp Garnets x2, 10gp Carnelias x5, 15gp Peridots x2, 100gp Pearl x1
+* Gems : 2gp Garnets x2, 10gp Carnelias x5, 15gp Peridots x2, 65gp emerald, 100gp Pearl x1
+* One gallon of Draco Noir perfume. Otter musk pellet, Dalia flower concentrate, Sandalwood Bark
 
 ### Sessions : 
 * 1 : Group met, saved some kids, started escoring Gundran's wagon to town. Ended up saving Sildar 

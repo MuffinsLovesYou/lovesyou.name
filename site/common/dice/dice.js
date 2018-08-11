@@ -47,6 +47,7 @@ define([
             let view = this;
             let input = view.getElementById('DiceRoller_Input');
             input.addEventListener('keydown', (e)=>{
+                console.log('eh', e.keyCode);
                 if(e.keyCode==13)view.roll_dice();
             });
         }
