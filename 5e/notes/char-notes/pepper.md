@@ -1,8 +1,11 @@
 ### Party
-* Al Hazrad : High elf wizard. Worshiper of Oghma, god of knowledge, Seeks.. dispersion.. and freedom
-* Bo Bodkin : Human fighter. Local folkhero for telling off a shipcaptain. 
-* Lidda Tealeaf : Halfling rogue. 
+* Al Hazrad : High elf wizard. Worshiper of Oghma, god of knowledge, Seeks knowledge and freedom. 
+Tasked by goddess to cleanse shrine.  
+* Bo Bodkin : Human fighter. Local folkhero for telling off a shipcaptain. Seeks that adventurer 
+lifestyle.
+* Lydia Tealeaf : Halfling rogue. Provide for her aunt. 
 * Sargeant Pepper : Hill dwarf cleric. Formerly healer and leader for mercenary groups.
+
 
 ### Locations 
 * Neverwinter : Starting spot, large city. 
@@ -17,7 +20,7 @@ magic items very quickly.
 * Eva : Mother of kids (Charlie and Leanne), we saved them as first quest. 
 * Sister Thea : Acolyte of TImera, rescued from gobbos 
 * Sister Garael : At the shrine of luck 
-* Gundran, Tharden, Nundro : Brother dwarves, cousins of Pepper. Gundran is still at cragmaw 
+* Gundran, Tharden, Nundro : Brother dwarves, cousins of Pepper. Gundran in Phandalin with map   
 * Sildar : Gundran's bodyguard, was seeking a mage who ended up being Earno GlassStaff 
 * Linene : Proprietor of Lionshield Costor 
 * Halya : Runs miner's exchange 
@@ -25,12 +28,15 @@ magic items very quickly.
 * Earno GlassStaff : Redbrand leader. Brought to justice. 
 * Black Spider : Drow, figure of mystery, connected to GlassStaff. Looking for forge of spells. 
 * Harbin : Townmaster of phandelin. Was timid about dealing with redbrands
+* Hamun Kost : Necromancer temporarily at Watchtower at Old Owls Well 
+* Pip : Son of Toblin, who runs the Inn 
+* Toblin : Runs the Inn 
     
 ### Quests : 
 * (Complete) Bring down leader of redbrands: Brought GlassStaff to Phandelin
 * (Complete) Guard Gundran's wagon 
 * (Complete) Deliver bejeweled comb : Delivered to Sister Garael
-* Deliver comb to banshee : 
+* (Complete) Deliver comb to banshee : 
     * Banshee is Agatha in Coneyberry. We deliver the comb in order to ask the banshee where Beaugentle's spellbook is 
     * Reward 3x healing pots 
     * We can ask her a question: Answer a question about who owns a spellbook: Owned by a legendary mage named Beaugentle. 
@@ -46,33 +52,42 @@ magic items very quickly.
 * Keleen (Lydia's aunt): has a longtime friend, a druid named rudolph. Suggested we look for a druid that knows the 
 location of cragmaw or wave echo
 * Townmaster's Hall: A signup for sommeone to head east along the tribor trail to deal with some orcs. 
-* Baron Edermath has an orchard: In the hills (east northeast) northeat of phandelin: rumors of someone digging in the ruins of 
+* Daran Edermath has an orchard: In the hills (east northeast) northeat of phandelin: rumors of someone digging in the ruins of 
 a watchtower. Other prospectors in the area have reported undead. In the area is a watchtower of an ancient civilization. 
 There might be something called old owl well there and some latent ancient magic there, and Eatermeth is worried about it. 
 The Watchtower might be ancient magic of the Nethiril.
+* (Complete) Quest: Kill orcs at Wyvern Tor. 
+    * Offered by Hamon, reward 100gp gem and a tent (when he's done with it). 
+    * Town Hall: 100gp reward 
+* Clear out Cragmaw Castle: Sildar wants us to clear out the castle. 500gp Reward. 
 
- 
 
 ### Personal Treasure : 
 * Coin : 10gp
 * Platinum signet, 50gp
-* Rations : 35 days of rations (Salted Pork, Beer, Kimchee) 
+* Rations : 31 days of rations (Salted Pork, Beer, Kimchee) 
+* Necklace of Rando Teeth, looted from orcs 
     
 ### Group Treasure : 
-* Coin : 52 copper, 90 silver, 759gp
+* Coin : 74 copper, 85 silver, 861gp
 * Potions : 2 potions of healing 
 * Armor :  
-* Weapons : Scimitar x3, Shortbow x3
+* Weapons : GreatAxe x8 
 * Tools : Manacles x1, Oil Flask x2, Tinderbox 
 * Art : 50gp Jade Frog x1 
-* Gems : 2gp Garnets x2, 10gp Carnelias x5, 15gp Peridots x2, 65gp emerald, 100gp Pearl x1
+* Gems : 2gp Garnets x2, 10gp Carnelias x5, 15gp Peridots x2, 65gp emerald, 100gp Pearl x2
 * One gallon of Draco Noir perfume. Otter musk pellet, Dalia flower concentrate, Sandalwood Bark
+* 3 Vials of CKB Perfume 
+* Battle Wagon: Fortified wagon. Flame decals on two side cooking a bowl of kimchi and Pork 
+    Back Panel, the wording "Princess Butterface and the Fortress of Fortification" 
+    Installed tent and chest. 
+
 
 ### Sessions : 
 * 1 : Group met, saved some kids, started escoring Gundran's wagon to town. Ended up saving Sildar 
 * 2 : Got to Phandelin, started investigating Redbrands. Went up to manor to start some shit 
 * 3 : Brough GlassStaff to justice, crippled redbrands 
 * 4 : Built battle wagon. Besieged Cragmaw castle 
-
+* 5 : Killed Orcs at Wyvern Tor. Collected $$. Killed Harpies. 
 
 

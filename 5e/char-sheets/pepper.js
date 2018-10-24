@@ -45,26 +45,30 @@ define([
     Pepper.Features.push('Proficiency: Playing Cards and Cooks tools.');
     Pepper.Features.push('Disciple of Life. +2+Spell Level on any healing effects.');
 
+// 4 is out 
+
+// 6 saved
 
 	Pepper._extra_hp = Pepper.Level;
     // prep 6 lvl+wis
     // 0
-    Pepper.Spells.Add('Mending');
+    Pepper.Spells.Add('Guidance');
 	Pepper.Spells.Add('Sacred Flame');
-	Pepper.Spells.Add('Spare the Dying');
-	// domain
+	Pepper.Spells.Add('Mending');
+	// domain 1
     Pepper.Spells.Add('Bless');// domain
     Pepper.Spells.Add('Cure Wounds'); // domain
     // 1
     Pepper.Spells.Add('Shield of Faith');
     Pepper.Spells.Add('Healing Word');
-    Pepper.Spells.Add('Purify Food and Drink');//rit
+    Pepper.Spells.Add('Sanctuary');//rit
     Pepper.Spells.Add('Detect Magic');//rit
     Pepper.Spells.Add('Command');   
-    // 2
+    // domain 2
     Pepper.Spells.Add('Spiritual Weapon') // domain
-    Pepper.Spells.Add('Lesser Restoration')
-    Pepper.Spells.Add('Locate Object')
+    Pepper.Spells.Add('Lesser Restoration') // domain 
+    // 2
+    Pepper.Spells.Add('Prayer of Healing')
     
 	let items = Pepper.Items;
 	items.Add('Gold', 20);
@@ -99,3 +103,7 @@ define([
 
 
 });
+
+
+// large most loyal 
+// large indoor kid 
