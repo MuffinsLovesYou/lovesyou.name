@@ -80,6 +80,7 @@ define([
 			,'Bedroll': 1
 			,'Oil (flask)' : 6
 			,'Arrows' : 60 
+			,'Bullets' : 40
 			,'Map or Scroll Case': 1
 		},
 		Actions : {

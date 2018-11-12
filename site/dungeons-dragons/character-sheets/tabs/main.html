@@ -1,0 +1,85 @@
+<div id='characterbox'>
+	<textarea rows='3'></textarea>
+	<div>
+		<span id='Name' bind class='character_name'></span>
+	</div>
+	<div style='font-style:italic;'>
+		<span id='Size' bind></span>
+		<span id='Race' bind></span><span>,</span>
+		<span id='Alignment' bind></span>
+	</div>
+	<div class='character_divider'></div>
+	<div>
+		<span class='character_red_left'>Saving Throws </span>
+		<span id='Save' bind='SaveText'>
+	</div>
+	<div id='character_resistances'>
+		<span class='character_red_left'>Resistances </span>
+		<span id='Immune' bind='Defenses.Resistances'>
+	</div>
+	<div id='character_immunities'>
+		<span class='character_red_left'>Damage Immunities </span>
+		<span id='Immune' bind='Defenses.Immunities'>
+	</div>
+	<div id='character_condition_immunities'>
+		<span class='character_red_left'>Condition Immunities </span>
+		<span id='ConditionImmune' bind='Defenses.ConditionImmunities'>
+	</div>
+	<div>
+		<span class='character_red_left'>Armor Class </span>
+		<span id='Ac' bind='Defenses.AC'>
+	</div>
+	<div>
+		<span class='character_red_left'>Hit Points </span>
+		<span id='Hp' bind='Defenses.HP'></span>
+	</div>
+	<div>
+		<span class='character_red_left'>Speed </span>
+		<span id='Speed' bind></span>
+	</div>
+	<div class='character_divider'></div>
+	<div>
+		<div>
+			<span class='character_stat_label'>STR</span>
+			<span class='character_stat_label'>DEX</span>
+			<span class='character_stat_label'>CON</span>
+			<span class='character_stat_label'>INT</span>
+			<span class='character_stat_label'>WIS</span>
+			<span class='character_stat_label'>CHA</span>	
+		</div>
+		<div>
+			<span id='Str' bind='Stats.Str' class='character_stat_value'></span>
+			<span id='Dex' bind='Stats.Dex' class='character_stat_value'></span>
+			<span id='Con' bind='Stats.Con' class='character_stat_value'></span>
+			<span id='Int' bind='Stats.Int' class='character_stat_value'></span>
+			<span id='Wis' bind='Stats.Wis' class='character_stat_value'></span>
+			<span id='Cha' bind='Stats.Cha' class='character_stat_value'></span>
+		</div>
+	</div>
+	<div class='character_divider'></div>
+	<div>
+		<span class='character_red_left'>Senses </span>
+		<span id='Senses' bind></span>
+	</div>
+	<div>
+		<span class='character_red_left'>Languages </span>
+		<span id='Languages' bind></span>
+	</div>
+	<div>
+		<span class='character_red_left'>Level </span>
+		<span id='Level' bind='LevelText'></span>
+	</div>
+	<div id='character-features'>
+        <span class='character_red_left'>Features</span>
+        <div class='character_divider'></div>
+	</div>
+	<div id='character-actions'>
+		<span class='character_red_left'>Actions</span>
+		<div class='character_divider'></div>
+	</div>
+	<div id='character-reactions'>
+		<span class='character_red_left'>Reactions</span>
+		<div class='character_divider'></div>
+	</div>
+	
+</div>
