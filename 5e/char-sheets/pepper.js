@@ -3,7 +3,7 @@ define([
 	'5e/character.js'
 ],(Character)=>{
 	let Pepper = new Character({
-        Name : 'Pepper',
+        Name : '"Sargent" Pepper Rockseeker',
         Race : 'Hill Dwarf',
         Alignment : 'Neutral Good',
         Speed : 25,
@@ -37,8 +37,6 @@ define([
             Athletics : { Trained : true }
         },
         Features : {
-            //Darkvision 60 ft   senses
-            // spell save...  spellcasting 
             'Tool Proficiencies' : `Playing cards and cook's tools.`,
             'Disciple of Life' : `2+spell level bonus to amount healed from spells.`,
             'Spellcasting' : `Pepper is a 4th level spellcaster. Her spellcasting ability 
@@ -102,26 +100,27 @@ define([
         Actions : {
             'Sacred Flame' : `A creatures you can see within 60 feet must succeed 
             on a dexterity saving throw or take 1d8 radiant damage.`
-        }
+        },
+        Background : {
+			Trait : "I'm always polite and respectful. Also, I don't trust my gut feelings, " 
+                + "so I tend to wait for others to act."
+            ,Ideal : "Respect. People deserve to be treated with dignity and courtesy."
+            ,Bond : "I have three cousins--Gundren, Tharden, and Nundro Rockseeker-- who "
+                + "are my friends and cherished clan members."
+            ,Flaw : "I secretly wonder whether the gods care about mortal affairs at all."
+            ,Background : ""
+            ,Description : "Trained as a soldier on the island of Mintarn, Pepper traveled "
+                + "to Neverwinter as part of a mercenary company that serves as both army and city watch. She grew "
+                + "disillusioned with her fellow soldiers, who seem to enjoy their authority at the expense of the "
+                + "people they're supposed to protect. Recently she disobeyed an order and was suspended from active "
+                + "duty. Personal goal: Teach the Redbrands a Lesson. "
+            ,Feature : ""
+    	}
     });
 
     Pepper.Defenses.HP += Pepper.Level;
 
-	Pepper.Background = 'Soldier';
 
-	/*Pepper.Personality.Description = `Trained as a soldier on the island of Mintarn, Pepper traveled 
-    to Neverwinter as part of a mercenary company that serves as both army and city watch. She grew 
-    disillusioned with her fellow soldiers, who seem to enjoy their authority at the expense of the 
-    people they're supposed to protect. Recently she disobeyed an order and was suspended from active 
-    duty. Personal goal: Teach the Redbrands a Lesson. `;
-	Pepper.Personality.Trait = `I'm always polite and respectful. Also, I don't trust my gut feelings, 
-    so I tend to wait for others to act.`;
-	Pepper.Personality.Ideal = `Respect. People deserve to be treated with dignity and courtesy.`;
-	Pepper.Personality.Bond = `I have three cousins--Gundren, Tharden, and Nundro Rockseeker-- who 
-    are my friends and cherished clan members.`;
-	Pepper.Personality.Flaw = `I secretly wonder whether the gods care about mortal affairs at all.`;
-	Pepper.Personality.Background = ``;*/
-	
 	return Pepper;
 });
 
