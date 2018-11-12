@@ -2,9 +2,12 @@ define([
     '5e/items'
     ,'5e/skills'
     ,'5e/spells'
-], (Items,Skills,Spells) => {
+], (items,skills,spells) => {
+
 
     // Eventually this may get migrated to its own file.
+    // all its doing right now after changing this is 
+    // setting the HD, which we can do separately. 
     function Class(name, level, archetype) {
         let Classes = {
             'Barbarian': { HD: 12 },
@@ -30,160 +33,102 @@ define([
         return this;
     }
 
-    // Is this the most elegant way to do this?
-    Number.prototype.Bonus = function () {
-        return Math.floor((this - 10) / 2);
+    let bonus = function(ability_score){
+        return Math.floor((ability_score - 10) / 2);
     }
 
-    let Character = function () {
+    let Character = function(data){
         let char = this;
+        char.Name = data.Name || 'Unnamed';
+        char.Languages = data.Languages || 'common';
+        char.Race = data.Race || '';
+        char.Senses = data.Senses || '';
+        char.Size = data.Size || 'medium';
+        char.Speed = data.Speed || 30;
+        char.Alignment = data.Alignment || '';
+        char.Stats = data.Stats;
+        char.CarryWeight = char.Stats.Strength * 15;
+        
+        char.bonus = bonus;
 
-        char.Name = '';
-        char.Race = '';
-        /* usage: char.Classes.Add('Paladin', 4)  */
-        char._classes = [];
+        // Class and level information
         char.Classes = {};
-        char.Classes.Add = (name, level) => {
-            char._classes.push(name);
-            let new_class = new Class(name, level);
-            char.Classes[name] = new_class;
-        }
-        Object.defineProperty(char, 'ClassName', {
-            get : function(){
-                let className = '';
-                char._classes.forEach((c,i)=>{
-                    if(i>0){ className+='/'; }
-                    className+=c + ' ' + char.Classes[c].Level
-                });
-                return className;
-            }   
+        let level = 0;
+        data.Classes.forEach(c =>{
+            level += c.Level || 1;
+            char.Classes[c.Name] = new Class(c.Name, c.Level, c.Archetype);
         });
+        char.Level = level;
+        char.Proficiency = Math.ceil((level/4)+1);
 
-        char.Background = '';
-        char.XP = 0;
-        char.Archetype = '';
-
-        char.Stats = {
-            Strength: 10,
-            Dexterity: 10,
-            Constitution: 10,
-            Intelligence: 10,
-            Wisdom: 10,
-            Charisma: 10
-        }
-        Object.defineProperty(char, 'Carry_Weight', {
-            enumerable : true,
-            get : function() {
-                return char.Stats.Strength * 15;
-            }
-        });
-        
-        
-        /* returns the sum of the character's class-levels */
-        Object.defineProperty(char, 'Level', {
-            enumerable: true,
-            get: function () {
-                let returnValue = 0;
-                for (let l in char.Classes) {
-                    let _class = char.Classes[l];
-                    if (typeof (_class) != 'object') {
-                        continue;
-                    }
-                    returnValue += _class.Level || 0;
-                }
-                return returnValue;
-            }
-        });
-
-        Object.defineProperty(char, 'Proficiency', {
-            enumerable: true,
-            get: function () {
-                let level = char.Level;
-                return Math.ceil((level / 4) + 1);
-            }
-        });
-
-        char._extra_hp = 0;
-        Object.defineProperty(char, 'HP', {
-            enumerable: true,
-            get: function () {
-                let hp = 0;
-                char._classes.forEach((c, i)=>{
-                    let _class = char.Classes[c];
-                    hp += _class.Level * ((_class.HD/2)+1);
-                    if(i===0){ hp+=((_class.HD/2)-1); }
-                });
-                hp += char.Stats.Constitution.Bonus() * char.Level;
-                hp += char._extra_hp;
-                return hp;
-            }
-        });
-
-
-        let Save = function (stat) {
-            let save = this;
-            save.Trained = false;
-            save.Stat = stat;
-            Object.defineProperty(save, 'Bonus', {
-                get: function () {
-                    let saveBonus = char.Stats[stat].Bonus();
-                    if (save.Trained) {
-                        saveBonus += char.Proficiency;
-                    }
-                    return saveBonus;
-                }
-            });
-        }
-
-        char.Saves = {};
-        char.Saves['Strength'] = new Save('Strength');
-        char.Saves['Dexterity'] = new Save('Dexterity');
-        char.Saves['Constitution'] = new Save('Constitution');
-        char.Saves['Intelligence'] = new Save('Intelligence');
-        char.Saves['Wisdom'] = new Save('Wisdom');
-        char.Saves['Charisma'] = new Save('Charisma');
-
-        char.AC = 0;
-
-        char.Personality = {
-            Trait: '',
-            Ideal: '',
-            Bond: '',
-            Flaw: '',
-            Description: '',
-            isEmpty : function(){
-                return (this.Trait+this.Ideal+this.Bond+this.Flaw+this.Description).length === 0;
+        // Defenses   
+        char.Defenses = {
+            AC : data.Defenses.AC || 10,
+            Resistances : data.Defenses.Resistances || '',
+            Immunities : data.Defenses.Immunities || '',
+            ConditionImmunities : data.Defenses.ConditionImmunities || '',
+            Saves : {
+                Strength : bonus(char.Stats.Strength),
+                Dexterity : bonus(char.Stats.Dexterity),
+                Constitution : bonus(char.Stats.Constitution), 
+                Intelligence : bonus(char.Stats.Intelligence), 
+                Wisdom : bonus(char.Stats.Wisdom),
+                Charisma : bonus(char.Stats.Charisma),
             }
         }
+        for(let s in data.Defenses.Saves) {
+            if(data.Defenses.Saves[s].Trained)
+                char.Defenses.Saves[s] += char.Proficiency;
+            // Expertise
+        }
 
-        Skills.map(char);
-     
-        // keeping this primitive for now
-        char.Features = [];
+        let hp = 0;
+        for(let c in char.Classes){
+            let _class = char.Classes[c];
+            hp += _class.Level * ((_class.HD/2)+1);
+            if(data.Classes[0].Name === c)
+                hp += ((_class.HD/2)-1);
+        }
+        char.Defenses.HP = hp + (bonus(char.Stats.Constitution) * char.Level);
 
-        
+        // Skills:
+        char.Skills = {};
+        for(let s in skills){
+            char.Skills[s] = {
+                Name : s,
+                Ability : skills[s].substring(0,3),
+                Trained : data.Skills[s] && data.Skills[s].Trained,
+                Expertise : data.Skills[s] && data.Skills[s].Expertise,
+            }
+            char.Skills[s].Bonus = bonus(char.Stats[skills[s]]);
+            if(char.Skills[s].Trained) char.Skills[s].Bonus += char.Proficiency;
+            if(char.Skills[s].Expertise) char.Skills[s].Bonus += char.Proficiency;
+        }
+       
+
+        char.Features = data.Features;
+        char.Actions = data.Actions;
+        char.Reactions = data.Reactions;
+        char.Background = data.Background;
+
         char.Spells = {};
-        char.Spells.Add = (name) => {
-            char.Spells[name] = Spells[name]
-            char.Spells.length++;
-        }
-        char.Spells.length = 0;
+        data.Spells.forEach(s => char.Spells[s] = spells[s]);
 
-        char.Items = {}
-        char.Items.Add = (name, count, weight) => {
-            count = count || 1;
-            if(!Items[name])
-                return console.log(name+ ' not found in items database.');
-            let item = JSON.parse(JSON.stringify(Items[name]));
-            item.Count = count;
-
+        char.Items = {};
+        for(let i in data.Items){
+            if(!items[i]) 
+                console.log(i + ' not found in items database.');
+            
+            let item = items[i] || { Name : i, Weight : 0, Cost : 0 };
+            item.Count = data.Items[i];
             item.base_weight = item.Weight || 0;
-            item.Weight = Math.floor(((item.base_weight * count) * 10)) / 10;
-            char.Items.length++;
-            char.Items[name] = item;
+            item.Weight = Math.floor(((item.base_weight * item.Count) * 10)) / 10;    
+            char.Items[i] = item;
         }
-        char.Items.length = 0;
-        
+
+        // Personality
     }
+
+   
     return Character;
 });

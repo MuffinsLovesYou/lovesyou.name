@@ -4,12 +4,12 @@ define([
 ], function (Lite, tiles) {
 
     return Lite.extend({
-        content_url : 'site/dungeons-dragons/character-sheets/character-sheets.html',
+        content : `<div id='tiles' class='tiles'></div>`,
         onContentBound : function() {
             tiles.fill([
                 {title:"Pepper",href:"#character/pepper",alt:"dwarven cleric"},
-                {title:"Lance of the Heavens",href:"#character/lance",alt:"holy arrows"}
-                , { title : 'Shadowhoof', href : '#character/shadowhoof', alt : 'shadow hoof' }
+                {title:"Rez",href:"#character/rez",alt:"Slayer 2"}
+                , { title : 'Kene', href : '#character/kene', alt : 'Slayer 1' }
             ]);  
         }
     });

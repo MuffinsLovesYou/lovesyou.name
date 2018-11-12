@@ -39,3 +39,44 @@
     text-align:center;
     width:60px;
 }
+
+#characterbox { 
+    text-align: left
+}
+
+.character_name {
+    color : darkred;
+    font-size : large;
+    font-weight:bold;
+}
+
+.character_red_left {
+    color : darkred;
+    font-weight:bold;
+}
+
+.character_grey_left {
+    font-style:italic;
+    font-weight:bold;
+}
+
+.character_divider {
+    border-top:solid thin darkred;
+    margin-top : 5px;
+    padding-bottom : 5px;
+}
+
+.character_stat_label {
+    color :darkred;
+    display:inline-block;
+    font-weight:bold;
+    text-align:center;
+    width: 60px;
+}
+
+.character_stat_value {
+    color : darkred;
+    display:inline-block;
+    text-align:center;
+    width:60px;
+}

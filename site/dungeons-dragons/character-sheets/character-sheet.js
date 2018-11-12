@@ -2,11 +2,12 @@ define([
     'lite'
     ,'xhr'
     ,'scripts/homerolled/gridify'
-    ,'site/dungeons-dragons/character-sheets/tabs/stats'
+    ,'site/dungeons-dragons/character-sheets/tabs/main'
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
-], function (Lite, xhr, gridify, Stats, modal, spellbox, spells) {
+    ,'scripts/homerolled/markdown-parser'
+], function (Lite, xhr, gridify, MainTab, modal, spellbox, spells, md) {
     
     return Lite.extend({
         content_url : 'site/dungeons-dragons/character-sheets/character-sheet.html',
@@ -21,37 +22,54 @@ define([
         }
         , initialize : function() {
             this.data_url = '5e/char-sheets/'+window.location.hash.split('/').splice(-1)+'.js'
+            
+            this.load_css();
+        }
+        , load_css : function() {
+            let css = document.createElement("link");
+            css.rel = "stylesheet";
+            css.type = "text/css";
+            css.href = 'css/homerolled/dnd.css';
+            let head = document.getElementsByTagName('head')[0];
+            let links = document.getElementsByTagName('link');
+            let has = Array.from(links).some((link)=>{
+                return link.href === css.href;
+            });
+            if(!has) head.appendChild(css);            
         }
         , onDataBound : function (data) {
             let view = this;
-            view.stats_tab(data);
-            view.personality_tab(data);
+            view.main_tab(data);
+            view.background_tab(data);
+            view.notes_tab();
             view.skills_tab(data);
-            view.features_tab(data);
             view.items_tab(data);
             view.spells_tab(data);
         }
-        , stats_tab : function(data){
-            new Stats({
+        , main_tab : function(data){
+            new MainTab({
                 data : data, // might wanna make data binding more obvious 
-                container : document.getElementById('character_stats')
+                container : document.getElementById('character_main')
             }).attach();
         }
-        , personality_tab : function(data){
-            if(data.Personality.isEmpty()) 
-                return document.getElementById('personality_tab').style.display = 'none';
-            
-            let personality = document.getElementById('character_personality');
-            for (let t in data.Personality) {
-                if(typeof(data.Personality[t]) !== 'string') continue;
-                let div = personality.appendChild(document.createElement('div'));
-                let lspan = div.appendChild(document.createElement('span'));
-                lspan.innerHTML = t + ':';
-                let rspan = div.appendChild(document.createElement('span'));
-                rspan.innerHTML = data.Personality[t];
-            }  
+        , notes_tab : function(){
+            let view = this;
+            var notes_container = view.container.querySelector('#character_notes');
+            let x = new Lite.extend({
+                container : notes_container,
+                content : `<div id='notes'></div>`,
+                data_url : '5e/notes/char-notes/'+window.location.hash.split('/').splice(-1)+'.md',
+                onDataLoaded : function(data){
+                    this.data = md.Parse(data);
+                },
+                onDataBound : function(){
+                    this.container.querySelector('#notes').innerHTML += this.data;
+                }
+            });
+            new x().attach();
         }
         , skills_tab : function(data){
+            window.data = data;
             let _skills = [];
             for(let s in data.Skills) _skills.push(data.Skills[s]);
 
@@ -65,14 +83,15 @@ define([
                 ],
             });
         }
-        , features_tab : function(data){
-            let features = document.getElementById('character_features');
-            if(data.Features.length === 0)
-                document.getElementById('features_tab').style.display = 'none';
-            for (let f in data.Features) {
-                let span = features.appendChild(document.createElement('span'));
-                span.innerHTML = data.Features[f] + ' <br/>';
-            }    
+        , background_tab : function(data){
+            let background = this.container.querySelector('#character_background');
+            if(data.Background === null) 
+                this.container.querySelector('#background_tab').style.display = 'none';
+            var background_md = '';
+            for(let b in data.Background)
+                background_md += '* **' + b + '**: ' + data.Background[b] + '  \n';
+            background_md = md.Parse(background_md);
+            background.innerHTML = background_md;
         }
         , items_tab : function(data) {
             let _items = [];
@@ -91,7 +110,7 @@ define([
             });
             let totalWeight = _items.reduce((acc, item)=>{ return (acc+=(item.Weight||0)); }, 0);
             let lblItems = document.getElementById('label-items');
-            lblItems.innerHTML = lblItems.innerHTML + ' ' + totalWeight + '/' + data.Carry_Weight;
+            lblItems.innerHTML = lblItems.innerHTML + ' ' + totalWeight + '/' + data.CarryWeight;
         }
         , spells_tab : function(data) {
             let _spells = [];
