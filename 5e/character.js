@@ -97,7 +97,7 @@ define([
             char.Skills[s] = {
                 Name : s,
                 Ability : skills[s].substring(0,3),
-                Trained : data.Skills[s] && data.Skills[s].Trained,
+                Trained : (data.Skills[s] && data.Skills[s].Trained) || false,
                 Expertise : data.Skills[s] && data.Skills[s].Expertise,
             }
             char.Skills[s].Bonus = bonus(char.Stats[skills[s]]);
