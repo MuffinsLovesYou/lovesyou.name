@@ -29,7 +29,7 @@ magic items very quickly.
 * Black Spider : Drow, figure of mystery, connected to GlassStaff. Looking for forge of spells. 
 * Harbin : Townmaster of phandelin. Was timid about dealing with redbrands
 * Hamun Kost : Necromancer temporarily at Watchtower at Old Owls Well 
-* Pip : Son of Toblin, who runs the Inn 
+* Pip Stonehill: Son of Toblin, who runs the Inn, painted our wagon.
 * Toblin : Runs the Inn 
     
 ### Quests : 
@@ -51,15 +51,15 @@ magic items very quickly.
 * Map to Wave Echo Cave
 * Keleen (Lydia's aunt): has a longtime friend, a druid named rudolph. Suggested we look for a druid that knows the 
 location of cragmaw or wave echo
-* Townmaster's Hall: A signup for sommeone to head east along the tribor trail to deal with some orcs. 
+* Townmaster's Hall: A signup for someone to head east along the tribor trail to deal with some orcs. 
 * Daran Edermath has an orchard: In the hills (east northeast) northeat of phandelin: rumors of someone digging in the ruins of 
 a watchtower. Other prospectors in the area have reported undead. In the area is a watchtower of an ancient civilization. 
 There might be something called old owl well there and some latent ancient magic there, and Eatermeth is worried about it. 
 The Watchtower might be ancient magic of the Nethiril.
 * (Complete) Quest: Kill orcs at Wyvern Tor. 
-    * Offered by Hamon, reward 100gp gem and a tent (when he's done with it). 
-    * Town Hall: 100gp reward 
-* Clear out Cragmaw Castle: Sildar wants us to clear out the castle. 500gp Reward. 
+    * Offered by Hamon, reward 100gp (obtained) gem and a tent (when he's done with it). 
+    * Town Hall: 100gp (obtained) reward 
+* Clear out Cragmaw Castle: Sildar wants us to clear out the castle. 500gp Reward (obtained). 
 
 
 ### Personal Treasure : 
@@ -67,20 +67,40 @@ The Watchtower might be ancient magic of the Nethiril.
 * Platinum signet, 50gp
 * Rations : 31 days of rations (Salted Pork, Beer, Kimchee) 
 * Necklace of Rando Teeth, looted from orcs 
+* Scroll of Revivify
+* Splint Mail 
+* 1 fine quarterstaff with feather carvings
     
+
 ### Group Treasure : 
-* Coin : 74 copper, 85 silver, 861gp
+* Coin : 74 copper, 80 silver, 1503gp, 
 * Potions : 2 potions of healing 
-* Armor :  
-* Weapons : GreatAxe x8 
+* Armor : 
+* Weapons :
 * Tools : Manacles x1, Oil Flask x2, Tinderbox 
 * Art : 50gp Jade Frog x1 
-* Gems : 2gp Garnets x2, 10gp Carnelias x5, 15gp Peridots x2, 65gp emerald, 100gp Pearl x2
-* One gallon of Draco Noir perfume. Otter musk pellet, Dalia flower concentrate, Sandalwood Bark
+    * Gold Chalice 150gp
+    * Gold Knife 60gp
+    * Gold Censer 120gp
+    * Gold Statuette 100gp
+* Gems : 
+    * 2gp Garnets x2, 
+    * 10gp Carnelias x5, 
+    * 15gp Peridots x2, 
+    * 65gp emerald, 
+    * 100gp Pearl x2, 
+    * 150gp saphhire
+* One gallon of Draco Noir perfume. Scent: Otter musk pellet, Dalia flower concentrate, Sandalwood Bark
 * 3 Vials of CKB Perfume 
+* 1 cask very fine dwarven brandy. 10 draft's 
+    -- 1 imbibe, gain 1 hp 
+    -- 2 imbibe, poison effect
 * Battle Wagon: Fortified wagon. Flame decals on two side cooking a bowl of kimchi and Pork 
     Back Panel, the wording "Princess Butterface and the Fortress of Fortification" 
-    Installed tent and chest. 
+    Installed tent and chest. Paintngs by Pip Stonehill
+
+#### Significant Withdrawls:
+* 200gp - Pepper Scale Mail
 
 
 ### Sessions : 
@@ -89,5 +109,7 @@ The Watchtower might be ancient magic of the Nethiril.
 * 3 : Brough GlassStaff to justice, crippled redbrands 
 * 4 : Built battle wagon. Besieged Cragmaw castle 
 * 5 : Killed Orcs at Wyvern Tor. Collected $$. Killed Harpies. 
+* 6 : Revisited Cragmaw, cleared it out. Cashed in. 
+
 
 

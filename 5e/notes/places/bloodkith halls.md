@@ -39,6 +39,40 @@ with extra work going into ventillation and water flow than would otherwise
 be needed in a shallower hill dwarf hall. 
 The hall has about 6 functional levels. 
 
+4 smoke stacks 2 for level 2 
+1 for level 3 
+1 for level 4 
+
+assume food wasn't self-sufficient, the farm output was supplemented by 
+external stuff 
+
+acre is about 200 x 200 feet 
+200 acres then about 
+40000 x 40000 feet, massive 
+
+20000 x 20000 per floor if 2 floors 
+
+10000 x 10000 per floor if 4 floors *
+
+damn, even cutting that in half gets us a mile suare of farm 
+we have to assume much higher yield, and much more 
+external supplementation. 
+which functionally drops our count of kobolds below 100, which is fine. 
+though also the kobolds probably have very low caloric requirements. 
+
+
+
+Floors: 
+
+1 Storage, preservation, some private rooms on the outside
+2 Kitchens, Forges  
+3 Commons,
+4 farm 1  
+5 family spaces
+6 farm 2 
+7 cistern farm 3, cold storage
+
+
 #### Cistern and flooding: 
 A natural underground spring itermittently flows depending on snowmelt. 
 Its water feeds into a 
