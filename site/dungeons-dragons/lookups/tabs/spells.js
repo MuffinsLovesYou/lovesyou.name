@@ -35,7 +35,7 @@ define([
                     },
                     { field : 'Level', filter: true, sort:true, style:'width:40px;text-align:right' },
                     { field : 'School', filter : true, sort : true, style : 'width:75px'},
-                    { field : 'Casting Time', filter : true, sort:true, style : 'max-width:75px;' },
+                    { field : 'CastingTime', filter : true, sort:true, style : 'max-width:75px;' },
                     { field : 'Range', filter : true, sort:true, style:'width:50px;' },
                     { field : 'Duration', filter : true, sort:true, } 
                 ]

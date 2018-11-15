@@ -138,7 +138,7 @@ define([
                         } 
                     },
                     { field : 'Level', sort:true },
-                    { field : 'Casting Time', style : 'max-width:300px; text-align:left' },
+                    { field : 'CastingTime', style : 'max-width:300px; text-align:left' },
                     { field : 'Range' },
                     { field : 'Duration' } 
                 ],
