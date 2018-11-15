@@ -38,8 +38,6 @@ define([
             Athletics : { Trained : true }
         },
         Features : {
-            //Darkvision 60 ft   senses
-            // spell save...  spellcasting 
             'Duelist Fighting Style' : `+2 damage bonus with 1h weapon if no other weapon is equipped.`,
             'Spellcasting' : `Template is a 1st level spellcaster. Her spellcasting ability 
             modifier is Intelligence (spell save DC 9, +1 to hit with spell attacks). 

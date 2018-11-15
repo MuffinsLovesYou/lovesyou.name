@@ -79,7 +79,8 @@ define([
         for(let s in data.Defenses.Saves) {
             if(data.Defenses.Saves[s].Trained)
                 char.Defenses.Saves[s] += char.Proficiency;
-            // Expertise
+            if(data.Defenses.Saves[s].Bonus)
+                char.Defenses.Saves[s] += data.Defenses.Saves[s].Bonus;
         }
 
         let hp = 0;
