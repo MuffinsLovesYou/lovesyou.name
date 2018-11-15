@@ -3,7 +3,7 @@ define([
 	'5e/character.js'
 ],(Character)=>{
 	let Pepper = new Character({
-        Name : '"Sargent" Pepper Rockseeker',
+        Name : '"Sargeant" Pepper Rockseeker',
         Race : 'Hill Dwarf',
         Alignment : 'Neutral Good',
         Speed : 25,
