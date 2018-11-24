@@ -21,7 +21,7 @@ define([
             });
         }
         , initialize : function() {
-            this.data_url = '5e/char-sheets/'+window.location.hash.split('/').splice(-1)+'.js'
+            this.data_url = '5e/char-sheets/'+window.location.hash.split('/').slice(1).join('/')+'.js'
             
             this.load_css();
         }
