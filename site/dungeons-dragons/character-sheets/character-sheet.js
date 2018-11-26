@@ -1,13 +1,12 @@
 define([
     'lite'
-    ,'xhr'
     ,'scripts/homerolled/gridify'
     ,'site/dungeons-dragons/character-sheets/tabs/main'
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
     ,'scripts/homerolled/markdown-parser'
-], function (Lite, xhr, gridify, MainTab, modal, spellbox, spells, md) {
+], function (Lite, gridify, MainTab, modal, spellbox, spells, md) {
     
     return Lite.extend({
         content_url : 'site/dungeons-dragons/character-sheets/character-sheet.html',
