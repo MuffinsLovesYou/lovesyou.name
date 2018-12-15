@@ -7,6 +7,8 @@ define([
         content : "<p>DM notes.</p><div id='tiles' class='tiles'></div>",
         onContentBound : function() {
             tiles.fill([
+                {title:'improv', href:'#note/sessions/improv',alt:'snowy day session'},
+                {title:'12-2018',href:'#note/sessions/12-2018',alt:'bloodkith halls'},
                 {title:'10-2018',href:'#note/sessions/10-2018',alt:`nasty business`},
                 {title:'08-2018',href:'#note/sessions/08-2018',alt:'maybe time to head out'},
                 {title:'06-2018',href:'#note/sessions/06-2018',alt:'october in gingonol'},
