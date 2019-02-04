@@ -158,21 +158,6 @@ Peltasts will hug the wall and fire volleys at less armored opponents, switching
 each volley. 
 Overall: Their goal is to tag opponents with DoT spells then retreat to the commons. 
 
-Kit
-Jack
---
---
--- 
-Erin
-Feyrith
-Flaggfur
--- 
--- 
---  
-* Phalanx4  3
--- 
---
-
 #### Commons (3rd Floor) 
 About 80 feet past the temple is a dining and commons area. Rather than being a single 
 large hall, the area is a series of hewn alcoves branching from the main corridor. Stone 
@@ -211,19 +196,15 @@ will sprint at the party and suicide.
 * 3x [Inventor](#monsterbox/kobolds/black claw inventor)
 
 18
-* Phalanx1  54
-* Phalanx2  54
-* Phalanx3  54
-* Phalanx4  54
+* Erin 
 14
-* Peltast1  76
-8
-* Sorcerer1 44
-* Sorcerer2 44
-6
-* Inventor1 44
-* Inventor2 44
-* Inventor3 44
+* Jack 
+* Feyrith
+8        
+* Kit 
+6    
+* Guausar
+
 
 #### Farms (6th Floor)
 Another farming level, mostly devoted to 'scraper' farming, where various fungi are 
@@ -273,7 +254,15 @@ Mad Marduk
     appendages that attempt to grapple anything within 10 feet. 
     DC 15 athletics or acrobatics to escape
     * An eye opens on a space within 60 feet of the beholder. A random eye ray shoots. 
-5 Marduk 180
+
+* 24 Feyrith 
+* 15 Erin 
+* 8 Giausar
+* 6 Kit
+* 5 Marduk 180 170 163 155 132 123 106 95 89 83 73 56 39 18 11 -1
+
+
+
 
 #### Treasure: 
 A full clear nets this treasure. The crown and maul are with Marduk, 

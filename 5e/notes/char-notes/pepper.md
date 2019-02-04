@@ -12,6 +12,7 @@ lifestyle.
 * Phandelin : Smaller town about 50 miles south of Neverwinter
     * Lionshield coster : Proprietor Linene, General goods and trading 
     * Miner's Exchange : Proprietor - Halya  
+    * Stonehill Inn, run by Toblin 
 * Wave echo cave / Mine of phandelver : Entrance is lost, Might contain forge of spells that can make 
 magic items very quickly. 
 * Cragmaw castle : Where Gundran was taken by gobbos. Cragmaw goblins were working with redbrands
@@ -70,9 +71,11 @@ The Watchtower might be ancient magic of the Nethiril.
 * Scroll of Revivify
 * Splint Mail 
 * 1 fine quarterstaff with feather carvings
+* 1x Mug of hot coacoa 2d4 hp regen when drunk 
     
 
 ### Group Treasure : 
+* Big Heavy Chest
 * Coin : 74 copper, 80 silver, 1503gp, 
 * Potions : 2 potions of healing 
 * Armor : 
