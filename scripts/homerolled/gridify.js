@@ -1,26 +1,43 @@
 define([],()=>{
 
-
-    let gridify_model = function(container){
+    let Gridify = function(container){
+        if(typeof(container)==='string') container = document.getElementById(container);
+        if(!container instanceof HTMLDivElement) 
+            throw('Gridify container must be <div>');
+        
         let grid = this;
         grid.container = container;
+        
+        // Can create a struct that accesses the grid members in dot.notation
+        // clear is a legit utility function. 
 
-        /* Designed to be run once. 
-            Performs initial drawing and definitions. 
+        let _clear = (container)=> { if(!container) return; while(container.firstChild) container.removeChild(container.firstChild); }
+        let _table = () => grid.container.firstChild;
+        let _header_cells = () => Array.from(_table().tHead.rows[0].cells);
+        let _filter_cells = () => Array.from(_table().tHead.rows[1].cells);
+        let _table_rows = () => Array.from(_table().tBodies[0].rows);
+
+
+        /* Initializes grid within provided container.
+
         */
         grid.initialize = function(options){
             _clear(grid.container);
-            let table = grid.container.appendChild(document.createElement('table'));
-            table.id = container.id+'_table';
-            let thead = table.createTHead();
+            grid.container
+                .appendChild(document.createElement('table'))
+                .id = container.id +'_table';
+            
+            grid.header.initialize(options);
             grid.body.initialize();
-            if(options.columns) grid.columns.set(options.columns);
+            grid.footer.initialize();
+            
+            if(options.columns) grid.header.add_columns(options.columns);
             if(options.data) grid.data.set(options.data);
         }
 
         grid.data = {
             get : function() {
-                /* builds data table from existing grid rows */
+                /* build data table from existing grid rows */
             },
             set : function(input_data) {
                 let data = [];
@@ -36,41 +53,32 @@ define([],()=>{
                 return _header_cells().map(x => x.id.split('_').slice(-1));
             }
         }
-        let _clear = (container)=> { if(!container) return; while(container.firstChild) container.removeChild(container.firstChild); }
-        let _table = () => grid.container.firstChild;
-        let _header_cells = () => Array.from(_table().tHead.rows[0].cells);
-        let _filter_cells = () => Array.from(_table().tHead.rows[1].cells);
-        let _table_rows = () => Array.from(_table().tBodies[0].rows);
 
-
-        grid.columns = {
-            set : function(column_definitions) {
-                if(!Array.isArray(column_definitions)) 
-                    throw`.columns.set requires array of column definitions`;
-
-                _clear(_table().tHead);
-                grid.body.initialize();
-                _table().tHead.insertRow();
-                _table().tHead.insertRow();
-                column_definitions.forEach(col => {
-                    grid.columns.add(col);
-                });
-
-                return grid; 
+        grid.header = {
+            initialize : function(options){
+                let tHead = _table().createTHead();
+                tHead.insertRow(); // Label 
+                tHead.insertRow(); // Filter
             }
-            , add : function(column_definition){
-                let hrow = _table().tHead.rows[0];
-                let header_cell = hrow.insertCell();
-                let frow = _table().tHead.rows[1];
-                let filter_cell = frow.insertCell();
+            , add_columns : function(column_definitions){
+                if(!Array.isArray(column_definitions)) 
+                    throw`.columns.set requires an array of column definitions`;
+
+                column_definitions.forEach(col => {
+                    grid.header.add_column(col);
+                });
+            }
+            , add_column : function(column_definition){
+                let header_cell = _table().tHead.rows[0].insertCell();
                 header_cell.id = _table().id+'_header_'+column_definition.field;
-                grid.columns._set_header_label(header_cell, column_definition);
-                grid.columns._set_header_style(header_cell, column_definition);
-                grid.columns._set_column_sort(header_cell, column_definition);
-                grid.columns._set_column_filter(filter_cell, column_definition);
+                grid.header._set_header_label(header_cell, column_definition);
+                grid.header._set_header_style(header_cell, column_definition);
+                grid.header._set_column_sort(header_cell, column_definition);
+                
+                let filter_cell = _table().tHead.rows[1].insertCell();
+                grid.header._set_column_filter(filter_cell, column_definition);
                 
                 grid.body.seed_row.add_column(column_definition);
-                return grid;
             }
             , _set_header_label : function(header_cell, column_definition) {
                 let label = header_cell.appendChild(document.createElement('span'));
@@ -91,6 +99,7 @@ define([],()=>{
                 filter_cell.id = _table().id+'_filter_columns_'+column_definition.field;
                 grid.filtering.add_filter(filter_cell, column_definition)
             } 
+        
         }
 
         grid.body = {
@@ -140,6 +149,13 @@ define([],()=>{
 
         }
 
+        grid.footer = {
+            initialize : function(){
+                _table().createTFoot();
+            }
+        }
+
+
         grid.styling = {
             defaults : { 
                 tbody : {
@@ -169,6 +185,7 @@ define([],()=>{
             }
         }
 
+        // 
         let get_cell_value = function(row, property){ 
             if(typeof(row)==='number') row = _table().tBodies[0].rows[row];
             let cells = Array.from(row.cells);
@@ -257,17 +274,22 @@ define([],()=>{
                 });
             }
         }
+
+        // 
+
+        // paging 
+        grid.paging = { 
+            // grid needs a footer. 
+            // we can just hide rows after redraws. 
+                // it's going to have to interact with sorting and filtering
+                // sorting: picks up all the rows, sorts them, adds them back in. 
+                // filtering: just hides invalid cells. 
+                
+        }
+
+
         return grid;
     }
-
-
-    let gridify = function(el) {
-        if(typeof(el)==='string') el = document.getElementById(el);
-        if(!el instanceof HTMLDivElement) 
-            throw('Gridify target must be <div>');
-        
-        return new gridify_model(el);
-    }
-    return gridify;
+    return Gridify;
 
 });
