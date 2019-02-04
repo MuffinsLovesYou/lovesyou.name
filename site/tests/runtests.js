@@ -10,7 +10,7 @@ define([
             let view = this;
             view.load_mocha_css();
             require([
-                'site/tests/lite_test'
+                ,'site/tests/gridify_test'
             ], ()=>{
                 mocha.run();
             });

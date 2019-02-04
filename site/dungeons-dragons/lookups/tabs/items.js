@@ -21,7 +21,6 @@ define([
                     , { field : 'Value', filter : true, sort : { compare : view.value_sort, parse : view.parse_gp_value  } }
                 ]
             });
-            grid.attach();
         }
         , parse_gp_value : function(v){
             let value = +v.replace(/[^\d\.]/g, '');
