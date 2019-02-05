@@ -1,8 +1,8 @@
 define([
     'lite'
-], (Lite)=>{
+], (lite)=>{
 
-    return Lite.extend({
+    return lite.extend({
         content : `<div id='timeline' class='timeline'></div>`
         , data_url : '5e/notes/timeline.js'
         ,initialize : function() {

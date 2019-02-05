@@ -1,9 +1,10 @@
 define([
     'lite', 
     'tiles'
-], function (Lite, tiles) {
+], function (lite, tiles) {
     
-    return Lite.extend({
+
+    return lite.extend({
         content_url : 'site/landing/landing.html',
         onContentBound : function(){
             tiles.fill([

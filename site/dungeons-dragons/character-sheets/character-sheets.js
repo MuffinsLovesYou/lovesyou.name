@@ -1,9 +1,9 @@
 define([
     'lite', 
     'tiles'
-], function (Lite, tiles) {
+], function (lite, tiles) {
 
-    return Lite.extend({
+    return lite.extend({
         content : `<div id='tiles' class='tiles'></div>`,
         onContentBound : function() {
             tiles.fill([

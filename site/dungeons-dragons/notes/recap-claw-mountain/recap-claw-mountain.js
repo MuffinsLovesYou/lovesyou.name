@@ -2,9 +2,9 @@ define([
     'lite'
     ,'scripts/homerolled/markdown-parser'
     ,'site/dungeons-dragons/notes/timeline/timeline'
-], (Lite, md, Timeline)=>{
+], (lite, md, Timeline)=>{
 
-    return Lite.extend({
+    return lite.extend({
         content_url : 'site/dungeons-dragons/notes/recap-claw-mountain/recap-claw-mountain.html' 
         , data_url : '5e/notes/recap-claw-mountain.md'
         ,initialize : function(){
@@ -13,7 +13,7 @@ define([
             this.load_timeline();
 
             console.log('syntax check')
-            let hist = new Lite.extend({
+            let hist = new lite.extend({
                 container : document.getElementById('history'),
                 data_url : '5e/notes/places/claw mountain.md',
                 content : `<div id='history-text'></div>`,

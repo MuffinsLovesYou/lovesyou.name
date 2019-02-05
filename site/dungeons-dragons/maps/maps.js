@@ -1,8 +1,8 @@
 define([
     'lite', 'tiles'
-], function (Lite, tiles) {
+], function (lite, tiles) {
 
-    return Lite.extend({
+    return lite.extend({
         content_url : 'site/dungeons-dragons/maps/maps.html',
         onContentBound : function () {
             tiles.decorate();

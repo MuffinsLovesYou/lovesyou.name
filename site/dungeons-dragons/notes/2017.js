@@ -1,8 +1,8 @@
 define([
     'lite'
     ,'tiles'
-], function (Lite, tiles) {
-    return Lite.extend({
+], function (lite, tiles) {
+    return lite.extend({
         content : `<p>2017 started and ended with the claw mountain arc.</p><div id='tiles' class='tiles'></div>`,
         onContentBound : function() {
             tiles.fill([

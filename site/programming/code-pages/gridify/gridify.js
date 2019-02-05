@@ -1,9 +1,9 @@
 define([
     'lite'
     ,'scripts/homerolled/gridify'
-], function (Lite, gridify) {
+], function (lite, gridify) {
 
-    return Lite.extend({
+    return lite.extend({
         content_url : 'site/programming/code-pages/gridify/gridify.html',
         onContentBound : function () {
             let view = this;
@@ -12,7 +12,7 @@ define([
             view.grid_demo();
         }
         , gridify_code : function(){
-            let Gridify = Lite.extend({
+            let Gridify = lite.extend({
                 container : document.getElementById('gridify-code-block'),
                 content_url : `https://raw.githubusercontent.com/MuffinsLovesYou/unstableconfiguration/master/scripts/homerolled/gridify.js`,               
                 onContentBound : function() {
@@ -24,7 +24,7 @@ define([
         , usage_code : function(){
             let view = this;
             window.view = view;
-            let Usage = Lite.extend({
+            let Usage = lite.extend({
                 container : document.getElementById('gridify-usage-block'),
                 content : view.grid_demo.toString(),
                 onContentBound : function() {

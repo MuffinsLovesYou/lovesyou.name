@@ -4,13 +4,13 @@ define([
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/monsterbox/monsterbox'
     , '5e/monsters'
-], (Lite, gridify, Modal, MonsterBox, monsters)=>{
+], (lite, gridify, Modal, MonsterBox, monsters)=>{
 
     // bugs : 
     // tabs are resetting with modal pop
     // on bind function for data so we can format type
 
-    return Lite.extend({
+    return lite.extend({
         content : `<div id='monsters-table'></div><div id='monsterbox-container'></div>`
         , onContentBound : function(){
             let view = this;

@@ -1,9 +1,9 @@
 define([
     'lite'
     ,'scripts/homerolled/markdown-parser'
-], function (Lite, md) {
+], function (lite, md) {
     
-    return Lite.extend({
+    return lite.extend({
         initialize : function() {
             let file = window.location.hash.split('/').slice(1).join('/')+'.md';
             this.content_url = '5e/notes/'+file;  

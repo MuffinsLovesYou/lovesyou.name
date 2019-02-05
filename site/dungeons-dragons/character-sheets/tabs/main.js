@@ -1,8 +1,8 @@
 define([
     'lite'
-], (Lite) => {
+], (lite) => {
 
-    return Lite.extend({
+    return lite.extend({
         content_url : 'site/dungeons-dragons/character-sheets/tabs/main.html',
         onDataLoaded : function(data){
             let view = this;

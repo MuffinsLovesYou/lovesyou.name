@@ -1,8 +1,8 @@
 define([
     'lite'
-], function (Lite) {
+], function (lite) {
 
-    return Lite.extend({
+    return lite.extend({
         content_url : 'site/common/modal/modal.html',
         container : document.getElementById('modal-container'),
         onContentBound : function() {

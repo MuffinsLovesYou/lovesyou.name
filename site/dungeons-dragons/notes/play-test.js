@@ -5,9 +5,9 @@ define([
     ,'site/common/modal/modal'
     ,'5e/monsters'
     ,'5e/custom_monsters/custom_monsters'
-], (Lite, Dice, MonsterBox, modal, monsters, custom_monsters)=>{
+], (lite, Dice, MonsterBox, modal, monsters, custom_monsters)=>{
     
-    return Lite.extend({
+    return lite.extend({
         content : `
         <div style='width:100%;display:inline-block;vertical-align:top'>
             <textarea></textarea>

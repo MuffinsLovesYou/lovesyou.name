@@ -4,9 +4,9 @@ define([
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
-], (Lite, gridify, Modal, Spellbox, spells)=>{
+], (lite, gridify, Modal, Spellbox, spells)=>{
 
-    return Lite.extend({
+    return lite.extend({
         content : `<div id='spells-table'></div><div id='spellbox-container'></div>`,
         onContentBound : function() {
             let view = this;

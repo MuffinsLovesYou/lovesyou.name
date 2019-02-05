@@ -1,5 +1,4 @@
 define([],()=>{
-
     /* Waffling on this syntax choice. 
         current; 
             var grid = gridify(container);

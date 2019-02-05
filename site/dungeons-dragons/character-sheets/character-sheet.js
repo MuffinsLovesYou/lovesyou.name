@@ -6,9 +6,9 @@ define([
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
     ,'scripts/homerolled/markdown-parser'
-], function (Lite, gridify, MainTab, modal, spellbox, spells, md) {
+], function (lite, gridify, MainTab, modal, spellbox, spells, md) {
     
-    return Lite.extend({
+    return lite.extend({
         content_url : 'site/dungeons-dragons/character-sheets/character-sheet.html',
         onContentBound : function () {
             require(['scripts/homerolled/character-sheet-styler'], (sheet_styler) => {
@@ -54,7 +54,7 @@ define([
         , notes_tab : function(){
             let view = this;
             var notes_container = view.container.querySelector('#character_notes');
-            let x = new Lite.extend({
+            let x = new lite.extend({
                 container : notes_container,
                 content : `<div id='notes'></div>`,
                 data_url : '5e/notes/char-notes/'+window.location.hash.split('/').splice(-1)+'.md',

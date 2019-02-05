@@ -5,9 +5,9 @@ define([
     ,'scripts/homerolled/dice/modules/5e'
     ,'scripts/homerolled/dice/modules/logging'
     ,'scripts/homerolled/gridify'
-], function (Lite, DiceRoller, math, dnd, LoggingRoller, gridify) {
+], function (lite, DiceRoller, math, dnd, LoggingRoller, gridify) {
 
-    return Lite.extend({
+    return lite.extend({
         content_url : 'site/common/dice/dice.html'
         , onContentBound : function() {
             let view = this;

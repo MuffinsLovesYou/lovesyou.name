@@ -1,13 +1,8 @@
 define([
-    'xhr'
-    ,'please'
-], function (xhr, please) {
-    /* Acronym first, meaning of the actual letters second. 
-        Let it be called the:
-        * Lightweight: right now its like... 100 lines of code
-        * Independent:  well... its sort of dependent on xhr and please and require... hmm
-        * Templating Engine: what it do  
-    */
+    'scripts/homerolled/please',
+    'scripts/homerolled/xhr'
+], (please, xhr)=>{
+
     let Lite = function(args={}){
         let _lite = this;
         _lite.container = '';
@@ -37,9 +32,8 @@ define([
                 .and(_loadData())
                 .then((x, y)=>{
 
-
-                    _bindContent(x);
-                    _bindData(y);
+                    _bindContent(_lite.content);
+                    _bindData(_lite.data);
                 });
         }
         _lite.extend = function(args){
@@ -57,6 +51,7 @@ define([
                     _lite.onContentLoaded(content);
                 });
             if(!_lite.content) throw`no content or content url for template`;
+            _lite.onContentLoaded(_lite.content);
         }
         let _bindContent = function(){
             if(_lite.container && _lite.content){
@@ -73,20 +68,37 @@ define([
                 _lite.onDataLoaded(data);
                 return _lite.data;
             }
-            if(_lite.data_url.slice(-3)==='.js') 
-                return new Promise((s, f)=>{
-                    require([_lite.data_url.slice(0, -3)], (data)=>{ 
-                        s(data_loaded(data));
+            if(_lite.data_url.slice(-3)==='.js') {
+                if(typeof(require) !== 'undefined')
+                    return new Promise((s, f)=>{
+                        require([_lite.data_url.slice(0, -3)], (data)=>{ 
+                            s(data_loaded(data));
+                        });
                     });
-                });
+                else {
+                    return new Promise((s, f)=>{
+                        let script = document.createElement('script');
+                        script.src = _lite.data_url;
+                        let message = 'script ' + script.src + ' added to header';
+                        script.onload = function(x){
+                            s(data_loaded(message));
+                        }
+
+                        let has = Array.from(document.getElementsByTagName('script'))
+                            .some(scr => scr.src === script.src);
+                        if(!has) document.getElementsByTagName('head')[0].appendChild(script);
+                        else s(data_loaded(message));
+                    });
+                }
+            }
             
             if(!_lite.data_url && _lite.data) 
                 return data_loaded(_lite.data);
             
             if(_lite.data_url) return xhr.get(_lite.data_url, (data)=>{ data_loaded(data);});        
         }
-       
-       let _bindData = function(data) {
+        
+        let _bindData = function(data) {
             _lite.container.querySelectorAll('[bind]')
                 .forEach((el)=>{
                     let prop = el.getAttribute('bind') || el.id;
@@ -95,9 +107,9 @@ define([
                     else el.innerHTML = val;
                 });
 
-           _lite.onDataBound(data);
+            _lite.onDataBound(data);
         }
-    }
-
+    };
+    //let lite = new Lite();
     return new Lite();
 });

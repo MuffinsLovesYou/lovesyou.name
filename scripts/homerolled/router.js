@@ -30,6 +30,7 @@ define([
 
             let route = _router.base_url + _router.paths[hash];
             require([route], function (lite) {
+
                 new lite().attach(_router.main_content);
             });            
         }

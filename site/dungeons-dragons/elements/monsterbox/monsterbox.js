@@ -3,9 +3,9 @@ define([
     ,'5e/monsters'
     ,'5e/custom_monsters/custom_monsters'
     ,'site/common/modal/modal'
-], function (Lite, monsters, custom_monsters, modal) {
+], function (lite, monsters, custom_monsters, modal) {
 
-    return Lite.extend({
+    return lite.extend({
         content_url : 'site/dungeons-dragons/elements/monsterbox/monsterbox.html'
         , initialize : function() {
             let view = this;

@@ -1,8 +1,8 @@
 define([
     'lite'
-], function (Lite) {
+], function (lite) {
 
-    return Lite.extend({
+    return lite.extend({
         content_url : 'site/dungeons-dragons/elements/spellbox/spellbox.html',
     });
 });

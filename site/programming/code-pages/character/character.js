@@ -1,11 +1,11 @@
 define([
     'lite'
-], function (Lite) {
+], function (lite) {
 
-    return Lite.extend({
+    return lite.extend({
         content_url : 'site/programming/code-pages/character/character.html',
         onContentBound : function () {
-            let view = Lite.extend({
+            let view = lite.extend({
                 container : document.getElementById('code-page-character-view-code-block'),
                 content_url : 'https://raw.githubusercontent.com/MuffinsLovesYou/unstableconfiguration/master/site/dungeons-dragons/character-sheets/character-sheet.js',               
                 onContentLoaded : function(content){
@@ -19,7 +19,7 @@ define([
             });
             new view().attach();
 
-            let char = Lite.extend({
+            let char = lite.extend({
                 container : document.getElementById('code-page-character-model-code-block'),
                 content_url : 'https://raw.githubusercontent.com/MuffinsLovesYou/unstableconfiguration/master/5e/character.js',
                 onContentLoaded : function(content){

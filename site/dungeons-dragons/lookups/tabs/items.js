@@ -2,9 +2,9 @@ define([
     'lite'
     ,'scripts/homerolled/gridify'
     , '5e/items'
-], (Lite, gridify, items)=>{
+], (lite, gridify, items)=>{
 
-    return Lite.extend({
+    return lite.extend({
         content : `<div id='items-table'></div>`
         , onContentBound : function(){
             let view = this;

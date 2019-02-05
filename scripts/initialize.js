@@ -32,7 +32,6 @@ define([
                     ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
                     ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'
                     ,'lookups' : 'dungeons-dragons/lookups/lookups'
-                    ,'test' : 'tests/runtests'
                     ,'2017-notes' : 'dungeons-dragons/notes/2017'
                     ,'maps' : 'dungeons-dragons/maps/maps'
                     ,'monsterbox' : 'dungeons-dragons/elements/monsterbox/monsterbox'

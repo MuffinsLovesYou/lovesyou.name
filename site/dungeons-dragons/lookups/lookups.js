@@ -4,8 +4,8 @@ define([
     ,'site/dungeons-dragons/lookups/tabs/spells'
     ,'site/dungeons-dragons/lookups/tabs/monsters'
     ,'site/dungeons-dragons/lookups/tabs/items'
-],(Lite, tabs, Spells, Monsters, Items)=>{
-    return Lite.extend({
+],(lite, tabs, Spells, Monsters, Items)=>{
+    return lite.extend({
         content_url : 'site/dungeons-dragons/lookups/lookups.html',
         onContentBound : function() {
             new tabs().stylize();
