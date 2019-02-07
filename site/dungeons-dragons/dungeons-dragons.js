@@ -11,6 +11,7 @@ define([
                 ,{title:"Notes",href:"#notes",alt:"dm notes"}
                 ,{title:"Maps",href:"#maps",alt:"world maps with ms paint doodles"}
                 ,{title:"Lookups",href:"#lookups",alt:"spells, monsters, items"}
+                ,{title:'Wild Magic Surge', href:'#wild-magic',alt:'wild magic surge table'}
             ])  
         }
     });

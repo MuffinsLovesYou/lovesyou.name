@@ -28,21 +28,23 @@ define([
                 start_page : 'landing',
                 content_holder_id : 'main-content',
                 paths : {
-                    'landing' : 'landing/landing'
+                    '2017-notes' : 'dungeons-dragons/notes/2017'
                     ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
+                    ,'character' : 'dungeons-dragons/character-sheets/character-sheet'
                     ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'
+                    ,'landing' : 'landing/landing'
                     ,'lookups' : 'dungeons-dragons/lookups/lookups'
-                    ,'2017-notes' : 'dungeons-dragons/notes/2017'
                     ,'maps' : 'dungeons-dragons/maps/maps'
                     ,'monsterbox' : 'dungeons-dragons/elements/monsterbox/monsterbox'
                     ,'notes' : 'dungeons-dragons/notes/notes'
                     ,'note' : 'dungeons-dragons/notes/note'
-                    ,'character' : 'dungeons-dragons/character-sheets/character-sheet'
                     ,'places' : 'dungeons-dragons/notes/places/places'
+                    ,'playtest' : 'dungeons-dragons/notes/play-test'
                     ,'programming' : 'programming/programming'
                     ,'recap-claw-mountain' : 'dungeons-dragons/notes/recap-claw-mountain/recap-claw-mountain' 
-                    ,'playtest' : 'dungeons-dragons/notes/play-test'
+                    ,'spellbox' : 'dungeons-dragons/elements/spellbox/spellbox'
                     ,'timeline' : 'dungeons-dragons/notes/timeline/timeline'
+                    ,'wild-magic': 'dungeons-dragons/wild-magic/wild-magic'
 
                     ,'code-pages' : 'programming/code-pages/'  
                     ,'code-pages-character' : code_path + 'character/character'
