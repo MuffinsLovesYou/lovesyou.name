@@ -29,6 +29,7 @@ define([
                 content_holder_id : 'main-content',
                 paths : {
                     '2017-notes' : 'dungeons-dragons/notes/2017'
+                    ,'2018-notes' : 'dungeons-dragons/notes/2018'
                     ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
                     ,'character' : 'dungeons-dragons/character-sheets/character-sheet'
                     ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'

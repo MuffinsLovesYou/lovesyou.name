@@ -261,7 +261,7 @@ Mad Marduk
 * 6 Kit
 * 5 Marduk 180 170 163 155 132 123 106 95 89 83 73 56 39 18 11 -1
 
-
+bronze 750 
 
 
 #### Treasure: 
@@ -299,36 +299,19 @@ Once families move in, they can start taking over for the workers, eventually br
 self-sufficiency. After that, modest taxation should be able to generate about 200gp/year from the halls. 
 
 #### The Covenant Hammer 
-Weapon (Maul), very rare (requires attunement by a divine spellcaster)
+Weapon (Maul), unique (requires attunement by a divine spellcaster)
 This weapon grants a +1 bonus to attack and damage rolls. On a hit it deals an additional 
 1d8 lightning damage.  
 The weapon allows the user to use the Divine Intervention skill like a 20th level cleric once 
 every 30 days. 
 
 
-#### Flaggfur and Vergadain
-Eberk knows something is wrong with Flaggfur. It isn't unbelievable that Kathuil is granting someone 
-divine powers, but what Eberk knows is that this came as a complete surprise to Kathuil, suggesting he 
-is not the source of the powers. Part of the motivation of reclaiming the halls is getting access to 
-The Covenant Hammer, a relic of her clan.  
-The hammer allows a divine caster to commune directly with their god. She is interested in seeing who 
-responds if Kathuil uses it.  
+Year and a day  
 
-If the hammer is used, Kathuil will not respond. Instead, the call is answered by Vergadain, a dwarven 
-diety of Wealth and Luck; one of the few dieties that sided with Muamman Duathal during the rift sparked 
-by Kathuil's birth. He appears as a 5 foot tall dwarf dressed as a merchant with yellow robes, a harp 
-across his back, and trader's instruments like scales, calipers, and a monacle hanging from his neck.
+3 skilled 
+Senadath Raemaoilin
 
-If interrogated he will answer for his motivations.  
-* His initial support of Kathuil was because he desired the social upheaval, which he felt he could 
-help steer into an age of prosperity.
-* While this has so far been successful, he feels like Kathuil's presence is starting to hold things 
-back, keeping dwarves in a mindset of stoic militarism and mild xenophobia. 
-* He listened for and heard Flaggfur's prayers and decided to use him as a catalyst to try and steer 
-Kathuil toward the path of full divinity. 
 
-As far as he is concerned, that part of his plan is already a success in motion. With that said though, 
-having been called here, and shown he no longer really needs to supply Flaggfur with power. 
 
 
 

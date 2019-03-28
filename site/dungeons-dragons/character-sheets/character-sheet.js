@@ -21,7 +21,7 @@ define([
         }
         , initialize : function() {
             this.data_url = '5e/char-sheets/'+window.location.hash.split('/').slice(1).join('/')+'.js'
-            
+            console.log(this.data_url)
             this.load_css();
         }
         , load_css : function() {

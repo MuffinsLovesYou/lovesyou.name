@@ -4,6 +4,10 @@ define([
     ,'site/dungeons-dragons/notes/timeline/timeline'
 ], (lite, md, Timeline)=>{
 
+    // content and layout: 
+
+
+
     return lite.extend({
         content_url : 'site/dungeons-dragons/notes/recap-claw-mountain/recap-claw-mountain.html' 
         , data_url : '5e/notes/recap-claw-mountain.md'
