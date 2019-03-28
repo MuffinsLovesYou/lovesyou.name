@@ -18,7 +18,7 @@ define([
             Charisma : 12
         },
         Classes : [
-           { Name : 'Cleric', Level : 4, Archetype : 'Light Domain' }
+           { Name : 'Cleric', Level : 5, Archetype : 'Light Domain' }
         ],
         Defenses : {
             //HP :
@@ -45,7 +45,8 @@ define([
             <br>Cantrip: Guidance, Sacred Flame, Mending, Light
             <br>1st Level (4 slots): Bless, Cure Wounds, Shield of Faith, Healing Word, 
                 Sanctuary, Detect Magic, Command
-            <br>2nd Level (3 slots): Spiritual Weapon, Lesser Restoration, Warding Bond` 
+            <br>2nd Level (3 slots): Spiritual Weapon, Lesser Restoration, Warding Bond
+            <br>3rd Level (2 slots): Revivify, Beacon of Hope, Spirit Guardians, Mass Healing Word`
         },
         Spells : [
             // Cantrips
@@ -69,6 +70,13 @@ define([
             'Lesser Restoration', 
             
             'Warding Bond',
+            // Level 3
+            // Domain 
+            'Beacon of Hope',
+            'Revivify', 
+
+            'Spirit Guardians',
+            'Mass Healing Word'
         ],
         Items : {
             'Gold' : 20 

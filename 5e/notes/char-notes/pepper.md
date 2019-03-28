@@ -70,15 +70,18 @@ The Watchtower might be ancient magic of the Nethiril.
 * Necklace of Rando Teeth, looted from orcs 
 * Scroll of Revivify
 * Splint Mail 
+* Magic Items
+    * Boots of Striding and Springing
 * 1 fine quarterstaff with feather carvings
-* 1x Mug of hot coacoa 2d4 hp regen when drunk 
     
 
 ### Group Treasure : 
 * Big Heavy Chest
-* Coin : 74 copper, 80 silver, 1503gp, 
-* Potions : 2 potions of healing 
+* Coin : 1789 copper, 420 silver, 153ep, 1523gp, 
+* Potions : 
+    * 2 potions of healing 
 * Armor : 
+    * Scale Mail
 * Weapons :
 * Tools : Manacles x1, Oil Flask x2, Tinderbox 
 * Art : 50gp Jade Frog x1 
@@ -86,6 +89,7 @@ The Watchtower might be ancient magic of the Nethiril.
     * Gold Knife 60gp
     * Gold Censer 120gp
     * Gold Statuette 100gp
+    * Platinum Ring 75gp 2x
 * Gems : 
     * 2gp Garnets x2, 
     * 10gp Carnelias x5, 
@@ -93,6 +97,7 @@ The Watchtower might be ancient magic of the Nethiril.
     * 65gp emerald, 
     * 100gp Pearl x2, 
     * 150gp saphhire
+    * 100gp diamond x3
 * One gallon of Draco Noir perfume. Scent: Otter musk pellet, Dalia flower concentrate, Sandalwood Bark
 * 3 Vials of CKB Perfume 
 * 1 cask very fine dwarven brandy. 10 draft's 

@@ -21,7 +21,7 @@ define([
 			Charisma : 9
 		},
 		Classes : [
-			{ Name : 'Fighter', Level : 4, Archetype : 'Cavalier' }
+			{ Name : 'Fighter', Level : 5, Archetype : 'Cavalier' }
 		],
 		Defenses : {
 			AC : '17 (Chain Shirt and Shield)', // Chain shirt, shield
@@ -31,7 +31,11 @@ define([
 			}
 		},
 		Skills : {
-			
+			Insight : { Trained : true },
+			Athletics : { Trained : true },
+			// Fighter
+			Perception : { Trained : true },
+			Stealth : { Trained : true }
 		},
 		Features : {
 			'Fighter: Duelist Style' : `+2 damage for melee attacks 
@@ -62,6 +66,7 @@ define([
 
 		},
 		Actions : {
+			'Multiattack' : `Maximillien makes two attacks`,
 			'Longsword' : `Melee weapon attack, 5ft range, one target. Hit: 10 (1d8+6) slashing damage.` 
 		},
         Background : {

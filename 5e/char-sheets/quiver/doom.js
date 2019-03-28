@@ -21,10 +21,10 @@ define([
 			Charisma : 10
 		},
 		Classes : {
-			Name : 'Cleric', Level : 4, Archetype : 'Death Domain'
+			Name : 'Cleric', Level : 5, Archetype : 'Death Domain'
 		},
 		Defenses : {
-			AC : 18,
+			AC : '18 Breastplate + Shield',
 			Saves : {
 				Wisdom : { Trained : true },
 				Charisma : { Trained : true }
@@ -32,7 +32,7 @@ define([
 		},
 		Features : {
 			'Reaper' : 'Necromancy cantrips that target on enemy can target an additional one within 5 feet of the target.'
-			,'Channel Divinit, Touch of Death' : "When hitting with a melee attack, you can deal 13 bonus (5 + 2*cleric level) necrotic damage."
+			,'Channel Divinity, Touch of Death' : "When hitting with a melee attack, you can deal 15 bonus (5 + 2*cleric level) necrotic damage."
 		},
 		Skills : {
 			Athletics : { Trained : true },
@@ -54,7 +54,7 @@ define([
 
 			'Sanctuary',
 			'Protection from Evil and Good',
-			'Healing Ward',
+			'Healing Word',
 			'Detect Magic',
 			// Level 2 
 			// Domain
@@ -64,12 +64,20 @@ define([
 			'Spiritual Weapon',
 			'Continual Flame',
 			'Hold Person',
-			'Lesser Restoration'
+			'Lesser Restoration',
+
+			// Level 3
+			// Domain 
+			'Animate Dead', 
+			'Vampiric Touch',
+
+			'Spirit Guardians',
 		],
 		Items : {
-			'Studded Leather Armor' : 1,
-			'Shortsword' : 1,
+			'Breastplate' : 1,
+			'Shield' : 1,
 			'Dagger' : 2,
+			'Holy Symbol' : 1,
 			'Backpack' : 1,
 		},
         Background : {

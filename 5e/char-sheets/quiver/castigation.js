@@ -5,7 +5,7 @@ define([
 
  colorCookie = {"byPalette":{"pri":["#343628","#B5B9A2","#767A63","#323817","#222804"]},"byLum":{"pri":["#B5B9A2","#767A63","#343628","#323817","#222804"]}};
  	let Castigation = new Character({
-		Name : 'Cstigation the Red',
+		Name : 'Castigation the Red',
 		Race : 'Tiefling', // variant 
 		Alignment : 'Lawful Good', 
 		Speed : 30,
