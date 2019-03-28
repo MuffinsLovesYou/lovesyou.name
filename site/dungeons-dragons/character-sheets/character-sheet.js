@@ -6,7 +6,7 @@ define([
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
     ,'scripts/homerolled/markdown-parser'
-], function (lite, gridify, MainTab, modal, spellbox, spells, md) {
+], function (lite, Gridify, MainTab, modal, spellbox, spells, md) {
     
     return lite.extend({
         content_url : 'site/dungeons-dragons/character-sheets/character-sheet.html',
@@ -21,7 +21,6 @@ define([
         }
         , initialize : function() {
             this.data_url = '5e/char-sheets/'+window.location.hash.split('/').slice(1).join('/')+'.js'
-            console.log(this.data_url)
             this.load_css();
         }
         , load_css : function() {
@@ -72,7 +71,7 @@ define([
             let _skills = [];
             for(let s in data.Skills) _skills.push(data.Skills[s]);
 
-            gridify('skills_container').initialize({
+            new Gridify('skills_container').initialize({
                 data : _skills,
                 columns : [
                     { field : 'Name', style : 'text-align:left', sort:true },
@@ -98,7 +97,7 @@ define([
                 if(typeof(data.Items[i])!=='object') continue;
                 _items.push(data.Items[i]);
             }
-            gridify('items_container').initialize({
+            new Gridify('items_container').initialize({
                 data : _items,
                 columns : [
                     { field : 'Name', style : 'text-align:left', sort:true },
@@ -117,7 +116,7 @@ define([
                 if(typeof(data.Spells[s])!=='object') continue;
                 _spells.push(data.Spells[s]);
             }
-            gridify('spells_container').initialize({
+            new Gridify('spells_container').initialize({
                 data : _spells,
                 columns : [
                     { 

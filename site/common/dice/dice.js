@@ -5,7 +5,7 @@ define([
     ,'scripts/homerolled/dice/modules/5e'
     ,'scripts/homerolled/dice/modules/logging'
     ,'scripts/homerolled/gridify'
-], function (lite, DiceRoller, math, dnd, LoggingRoller, gridify) {
+], function (lite, DiceRoller, math, dnd, LoggingRoller, Gridify) {
 
     return lite.extend({
         content_url : 'site/common/dice/dice.html'
@@ -24,7 +24,7 @@ define([
         }
         , initialize_table : function(){
             let view = this;
-            let grid = gridify('DiceRoller_Output_Table')
+            let grid = new Gridify('DiceRoller_Output_Table')
             grid.initialize({
                 data : view.rolls,
                 columns : [

@@ -4,7 +4,7 @@ define([
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
-], (lite, gridify, Modal, Spellbox, spells)=>{
+], (lite, Gridify, Modal, Spellbox, spells)=>{
 
     return lite.extend({
         content : `<div id='spells-table'></div><div id='spellbox-container'></div>`,
@@ -13,7 +13,7 @@ define([
             view.draw_table();
         },
         draw_table : function() {
-            let grid = gridify('spells-table')
+            let grid = new Gridify('spells-table')
             grid.initialize({
                 data : spells,
                 columns : [
@@ -38,7 +38,8 @@ define([
                     { field : 'CastingTime', filter : true, sort:true, style : 'max-width:75px;' },
                     { field : 'Range', filter : true, sort:true, style:'width:50px;' },
                     { field : 'Duration', filter : true, sort:true, } 
-                ]
+                ],
+                paging : true
             });
         }        
     });

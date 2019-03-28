@@ -2,7 +2,7 @@ define([
     'lite'
     ,'scripts/homerolled/gridify'
     , '5e/items'
-], (lite, gridify, items)=>{
+], (lite, Gridify, items)=>{
 
     return lite.extend({
         content : `<div id='items-table'></div>`
@@ -12,7 +12,7 @@ define([
         }
         , items_table : function(){
             let view = this;
-            let grid = gridify('items-table')
+            let grid = new Gridify('items-table')
             grid.initialize({
                 data : items,
                 columns : [
@@ -20,6 +20,7 @@ define([
                     , { field : 'Weight', filter : true, sort : true }
                     , { field : 'Value', filter : true, sort : { compare : view.value_sort, parse : view.parse_gp_value  } }
                 ]
+                , paging : true
             });
         }
         , parse_gp_value : function(v){

@@ -4,7 +4,7 @@ define([
     ,'site/common/modal/modal'
     ,'site/dungeons-dragons/elements/monsterbox/monsterbox'
     , '5e/monsters'
-], (lite, gridify, Modal, MonsterBox, monsters)=>{
+], (lite, Gridify, Modal, MonsterBox, monsters)=>{
 
     // bugs : 
     // tabs are resetting with modal pop
@@ -18,7 +18,7 @@ define([
         }
         ,draw_table : function(_spells){
             let view = this;
-            let grid = gridify('monsters-table')
+            let grid = new Gridify('monsters-table')
             grid.initialize({
                 data : monsters,
                 columns : [
@@ -53,6 +53,7 @@ define([
                     , { field : 'type', filter : true, format : (v)=> { return v.split(',')[0]; }, header : 'Type', sort : true }
                     , { field : 'alignment', filter : true, header : 'Alignment', sort : true }
                 ]
+                , paging : true
             });
         }
         ,challenge_rating_parse : function(cr){ return ~cr.indexOf('/') ? 1/cr.split`/`[1] : +cr; } 
