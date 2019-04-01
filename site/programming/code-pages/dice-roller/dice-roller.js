@@ -8,6 +8,10 @@ define([
             let view = this;
             view.bindDiceMain();
             view.bindMathExtensions();
+
+            require(['site/common/dice/dice'], (dice) => {
+                new dice().attach(document.getElementById('dice-container'));
+            });
         }
         , bindDiceMain : function(){
             let Roller = lite.extend({

@@ -1,25 +1,33 @@
 define([
     'lite'
     ,'scripts/homerolled/gridify'
-], function (lite, gridify) {
+], function (lite, Gridify) {
 
     return lite.extend({
         content_url : 'site/programming/code-pages/gridify/gridify.html',
         onContentBound : function () {
             let view = this;
-            view.gridify_code();
             view.usage_code();
             view.grid_demo();
         }
-        , gridify_code : function(){
-            let Gridify = lite.extend({
-                container : document.getElementById('gridify-code-block'),
-                content_url : `https://raw.githubusercontent.com/MuffinsLovesYou/unstableconfiguration/master/scripts/homerolled/gridify.js`,               
-                onContentBound : function() {
-                    require(['prism'], ()=>{ Prism.highlightElement(this.container); });
-                }
+        , grid_demo : function(){
+            new Gridify('grid-demo').initialize({
+                columns : [
+                    { field : 'basic', header : 'Basic Column' },
+                    { field : 'sort', header : 'Basic Sort', sort : true },
+                    { field : 'filter', header : 'Basic Filter', filter : true }
+                ],
+                data : [
+                    { basic : 'd', sort : 1, filter : '0001' },
+                    { basic : 'e', sort : 2, filter : '0010' },
+                    { basic : 'm', sort : 3, filter : '0011' },
+                    { basic : 'o', sort : 4, filter : '0100' },
+                    { basic : 'c', sort : 5, filter : '0101' },
+                    { basic : 'o', sort : 6, filter : '0110' },
+                    { basic : 'l', sort : 7, filter : '0111' },
+                    { basic : 'u', sort : 8, filter : '1000' },
+                ],
             });
-            new Gridify().attach();
         }
         , usage_code : function(){
             let view = this;
@@ -33,18 +41,6 @@ define([
             });
             new Usage().attach();
         }
-        , grid_demo : function(){
-            gridify('grid-demo').initialize({
-                data : [
-                    { a : 1, b : 2, c : 3 },
-                    { a : 10, b : 20, c : 30 }
-                ],
-                columns : [
-                    { field : 'a', sort : true, filter : true },
-                    { field : 'b', header :'B', sort : true },
-                    { field : 'c' }
-                ]
-            });
-        }
     });
+
 });

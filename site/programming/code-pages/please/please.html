@@ -1,25 +1,29 @@
 <div id='code-page-character-notes'>
-    <p>This is some code used by this site.</p>
-    <p>I don't really care for native Promises syntax. It isn't horrible, and it's better than 
-        jQuery's version, but it just feels a bit clunky.</p>
-
-    <p>I wrote this as a sort of syntax-sugar for promise handling. It uses a chained-functional 
-        syntax where each chained command builds the object. 
-        As an example, if I build two XHR requests: XHR1 and XHR2, and I want them both to complete 
-        before performing a function named callback, it would look like this: <br>
-        please.do(XHR1)<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;.and(XHR2)<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;.then((xhr1, xhr2)=>{<br> 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback(); <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;});<br>
-        Where the parameters xhr1 and xhr2 are the results of the two completed XHR requests. The .and 
-        requests can be chained indefinitely, I tested it with a 10k loop of loading a file with new 
-        xhr instances. .then still returns a instance of please, so you could continue chaining after that, 
-        though I haven't tested that very robustly.</p>
-    <p>It's pretty low on features, mostly because I needed it to do this one thing and it does that one 
-        thing very well. If I wanted to try and get others to use it, it would need error/fail handling 
-        and a lot more testing. 
+    <p>please.js is a promise-resolution tool. It's intention is to provide syntax sugar for 
+        promise resolution since I find the vanilla js promises syntax to be a bit clunky. 
+        please.js uses a function chain syntax that attempts to have a intuitive flow to it.
     </p>
+    <p>As of 3/19, I've moved it to my lite.js repository:  
+        <a href='https://github.com/MuffinsLovesYou/Lite' target='_blank'>Github Link</a>
+    </p>
+    <p>The example below is how lite.js uses please.js on page load. The views often load 
+        content (usually html or text) and bind it to the page, as well as load data (usually json) 
+        and bind it to the content. As such, it wants to make sure the content and data have 
+        both been loaded succcessfully before attempting the binding operations.
+    </p>
+</div>
+<div>
+    <h2>example usage</h2>
+    <pre style='overflow:auto; max-height:400ppx'>
+        <code id='example-code-block' class='language-javascript'>
+please.do(_loadContent())
+    .and(_loadData())
+    .then((x, y)=>{
+        _bindContent(_lite.content);
+        _bindData(_lite.data);
+    });
+        </code>
+    </pre>
 </div>
 <div>
     <h2>please.js</h2>

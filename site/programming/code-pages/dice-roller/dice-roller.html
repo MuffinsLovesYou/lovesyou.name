@@ -1,24 +1,22 @@
 <div id='code-page-dice-roller-notes'>
-    <p>One of my first programs was an equation-based dice roller written in Objective-C. Every other year 
-        I like to revisit the program to either rewrite or refactor it. Two years ago (~2016) I rewrote it 
-        to use a sort of dependency injection model, where the main dice roller is a structure that takes 
-        applies a series of operations to an input, and where the operations are added in rather than 
-        being hard coded in.  
-    </p>
-    <p>This year (4/18), I kept that base design. Instead of a rewrite, I tried to refactor it for clarity 
-        since it tends to be a bit arcane, and to add some unit and integration tests to help with its 
-        stability. 
+    <p>One of my first programs was an equation-based dice roller written in Objective-C. I use it a lot when 
+        playing D&D since that game is very dice-roll intensive. Every other year I like to revisit the 
+        program to either rewrite or refactor it. 
+        <a href='https://github.com/MuffinsLovesYou/Dice' target='_blank'>Github Link</a>
     </p>
 </div>
+<div id='dice-container' style='max-height:200px; overflow:auto'></div>
 <div>
     <h2>main roller and operation object </h2>
-    <p>The main roller has a operations collection that can be used to modify its behavior by passing in 
-        new operations. It has one baked-in operation, which is to roll dice when provided input in the 
-        form of '2d6' where the 2 is the number of rolls and the 6 is the facets of the die. 
-        The Operation object shows the nuts and bolts. Each Operation can search an input string to see 
-        if it is an appropriate target, it can parse an identified substring of the input to retrieve 
-        operators and operands, and it can call its function with those as parameters to update the 
-        original input. 
+    <p>The main roller is a collection of operations. When it solves for an input, it passes the input 
+        to each of the operations in order. Each operation can .search() the input to see if some or 
+        all of it is a valid target for that operation. Optionally it can .parse() out meaningful values. 
+        Finally it can execute its .call() function, which will replace the part of the input it is targeting 
+        with a resolved value.     
+    </p>
+    <p>For example, if the input is 4+6/3 and the math operations are in place. The divide operation will 
+        identify '6/3' as a valid target. It will resolve it to 2, and modify the input to be 4+2. Then the 
+        addition operation will identify 4+2, resolve it to 6, and modify the input to 6, completing the solution.
     </p>
     <pre style='overflow:auto; max-height:400px;'>
         <code id='dice-roller-code' class='language-javascript'></code>
