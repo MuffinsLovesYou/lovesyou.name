@@ -6,10 +6,6 @@ define([
     , '5e/monsters'
 ], (lite, Gridify, Modal, MonsterBox, monsters)=>{
 
-    // bugs : 
-    // tabs are resetting with modal pop
-    // on bind function for data so we can format type
-
     return lite.extend({
         content : `<div id='monsters-table'></div><div id='monsterbox-container'></div>`
         , onContentBound : function(){
@@ -23,7 +19,7 @@ define([
                 data : monsters,
                 columns : [
                     {
-                        field : 'name',
+                        field : 'Name',
                         filter : true,
                         header : 'Name',
                         style : 'text-align:left; text-decoration:underline',
@@ -44,26 +40,26 @@ define([
                             }).attach();
                         }
                     }
-                    , { field : 'cr', filter : true, header : 'CR', 
-                        sort : { 
-                            compare : view.challenge_rating_sort ,
-                            parse : view.challenge_rating_parse
-                        }
+                    , { field : 'Challenge', header : 'CR', 
+                        filter : { rule : view.challenge_rating_filter }, 
+                        sort : { comparator : view.challenge_rating_sort }
                     }
-                    , { field : 'type', filter : true, format : (v)=> { return v.split(',')[0]; }, header : 'Type', sort : true }
-                    , { field : 'alignment', filter : true, header : 'Alignment', sort : true }
+                    , { field : 'Type', filter : true, format : (v)=> { return v.split(',')[0]; }, header : 'Type', sort : true }
+                    , { field : 'Alignment', filter : true, header : 'Alignment', sort : true }
                 ]
                 , paging : true
             });
         }
-        ,challenge_rating_parse : function(cr){ return ~cr.indexOf('/') ? 1/cr.split`/`[1] : +cr; } 
-        ,challenge_rating_sort : function(a, b, options) {
-            if(options.parse) {
-                a = options.parse(a);
-                b = options.parse(b);
-            }
+        , challenge_rating_sort : function(a, b) {
+            let parse = (cr) => cr.indexOf`/` === -1 ? +cr : 1/(cr.split`/`[1]); 
+            a = parse(a);
+            b = parse(b);
             if(a==b) return 0;
             return a > b ? 1 : -1;
+        }
+        , challenge_rating_filter : function(cell_value, filter_value){
+            if(+filter_value === 1) return +cell_value === 1;
+            return cell_value.substr(0, filter_value.length) === filter_value; 
         }
     });
 
