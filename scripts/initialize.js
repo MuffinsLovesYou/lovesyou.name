@@ -32,6 +32,7 @@ define([
                     ,'2018-notes' : 'dungeons-dragons/notes/2018'
                     ,'character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
                     ,'character' : 'dungeons-dragons/character-sheets/character-sheet'
+                    ,'dice' : 'common/dice/dice'
                     ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'
                     ,'landing' : 'landing/landing'
                     ,'lookups' : 'dungeons-dragons/lookups/lookups'

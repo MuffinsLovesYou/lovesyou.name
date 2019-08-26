@@ -95,8 +95,8 @@ define([
             'Misty Step', 'Levitate'
         ],
         Actions : {
-            'Eldritch Blast' : `Ranged spell attack +8 to hit, range 240 feet, 
-                one target. Hit 9 (1d10+4) force damage. Two attacks. `   
+            'Eldritch Blast' : `Ranged spell attack +6 to hit, range 240 feet, 
+                one target. Hit 9 (1d10+3) force damage. Two attacks. `   
             ,"Cat's Claws" : `Melee unarmed attack +3 to hit, one target. Hit 2(1d4) slashing damage.`       
             ,'Detect Magic' : `One Trick can cast Detect Magic at will without expending a spell slot 
                 or components.`  
@@ -105,9 +105,15 @@ define([
         Items : {
             'Gold' : 20 
             , 'Studded Leather' : 1
-            , 'Rod of the Pact Keeper +1' : 1
+            , 'Bag of Holding' : 1
             , 'Traveler\'s clothes' : 1
-
+            , 'Fine Clothes' : 3
+            , 'Silk Rope' : 2
+            , 'Explorer\'s Pack' : 1
+            , 'Fishing Tackle' : 2
+            , 'Grappling Hook' : 2
+            , 'Jug' : 1
+            , '' : 0
         },
         Background : {
 			Trait : `I'm always picking things up, absently fiddling with

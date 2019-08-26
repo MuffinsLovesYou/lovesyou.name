@@ -29,7 +29,7 @@ define([
             let view = this;
             let data = view.parse_table();
             
-            let grid = Gridify('wild_magic_surge_table');
+            let grid = new Gridify('wild_magic_surge_table');
             grid.initialize({
                 data : data,
                 columns : [
@@ -52,7 +52,7 @@ define([
         on_d100_click : function(e){
             let roll = Math.floor(Math.random() * 100) + 1
             roll = roll%2==0 ? roll-1+'-'+roll : roll + '-' + (+roll+1);
-            let grid = Gridify('wild_magic_surge_table');
+            let grid = new Gridify('wild_magic_surge_table');
             grid.table().tHead.rows[1].cells[0].firstChild.value = roll;
             grid.filtering.filter();
         }

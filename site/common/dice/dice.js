@@ -30,7 +30,8 @@ define([
                 columns : [
                     { field : 'Result', style : 'width:100px;text-align:left;border-bottom:none',},
                     { field : 'Rolls',style: 'width:200px;text-align:left;border-bottom:none' }
-                ]
+                ],
+                style : 'border:solid-thin-black;'
             });
         }
         , elements :  {}
@@ -47,14 +48,13 @@ define([
             let view = this;
             let input = view.getElementById('DiceRoller_Input');
             input.addEventListener('keydown', (e)=>{
-                console.log('eh', e.keyCode);
                 if(e.keyCode==13)view.roll_dice();
             });
         }
         , roll_dice : function(){
             let view = this;
             let input = view.getElementById('DiceRoller_Input');
-            let results = view.roller.solve(input.value);
+            view.roller.solve(input.value);
             let solution = view.roller.log.solutions[view.roller.log.solutions.length-1];
             view.log_output(solution);
         }
