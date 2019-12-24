@@ -7,6 +7,7 @@ define([
         content : "<p>DM notes.</p><div id='tiles' class='tiles'></div>",
         onContentBound : function() {
             tiles.fill([
+                {title:'09-2019',href:'#note/sessions/09-2019',alt:'an unforgiving environment'},
                 {title:'07-2019', href:'#note/sessions/07-2019',alt:'arriving in the kingdoms'},
                 {title:'04-2019', href:'#note/sessions/04-2019',alt:'...'},
                 {title:'03-2019', href:'#note/sessions/03-2019',alt:'divine drama'},

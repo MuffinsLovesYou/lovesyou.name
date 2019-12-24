@@ -64,9 +64,7 @@ and establish good relations if they eliminate a threat for someone else. For
 the members of the party, it can get them training and status, which can 
 help improve their station. 
 
-Elarahal Aasimar cleric 
-Iojad : goliath ranger 
-Rokej : goblin nilbog 
+
 
 We agreed, we're going to raid her estates. We may not get her, but we will get at her. 
 Senadath: Heard. 

@@ -1,4 +1,8 @@
-define(['5e/imported/monsters'],(imported)=>{
+define([
+    '5e/imported/monsters',
+    '5e/imported/volos_guide',
+    '5e/imported/mordenkainens_monsters'],
+(monster_manual, volos, mordenkainens)=>{
 
 
     let monsters = {};
@@ -90,8 +94,9 @@ define(['5e/imported/monsters'],(imported)=>{
             monsters[m] = monster;
         }
     }
-    map_imported(imported);
-
+    map_imported(monster_manual);
+    map_imported(volos);
+    map_imported(mordenkainens);
 
     return monsters;
 

@@ -97,13 +97,14 @@ define([
         Actions : {
             'Eldritch Blast' : `Ranged spell attack +6 to hit, range 240 feet, 
                 one target. Hit 9 (1d10+3) force damage. Two attacks. `   
-            ,"Cat's Claws" : `Melee unarmed attack +3 to hit, one target. Hit 2(1d4) slashing damage.`       
-            ,'Detect Magic' : `One Trick can cast Detect Magic at will without expending a spell slot 
+            , "Cat's Claws" : `Melee unarmed attack +3 to hit, one target. Hit 2(1d4) slashing damage.`       
+            , 'Detect Magic' : `One Trick can cast Detect Magic at will without expending a spell slot 
                 or components.`  
             
         },
         Items : {
-            'Gold' : 20 
+            'Rod of the Pact Keeper' : 1 
+            , 'Gold' : 20 
             , 'Studded Leather' : 1
             , 'Bag of Holding' : 1
             , 'Traveler\'s clothes' : 1
