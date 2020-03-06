@@ -3,8 +3,6 @@ define([
 	'5e/character.js'
 ],(Character)=>{
 
- colorCookie = {"byPalette":{"pri":["#343628","#B5B9A2","#767A63","#323817","#222804"]},"byLum":{"pri":["#B5B9A2","#767A63","#343628","#323817","#222804"]}};
-
 	let Doom = new Character({
 		Name : 'Doom',
 		Race : 'Kenku',
@@ -20,9 +18,9 @@ define([
 			Wisdom : 18,
 			Charisma : 10
 		},
-		Classes : {
-			Name : 'Cleric', Level : 5, Archetype : 'Death Domain'
-		},
+		Classes : [
+			{ Name : 'Cleric', Level : 5, Archetype : 'Death Domain' }
+		],
 		Defenses : {
 			AC : '18 Breastplate + Shield',
 			Saves : {
@@ -33,6 +31,12 @@ define([
 		Features : {
 			'Reaper' : 'Necromancy cantrips that target on enemy can target an additional one within 5 feet of the target.'
 			,'Channel Divinity, Touch of Death' : "When hitting with a melee attack, you can deal 15 bonus (5 + 2*cleric level) necrotic damage."
+			,'Spellcasting' : `DOOM is a 5th level spellcaster. Their spellcasting ability modifier is wisdom (DC 15 spell save, +7 to hit with spell attacks). 
+				They have the following spells prepared: 
+				<br>Cantrips: Toll the Dead, Guidance, Light, Mending
+				<br>1st (4 slots): False Life, Ray of Sickness, Sanctuary, Protection from Evil and Good, Healing Word, Detect Magic
+				<br>2nd (3 slots): Blindness/Deafness, Ray of Enfeeblement, Spiritual Weapon Continual Flame, Hold Person, Lesser Restoration
+				<br>3rd (2 slots): Animate Dead, Vampiric Touch, Spirit Guardians`
 		},
 		Skills : {
 			Athletics : { Trained : true },

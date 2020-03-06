@@ -1,0 +1,396 @@
+[1mdiff --git a/5e/char-sheets/one_trick.js b/5e/char-sheets/one_trick.js[m
+[1mindex 49a39f9..5fc0570 100644[m
+[1m--- a/5e/char-sheets/one_trick.js[m
+[1m+++ b/5e/char-sheets/one_trick.js[m
+[36m@@ -7,7 +7,8 @@[m [mdefine([[m
+ // Height : 6'[m
+ // Weight: 165[m
+ [m
+[31m-[m
+[32m+[m[32m// Convert sorcery points to spell slots: 1 bonus action[m[41m [m
+[32m+[m[32m// Meta magic to quicken spell: 1 bonus action[m
+ [m
+ 	let OneTrick = new Character({[m
+         Name : 'One Trick Pony',[m
+[36m@@ -22,11 +23,11 @@[m [mdefine([[m
+             Constitution : 14, // [m
+             Intelligence : 9,[m
+             Wisdom : 10, [m
+[31m-            Charisma : 16 // 12 16[m
+[32m+[m[32m            Charisma : 18 // 12 16[m
+         },[m
+         Classes : [[m
+            { Name : 'Warlock', Level : 2, Archetype : 'Archfey: Pact of the Chain' } [m
+[31m-           , { Name : 'Sorcerer', Level : 3, Archetype : 'Wild Magic' }[m
+[32m+[m[32m           , { Name : 'Sorcerer', Level : 4, Archetype : 'Wild Magic' }[m
+         ],[m
+         Defenses : {[m
+             //HP :[m
+[36m@@ -61,24 +62,26 @@[m [mdefine([[m
+             "Invocation: Eldritch Sight" : `You can cast Detect Magic at will, without expending [m
+                 a spell slot.`,[m
+             [m
+[31m-            'Wild Magic Surge' : `When expending a spell slot, roll a d20. If the result is less than or equal to [m
+[31m-                the spell slot level, roll once on the wild magic table.`,[m
+[32m+[m[32m            'Wild Magic Surge (house ruled)' : `When expending a spell slot or consuming a spell point,[m[41m [m
+[32m+[m[32m                roll once on the wild magic table.`,[m
+             'Tides of Chaos 1/recharge' : `Gain advantage on one attack roll, ability check, or saving throw. [m
+                 Recharges on a long rest, or on wild magic surge activation.`,[m
+[31m-            'Sorcery Points 3/long rest' : `Used for flexible casting and meta magic.`,[m
+[32m+[m[32m            'Sorcery Points 4/long rest' : `Used for flexible casting and meta magic.`,[m
+             'Flexible Casting' : `As a bonus action. A spell can be converted to its level of sorcery points, [m
+                 or sorcery points can be spent to regain a spell slot (see notes).`,[m
+             'Meta Magic: Quickened Spell' : `When you cast a spell that has a casting time of 1 action,[m
+                 you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting.`,[m
+[31m-            'Meta Magic: Extended Spell' : `When you cast a spell lhat has a duration of 1 minute[m
+[31m-                or longer. you can spend 1 sorcery point to double its[m
+[31m-                duration, to a maximum duration of 24 hours.`,[m
+[32m+[m[32m            'Meta Magic: Extended Spell' : `When you cast a spell that has a duration of 1 minute[m
+[32m+[m[32m                or longer. you can spend 1 sorcery point to double its duration, to a maximum duration of 24 hours.`,[m
+             'Spellcasting (sorcerer)' : `One Trick is a 5th level spellcaster. His spellcasting ability modifier [m
+[31m-                is Charisma (spell save DC 14, +6 to hit with spell attacks). He has the following spells prepared: [m
+[32m+[m[32m                is Charisma (spell save DC 15, +7 to hit with spell attacks). He has the following spells prepared:[m[41m [m
+                 Cantrips: Eldritch Blast, Mage Hand, Mending, Message, Minor Illusion, Prestidigitation, Ray of Frost[m
+                 <br>1st Level (4 sorcerer slots, 2 warlock slots): Feather Fall, Thunderwave, Hex, [m
+                     Protection from Evil and Good, Comprehend Languages[m
+[31m-                <br>2nd Level (2 slots): Misty Step, Levitate`,[m
+[32m+[m[32m                <br>2nd Level (3 slots): Misty Step, Levitate, Spider Climb`,[m
+[32m+[m[32m            'Spellcasting (warlock)' : `Same DC and attack bonus as sorcerer spells.[m[41m [m
+[32m+[m[32m                He has the following spells prepared.[m
+[32m+[m[32m                <br>Cantrips: Eldritch Blast`[m
+         },[m
+         Spells : [[m
+             // Cantrips[m
+[36m@@ -92,11 +95,11 @@[m [mdefine([[m
+             'Detect Magic', // Invocation[m
+             // Level 2', [m
+             // Sorcerer[m
+[31m-            'Misty Step', 'Levitate'[m
+[32m+[m[32m            'Misty Step', 'Levitate', 'Spider Climb'[m
+         ],[m
+         Actions : {[m
+[31m-            'Eldritch Blast' : `Ranged spell attack +6 to hit, range 240 feet, [m
+[31m-                one target. Hit 9 (1d10+3) force damage. Two attacks. `   [m
+[32m+[m[32m            'Eldritch Blast' : `Ranged spell attack +7 to hit, range 240 feet,[m[41m [m
+[32m+[m[32m                one target. Hit 9 (1d10+4) force damage. Two attacks. `[m[41m   [m
+             , "Cat's Claws" : `Melee unarmed attack +3 to hit, one target. Hit 2(1d4) slashing damage.`       [m
+             , 'Detect Magic' : `One Trick can cast Detect Magic at will without expending a spell slot [m
+                 or components.`  [m
+[1mdiff --git a/5e/char-sheets/quiver/doom.js b/5e/char-sheets/quiver/doom.js[m
+[1mindex cd1b4a1..7de650b 100644[m
+[1m--- a/5e/char-sheets/quiver/doom.js[m
+[1m+++ b/5e/char-sheets/quiver/doom.js[m
+[36m@@ -3,8 +3,6 @@[m [mdefine([[m
+ 	'5e/character.js'[m
+ ],(Character)=>{[m
+ [m
+[31m- colorCookie = {"byPalette":{"pri":["#343628","#B5B9A2","#767A63","#323817","#222804"]},"byLum":{"pri":["#B5B9A2","#767A63","#343628","#323817","#222804"]}};[m
+[31m-[m
+ 	let Doom = new Character({[m
+ 		Name : 'Doom',[m
+ 		Race : 'Kenku',[m
+[36m@@ -20,9 +18,9 @@[m [mdefine([[m
+ 			Wisdom : 18,[m
+ 			Charisma : 10[m
+ 		},[m
+[31m-		Classes : {[m
+[31m-			Name : 'Cleric', Level : 5, Archetype : 'Death Domain'[m
+[31m-		},[m
+[32m+[m		[32mClasses : [[m
+[32m+[m			[32m{ Name : 'Cleric', Level : 5, Archetype : 'Death Domain' }[m
+[32m+[m		[32m],[m
+ 		Defenses : {[m
+ 			AC : '18 Breastplate + Shield',[m
+ 			Saves : {[m
+[36m@@ -33,6 +31,12 @@[m [mdefine([[m
+ 		Features : {[m
+ 			'Reaper' : 'Necromancy cantrips that target on enemy can target an additional one within 5 feet of the target.'[m
+ 			,'Channel Divinity, Touch of Death' : "When hitting with a melee attack, you can deal 15 bonus (5 + 2*cleric level) necrotic damage."[m
+[32m+[m			[32m,'Spellcasting' : `DOOM is a 5th level spellcaster. Their spellcasting ability modifier is wisdom (DC 15 spell save, +7 to hit with spell attacks).[m[41m [m
+[32m+[m				[32mThey have the following spells prepared:[m[41m [m
+[32m+[m				[32m<br>Cantrips: Toll the Dead, Guidance, Light, Mending[m
+[32m+[m				[32m<br>1st (4 slots): False Life, Ray of Sickness, Sanctuary, Protection from Evil and Good, Healing Word, Detect Magic[m
+[32m+[m				[32m<br>2nd (3 slots): Blindness/Deafness, Ray of Enfeeblement, Spiritual Weapon Continual Flame, Hold Person, Lesser Restoration[m
+[32m+[m				[32m<br>3rd (2 slots): Animate Dead, Vampiric Touch, Spirit Guardians`[m
+ 		},[m
+ 		Skills : {[m
+ 			Athletics : { Trained : true },[m
+[1mdiff --git a/5e/notes/char-notes/one_trick.md b/5e/notes/char-notes/one_trick.md[m
+[1mindex 5ff309f..fb27132 100644[m
+[1m--- a/5e/notes/char-notes/one_trick.md[m
+[1m+++ b/5e/notes/char-notes/one_trick.md[m
+[36m@@ -30,14 +30,14 @@[m
+     * Elarden Derovik: Head Abbot of the Abbey of Chauntea.[m
+     * Darlo and Tilby: Bears [m
+ * Zephyros cloud giant:[m
+[31m-    * [m
+[32m+[m[32m    * Don't go in his room[m
+ * Waterdeep [m
+     Larel Silverhand -- the 'Open Lord'[m
+     Jalester Silvermain -- Lord's alliance contact at the 'Yawning Portal'[m
+[32m+[m[32m    Laryl Silverhand -- Lord's alliance quest issuer[m
+     Chazloth Yaghorn -- Dragon Expert, recommended by Naxine [m
+ * CryptGarden  [m
+     Old Gnawbone -- Dragon near Waterdeep [m
+[31m-* [m
+ [m
+ [m
+ #### Quests: [m
+[36m@@ -48,43 +48,52 @@[m
+     * Find the hill giants and kill them [m
+     * Naxine: Go see Chadwich Yaghorn, a 'dragon expert'. He lives in Waterdeep. [m
+         He can guide us to good dragons to fight the giants. [m
+[31m-    * The Lord's Aliance is offering gold for giant heads. [m
+[31m-        * Hill giant 200gp[m
+ * Waterdeep[m
+     * Go to Old Gnawbone (dragon) to entreat her to fight giants [m
+     * Investigate Hill Giant screaming in tower [m
+     * Kill Hill Giant... hive?[m
+[32m+[m[32m* Lord's Alliance[m
+[32m+[m[32m    * 200gp bounty on Hill Giant heads[m
+[32m+[m[32m    * Head to Hill Giant den to recon/rescue: (issued by Laryl Silverhand)[m
+[32m+[m[32m        * Darz Helgar - Missing, some ponce or another[m
+ [m
+ [m
+ #### Inventory [m
+ * Personal[m
+[31m-    * Gold 190cp 100sp 372gp[m
+[32m+[m[32m    * Gold 190cp 100sp 1172gp[m
+     * Healing Potion[m
+     * 2 weeks rations[m
+     * Rod of the Pactkeeper +1  [m
+[31m-    * Bag of Holding[m
+[32m+[m[32m    * Bag of Holding x2[m[41m [m
+ * Group[m
+[31m-    * Gold[m
+[31m-        * 2210gp[m
+[31m-        * +248gp[m
+[31m-            - 700 Goggles of Night [m
+[31m-                -- Taro [m
+[31m-                -- Strix  [m
+[32m+[m[32m    * Currency[m
+[32m+[m[32m        * 4130gp[m
+[32m+[m[32m        * 1300 sp[m
+[32m+[m[32m        * 1100 cp[m
+[32m+[m[32m    * Purchases[m
+[32m+[m[32m        * Taro:[m[41m [m
+[32m+[m[32m            * 700gp Goggles of Night[m[41m [m
+[32m+[m[32m        * Strix:[m[41m [m
+[32m+[m[32m            * 700gp Goggles of Night[m
+     * Gems[m
+     * Art Objects [m
+         * Black Pearl 500 [m
+     * Weapons [m
+[32m+[m[32m        * 3x Long Sword[m
+[32m+[m[32m        * 3x Long Bow[m
+[32m+[m[32m        * 4x Scimitar[m
+     * Armor [m
+[32m+[m[32m        * 3x Chain Mail[m[41m [m
+     * Consumables[m
+         * Potion of Greater Healing 4d4+4 [m
+[31m-        * 3x Poison Resistance[m
+[32m+[m[32m        * 3x Poison of Acid Resistance[m
+         * 1x Scroll of Invisibility[m
+[32m+[m[32m        * 1x Potion of Fire Breath[m[41m [m
+ [m
+     * Rando loot [m
+[31m-        *     [m
+[32m+[m[32m        * Wooden Gavel (warhammer rare) has rune (friend)[m[41m [m
+     * Quest items[m
+[31m-        * Zi-Liang's Black Pearl Pendant[m
+[31m-        * Emerald gem from haunted house [m
+[32m+[m[32m        * Hill Giant Heads x2[m
+ [m
+ [m
+ [m
+[36m@@ -94,3 +103,9 @@[m
+ * 3 : 5 [m
+ * 4 : 6[m
+ * 5 : 7[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[1mdiff --git a/5e/notes/places/the necropolis.md b/5e/notes/places/the necropolis.md[m
+[1mindex e2fa0ea..62b2254 100644[m
+[1m--- a/5e/notes/places/the necropolis.md[m	
+[1m+++ b/5e/notes/places/the necropolis.md[m	
+[36m@@ -1,3 +1,5 @@[m
+[32m+[m
+[32m+[m
+ ## The Necropolis  [m
+ The necropolis is a community of powerful undead located [m
+ in the middle of the sweep. It uses the isolation provided [m
+[36m@@ -7,7 +9,7 @@[m [mtheir peers.[m
+ [m
+ ### Description[m
+ Approaching from the distance, the Necropolis looks like a small [m
+[31m-oddly shaped hill rising up from the flatness of the Sweep. Closer, [m
+[32m+[m[32moddly shaped mountain rising up from the flatness of the Sweep. Closer,[m[41m [m
+ it is a field of jagged artificial ramps that lift the wind, increasing [m
+ in height until the innermost four, which are artificial hills a half a [m
+ kilometer in height.  [m
+[36m@@ -31,7 +33,7 @@[m [mascending to godhood though, this one grew reclusive. They transformed and[m
+ disappeared to create this place where they can rest. Few of the inhabitants [m
+ here have ever seen or spoken to them.  [m
+ [m
+[31m-Notable Inhabitants: [m
+[32m+[m[32mSome Notable Inhabitants:[m[41m [m
+     * The Black Dracolich Arthyxharl has their aerie atop the westernmost [m
+     inner hill. They are one of the few creatures that can battle the winds [m
+     of the sweep. The aerie is bare marble surrounded with columns. Arthyxharl [m
+[36m@@ -48,6 +50,11 @@[m [mNotable Inhabitants:[m
+     ability to assist with cloning or modifying the mortal servants that are [m
+     so essential to the others here. [m
+ [m
+[32m+[m[32m### Possible Monsters and Encounters:[m[41m [m
+[32m+[m[32m#### Cadaver Collector (Mordenkainen's 122)[m
+[32m+[m[32m    Funda the Tinkerer sends out Cadaver Collectors to retrieve the corpses of[m[41m [m
+[32m+[m[32m    goblins that enter the sweep from the north.[m
+[32m+[m
+ [m
+ ### Nelalwe's Manor [m
+ This mansion looks like it was constructed entirely by removing rooms from other [m
+[36m@@ -104,13 +111,57 @@[m [mBasement 1:[m
+     situated in the middle of the house. [m
+ [m
+ #### Fights [m
+[31m-* Nelwale[m
+[32m+[m[32m* Nelwale[m[41m [m
+[32m+[m[32m* Mummy lord[m
+[32m+[m[32m* Shadar Kai Guardians[m
+[32m+[m
+[32m+[m
+[32m+[m
+ * Shadar Kai Guardians [m
+     * Soul Monger [m
+     * Shadow Dancer [m
+     * Gloom Weaver [m
+ [m
+ [m
+[31m-[m
+[31m-[m
+[31m-[m
+[32m+[m[32m#### Nelwale[m
+[32m+[m[32m[Nelwale](#monsterbox/Nagpa) (Mordenkainen's 215)[m
+[32m+[m[32mAs a collector, Nelwale can't help but be greedy and want to take people alive.[m[41m [m
+[32m+[m[32mShe will attempt to disable and stabilize.[m
+[32m+[m
+[32m+[m
+[32m+[m[32m187 hp +2 init[m
+[32m+[m
+[32m+[m[32mScripting:[m[41m [m
+[32m+[m[32m    Bonus Actions:[m
+[32m+[m[32m        Opens with Paralasys and will use it whenever it recharges (6)[m
+[32m+[m[32m        Uses Corruption otherwise[m[41m [m
+[32m+[m[32m    Reactions:[m[41m [m
+[32m+[m[32m        Counterspell (3x at third level) (3x at 4th level)[m
+[32m+[m[32m    Actions:[m[41m [m
+[32m+[m[32m        If 3 or more members are un paralyzed:[m[41m [m
+[32m+[m[32m            Dominate person -> Hold person[m
+[32m+[m[32m        If Concentrating (dominate, hold):[m[41m [m
+[32m+[m[32m            Feeblemind[m
+[32m+[m[32m        To get rid of things it cannot paralyze: Disentegrate[m
+[32m+[m[32m        If Hurt (50% and fight isn't going well): Etherealness[m
+[32m+[m[32m        Chill Touch (3d6)[m
+[32m+[m
+[32m+[m
+[32m+[m[32m#### Treasure Horard for Nelwale[m[41m [m
+[32m+[m[32m    2500 gp in gems[m
+[32m+[m[32m    6 750gp art objects[m
+[32m+[m[32m        *[m
+[32m+[m[32m        *[m
+[32m+[m[32m        *[m
+[32m+[m[32m        *[m
+[32m+[m[32m        *[m
+[32m+[m[32m        *[m
+[32m+[m[32m        *[m
+[32m+[m[32m    Scroll of alarm[m
+[32m+[m[32m    Potion of Healing x4[m
+[32m+[m[32m    Potion of Greater Healing x2 4d4+4[m
+[32m+[m[32m    Potion of Heroism[m
+[32m+[m[32m    Rope of climbing[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    roll 5 a, roll 2 b[m
+[1mdiff --git a/5e/notes/sessions/09-2019.md b/5e/notes/sessions/09-2019.md[m
+[1mindex f9864f7..d55aeed 100644[m
+[1m--- a/5e/notes/sessions/09-2019.md[m
+[1m+++ b/5e/notes/sessions/09-2019.md[m
+[36m@@ -199,53 +199,8 @@[m [mof elvish from another continent.[m
+ The writing indicates that the monument you are under can be thought of as an [m
+ arrow pointing into the heart of the Sweep itself. [m
+ [m
+[31m-Here, Izzy shudders and gasps. When she looks up, her eyes have blackened over. [m
+[31m-Shadow envelops her arm and she begins to scrawl in the dust, faster than could [m
+[31m-be done naturally. [m
+[31m-* We are calling on this pact child to serve. There is a great injustice being [m
+[31m-perpetrated near here that needs addressing. We see you are a capable group, [m
+[31m-you will heed us as well.   [m
+[31m-* In the middle of this maelstrom is a place of calm and death. One item, from one [m
+[31m-place; that is all we need. [m
+[31m-    * She then begins scrawling out images. The first looks like a map of a town, [m
+[31m-    with squares for buildings, though one is drawn in greater detail, enough that [m
+[31m-    it could perhaps be recognizable if seen. [m
+[31m-    * Another picture, perhaps that same building, indicating a back entrance and [m
+[31m-    a path. The path runs strictly along the outer edge of the building, moving [m
+[31m-    down to perhaps its basement. [m
+[31m-    * Finally, next to the terminal point of the path, a sketch of some pendent [m
+[31m-    or reliquary, the dust on the floor only allows for the rough impression. [m
+[31m-[m
+[31m-* This item, retrieve it and bring it here. Let none that see you continue to [m
+[31m-exist or you will not survive. You may need to fight, but above all you must [m
+[31m-move quickly and quietly. [m
+[31m-[m
+[31m-With that, the possession ends on Izzy, rendering her unconscious. [m
+[31m-[m
+[31m-* Iojad and Elarahal are disinterested in this as it is a voluntary danger well [m
+[31m-outside what was agreed upon, though they are willing to guide you mostly there and [m
+[31m-to wait for you here. Rokej is a little apprehensive about this, but down for anything. [m
+[31m-[m
+[31m-You can use this ability a number of times equal to your wisdom modifier (a minimum of once). [m
+[31m-You regain all expended uses when you finish a long rest.  [m
+[31m-[m
+[31m-[m
+[31m-made of ice in one of your free hands. The conjured lasts for one minute and has the same [m
+[31m-stats as a mundane weapon of its type. While holding the weapon, the cleric can use it as a [m
+[31m-holy symbol and the hand holding the weapon counts as free for the purposes of executing [m
+[31m-somatic components. The cleric can use this ability a number of times per day equal to their [m
+[31m-wisdom modifier.  [m
+[31m-[m
+[31m-Channel Divinity: [m
+[31m-[m
+[31m-[m
+[31m-Level 1 [m
+[31m-    * bonus proficiencies or cantrips  [m
+[31m-    * simple ability [m
+[31m-Level 2: Channel Divinity: [m
+[31m-Level 6: [m
+[31m-    * Second channel divinity or expanded channel divinity [m
+[31m-    * Or other feature [m
+[31m-Level 8: [m
+[31m-[m
+[31m-Level 17 [m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[1mdiff --git a/images/015.png b/images/015.png[m
+[1mindex 2c78da6..750c35e 100644[m
+Binary files a/images/015.png and b/images/015.png differ
+[1mdiff --git a/site/dungeons-dragons/character-sheets/character-sheets.js b/site/dungeons-dragons/character-sheets/character-sheets.js[m
+[1mindex 1734406..4cd0d40 100644[m
+[1m--- a/site/dungeons-dragons/character-sheets/character-sheets.js[m
+[1m+++ b/site/dungeons-dragons/character-sheets/character-sheets.js[m
+[36m@@ -15,6 +15,8 @@[m [mdefine([[m
+                 , { title : 'One Trick', href: '#character/one_trick', alt : 'eldritch blaster' }[m
+                 , { title : 'The Bantam', href : '#character/quiver/the_bantam', alt : 'master of justice' }[m
+                 , { title : 'Maximillien', href : '#character/quiver/maximillien', alt : 'me, but tanky' }[m
+[32m+[m[32m                , { title : 'Tortle Cleric', href : '#character/builds/tortle_cleric', alt : 'char sheet for someone else' }[m
+[32m+[m[32m                , { title : 'DOOM', href : '#character/quiver/doom', alt : 'remember all caps' }[m
+             ]);  [m
+         }[m
+     });[m

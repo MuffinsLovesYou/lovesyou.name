@@ -15,6 +15,8 @@ define([
                 , { title : 'One Trick', href: '#character/one_trick', alt : 'eldritch blaster' }
                 , { title : 'The Bantam', href : '#character/quiver/the_bantam', alt : 'master of justice' }
                 , { title : 'Maximillien', href : '#character/quiver/maximillien', alt : 'me, but tanky' }
+                , { title : 'Tortle Cleric', href : '#character/builds/tortle_cleric', alt : 'char sheet for someone else' }
+                , { title : 'DOOM', href : '#character/quiver/doom', alt : 'remember all caps' }
             ]);  
         }
     });

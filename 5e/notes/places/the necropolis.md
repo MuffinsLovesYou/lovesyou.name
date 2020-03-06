@@ -1,3 +1,5 @@
+
+
 ## The Necropolis  
 The necropolis is a community of powerful undead located 
 in the middle of the sweep. It uses the isolation provided 
@@ -7,7 +9,7 @@ their peers.
 
 ### Description
 Approaching from the distance, the Necropolis looks like a small 
-oddly shaped hill rising up from the flatness of the Sweep. Closer, 
+oddly shaped mountain rising up from the flatness of the Sweep. Closer, 
 it is a field of jagged artificial ramps that lift the wind, increasing 
 in height until the innermost four, which are artificial hills a half a 
 kilometer in height.  
@@ -31,7 +33,7 @@ ascending to godhood though, this one grew reclusive. They transformed and
 disappeared to create this place where they can rest. Few of the inhabitants 
 here have ever seen or spoken to them.  
 
-Notable Inhabitants: 
+Some Notable Inhabitants: 
     * The Black Dracolich Arthyxharl has their aerie atop the westernmost 
     inner hill. They are one of the few creatures that can battle the winds 
     of the sweep. The aerie is bare marble surrounded with columns. Arthyxharl 
@@ -47,6 +49,11 @@ Notable Inhabitants:
     status, no one does due to the Fleshcrafter's mastery over form and 
     ability to assist with cloning or modifying the mortal servants that are 
     so essential to the others here. 
+
+### Possible Monsters and Encounters: 
+#### Cadaver Collector (Mordenkainen's 122)
+    Funda the Tinkerer sends out Cadaver Collectors to retrieve the corpses of 
+    goblins that enter the sweep from the north.
 
 
 ### Nelalwe's Manor 
@@ -104,13 +111,57 @@ Basement 1:
     situated in the middle of the house. 
 
 #### Fights 
-* Nelwale
+* Nelwale 
+* Mummy lord
+* Shadar Kai Guardians
+
+
+
 * Shadar Kai Guardians 
     * Soul Monger 
     * Shadow Dancer 
     * Gloom Weaver 
 
 
+#### Nelwale
+[Nelwale](#monsterbox/Nagpa) (Mordenkainen's 215)
+As a collector, Nelwale can't help but be greedy and want to take people alive. 
+She will attempt to disable and stabilize.
 
 
+187 hp +2 init
 
+Scripting: 
+    Bonus Actions:
+        Opens with Paralasys and will use it whenever it recharges (6)
+        Uses Corruption otherwise 
+    Reactions: 
+        Counterspell (3x at third level) (3x at 4th level)
+    Actions: 
+        If 3 or more members are un paralyzed: 
+            Dominate person -> Hold person
+        If Concentrating (dominate, hold): 
+            Feeblemind
+        To get rid of things it cannot paralyze: Disentegrate
+        If Hurt (50% and fight isn't going well): Etherealness
+        Chill Touch (3d6)
+
+
+#### Treasure Horard for Nelwale 
+    2500 gp in gems
+    6 750gp art objects
+        *
+        *
+        *
+        *
+        *
+        *
+        *
+    Scroll of alarm
+    Potion of Healing x4
+    Potion of Greater Healing x2 4d4+4
+    Potion of Heroism
+    Rope of climbing
+
+
+    roll 5 a, roll 2 b

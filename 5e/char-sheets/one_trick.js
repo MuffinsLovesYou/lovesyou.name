@@ -7,7 +7,8 @@ define([
 // Height : 6'
 // Weight: 165
 
-
+// Convert sorcery points to spell slots: 1 bonus action 
+// Meta magic to quicken spell: 1 bonus action
 
 	let OneTrick = new Character({
         Name : 'One Trick Pony',
@@ -22,11 +23,11 @@ define([
             Constitution : 14, // 
             Intelligence : 9,
             Wisdom : 10, 
-            Charisma : 16 // 12 16
+            Charisma : 18 // 12 16
         },
         Classes : [
            { Name : 'Warlock', Level : 2, Archetype : 'Archfey: Pact of the Chain' } 
-           , { Name : 'Sorcerer', Level : 3, Archetype : 'Wild Magic' }
+           , { Name : 'Sorcerer', Level : 4, Archetype : 'Wild Magic' }
         ],
         Defenses : {
             //HP :
@@ -61,24 +62,26 @@ define([
             "Invocation: Eldritch Sight" : `You can cast Detect Magic at will, without expending 
                 a spell slot.`,
             
-            'Wild Magic Surge' : `When expending a spell slot, roll a d20. If the result is less than or equal to 
-                the spell slot level, roll once on the wild magic table.`,
+            'Wild Magic Surge (house ruled)' : `When expending a spell slot or consuming a spell point, 
+                roll once on the wild magic table.`,
             'Tides of Chaos 1/recharge' : `Gain advantage on one attack roll, ability check, or saving throw. 
                 Recharges on a long rest, or on wild magic surge activation.`,
-            'Sorcery Points 3/long rest' : `Used for flexible casting and meta magic.`,
+            'Sorcery Points 4/long rest' : `Used for flexible casting and meta magic.`,
             'Flexible Casting' : `As a bonus action. A spell can be converted to its level of sorcery points, 
                 or sorcery points can be spent to regain a spell slot (see notes).`,
             'Meta Magic: Quickened Spell' : `When you cast a spell that has a casting time of 1 action,
                 you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting.`,
-            'Meta Magic: Extended Spell' : `When you cast a spell lhat has a duration of 1 minute
-                or longer. you can spend 1 sorcery point to double its
-                duration, to a maximum duration of 24 hours.`,
+            'Meta Magic: Extended Spell' : `When you cast a spell that has a duration of 1 minute
+                or longer. you can spend 1 sorcery point to double its duration, to a maximum duration of 24 hours.`,
             'Spellcasting (sorcerer)' : `One Trick is a 5th level spellcaster. His spellcasting ability modifier 
-                is Charisma (spell save DC 14, +6 to hit with spell attacks). He has the following spells prepared: 
+                is Charisma (spell save DC 15, +7 to hit with spell attacks). He has the following spells prepared: 
                 Cantrips: Eldritch Blast, Mage Hand, Mending, Message, Minor Illusion, Prestidigitation, Ray of Frost
                 <br>1st Level (4 sorcerer slots, 2 warlock slots): Feather Fall, Thunderwave, Hex, 
                     Protection from Evil and Good, Comprehend Languages
-                <br>2nd Level (2 slots): Misty Step, Levitate`,
+                <br>2nd Level (3 slots): Misty Step, Levitate, Spider Climb`,
+            'Spellcasting (warlock)' : `Same DC and attack bonus as sorcerer spells. 
+                He has the following spells prepared.
+                <br>Cantrips: Eldritch Blast`
         },
         Spells : [
             // Cantrips
@@ -92,11 +95,11 @@ define([
             'Detect Magic', // Invocation
             // Level 2', 
             // Sorcerer
-            'Misty Step', 'Levitate'
+            'Misty Step', 'Levitate', 'Spider Climb'
         ],
         Actions : {
-            'Eldritch Blast' : `Ranged spell attack +6 to hit, range 240 feet, 
-                one target. Hit 9 (1d10+3) force damage. Two attacks. `   
+            'Eldritch Blast' : `Ranged spell attack +7 to hit, range 240 feet, 
+                one target. Hit 9 (1d10+4) force damage. Two attacks. `   
             , "Cat's Claws" : `Melee unarmed attack +3 to hit, one target. Hit 2(1d4) slashing damage.`       
             , 'Detect Magic' : `One Trick can cast Detect Magic at will without expending a spell slot 
                 or components.`  
