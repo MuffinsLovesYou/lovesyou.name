@@ -115,12 +115,18 @@ Basement 1:
 * Mummy lord
 * Shadar Kai Guardians
 
-
+4Altmanguests
 
 * Shadar Kai Guardians 
     * Soul Monger 
-    * Shadow Dancer 
+    * Shadow Dancer x2
     * Gloom Weaver 
+
+* Feyrith
+* Sandak
+* Jack
+* Flaggfur 
+* Kit
 
 
 #### Nelwale
@@ -157,11 +163,25 @@ Scripting:
         *
         *
         *
-    Scroll of alarm
     Potion of Healing x4
-    Potion of Greater Healing x2 4d4+4
     Potion of Heroism
     Rope of climbing
 
+    * Potion of Greater Healing x2 4d4+4
+    * Scroll of alarm
+    Potion of Healing x2
+    1500 gems
+    3 750gp art objects 
+    Rope of climbing
+
+
 
     roll 5 a, roll 2 b
+
+    D17 for a d20+0: party gets twigged 
+        +5
+
+
+
+
+
