@@ -11,7 +11,7 @@ define([
             vm.setUI();
             vm.populateCRDropDowns();
             vm.initializeBuilder();
-
+            vm.setEventListeners();
         },
         setUI : function() { 
             let vm = this;
@@ -21,7 +21,6 @@ define([
                 vm.ui[e] = document.getElementById(e); 
             });
         },
-
         initializeBuilder : function() {
             let vm = this;
             vm.encounterBuilder = new EncounterBuilder();
@@ -92,6 +91,21 @@ define([
             for(let i = 1; i <= 30; i++) { 
                 createOption(i, i);
             }
+        },
+        patterns : {
+            notNumbers : /[^\d]/g,
+            notNumberList : /[^\d,\s]/g
+        },
+        removeCharacters : function(event, rgx) { 
+            event.target.value = event.target.value.replace(rgx, '');
+        },
+        setEventListeners : function() {
+            let vm = this;
+            vm.ui.characters.addEventListener('keyup', (e) => {
+                vm.removeCharacters(e, vm.patterns.notNumberList);
+                vm.builderArgs.setCharacters(e.target.value);
+                // generate encounter
+            });
         }
     });
 
