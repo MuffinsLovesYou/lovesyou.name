@@ -34,6 +34,7 @@ define([
                     ,'character' : 'dungeons-dragons/character-sheets/character-sheet'
                     ,'dice' : 'common/dice/dice'
                     ,'dungeonsdragons': 'dungeons-dragons/dungeons-dragons'
+                    ,'encounter-builder' : 'dungeons-dragons/encounter-builder/encounter-builder'
                     ,'landing' : 'landing/landing'
                     ,'lookups' : 'dungeons-dragons/lookups/lookups'
                     ,'maps' : 'dungeons-dragons/maps/maps'
