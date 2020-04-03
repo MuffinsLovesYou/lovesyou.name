@@ -1,7 +1,8 @@
 define([
     'lite'
     ,'scripts/homerolled/encounterBuilder'
-], (lite, EncounterBuilder) => {
+    ,'scripts/homerolled/gridify'
+], (lite, EncounterBuilder, Gridify) => {
 
     return lite.extend({
         content_url : 'site/dungeons-dragons/encounter-builder/encounter-builder.html',
@@ -140,6 +141,17 @@ define([
         },
         writeOutput : function(encounters) { 
             console.log(encounters);
+
+            let grid = new Gridify('encounter-output-table');
+            grid.initialize({
+                data : encounters,
+                columns : [
+                    { field : 'count', header : '# Monsters', filter : true, sort : true, }
+                    , { field : 'xpCost', header : 'XP Cost', filter : true, sort : true }
+                    , { field : 'crs', header : 'Challenge Ratings', filter : true, sort : true }
+                ], 
+                paging : true
+            });
         }
     });
 
