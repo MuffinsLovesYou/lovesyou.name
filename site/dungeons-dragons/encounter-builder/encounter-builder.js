@@ -26,7 +26,6 @@ define([
             vm.encounterBuilder = new EncounterBuilder();
             vm.builderArgs = vm.EncounterBuilderArgs();
             vm.setArgDefaults();
-            console.log(vm.builderArgs)
         },
         EncounterBuilderArgs : function() {
             let builderArgs = {
@@ -104,8 +103,38 @@ define([
             vm.ui.characters.addEventListener('keyup', (e) => {
                 vm.removeCharacters(e, vm.patterns.notNumberList);
                 vm.builderArgs.setCharacters(e.target.value);
-                // generate encounter
+                vm.generateEncounter();
             });
+
+            vm.ui.difficulty.addEventListener('change', (e) => {
+                vm.builderArgs.setDifficulty(e.target.value);
+                vm.generateEncounter();
+            });
+
+            vm.ui.crMin.addEventListener('change', (e) => { 
+                vm.builderArgs.setCRMin(e.target.value);
+                vm.generateEncounter();
+            });
+
+            vm.ui.crMax.addEventListener('change', (e) => { 
+                vm.builderArgs.setCRMax(e.target.value);
+                vm.generateEncounter();
+            });
+
+            vm.ui.monsterCountMin.addEventListener('keyup', (e) => { 
+                vm.removeCharacters(e, vm.patterns.notNumbers);
+                vm.builderArgs.setCountMin(e.target.value);
+                vm.generateEncounter();    
+            });
+
+            vm.ui.monsterCountMax.addEventListener('keyup', (e) => { 
+                vm.removeCharacters(e, vm.patterns.notNumbers);
+                vm.builderArgs.setCountMax(e.target.value);
+                vm.generateEncounter();
+            });
+        },
+        generateEncounter : function() { 
+            console.log(this.builderArgs)
         }
     });
 
