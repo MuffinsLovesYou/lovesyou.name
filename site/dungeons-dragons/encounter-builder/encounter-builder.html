@@ -1,1 +1,33 @@
-test
+
+<div id='inputContainer'>
+    <div id='characterContainer'>
+        <span>Character Levels:</span>
+        <input type='text' id='characters' placeholder='1, 2, 3'/>
+    </div>
+    <div id='difficultyContainer'>
+        <span>Difficulty:</span>
+        <select id='difficulty'>
+            <option value='Easy'>Easy</option>
+            <option selected='true' value='Medium'>Medium</option>
+            <option value='Hard'>Hard</option>
+            <option value='Deadly'>Deadly</option>   
+        </select>    
+    </div>
+    <div id='challengeRatingContainer'>
+        <span>Min CR:</span>
+        <select id='crMin'></select>
+        <span>Max CR:</span>
+        <select id='crMax'></select>
+    </div>
+    <div id='monsterCountContainer'>
+        <span>Min Count:</span>
+        <input id='monsterCountMin' type='text' value='1'/>
+        <span>Max Count:</span>
+        <input id='monsterCountMax' type='text' value='6'/>
+    </div>
+</div>
+<div id='outputContainer'>
+    <p id='output'>
+
+    </p>
+</div>
