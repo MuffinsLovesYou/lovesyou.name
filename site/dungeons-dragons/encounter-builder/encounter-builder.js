@@ -137,18 +137,37 @@ define([
         generateEncounter : function() { 
             let vm = this;
             let encounters = vm.encounterBuilder.getEncounters(vm.builderArgs);
+            encounters = vm.prepareOutput(encounters);
             vm.writeOutput(encounters);        
         },
-        writeOutput : function(encounters) { 
-            console.log(encounters);
+        prepareOutput : function(encounters) { 
+            encounters.forEach(encounter => { 
+                // Get a count of how many times each CR occurs
+                let crs = {}
+                encounter.crs.forEach(cr => { 
+                    crs[cr] = crs[cr] ? crs[cr]+1 : 1;
+                });
+                // Prepare them as display strings
+                let crsStrings = [];
+                for(let cr in crs) {
+                    crsStrings.push('CR' + cr + ' x' + crs[cr]);
+                }
+                // Sort them and join them to a single string
+                encounter.crsString = crsStrings
+                    .sort((a, b) => a <= b)
+                    .join(', ');
+            });
 
+            return encounters;
+        },
+        writeOutput : function(encounters) { 
             let grid = new Gridify('encounter-output-table');
             grid.initialize({
                 data : encounters,
                 columns : [
                     { field : 'count', header : '# Monsters', filter : true, sort : true, }
                     , { field : 'xpCost', header : 'XP Cost', filter : true, sort : true }
-                    , { field : 'crs', header : 'Challenge Ratings', filter : true, sort : true }
+                    , { field : 'crsString', header : 'Challenge Ratings', filter : true, sort : true }
                 ], 
                 paging : true
             });
