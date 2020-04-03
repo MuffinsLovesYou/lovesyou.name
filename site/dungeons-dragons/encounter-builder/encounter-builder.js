@@ -8,14 +8,26 @@ define([
         onContentBound : function() { 
             let vm = this;
 
+            vm.setUI();
+            vm.populateCRDropDowns();
+            vm.initializeBuilder();
+
+        },
+        setUI : function() { 
+            let vm = this;
+            vm.ui = {};
+            let elements = ['characters', 'difficulty', 'crMin', 'crMax', 'monsterCountMin', 'monsterCountMax'];
+            elements.forEach(e => {
+                vm.ui[e] = document.getElementById(e); 
+            });
+        },
+
+        initializeBuilder : function() {
+            let vm = this;
             vm.encounterBuilder = new EncounterBuilder();
             vm.builderArgs = vm.EncounterBuilderArgs();
-
-            vm.populateCRDropDowns();
-
-            // bind event listeners to UI controls 
-
-
+            vm.setArgDefaults();
+            console.log(vm.builderArgs)
         },
         EncounterBuilderArgs : function() {
             let builderArgs = {
@@ -47,13 +59,20 @@ define([
             }
             return builderArgs;
         },
+        setArgDefaults : function () { 
+            let vm = this;
+            vm.builderArgs.setCharacters(vm.ui.characters.value);
+            vm.builderArgs.setDifficulty(vm.ui.difficulty.value);
+            vm.builderArgs.setCRMin(vm.ui.crMin.value);
+            vm.builderArgs.setCRMax(vm.ui.crMax.value);
+            vm.builderArgs.setCountMin(vm.ui.monsterCountMin.value);
+            vm.builderArgs.setCountMax(vm.ui.monsterCountMax.value);
+            
+        },
         populateCRDropDowns : function() { 
             let vm = this;
-            let crMin = document.getElementById('crMin');
-            let crMax = document.getElementById('crMax');
-
-            vm.populateCRSelect(crMin, 1);
-            vm.populateCRSelect(crMax, 5);
+            vm.populateCRSelect(vm.ui.crMin, 1);
+            vm.populateCRSelect(vm.ui.crMax, 5);
         },
         populateCRSelect : function (select, defaultValue = 1) { 
             let createOption = function(innerText, value) {
