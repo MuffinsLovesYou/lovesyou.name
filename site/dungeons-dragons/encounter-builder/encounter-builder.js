@@ -134,7 +134,12 @@ define([
             });
         },
         generateEncounter : function() { 
-            console.log(this.builderArgs)
+            let vm = this;
+            let encounters = vm.encounterBuilder.getEncounters(vm.builderArgs);
+            vm.writeOutput(encounters);        
+        },
+        writeOutput : function(encounters) { 
+            console.log(encounters);
         }
     });
 
