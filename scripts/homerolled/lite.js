@@ -3,6 +3,7 @@ define([
     'scripts/homerolled/xhr'
 ], (please, xhr)=>{
 
+        
     let Lite = function(args={}){
         let _lite = this;
         _lite.container = '';
@@ -31,6 +32,7 @@ define([
             please.do(_loadContent())
                 .and(_loadData())
                 .then((x, y)=>{
+
 
                     _bindContent(_lite.content);
                     _bindData(_lite.data);
@@ -109,7 +111,24 @@ define([
 
             _lite.onDataBound(data);
         }
+
+        _lite.loadStyleSheet = function(uri) {
+            let links = document.getElementsByTagName('link');
+            let has = Array.from(links).some((link) => { 
+                return link.href === uri;
+            });
+            if(has) { return; }
+
+            let css = document.createElement('link');
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            css.href = uri;
+            
+            let head = document.getElementsByTagName('head')[0];
+            head.appendChild(css);
+        }
     };
+
     //let lite = new Lite();
     return new Lite();
 });

@@ -4,6 +4,14 @@ define([
     ,'scripts/homerolled/gridify'
 ], (lite, EncounterBuilder, Gridify) => {
 
+    /* TODO: cleanup and styling: 
+        Table styles. 
+        Input styles 
+            fixed width left 
+        give character levels alternative input (x chars of y level)
+    */
+    
+
     return lite.extend({
         content_url : 'site/dungeons-dragons/encounter-builder/encounter-builder.html',
         onContentBound : function() { 
