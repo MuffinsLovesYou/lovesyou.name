@@ -171,11 +171,13 @@ define([
         },
         writeOutput : function(encounters) { 
             let grid = new Gridify('encounter-output-table');
+            let numberSort = function(a, b) { return +a >= +b ? 1 : -1 };
+
             grid.initialize({
                 data : encounters,
                 columns : [
-                    { field : 'count', header : '# Monsters', filter : true, sort : true, }
-                    , { field : 'xpCost', header : 'XP Cost', filter : true, sort : true }
+                    { field : 'count', header : '# Monsters', filter : true, sort : numberSort }
+                    , { field : 'xpCost', header : 'XP Cost', filter : true, sort : numberSort }
                     , { field : 'crsString', header : 'Challenge Ratings', filter : true, sort : true }
                 ], 
                 paging : true
