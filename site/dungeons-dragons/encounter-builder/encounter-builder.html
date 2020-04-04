@@ -1,11 +1,11 @@
 
 <div id='inputContainer' >
     <div id='characterContainer'>
-        <span class='builder_inputs_left'>Character Levels:</span>
+        <span class='builder_inputs_column'>Character Levels:</span>
         <input type='text' id='characters' placeholder='1, 2, 3'/>
     </div>
     <div id='difficultyContainer'>
-        <span class='builder_inputs_left'>Difficulty:</span>
+        <span class='builder_inputs_column'>Difficulty:</span>
         <select id='difficulty'>
             <option value='Easy'>Easy</option>
             <option selected='true' value='Medium'>Medium</option>
@@ -14,26 +14,30 @@
         </select>    
     </div>
     <div id='challengeRatingContainer'>
-        <div>
-            <span class='builder_inputs_left'>Min CR:</span>    
-            <select id='crMin'></select>
+        <span class='builder_inputs_column'>CR Range</span>
+        <div class='builder_inputs_column'>
+            <span>Min:</span>    
+            <select id='crMin' class='builder_number_input'></select>
         </div>
-        <div>
-            <span class='builder_inputs_left'>Max CR:</span>
-            <select id='crMax'></select>
+        <div class='builder_inputs_column'>
+            <span>Max:</span>
+            <select id='crMax' class='builder_number_input'></select>
         </div>
     </div>
     <div id='monsterCountContainer'>
-        <div></div>
-            <span class='builder_inputs_left'>Min Count:</span>
-            <input id='monsterCountMin' type='text' maxlength="2" class='builder_count_textbox' value='1'/>
+        <span class='builder_inputs_column'>Monster #:</span>
+        <div class='builder_inputs_column'>
+            <span>Min:</span>
+            <input id='monsterCountMin' type='text' maxlength="2" class='builder_number_input' value='1'/>
         </div>
-        <div>
-            <span class='builder_inputs_left'>Max Count:</span>
-            <input id='monsterCountMax' type='text' maxlength="2" class='builder_count_textbox' value='6'/>
+        <div class='builder_inputs_column'>
+            <span>Max:</span>
+            <input id='monsterCountMax' type='text' maxlength="2" class='builder_number_input' value='6'/>
         </div>
     </div>
 </div>
 <div id='outputContainer'>
     <div id='encounter-output-table'></div>
 </div>
+
+<!-- next up: lets line up our min: max values on same-lines-->
