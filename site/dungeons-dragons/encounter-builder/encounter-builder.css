@@ -1,0 +1,19 @@
+
+#inputContainer { 
+    display:block;
+    width:100%;
+}
+
+.builder_inputs_full { 
+    display : block;
+    width:100%;
+}
+
+.builder_inputs_left { 
+    display : inline-block;
+    min-width : 125px
+}
+
+.builder_count_textbox { 
+     width: 25px;
+}

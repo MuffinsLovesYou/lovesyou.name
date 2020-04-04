@@ -1,11 +1,11 @@
 
-<div id='inputContainer'>
+<div id='inputContainer' >
     <div id='characterContainer'>
-        <span>Character Levels:</span>
+        <span class='builder_inputs_left'>Character Levels:</span>
         <input type='text' id='characters' placeholder='1, 2, 3'/>
     </div>
     <div id='difficultyContainer'>
-        <span>Difficulty:</span>
+        <span class='builder_inputs_left'>Difficulty:</span>
         <select id='difficulty'>
             <option value='Easy'>Easy</option>
             <option selected='true' value='Medium'>Medium</option>
@@ -14,16 +14,24 @@
         </select>    
     </div>
     <div id='challengeRatingContainer'>
-        <span>Min CR:</span>
-        <select id='crMin'></select>
-        <span>Max CR:</span>
-        <select id='crMax'></select>
+        <div>
+            <span class='builder_inputs_left'>Min CR:</span>    
+            <select id='crMin'></select>
+        </div>
+        <div>
+            <span class='builder_inputs_left'>Max CR:</span>
+            <select id='crMax'></select>
+        </div>
     </div>
     <div id='monsterCountContainer'>
-        <span>Min Count:</span>
-        <input id='monsterCountMin' type='text' value='1'/>
-        <span>Max Count:</span>
-        <input id='monsterCountMax' type='text' value='6'/>
+        <div></div>
+            <span class='builder_inputs_left'>Min Count:</span>
+            <input id='monsterCountMin' type='text' maxlength="2" class='builder_count_textbox' value='1'/>
+        </div>
+        <div>
+            <span class='builder_inputs_left'>Max Count:</span>
+            <input id='monsterCountMax' type='text' maxlength="2" class='builder_count_textbox' value='6'/>
+        </div>
     </div>
 </div>
 <div id='outputContainer'>
