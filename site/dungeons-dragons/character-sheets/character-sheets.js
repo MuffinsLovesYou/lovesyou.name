@@ -1,12 +1,12 @@
 define([
     'lite', 
     'tiles'
-], function (lite, tiles) {
+], function (lite, Tiles) {
 
     return lite.extend({
-        content : `<div id='tiles' class='tiles'></div>`,
+        content_url : `site/dungeons-dragons/character-sheets/character-sheets.html`,
         onContentBound : function() {
-            tiles.fill([
+            Tiles().fill(document.getElementById('character-sheet-tiles'), [
                 {title:"Pepper",href:"#character/pepper",alt:"dwarven cleric"}
                 , {title:"Rez",href:"#character/rez",alt:"Slayer 2"}
                 , { title : 'Kene', href : '#character/kene', alt : 'Slayer 1' }
