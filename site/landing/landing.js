@@ -7,8 +7,8 @@ define([
         content_url : 'site/landing/landing.html',
         onContentBound : function() {
             new Tiles().fill(document.getElementById('tile-container'), [
-                { title : 'programming', alt : 'samples and experiments', href : '#Programming' }
-                , { title : 'dungeons and dragons', alt : 'characters, notes', href : '#DungeonsDragons' }
+                { title : 'programming', alt : 'samples and experiments', href : '#programming' }
+                , { title : 'dungeons and dragons', alt : 'characters, notes', href : '#dungeons-dragons' }
             ]);      
         }
     });

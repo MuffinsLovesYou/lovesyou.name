@@ -23,7 +23,7 @@ define([
         , initialize_router : function() {
             window.router = new Router({
                 base_url : 'site/',
-                start_page : 'landing',
+                start_page : 'home',
                 content_holder_id : 'main-content',
                 paths : routes
             });
