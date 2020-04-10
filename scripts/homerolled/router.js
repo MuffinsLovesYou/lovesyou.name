@@ -1,8 +1,5 @@
 define([
-    'colorizer'
-], (colorizer) => {
-    // migrate out. 
-    colorizer.load();
+], () => {
 
     let Router = function (options={}) {
         let _router = this;
@@ -22,8 +19,6 @@ define([
         
         _router.navigate = function () {
             router.clean_url();
-            // migrate out 
-            colorizer.on_navigate();
             let hash = window.location.hash.slice(1).toLowerCase().split`/`[0]
                 || _router.start_page;
             if(!_router.paths[hash]) return; // 404?

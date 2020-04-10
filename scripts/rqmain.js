@@ -1,15 +1,21 @@
-// using require.js
 requirejs.config({
 	baseUrl : "", // root.
 
-	paths:{ // establishes shortcuts to relative paths. Gotta check this with URLs
-		'colorizer' : 'scripts/vendor/paletton'
+	shim : {
+		// Bootstrap uses jQuery and popper for some of its control behavior. 
+        "bootstrap" : { "deps" : ['jquery'] }
+    },
+	paths : { 
+		// Bootstrap and its dependencies. Local fallbacks if the cdns fail
+		"jquery" : ["https://code.jquery.com/jquery-3.4.1.slim.min", 'scripts/vendor/bootstrap/jquery.min']
+		, 'bootstrap' : ['https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min', 'scripts/vendor/boostrap/boostrap.bundle.min']
+
+		// Code syntax highlighting
+		,'prism' : 'scripts/vendor/prism'
+		
 		,'dice' : 'scripts/homerolled/dice/dice'
-		,'elements' : 'site/dungeons-dragons/character-sheets/elements/'
 		,'router' : 'scripts/homerolled/router'
 		,'lite' : 'scripts/homerolled/lite'
-		,'lovesyou_util' : 'scripts/homerolled/lovesyou_util'
-		,'prism' : 'scripts/vendor/prism'
 		,'please' : 'scripts/homerolled/please'
 		,'tiles' : 'scripts/homerolled/tiles'
 		,'xhr' : 'scripts/homerolled/xhr'
@@ -17,8 +23,8 @@ requirejs.config({
 });
 
 require([
-	'scripts/initialize'
-],(initializer)=>{
+	'bootstrap', 'scripts/initialize', 
+],(bootstrap, initializer)=>{
 	console.log('rqmain.js application entry point');
 	initializer.init();
 });
