@@ -1,31 +1,37 @@
-<div id='code-page-character-notes'>
-    <p>In February 2017, I started working at a place that used Marionette.js (a backbone.js extension) 
-        to create a single page application. This was my first experience developing an SPA, so I wrote 
-        my own SPA library/toolkit, which is what this site is based on. In 2019, I migrated it to 
-        its own repository: <a href='https://github.com/MuffinsLovesYou/Lite' target='_blank'>Github Page</a></p>
-    <p>The example below is code used by this page to load the lite.js code from github and present it. When 
-        .attach() is called, it does a HTTP GET request against the content_url, inserts the results into the 
-        container, then executes the onContentBound event, which calls the third-party 'prism' utility to do 
-        the code highlighting. 
-    </p>
+<div class='container'>
+    <div class='row'>
+        <div id='code-page-character-notes'>
+            <p>In February 2017, I started working at a place that used Marionette.js (a backbone.js extension) 
+                to create a single page application. This was my first experience developing an SPA, so I wrote 
+                my own SPA library/toolkit, which is what this site is based on. </p>
+                <a href='https://github.com/unstableconfiguration/Lite' target='_blank'>Github Page</a>
+            <p>The example below is code used by this page to load the lite.js code from github and present it. When 
+                .attach() is called, it does a HTTP GET request against the content_url, inserts the results into the 
+                container, then executes the onContentBound event, which calls the third-party 'prism' utility to do 
+                the code highlighting. 
+            </p>
+        </div>
+        <div> 
+            <h2>example usage:</h2>
+            <pre style='overflow:auto; max-height:400px'><code id='this-page-block' class='language-javascript'>
+    let code_block = lite.extend({
+        container : document.getElementById('lite-code-block'),
+        content_url : `https://raw.githubusercontent.com/unstableconfiguration/Lite/master/lite.js`,               
+        onContentBound : function() {
+            require(['prism'], ()=>{ Prism.highlightElement(this.container); });
+        }
+    });
+    new code_block().attach();
+            </code></pre>
+        </div>
+        <div>
+            <h2>lite.js</h2>
+            <pre style='overflow:auto; max-height:400px;'>
+                <code id='lite-code-block' class='language-javascript'>
+                </code>
+            </pre>
+        </div>
+    </div>
 </div>
-<div> 
-    <h2>example usage:</h2>
-    <pre style='overflow:auto; max-height:400px'><code id='this-page-block' class='language-javascript'>
-let code_block = lite.extend({
-    container : document.getElementById('lite-code-block'),
-    content_url : `https://raw.githubusercontent.com/MuffinsLovesYou/Lite/master/lite.js`,               
-    onContentBound : function() {
-        require(['prism'], ()=>{ Prism.highlightElement(this.container); });
-    }
-});
-new code_block().attach();
-    </code></pre>
-</div>
-<div>
-    <h2>lite.js</h2>
-    <pre style='overflow:auto; max-height:400px;'>
-        <code id='lite-code-block' class='language-javascript'>
-        </code>
-    </pre>
-</div>
+
+

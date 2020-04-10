@@ -7,7 +7,7 @@ define([
         onContentBound : function () {
             let Please = lite.extend({
                 container : document.getElementById('please-code-block'),
-                content_url : `https://raw.githubusercontent.com/MuffinsLovesYou/Lite/master/please.js`,               
+                content_url : `https://raw.githubusercontent.com/unstableconfiguration/Lite/master/please.js`,               
                 onContentBound : function() {
                     require(['prism'], ()=>{ Prism.highlightElement(this.container); });
                 }

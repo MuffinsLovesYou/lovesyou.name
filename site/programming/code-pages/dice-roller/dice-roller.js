@@ -1,6 +1,6 @@
 define([
-    'lite', 'tiles'
-], function (lite, tiles) {
+    'lite'
+], function (lite) {
 
     return lite.extend({
         content_url : 'site/programming/code-pages/dice-roller/dice-roller.html',
@@ -16,7 +16,7 @@ define([
         , bindDiceMain : function(){
             let Roller = lite.extend({
                 container : document.getElementById('dice-roller-code'),
-                content_url : 'https://raw.githubusercontent.com/MuffinsLovesYou/Dice/master/dice.js',
+                content_url : 'https://raw.githubusercontent.com/unstableconfiguration/Dice/master/dice.js',
                 onContentBound : function(content) {
                     require(['prism'], ()=>{ Prism.highlightElement(this.container); });    
                 }
@@ -26,7 +26,7 @@ define([
         , bindMathExtensions : function(){
             let Maths = lite.extend({
                 container : document.getElementById('math-extensions-code'),
-                content_url : `https://raw.githubusercontent.com/MuffinsLovesYou/Dice/master/modules/math.js`,
+                content_url : `https://raw.githubusercontent.com/unstableconfiguration/Dice/master/modules/math.js`,
                 onContentBound : function(content){
                     require(['prism'], ()=>{ Prism.highlightElement(this.container); }); 
                 }

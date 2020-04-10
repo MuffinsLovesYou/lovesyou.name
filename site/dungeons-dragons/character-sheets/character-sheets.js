@@ -1,6 +1,6 @@
 define([
     'lite', 
-    'tiles'
+    'scripts/homerolled/tiles'
 ], function (lite, Tiles) {
 
     return lite.extend({

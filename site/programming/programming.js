@@ -1,13 +1,13 @@
 define([
     'lite', 
-    'tiles'
-], function (lite, tiles) {
+    'scripts/homerolled/tiles'
+], function (lite, Tiles) {
 
     return lite.extend({
         content_url : 'site/programming/programming.html',
         onContentBound : function() {
-            tiles.fill([
-                { title : 'github', href : 'http://www.github.com/muffinslovesyou', alt : 'my poor neglected github account'},
+            Tiles().fill(document.getElementById('tiles-container'), [
+                { title : 'github', href : 'http://www.github.com/unstableconfiguration', alt : 'my poor neglected github account'},
                 { title : 'please.js', href : '#code-pages-please', alt : '2017 promises wrapper' },
                 { title : 'lite.js', href : '#code-pages-lite', alt : 'March 2018 templating script' },
                 { title : 'gridify.js', href : '#code-pages-gridify', alt : 'html table generator' },
