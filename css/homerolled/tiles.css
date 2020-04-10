@@ -1,6 +1,6 @@
 
 /*
- borrowing from the css of 
+ based on the css of 
 https://html5up.net/phantom
 */
 
@@ -8,16 +8,13 @@ https://html5up.net/phantom
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    margin: 2.5em 0 0 2.5em;
 }
 
 .tile {
     transition: transform 0.5s ease, opacity 0.5s ease;
     position: relative;
-    width: calc(33.33333% - 2.5em);
     height: 250px;
     overflow: hidden;
-    margin: .5em 0 0 .5em;
 }
 
 .tile>.img {

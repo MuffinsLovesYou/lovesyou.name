@@ -1,17 +1,11 @@
-<div>
-    <p>My personal site for playing around with code. </p>
-    <p>I'm currently doing a lot of rewriting and tinkering. The theme I used when initially 
-        creating the site had a lot of extra stuff I wasn't interested in.  I stripped away 
-        a lot of the stuff I wasn't using and just created my own theme.  The site is super-basic 
-        and all I really need is the css and .js to handle element stylings and the 
-        tiles I use for hyperlinks.  
-    </p>
-    <p>I also started working at a place that makes heavy use of backbone.js paired with marionette.js 
-        for building their site. Again, there is just a ton of things in there that I'm not interested 
-        in for my personal stuff, but I did want to play around with that model of loading pages so I'm 
-        writing my own templating scripts inspired by backbone/marionette. Right now I have a routing 
-        page that allows for url-hash routing and navigation and a templating object for dynamically 
-        loading html or other content types via xhr and will soon have some databinding added in.
-    </p>
+
+<div class='container'>
+    <div class='row'>         
+        <div class='col-12'>
+            <p>My personal site for playing around with code and writing tools for playing dungeons-and-dragons.</p>
+        </div>
+    </div>
+    <div class='row'>
+        <div id='tile-container' class='tiles container'></div>
+    </div>
 </div>
-<div id='tiles' class='tiles'></div>

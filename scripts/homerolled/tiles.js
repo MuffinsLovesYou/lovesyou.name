@@ -1,45 +1,60 @@
-define([], function(){
-    
+define([], () => {
+
     let Tiles = function(options = {}){
         let _tiles = this;
-        _tiles.image_directory = options.image_directory || 'images/';
-        _tiles.image_count = options.image_count || 10;
+        _tiles.imageDirectory = options.imageDirectory || 'images/';
+        _tiles.imageCount = options.imageCount || 15;
+        _tiles.container = options.container;
 
-        _tiles.get_image = function(src){
-            let rand = Math.floor(Math.random()*_tiles.image_count+1);
-            let img = document.createElement('img');
-            img.alt = '';
-            img.src = src || _tiles.image_directory+('00'+rand).slice(-3)+'.png';
-            return img;
-        }
-        _tiles.build_tile_html = function(tile_data){
+        _tiles.Tile = function(tileData) {
             let tile = document.createElement('div');
-            tile.className = 'tile';
-            let img = tile.appendChild(_tiles.get_image(tile_data.src));
-            let anch = tile.appendChild(document.createElement('a'));
-            anch.href = tile_data.href || '#404';
-            let title = anch.appendChild(document.createElement('h2'));
-            title.innerText = tile_data.title || 'missing title';
-            let content = anch.appendChild(document.createElement('div'));
-            content.className = 'content';
+            tile.className = 'tile col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4';
+
+            let img = tile.appendChild(_tiles.getImage(tileData.src));
+            
+            let anchor = tile.appendChild(document.createElement('a'));
+            anchor.href = tileData.href || '#404';
+
+            let title = anchor.appendChild(document.createElement('h2'));
+            title.innerText = tileData.title || 'missing title';
+
+            let content = anchor.appendChild(document.createElement('div'));
+            content.className = 'tile-content';
+
             let alt = content.appendChild(document.createElement('p'));
-            alt.innerText = tile_data.alt || '';
+            alt.innerText = tileData.alt || '';
+
             return tile;
         }
-        _tiles.fill = function(tile_list){
-            if(!Array.isArray(tile_list)) return;
-            let tiles_div = document.getElementById('tiles');
-            tile_list.forEach((tile_data)=>{
-                tiles_div.appendChild(_tiles.build_tile_html(tile_data));
+
+        _tiles.getRow = function() { 
+            let div = document.createElement('div');
+            div.className = 'row row-cols-3';
+            return div;
+        }
+
+        _tiles.getImage = function(src){
+            let rand = Math.floor(Math.random() * _tiles.imageCount + 1);
+            let img = document.createElement('img');
+            img.alt = '';
+            img.src = src || _tiles.imageDirectory+('00'+rand).slice(-3)+'.png';
+            return img;
+        }
+
+        _tiles.fill = function(container = _tiles.container, tiles){
+            if(!container instanceof HTMLElement) { throw`tiles.fill requires a valid html element for a container`; }
+            if(!Array.isArray(tiles)) { throw`tiles.fill requires an array of tile data`; }
+            
+            let row = _tiles.getRow();
+            tiles.forEach((tileData) => {
+                row.appendChild(_tiles.Tile(tileData));
             });
+            container.appendChild(row);
         }
         return _tiles;
     }
 
-    return new Tiles({
-        image_directory : 'images/',
-        image_count : 15
-    });
-})
+    return Tiles;
+});
 
 

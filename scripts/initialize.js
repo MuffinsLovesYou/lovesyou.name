@@ -1,7 +1,6 @@
 define([
     'router',
     'lite',
-	'tiles'
 ],(Router)=>{
     
     let initializer = {
