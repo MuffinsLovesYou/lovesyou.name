@@ -8,7 +8,7 @@ define([], () => {
 
         _tiles.Tile = function(tileData) {
             let tile = document.createElement('div');
-            tile.className = 'tile col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4';
+            tile.className = 'tile col';
 
             let img = tile.appendChild(_tiles.getImage(tileData.src));
             
