@@ -1,11 +1,21 @@
 define([
     'lite'
-    ,'tiles'
-], function (lite, tiles) {
+    ,'scripts/homerolled/tiles'
+], function (lite, Tiles) {
     return lite.extend({
-        content : `<p>2017 started and ended with the claw mountain arc.</p><div id='tiles' class='tiles'></div>`,
+        content : `
+        <div class='container'>
+            <div class='row'>
+                <div class='col-12'>
+                    <p>2018 started with the group heading to Ging Onol and ended as they were about to retake the Bloodkith Halls.</p>
+                </div>
+            </div>
+            <div class='row'>
+                <div id='tiles' class='tiles'></div>
+            </div>
+        </div>`,
         onContentBound : function() {
-            tiles.fill([
+            Tiles().fill(document.getElementById('tiles'), [
                 {title:"12-2018",href:"#note/sessions/2018/12-2018",alt:"heading to bloodkith"},
                 {title:"10-2018",href:"#note/sessions/2018/10-2018",alt:"fighting the filth"},
                 {title:"08-2018",href:"#note/sessions/2018/08-2018",alt:"meeting eberk"},

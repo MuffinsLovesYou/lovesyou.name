@@ -1,12 +1,12 @@
 define([
     'lite'
-    ,'tiles'
-], function (lite, tiles) {
+    ,'scripts/homerolled/tiles'
+], function (lite, Tiles) {
     
     return lite.extend({
-        content : "<p>DM notes.</p><div id='tiles' class='tiles'></div>",
+        content_url : 'site/dungeons-dragons/notes/notes.html',
         onContentBound : function() {
-            tiles.fill([
+            Tiles().fill(document.getElementById('tiles'), [
                 {title:'09-2019',href:'#note/sessions/09-2019',alt:'an unforgiving environment'},
                 {title:'07-2019', href:'#note/sessions/07-2019',alt:'arriving in the kingdoms'},
                 {title:'04-2019', href:'#note/sessions/04-2019',alt:'...'},
