@@ -4,10 +4,11 @@ define([], () => {
 
     /* Path mapping for # navigation */
     return {
-        '2017-notes' : 'dungeons-dragons/notes/2017'
-        , '2018-notes' : 'dungeons-dragons/notes/2018'
+        "" : 'landing/landing'
+        , 'dungeons-dragons/notes/archives/2017' : 'dungeons-dragons/notes/2017'
+        , 'dungeons-dragons/notes/archives/2018' : 'dungeons-dragons/notes/2018'
         , 'dungeons-dragons/character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
-        , 'character' : 'dungeons-dragons/character-sheets/character-sheet'
+        , 'dungeons-dragons/character-sheets/{character}' : 'dungeons-dragons/character-sheets/character-sheet'
         , 'dice' : 'common/dice/dice'
         , 'dungeons-dragons': 'dungeons-dragons/dungeons-dragons'
         , 'dungeons-dragons/encounter-builder' : 'dungeons-dragons/encounter-builder/encounter-builder'

@@ -20,7 +20,9 @@ define([
             });
         }
         , initialize : function() {
-            this.data_url = '5e/char-sheets/'+window.location.hash.split('/').slice(1).join('/')+'.js'
+            // drop #dungeons-dragons/character-sheets/
+            this.data_url = '5e/char-sheets/' + 
+                location.hash.split('/').slice(2).join('/') +'.js'
             this.load_css();
         }
         , load_css : function() {
