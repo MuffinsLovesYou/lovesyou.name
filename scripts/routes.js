@@ -1,42 +1,36 @@
 define([], () => { 
 
-    let code_path = 'programming/code-pages/';
 
-    /* Path mapping for # navigation */
+    /* url-hash : file-to-load */
     return {
-        // revisit notes
-        // #dungeons-dragons/notes  // main page
-        // #dungeons-dragons/notes/{notePath} // notelookup
-
         "" : 'landing/landing'
+        , 'home' : 'landing/landing'
+        
+        , 'code-pages' : 'programming/code-pages/'  
+        , 'code-pages/dice-roller' : 'programming/code-pages/dice-roller/dice-roller'
+        , 'code-pages/please' : 'programming/code-pages/please/please'
+        , 'code-pages/lite' : 'programming/code-pages/lite/lite'
+        , 'code-pages/gridify' : 'programming/code-pages/gridify/gridify'
+    
+        , 'dungeons-dragons': 'dungeons-dragons/dungeons-dragons'
         , 'dungeons-dragons/character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
         , 'dungeons-dragons/character-sheets/{character}' : 'dungeons-dragons/character-sheets/character-sheet'
         , 'dungeons-dragons/dice' : 'common/dice/dice'
-        , 'dungeons-dragons': 'dungeons-dragons/dungeons-dragons'
         , 'dungeons-dragons/encounter-builder' : 'dungeons-dragons/encounter-builder/encounter-builder'
         , 'dungeons-dragons/lookups' : 'dungeons-dragons/lookups/lookups'
         , 'dungeons-dragons/maps' : 'dungeons-dragons/maps/maps'
         , 'dungeons-dragons/monsterbox' : 'dungeons-dragons/elements/monsterbox/monsterbox'
+        
         , 'dungeons-dragons/notes' : 'dungeons-dragons/notes/notes'
         , 'dungeons-dragons/notes/places' : 'dungeons-dragons/notes/places'
         , 'dungeons-dragons/notes/archives/2017' : 'dungeons-dragons/notes/2017'
         , 'dungeons-dragons/notes/archives/2018' : 'dungeons-dragons/notes/2018'
-        //, 'dungeons-dragons/notes/recap-claw-mountain' : 'dungeons-dragons/notes/recap-claw-mountain/recap-claw-mountain' 
-        //, 'dungeons-dragons/notes/timeline' : 'dungeons-dragons/notes/timeline/timeline'
-        //, 'places' : 'dungeons-dragons/notes/places/places'
         , 'dungeons-dragons/notes/{note}' : 'dungeons-dragons/notes/note'
+        
         , 'dungeons-dragons/spellbox' : 'dungeons-dragons/elements/spellbox/spellbox'
         , 'dungeons-dragons/wild-magic': 'dungeons-dragons/wild-magic/wild-magic'
-        , 'home' : 'landing/landing'
-        , 'playtest' : 'dungeons-dragons/notes/play-test'
-        , 'programming' : 'programming/programming'
         
-        , 'code-pages' : 'programming/code-pages/'  
-        , 'code-pages-character' : code_path + 'character/character'
-        , 'code-pages-dice-roller' : code_path + 'dice-roller/dice-roller'
-        , 'code-pages-please' : code_path + 'please/please'
-        , 'code-pages-lite' : code_path + 'lite/lite'
-        , 'code-pages-gridify' : code_path + 'gridify/gridify'
+        , 'programming' : 'programming/programming' 
     };
 
 });

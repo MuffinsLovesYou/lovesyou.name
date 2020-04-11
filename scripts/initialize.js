@@ -34,8 +34,8 @@ define([
                     breadcrumb.set(hash);
                 }
             });
-            location.hash = '#home'
-
+            window.onhashchange()
+            
         }
     }
 

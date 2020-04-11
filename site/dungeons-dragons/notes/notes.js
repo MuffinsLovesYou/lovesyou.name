@@ -21,7 +21,6 @@ define([
                 { title: '03-2019', href: '#dungeons-dragons/notes/sessions/03-2019',alt: 'divine drama'},
                 { title: '2018', href: '#dungeons-dragons/notes/archives/2018', alt: '2018 archive'},
                 { title: '2017', href: '#dungeons-dragons/notes/archives/2017', alt: '2017 archive'},
-                // { title: 'timeline', href: '#timeline', alt: 'timeline'},
                 { title: 'places', href: '#dungeons-dragons/notes/places', alt:''}
             ]);
         }
