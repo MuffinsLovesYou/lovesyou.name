@@ -4,6 +4,10 @@ define([], () => {
 
     /* Path mapping for # navigation */
     return {
+        // revisit notes
+        // #dungeons-dragons/notes  // main page
+        // #dungeons-dragons/notes/{notePath} // notelookup
+
         "" : 'landing/landing'
         , 'dungeons-dragons/notes/archives/2017' : 'dungeons-dragons/notes/2017'
         , 'dungeons-dragons/notes/archives/2018' : 'dungeons-dragons/notes/2018'

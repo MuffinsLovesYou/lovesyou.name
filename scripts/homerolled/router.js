@@ -14,7 +14,7 @@ define([], () => {
             let path = _router.paths.find(path => {
                 return path.pattern.test(hash);
             });
-            _router.onHashChange(path.value);
+            _router.onHashChange(hash, path.value);
         }
         window.onhashchange = _router._onHashChange;
 
