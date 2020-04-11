@@ -5,7 +5,7 @@ define([
     
     return lite.extend({
         initialize : function() {
-            let file = window.location.hash.split('/').slice(1).join('/')+'.md';
+            let file = location.hash.split('/').slice(2).join('/')+'.md';
             this.content_url = '5e/notes/'+file;  
         }
         ,onContentLoaded : function(content){

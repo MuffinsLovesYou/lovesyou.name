@@ -19,7 +19,7 @@ define([
         },
         bindUtilities : function() {
             Tiles().fill(document.getElementById('utilities-container'), [
-                  { title : 'Dice', href : '#dice' }
+                  { title : 'Dice', href : '#dungeons-dragons/dice' }
                 , { title : "Lookups", href : "#dungeons-dragons/lookups", alt : "spells, monsters, items" }
                 , { title : 'Wild Magic Surge', href : '#dungeons-dragons/wild-magic', alt : 'wild magic surge table' }
                 , { title : 'Encounter Builder', href : '#dungeons-dragons/encounter-builder', alt : 'encounter builder' }
