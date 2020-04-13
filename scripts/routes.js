@@ -22,9 +22,10 @@ define([], () => {
         
         , 'dungeons-dragons/notes' : 'dungeons-dragons/notes/notes'
         , 'dungeons-dragons/notes/places' : 'dungeons-dragons/notes/places'
-        , 'dungeons-dragons/notes/archives/2017' : 'dungeons-dragons/notes/2017'
-        , 'dungeons-dragons/notes/archives/2018' : 'dungeons-dragons/notes/2018'
+        , 'dungeons-dragons/notes/2017' : 'dungeons-dragons/notes/2017'
+        , 'dungeons-dragons/notes/2018' : 'dungeons-dragons/notes/2018'
         , 'dungeons-dragons/notes/{note}' : 'dungeons-dragons/notes/note'
+        , 'dungeons-dragons/notes/archives/{note}' : 'dungeons-dragons/note/note'
         
         , 'dungeons-dragons/spellbox' : 'dungeons-dragons/elements/spellbox/spellbox'
         , 'dungeons-dragons/wild-magic': 'dungeons-dragons/wild-magic/wild-magic'

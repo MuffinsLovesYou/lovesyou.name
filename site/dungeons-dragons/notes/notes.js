@@ -15,12 +15,12 @@ define([
         </div>`,
         onContentBound : function() {
             Tiles().fill(document.getElementById('tiles'), [
-                { title: '09-2019', href: '#dungeons-dragons/notes/sessions/09-2019',alt: 'an unforgiving environment'},
-                { title: '07-2019', href: '#dungeons-dragons/notes/sessions/07-2019',alt: 'arriving in the kingdoms'},
-                { title: '04-2019', href: '#dungeons-dragons/notes/sessions/04-2019',alt: '...'},
-                { title: '03-2019', href: '#dungeons-dragons/notes/sessions/03-2019',alt: 'divine drama'},
-                { title: '2018', href: '#dungeons-dragons/notes/archives/2018', alt: '2018 archive'},
-                { title: '2017', href: '#dungeons-dragons/notes/archives/2017', alt: '2017 archive'},
+                { title: '09-2019', href: '#dungeons-dragons/notes/09-2019?path=sessions/09-2019', alt: 'an unforgiving environment'},
+                { title: '07-2019', href: '#dungeons-dragons/notes/07-2019?path=sessions/07-2019', alt: 'arriving in the kingdoms'},
+                { title: '04-2019', href: '#dungeons-dragons/notes/04-2019?path=sessions/04-2019', alt: '...'},
+                { title: '03-2019', href: '#dungeons-dragons/notes/03-2019?path=sessions/03-2019', alt: 'divine drama'},
+                { title: '2018', href: '#dungeons-dragons/notes/2018', alt: '2018 archive'},
+                { title: '2017', href: '#dungeons-dragons/notes/2017', alt: '2017 archive'},
                 { title: 'places', href: '#dungeons-dragons/notes/places', alt:''}
             ]);
         }
