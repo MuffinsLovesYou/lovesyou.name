@@ -1,7 +1,7 @@
 define([], () => {
 
     let breadcrumb = {
-        set : function(hash) { 
+        set : function(hash, filePath) { 
             hash = hash.slice(1);
             let breadCrumb = document.getElementById('bootstrap-breadcrumb');
             if(!breadCrumb) { return; }

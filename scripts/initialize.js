@@ -31,7 +31,7 @@ define([
                         new lite().attach(document.getElementById('main-content'));
                     }); 
 
-                    breadcrumb.set(hash);
+                    breadcrumb.set(hash, filePath);
                 }
             });
             window.onhashchange()

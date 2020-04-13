@@ -6,11 +6,10 @@ define([], () => {
         "" : 'landing/landing'
         , 'home' : 'landing/landing'
         
-        , 'code-pages' : 'programming/code-pages/'  
-        , 'code-pages/dice-roller' : 'programming/code-pages/dice-roller/dice-roller'
-        , 'code-pages/please' : 'programming/code-pages/please/please'
-        , 'code-pages/lite' : 'programming/code-pages/lite/lite'
-        , 'code-pages/gridify' : 'programming/code-pages/gridify/gridify'
+        , 'programming/dice-roller' : 'programming/code-pages/dice-roller/dice-roller'
+        , 'programming/please' : 'programming/code-pages/please/please'
+        , 'programming/lite' : 'programming/code-pages/lite/lite'
+        , 'programming/gridify' : 'programming/code-pages/gridify/gridify'
     
         , 'dungeons-dragons': 'dungeons-dragons/dungeons-dragons'
         , 'dungeons-dragons/character-sheets' : 'dungeons-dragons/character-sheets/character-sheets'
