@@ -1,8 +1,10 @@
 define([], () => {
 
+    // good start, now lets drop the url params from this. 
     let breadcrumb = {
         set : function(hash, filePath) { 
             hash = hash.slice(1);
+            if(hash.indexOf('?') > -1) { hash = hash.substr(0, hash.indexOf('?')); }
             let breadCrumb = document.getElementById('bootstrap-breadcrumb');
             if(!breadCrumb) { return; }
             while(breadCrumb.children.length > 0) { breadCrumb.removeChild(breadCrumb.firstChild); }

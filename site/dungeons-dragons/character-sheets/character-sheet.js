@@ -21,9 +21,17 @@ define([
         }
         , initialize : function() {
             // drop #dungeons-dragons/character-sheets/
-            this.data_url = '5e/char-sheets/' + 
-                location.hash.split('/').slice(2).join('/') +'.js'
+            this.data_url = this.getDataUrl();
             this.load_css();
+        }
+        , getDataUrl : function() { 
+            let hash = location.hash;
+            if(hash.indexOf('path') > -1){
+                return '5e/char-sheets/' + hash.substr(hash.indexOf('path') + 5) + '.js';
+            }
+            else {
+                return '5e/char-sheets/' + hash.split('/').slice(2).join('/') + '.js';
+            }
         }
         , load_css : function() {
             let css = document.createElement("link");
