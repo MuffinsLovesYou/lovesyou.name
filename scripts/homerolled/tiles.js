@@ -10,7 +10,7 @@ define([], () => {
             let tile = document.createElement('div');
             tile.className = 'tile col';
 
-            let img = tile.appendChild(_tiles.getImage(tileData.src));
+            tile.appendChild(_tiles.getImage(tileData.src));
             
             let anchor = tile.appendChild(document.createElement('a'));
             anchor.href = tileData.href || '#404';
