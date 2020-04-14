@@ -112,7 +112,7 @@ define([
             _lite.onDataBound(data);
         }
 
-        _lite.loadStyleSheet = function(uri) {
+        _lite.loadCSS = function(uri) {
             let links = document.getElementsByTagName('link');
             let has = Array.from(links).some((link) => { 
                 return link.href === uri;

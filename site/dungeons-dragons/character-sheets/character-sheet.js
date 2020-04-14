@@ -11,58 +11,71 @@ define([
     return lite.extend({
         content_url : 'site/dungeons-dragons/character-sheets/character-sheet.html',
         onContentBound : function () {
-            require(['scripts/homerolled/character-sheet-styler'], (sheet_styler) => {
-                sheet_styler.stylize();
-            });
+            let vm = this;
+
+            vm.initializeTabs();
+            vm.loadCSS('css/homerolled/dnd.css');
+            vm.loadCSS('css/homerolled/character-sheet.css');   
 
             require(['site/common/dice/dice'], (dice) => {
                 new dice().attach(document.getElementById('dice-container'));
             });
         }
         , initialize : function() {
-            // drop #dungeons-dragons/character-sheets/
-            this.data_url = this.getDataUrl();
-            this.load_css();
+            let vm = this;
+            vm.data_url = vm.getDataUrl();
         }
         , getDataUrl : function() { 
             let hash = location.hash;
-            if(hash.indexOf('path') > -1){
-                return '5e/char-sheets/' + hash.substr(hash.indexOf('path') + 5) + '.js';
-            }
-            else {
-                return '5e/char-sheets/' + hash.split('/').slice(2).join('/') + '.js';
-            }
-        }
-        , load_css : function() {
-            let css = document.createElement("link");
-            css.rel = "stylesheet";
-            css.type = "text/css";
-            css.href = 'css/homerolled/dnd.css';
-            let head = document.getElementsByTagName('head')[0];
-            let links = document.getElementsByTagName('link');
-            let has = Array.from(links).some((link)=>{
-                return link.href === css.href;
-            });
-            if(!has) head.appendChild(css);            
+            return hash.indexOf('path') > -1 
+                ? '5e/char-sheets/' + hash.substr(hash.indexOf('path') + 5) + '.js'
+                : '5e/char-sheets/' + hash.split('/').slice(2).join('/') + '.js';
         }
         , onDataBound : function (data) {
             let view = this;
-            view.main_tab(data);
-            view.background_tab(data);
-            view.notes_tab();
-            view.skills_tab(data);
-            view.items_tab(data);
-            view.spells_tab(data);
+            view.mainTab(data);
+            view.backgroundTab(data);
+            view.notesTab();
+            view.skillsTab(data);
+            view.itemsTab(data);
+            view.spellsTab(data);
         }
-        , main_tab : function(data){
+        , initializeTabs : function() { 
+            let vm = this;
+            vm.tabs = {};
+            let tabs = document.querySelectorAll('#characterTabs span');
+            Array.from(tabs).forEach((tab) => {
+                let inner = tab.innerHTML;
+                let container = document.getElementById('character-'+inner);
+                container.style.display = 'none';
+                vm.tabs[inner] = {
+                    'el' : tab
+                    ,'container' : container
+                }
+            
+                tab.addEventListener('click', vm.onTabClicked.bind(vm));       
+            });
+            tabs[0].click();
+        }
+        , onTabClicked : function(event) { 
+            let vm = this;
+            let inner = event.target.innerHTML;
+            for(let t in vm.tabs){
+                let tab = vm.tabs[t];
+                let selected = (tab.el.innerHTML === inner);
+                tab.el.className = (selected) ? 'selected' : '';
+                tab.container.style.display = (selected) ? 'block' : 'none';
+            }
+        }
+        , mainTab : function(data){
             new MainTab({
                 data : data, // might wanna make data binding more obvious 
-                container : document.getElementById('character_main')
+                container : document.getElementById('character-main')
             }).attach();
         }
-        , notes_tab : function(){
+        , notesTab : function(){
             let view = this;
-            var notes_container = view.container.querySelector('#character_notes');
+            var notes_container = view.container.querySelector('#character-notes');
             let x = new lite.extend({
                 container : notes_container,
                 content : `<div id='notes'></div>`,
@@ -76,7 +89,7 @@ define([
             });
             new x().attach();
         }
-        , skills_tab : function(data){
+        , skillsTab : function(data){
             window.data = data;
             let _skills = [];
             for(let s in data.Skills) _skills.push(data.Skills[s]);
@@ -91,17 +104,17 @@ define([
                 ],
             });
         }
-        , background_tab : function(data){
-            let background = this.container.querySelector('#character_background');
-            if(data.Background === null) 
-                this.container.querySelector('#background_tab').style.display = 'none';
-            var background_md = '';
+        , backgroundTab : function(data){
+            let background = this.container.querySelector('#character-background');
+            if(!data.Background) { document.getElementById('#backgroundTab').style.display = 'none'; } 
+
+            var markdown = '';
             for(let b in data.Background)
-                background_md += '* **' + b + '**: ' + data.Background[b] + '  \n';
-            background_md = md.Parse(background_md);
-            background.innerHTML = background_md;
+                markdown += '* **' + b + '**: ' + data.Background[b] + '  \n';
+            markdown = md.Parse(markdown);
+            background.innerHTML = markdown;
         }
-        , items_tab : function(data) {
+        , itemsTab : function(data) {
             let _items = [];
             for(let i in data.Items) {
                 if(typeof(data.Items[i])!=='object') continue;
@@ -120,7 +133,7 @@ define([
             let lblItems = document.getElementById('label-items');
             lblItems.innerHTML = lblItems.innerHTML + ' ' + totalWeight + '/' + data.CarryWeight;
         }
-        , spells_tab : function(data) {
+        , spellsTab : function(data) {
             let _spells = [];
             for(let s in data.Spells) {
                 if(typeof(data.Spells[s])!=='object') continue;
@@ -151,7 +164,7 @@ define([
                     { field : 'Duration' } 
                 ],
             });
-            if(_spells.length===0) document.getElementById('spells_tab').style.display = 'none';    
+            if(!_spells.length) document.getElementById('spellsTab').style.display = 'none';    
         }
     });
 

@@ -2,17 +2,17 @@
 
 
 
-#character_tabs {
+#characterTabs {
     display:flex;
     line-height:30px;
     margin:25px;
 }
 
-#character_tabs :last-child {
+#characterTabs :last-child {
     border-right:none;
 }
 
-#character_tabs span {
+#characterTabs span {
     border-right:solid thin;
     display:inline-block;
     font-weight:bold;
@@ -20,39 +20,32 @@
     text-align: center;
 }
 
-#character_tabs .selected {
+#characterTabs .selected {
     opacity: .5;
     text-decoration:underline;
 }
 
-#character_sections {
+#characterSections {
     border-left: solid thin;
     padding-left:8px;
 }
 
 
-/*#character_sections .character_section span:first-child {
-    display:inline-block;
-    width:100px;
-}*/
-#character_sections .character_section span:nth-child(2){
+#characterSections .characterSection span:nth-child(2){
     display:inline;
 }
 
-/*#character_sections .character_section ul {
-    columns:2;
-    margin:5px;
-}*/
 
-#character_sections .character_section ul span:first-child{
+
+#characterSections .characterSection ul span:first-child{
     width:50px;
 }
-#character_sections .character_section ul span:nth-child(2){
+#characterSections .characterSection ul span:nth-child(2){
     display:inline-block;
     text-align:right;
     width:20px;
 }
 
-#character_sections .character_section table {
+#characterSections .characterSection table {
     border-spacing:0;
 }

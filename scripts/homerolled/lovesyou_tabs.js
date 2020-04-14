@@ -5,7 +5,6 @@ define([],()=>{
         let _tabs = {};
         
         tabs.stylize = function() {
-            tabs.__load_css();
             // this will register multiple clicks if you check for tabs more than once
             // we need to stylize per container. 
             let els = document.querySelectorAll('.tabs span');
@@ -34,18 +33,7 @@ define([],()=>{
                 tab.container.style.display = (selected) ? 'block' : 'none'
             }
         }
-        tabs.__load_css = function() {
-            let css = document.createElement('link');
-            css.rel = 'stylesheet';
-            css.type ='text/css';
-            css.href = 'css/homerolled/lovesyou_tabs.css';
-            let head = document.getElementsByTagName('head')[0];
-            let links = document.getElementsByTagName('link');
-            let has = Array.from(links).some((link)=>{
-                return link.href === css.href;
-            });
-            if(!has) head.appendChild(css);
-        }
+
     }
     return LiteTabs;
 });
