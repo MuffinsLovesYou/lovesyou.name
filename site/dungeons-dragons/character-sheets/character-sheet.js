@@ -14,7 +14,6 @@ define([
             let vm = this;
 
             vm.initializeTabs();
-            vm.loadCSS('css/homerolled/dnd.css');
             vm.loadCSS('css/homerolled/character-sheet.css');   
 
             require(['site/common/dice/dice'], (dice) => {
@@ -75,11 +74,11 @@ define([
         }
         , notesTab : function(){
             let view = this;
-            var notes_container = view.container.querySelector('#character-notes');
+            var notesContainer = view.container.querySelector('#character-notes');
             let x = new lite.extend({
-                container : notes_container,
+                container : notesContainer,
                 content : `<div id='notes'></div>`,
-                data_url : '5e/notes/char-notes/'+window.location.hash.split('/').splice(-1)+'.md',
+                data_url : '5e/notes/char-notes/' + window.location.hash.split('/').splice(-1) + '.md',
                 onDataLoaded : function(data){
                     this.data = md.Parse(data);
                 },
@@ -92,15 +91,15 @@ define([
         , skillsTab : function(data){
             window.data = data;
             let _skills = [];
-            for(let s in data.Skills) _skills.push(data.Skills[s]);
+            for(let s in data.Skills) { _skills.push(data.Skills[s]); }
 
-            new Gridify('skills_container').initialize({
+            new Gridify('skills-container').initialize({
                 data : _skills,
                 columns : [
-                    { field : 'Name', style : 'text-align:left', sort:true },
-                    { field : 'Ability', sort:true },
-                    { field : 'Trained', format : (x)=>{ return x?'Yes':'No'; }, sort:true },
-                    { field : 'Bonus', style : 'text-align:right', sort:true}
+                    { field : 'Name', style : 'text-align:left', sort : true },
+                    { field : 'Ability', sort : true },
+                    { field : 'Trained', format : (x) => { return x ? 'Yes' : 'No'; }, sort : true },
+                    { field : 'Bonus', style : 'text-align:right', sort : true}
                 ],
             });
         }
@@ -117,29 +116,29 @@ define([
         , itemsTab : function(data) {
             let _items = [];
             for(let i in data.Items) {
-                if(typeof(data.Items[i])!=='object') continue;
+                if(typeof(data.Items[i]) !== 'object') continue;
                 _items.push(data.Items[i]);
             }
-            new Gridify('items_container').initialize({
+            new Gridify('items-container').initialize({
                 data : _items,
                 columns : [
-                    { field : 'Name', style : 'text-align:left', sort:true },
+                    { field : 'Name', style : 'text-align:left', sort : true },
                     { field : 'Count', style : 'text-align:right' },
                     { field : 'Value', sort:true },
-                    { field : 'Weight', style : 'text-align:right', sort:true }
+                    { field : 'Weight', style : 'text-align:right', sort : true }
                 ],
             });
-            let totalWeight = _items.reduce((acc, item)=>{ return (acc+=(item.Weight||0)); }, 0);
+            let totalWeight = _items.reduce((acc, item)=>{ return (acc += (item.Weight || 0)); }, 0);
             let lblItems = document.getElementById('label-items');
             lblItems.innerHTML = lblItems.innerHTML + ' ' + totalWeight + '/' + data.CarryWeight;
         }
         , spellsTab : function(data) {
             let _spells = [];
             for(let s in data.Spells) {
-                if(typeof(data.Spells[s])!=='object') continue;
+                if(typeof(data.Spells[s]) !== 'object') continue;
                 _spells.push(data.Spells[s]);
             }
-            new Gridify('spells_container').initialize({
+            new Gridify('spells-container').initialize({
                 data : _spells,
                 columns : [
                     { 
@@ -158,7 +157,7 @@ define([
                             }).attach();
                         } 
                     },
-                    { field : 'Level', sort:true },
+                    { field : 'Level', sort : true },
                     { field : 'CastingTime', style : 'max-width:300px; text-align:left' },
                     { field : 'Range' },
                     { field : 'Duration' } 

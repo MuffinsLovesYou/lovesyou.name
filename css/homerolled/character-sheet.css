@@ -1,6 +1,46 @@
 
 
 
+.character { 
+    text-align: left
+}
+
+.character-name {
+    color : darkred;
+    font-size : large;
+    font-weight:bold;
+}
+
+.character-red-left {
+    color : darkred;
+    font-weight:bold;
+}
+
+.character-grey-left {
+    font-style:italic;
+    font-weight:bold;
+}
+
+.character-divider {
+    border-top:solid thin darkred;
+    margin-top : 5px;
+    padding-bottom : 5px;
+}
+
+.character-stat-label {
+    color :darkred;
+    display:inline-block;
+    font-weight:bold;
+    text-align:center;
+    width: 60px;
+}
+
+.character-stat-value {
+    color : darkred;
+    display:inline-block;
+    text-align:center;
+    width:60px;
+}
 
 #characterTabs {
     display:flex;
@@ -34,7 +74,6 @@
 #characterSections .characterSection span:nth-child(2){
     display:inline;
 }
-
 
 
 #characterSections .characterSection ul span:first-child{
