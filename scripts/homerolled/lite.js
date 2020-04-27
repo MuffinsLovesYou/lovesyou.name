@@ -12,7 +12,7 @@ define([
         _lite.data;
         _lite.data_url = ''
 
-        _lite.initialize = ()=>{}
+        _lite.initialize = () => {}
         _lite.onContentLoaded = ((c)=>{});
         _lite.onContentBound = ((c)=>{});
         // data loading makes sense, it loads, it arrives. 
@@ -22,18 +22,11 @@ define([
         for(let a in args)
             this[a] = args[a];
         
-        let _initialize = function() {
-            _lite.initialize();
-        }
-        _initialize();
-        
         _lite.attach = function(container) {
             if(container) _lite.container = container;
             please.do(_loadContent())
                 .and(_loadData())
                 .then((x, y)=>{
-
-
                     _bindContent(_lite.content);
                     _bindData(_lite.data);
                 });
@@ -127,7 +120,11 @@ define([
             let head = document.getElementsByTagName('head')[0];
             head.appendChild(css);
         }
+        
+        _lite.initialize.bind(_lite)();
+
     };
+        
 
     //let lite = new Lite();
     return new Lite();

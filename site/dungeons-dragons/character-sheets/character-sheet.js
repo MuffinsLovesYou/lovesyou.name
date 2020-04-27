@@ -14,7 +14,6 @@ define([
             let vm = this;
 
             vm.initializeTabs();
-            vm.loadCSS('css/homerolled/character-sheet.css');   
 
             require(['site/common/dice/dice'], (dice) => {
                 new dice().attach(document.getElementById('dice-container'));
@@ -23,6 +22,7 @@ define([
         , initialize : function() {
             let vm = this;
             vm.data_url = vm.getDataUrl();
+            vm.loadCSS('css/homerolled/character-sheet.css');   
         }
         , getDataUrl : function() { 
             let hash = location.hash;

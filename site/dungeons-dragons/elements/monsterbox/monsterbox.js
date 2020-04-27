@@ -10,7 +10,8 @@ define([
         , initialize : function() {
             let view = this;
             if(!view.data) view.data = view.load_monster();
-            this.load_css();
+            window.test = JSON.parse(JSON.stringify(view));
+            view.loadCSS('css/homerolled/dnd.css');
         }
         , load_monster : function() {
             let view = this;
@@ -25,18 +26,6 @@ define([
                 monsters[monster_name] = monster_data;
                 window.onhashchange();
             });
-        }
-        , load_css : function() {
-            let css = document.createElement("link");
-            css.rel = "stylesheet";
-            css.type = "text/css";
-            css.href = 'css/homerolled/dnd.css';
-            let head = document.getElementsByTagName('head')[0];
-            let links = document.getElementsByTagName('link');
-            let has = Array.from(links).some((link)=>{
-                return link.href === css.href;
-            });
-            if(!has) head.appendChild(css);            
         }
         , onDataLoaded : function(data){}
         , format_spells : function(data){
