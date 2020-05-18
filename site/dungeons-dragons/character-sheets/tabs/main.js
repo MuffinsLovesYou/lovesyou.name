@@ -69,8 +69,7 @@ define([
             if(!data.Defenses.Immunities) hide('character-immunities');
             if(!data.Defenses.ConditionImmunities) hide('character-condition-immunities');
         },
-        hide : function(element){
-            console.log(element);
+        hide : function(element) {
             document.getElementById(element).style.display = 'none';
         }
     });
