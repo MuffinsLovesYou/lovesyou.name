@@ -65,11 +65,12 @@ define([
         },
         hideEmptyFields : function(){
             let view = this, data = this.data, hide = this.hide;
-            if(!data.Defenses.Resistances) hide('character_resistances');
-            if(!data.Defenses.Immunities) hide('character_immunities');
-            if(!data.Defenses.ConditionImmunities) hide('character_condition_immunities');
+            if(!data.Defenses.Resistances) hide('character-resistances');
+            if(!data.Defenses.Immunities) hide('character-immunities');
+            if(!data.Defenses.ConditionImmunities) hide('character-condition-immunities');
         },
         hide : function(element){
+            console.log(element);
             document.getElementById(element).style.display = 'none';
         }
     });
