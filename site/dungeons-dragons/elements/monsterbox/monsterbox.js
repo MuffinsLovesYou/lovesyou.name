@@ -2,8 +2,7 @@ define([
     'lite'
     ,'5e/monsters'
     ,'5e/custom_monsters/custom_monsters'
-    ,'site/common/modal/modal'
-], function (lite, monsters, custom_monsters, modal) {
+], function (lite, monsters, custom_monsters) {
 
     return lite.extend({
         content_url : 'site/dungeons-dragons/elements/monsterbox/monsterbox.html'
@@ -37,7 +36,7 @@ define([
             spellcasting.Text = spellcasting.Text.replace(/â€¢/g, '');
         }
         , format_stats : function(data) {
-            let bonus = (x)=> x+'('+((x>=10)?'+':'') + Math.floor((+x-10)/2)+')'
+            let bonus = (x) => x+'('+((x>=10)?'+':'') + Math.floor((+x-10)/2)+')'
             for(let s in data.Stats){
                 if(!isNaN(data.Stats[s])) 
                     data.Stats[s] = bonus(data.Stats[s]);

@@ -3,29 +3,47 @@ define([
 ], function (lite) {
 
     return lite.extend({
-        content_url : 'site/common/modal/modal.html',
-        container : document.getElementById('modal-container'),
+        content : `<div id='modal-overlay'><div id='modal-content'></div></div>`,
+        initialize : function() { 
+            this.loadCSS('css/homerolled/modal.css');
+            this.container = document.getElementById('modal-container');
+            this.cacheOverflowY = document.body.style.overflowY;
+        },
         onContentBound : function() {
+            this.setOverlay();
+            this.styleContent();
+        },
+        setOverlay : function() {
             let modal = this;
-            let base_overflow = document.body.style.overflowY
-            document.body.style.overflowY = 'hidden';
-            let over = document.getElementById('modal-overlay');
-            over.style.backgroundColor = 'rgba(0,0,0,.5)';
-            over.addEventListener('onscroll', (e) => {
-                e.stopPropagation();
+            let overlay = document.getElementById('modal-overlay');
+            
+            modal.toggleScrolling();
+            
+            overlay.addEventListener('click', (e) =>{
+                if(!e.target === overlay) { return; }
+                modal.toggleScrolling();
+                modal.clearContainer();
             });
-            over.addEventListener('click', (e) => {
-                if (e.target !== over)
-                    return;
-                document.body.style.overflowY = base_overflow;
-                while(modal.container.firstChild){
-                    modal.container.removeChild(modal.container.firstChild);
-                }
-            });
+        },
+        clearContainer : function() { 
+            let container = document.getElementById('modal-container');
+            while(container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+        },
+        /* While the modal is visible
+            Block scrolling on the main page, and hide its scroll bar. */
+        toggleScrolling : function() { 
+            let overflowY = 
+                (document.body.style.overflowY === this.cacheOverflowY)
+                    ? 'hidden' 
+                    : this.cacheOverflowY;
+            document.body.style.overflowY = overflowY;
+        },
+        styleContent : function() { 
             let content = document.getElementById('modal-content');
             content.style.backgroundColor = document.body.style.backgroundColor;
             content.style.opacity = '1.0';
         }
-
     });
 });

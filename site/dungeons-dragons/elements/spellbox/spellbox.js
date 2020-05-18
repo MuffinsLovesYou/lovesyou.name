@@ -10,7 +10,6 @@ define([
             if(!view.data) view.data = view.load_spell();
         }
         , load_spell : function(){
-            let view = this;
             let spell_name = window.location.hash.split('/').slice(1).join('/').replace(/%20/g, ' ');
             let spell = spells[spell_name];
             return spell;
