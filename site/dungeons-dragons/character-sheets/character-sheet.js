@@ -6,7 +6,7 @@ define([
     ,'site/dungeons-dragons/elements/spellbox/spellbox'
     ,'5e/spells'
     ,'scripts/homerolled/markdown-parser'
-], function (lite, Gridify, MainTab, modal, spellbox, spells, md) {
+], function (lite, Gridify, MainTab, Modal, SpellBox, spells, md) {
     
     return lite.extend({
         content_url : 'site/dungeons-dragons/character-sheets/character-sheet.html',
@@ -147,13 +147,12 @@ define([
                         sort : true,
                         click: (e)=>{ 
                             let _spell = spells[e.target.innerHTML];
-                            new modal({
-                                onDataBound : function(){
-                                    new spellbox({
-                                        data : _spell,
-                                        container : document.getElementById('modal-content'),
-                                    }).attach();
-                                }
+                            new Modal({ 
+                                container : document.getElementById('modal-container') 
+                            }).attach();
+                            new SpellBox({
+                                data : _spell,
+                                container : document.getElementById('modal-content'),
                             }).attach();
                         } 
                     },

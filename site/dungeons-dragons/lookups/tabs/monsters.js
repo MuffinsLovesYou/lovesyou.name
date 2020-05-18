@@ -26,17 +26,16 @@ define([
                         sort : true,
                         click : (e)=>{
                             new Modal({
-                                onDataBound : function() {
-                                    new MonsterBox({
-                                        data : monsters[e.target.innerText]
-                                        , container : document.getElementById('modal-content')
-                                        , onDataBound : function() {
-                                            let box = document.getElementById('monsterbox');
-                                            box.style.maxHeight = '80%';
-                                            box.style.overflow  = 'auto';
-                                        }         
-                                    }).attach();
-                                }
+                                container : document.getElementById('modal-container') 
+                            }).attach();
+                            new MonsterBox({
+                                data : monsters[e.target.innerText]
+                                , container : document.getElementById('modal-content')
+                                , onDataBound : function() {
+                                    let box = document.getElementById('monsterbox');
+                                    box.style.maxHeight = '80%';
+                                    box.style.overflow  = 'auto';
+                                }         
                             }).attach();
                         }
                     }

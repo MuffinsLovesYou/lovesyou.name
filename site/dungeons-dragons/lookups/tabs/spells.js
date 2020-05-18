@@ -24,12 +24,11 @@ define([
                         filter : true,
                         click: (e)=>{ 
                             new Modal({
-                                onDataBound : function(){
-                                    new Spellbox({
-                                        data : spells[e.target.innerHTML],
-                                        container : document.getElementById('modal-content'),
-                                    }).attach();
-                                }
+                                container: document.getElementById('modal-container')
+                            }).attach();
+                            new Spellbox({
+                                data : spells[e.target.innerHTML],
+                                container : document.getElementById('modal-content')
                             }).attach();
                         } 
                     },

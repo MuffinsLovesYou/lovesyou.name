@@ -6,7 +6,6 @@ define([
         content : `<div id='modal-overlay'><div id='modal-content'></div></div>`,
         initialize : function() { 
             this.loadCSS('css/homerolled/modal.css');
-            this.container = document.getElementById('modal-container');
             this.cacheOverflowY = document.body.style.overflowY;
         },
         onContentBound : function() {

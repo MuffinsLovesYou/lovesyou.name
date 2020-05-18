@@ -5,7 +5,7 @@ define([
     ,'site/common/modal/modal'
     ,'5e/monsters'
     ,'5e/custom_monsters/custom_monsters'
-], (lite, Dice, MonsterBox, modal, monsters, custom_monsters)=>{
+], (lite, Dice, MonsterBox, Modal, monsters, custom_monsters)=>{
     
     return lite.extend({
         content : `
@@ -44,13 +44,12 @@ define([
             player.style['text-decoration'] = 'underline'
             player.addEventListener('click', function(){
                 let monster = monsters[player_name];
-                new modal({
-                    onDataBound : function(){
-                        new MonsterBox({
-                            data : monster,
-                            container : document.getElementById('modal-content'),
-                        }).attach();
-                    }
+                new Modal({
+                    container: document.getElementById('modal-container')
+                }).attach();
+                new MonsterBox({
+                    data : monster,
+                    container : document.getElementById('modal-content'),
                 }).attach();
             });
         }
