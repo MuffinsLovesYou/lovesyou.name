@@ -51,7 +51,7 @@ define([
             let new_item = document.createElement('div');
             let label = new_item.appendChild(document.createElement('span'));
             let description = new_item.appendChild(document.createElement('span'));
-            label.className = 'character_grey_left';
+            label.className = 'character-grey-left';
             label.innerHTML = name + '. ';
             description.innerHTML = text;
             return new_item;
