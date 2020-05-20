@@ -1,7 +1,6 @@
 import { Router } from './homerolled/router.js';
 import { routes } from './routes.js';
-//import { breadcrumb } from './homerolled/breadcrumb.js';
-
+import { breadcrumb } from './homerolled/breadcrumb.js';
 
 export let initializer = {
     init : function() {
@@ -32,6 +31,7 @@ export let initializer = {
 
                         new page.view().attach(document.getElementById('main-content'));
                     });
+                breadcrumb.set(hash, filePath);
             }
         });
         window.onhashchange()
