@@ -18,12 +18,11 @@ code,pre {
     font-family: Courier New, Courier, monospace;
 }
 
-
-
 a, a:visited { 
     color: #333333;
     text-decoration:underline;
 }
+
 a:hover   {
     font-style:italic;
 }
