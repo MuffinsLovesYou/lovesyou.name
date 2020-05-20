@@ -1,8 +1,5 @@
-define([], function(){
-    
 
-
-let Gridify = function(container){   
+export let Gridify = function(container){   
     if(typeof(container) === 'string') container = document.getElementById(container);
     if(!container instanceof HTMLDivElement) 
         throw('Gridify container must be <div>');
@@ -467,6 +464,3 @@ Gridify.prototype.extensions.paging = function(div){
         }
     }
 }
-
-return Gridify;
-});
