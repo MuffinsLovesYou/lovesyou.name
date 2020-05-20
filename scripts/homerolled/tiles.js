@@ -1,5 +1,5 @@
 
-export let Tiles = function(options = {}){
+export let Tiles = function(options = {}) {
     let _tiles = this;
     _tiles.imageDirectory = options.imageDirectory || 'images/';
     _tiles.imageCount = options.imageCount || 15;

@@ -25,10 +25,7 @@ export let initializer = {
             onHashChange : function(hash, filePath) {
                 let route = '../site/' + filePath;
                 import(route)
-                    .then(page => {
-                        console.log('hit');
-                        console.log(page);
-
+                    .then(page => {                        
                         new page.view().attach(document.getElementById('main-content'));
                     });
                 breadcrumb.set(hash, filePath);

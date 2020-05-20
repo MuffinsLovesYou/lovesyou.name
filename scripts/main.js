@@ -8,8 +8,6 @@
 import { initializer } from '../scripts/initialize.js';
 
 export function main() { 
-    console.log('w0t');
-
     initializer.init();
 }
 
