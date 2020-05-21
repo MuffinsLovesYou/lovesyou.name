@@ -2,7 +2,7 @@ import { lite } from '../../scripts/homerolled/lite.js';
 import { Tiles } from '../../scripts/homerolled/tiles.js';
 
 export let view = lite.extend({
-    content_url  :  'site/dungeons-dragons/dungeons-dragons.html',
+    contentUrl  :  'site/dungeons-dragons/dungeons-dragons.html',
     onContentBound  :  function() {
         let vm = this;
         vm.bindNotes();

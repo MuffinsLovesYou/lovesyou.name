@@ -5,7 +5,7 @@ define([
 ], function (lite, monsters, custom_monsters) {
 
     return lite.extend({
-        content_url : 'site/dungeons-dragons/elements/monsterbox/monsterbox.html'
+        contentUrl : 'site/dungeons-dragons/elements/monsterbox/monsterbox.html'
         , initialize : function() {
             let view = this;
             if(!view.data) view.data = view.load_monster();

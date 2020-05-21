@@ -5,7 +5,7 @@ define([
     
     return lite.extend({
         initialize : function() {
-            this.content_url = this.getDataUrl();  
+            this.contentUrl = this.getDataUrl();  
         }
         , getDataUrl : function() { 
             let hash = location.hash;

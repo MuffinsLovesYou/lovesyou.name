@@ -1,12 +1,6 @@
-define([
-    '5e/imported/items'
-], (imported_items)=>{
+import { importedItems } from './imported/items.js';
 
-    let items = {
+export let items = {}
+for(let k in importedItems)
+    items[k] = importedItems[k];
 
-    }
-    for(let k in imported_items)
-        items[k] = imported_items[k];
-
-    return items;
-});

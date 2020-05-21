@@ -2,7 +2,7 @@ import { lite } from '../../../../scripts/homerolled/lite.js';
 import { Gridify } from '../../../../scripts/homerolled/gridify.js';
 
 export let view = lite.extend({
-    content_url : 'site/programming/code-pages/gridify/gridify.html',
+    contentUrl : 'site/programming/code-pages/gridify/gridify.html',
     onContentBound : function () {
         let view = this;
         view.usage_code();

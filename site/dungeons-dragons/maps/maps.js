@@ -3,7 +3,7 @@ define([
 ], function (lite) {
 
     return lite.extend({
-        content_url : 'site/dungeons-dragons/maps/maps.html',
+        contentUrl : 'site/dungeons-dragons/maps/maps.html',
         onContentBound : function () {}
     });
 });

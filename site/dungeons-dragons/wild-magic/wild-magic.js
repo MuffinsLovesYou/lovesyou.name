@@ -5,7 +5,7 @@ define([
 ],(lite, md, Gridify)=>{
 
     return lite.extend({
-        content_url : 'site/dungeons-dragons/wild-magic/wild-magic.html',
+        contentUrl : 'site/dungeons-dragons/wild-magic/wild-magic.html',
         data_url : '5e/imported/wild_magic_surge.js',
         onDataLoaded : function(){ },
         parse_table : function(){

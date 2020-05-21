@@ -1,9 +1,8 @@
-define([], ()=>{
 
 // Obtained from https://github.com/austen0/dnd_5e_spells
 // Seems to have some elemental evil spells 
 // But is missing spells from xanathars
-return [
+export let importedSpells = [
  {
    "Name_Alphanumeric": "abi_dalzims_horrid_wilting",
    "Name": "Abi-Dalzim's Horrid Wilting",
@@ -8981,7 +8980,3 @@ return [
    "Book_Page": "PHB 289"
  }
 ]
-
-
-
-});

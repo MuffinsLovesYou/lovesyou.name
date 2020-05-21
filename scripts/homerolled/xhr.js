@@ -1,5 +1,5 @@
 
-let XHR = function() {
+export let xhr = new (function() {
     let _xhr = this;
 
     _xhr.get = function(url, success, options={}){
@@ -34,6 +34,8 @@ let XHR = function() {
         return xhr;
     }
     return _xhr;
-}
+})();
 
-export let xhr = new XHR();
+
+
+

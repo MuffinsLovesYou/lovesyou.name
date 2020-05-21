@@ -5,7 +5,7 @@ define([
     ,'site/dungeons-dragons/lookups/tabs/items'
 ],(lite, Spells, Monsters, Items)=>{
     return lite.extend({
-        content_url : 'site/dungeons-dragons/lookups/lookups.html',
+        contentUrl : 'site/dungeons-dragons/lookups/lookups.html',
         initialize : function() {
             // need to revisit tabs 
             this.loadCSS('css/homerolled/character-sheet.css');

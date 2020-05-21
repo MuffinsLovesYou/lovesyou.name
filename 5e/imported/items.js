@@ -1,10 +1,9 @@
-define([],()=>{
 
 // A big thanks to whoever set up http://tinyurl.com/dndappfiles
 // Found from https://www.reddit.com/r/DnD/comments/2yirik/after_hours_of_cleaning_here_are_the_complete/
 // by /u/afluffygrue
 
-let Items = {
+export let importedItems = {
     "Copper": {
         "Name": "Copper",
         "Value": "1cp",
@@ -1282,6 +1281,3 @@ let Items = {
         "Weight": "48.5"
     }
 }
-    return Items;
-
-});

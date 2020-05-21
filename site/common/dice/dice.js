@@ -6,7 +6,7 @@ import { LoggingRoller } from '../../../scripts/homerolled/dice/modules/logging.
 import { Gridify } from '../../../scripts/homerolled/gridify.js';
 
 export let view = lite.extend({
-    content_url : 'site/common/dice/dice.html'
+    contentUrl : 'site/common/dice/dice.html'
     , onContentBound : function() {
         let view = this;
         view.initialize_roller();

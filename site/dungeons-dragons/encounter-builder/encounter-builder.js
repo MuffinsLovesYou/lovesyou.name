@@ -13,7 +13,7 @@ define([
     
 
     return lite.extend({
-        content_url : 'site/dungeons-dragons/encounter-builder/encounter-builder.html',
+        contentUrl : 'site/dungeons-dragons/encounter-builder/encounter-builder.html',
         onContentBound : function() { 
             let vm = this;
 

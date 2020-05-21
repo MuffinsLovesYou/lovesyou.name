@@ -2,7 +2,7 @@ import { lite } from '../../scripts/homerolled/lite.js';
 import { Tiles } from '../../scripts/homerolled/tiles.js';
 
 export let view = lite.extend({
-    content_url : 'site/programming/programming.html',
+    contentUrl : 'site/programming/programming.html',
     onContentBound : function() {
         new Tiles().fill(document.getElementById('tiles-container'), [
             { title : 'github', href : 'http://www.github.com/unstableconfiguration', alt : 'my poor neglected github account'},

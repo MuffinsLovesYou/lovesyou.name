@@ -6,7 +6,7 @@
                 my own SPA library/toolkit, which is what this site is based on. </p>
                 <a href='https://github.com/unstableconfiguration/Lite' target='_blank'>Github Page</a>
             <p>The example below is code used by this page to load the lite.js code from github and present it. When 
-                .attach() is called, it does a HTTP GET request against the content_url, inserts the results into the 
+                .attach() is called, it does a HTTP GET request against the contentUrl, inserts the results into the 
                 container, then executes the onContentBound event, which calls the third-party 'prism' utility to do 
                 the code highlighting. 
             </p>
@@ -16,7 +16,7 @@
             <pre style='overflow:auto; max-height:400px'><code id='this-page-block' class='language-javascript'>
     let code_block = lite.extend({
         container : document.getElementById('lite-code-block'),
-        content_url : `https://raw.githubusercontent.com/unstableconfiguration/Lite/master/lite.js`,               
+        contentUrl : `https://raw.githubusercontent.com/unstableconfiguration/Lite/master/lite.js`,               
         onContentBound : function() {
             require(['prism'], ()=>{ Prism.highlightElement(this.container); });
         }
