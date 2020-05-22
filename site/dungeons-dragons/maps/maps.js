@@ -1,9 +1,6 @@
-define([
-    'lite'
-], function (lite) {
+import { lite } from '../../../scripts/homerolled/lite.js';
 
-    return lite.extend({
-        contentUrl : 'site/dungeons-dragons/maps/maps.html',
-        onContentBound : function () {}
-    });
+export let view = lite.extend({
+    contentUrl : 'site/dungeons-dragons/maps/maps.html',
+    onContentBound : function () {}
 });
