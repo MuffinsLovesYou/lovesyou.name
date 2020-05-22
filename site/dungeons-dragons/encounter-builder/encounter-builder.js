@@ -17,7 +17,7 @@ define([
         onContentBound : function() { 
             let vm = this;
 
-            vm.loadCSS('site/dungeons-dragons/encounter-builder/encounter-builder.css');
+            vm.loadStyleSheet('site/dungeons-dragons/encounter-builder/encounter-builder.css');
             vm.setUI();
             vm.populateCRDropDowns();
             vm.initializeBuilder();
