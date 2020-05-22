@@ -28,7 +28,7 @@ export let view = lite.extend({
         let view = this;
         import(view.getDataUrl())
             .then(charData => {
-               view.setData(charData.Pepper);
+               view.setData(charData[this.getCharName()]);
             });
     }
     , getDataUrl : function() { 
@@ -37,6 +37,11 @@ export let view = lite.extend({
         return hash.indexOf('path') > -1 
             ? base + hash.substr(hash.indexOf('path') + 5) + '.js'
             : base + hash.split('/').slice(2).join('/') + '.js';
+    }
+    , getCharName : function() {
+        return location.hash
+            .split('?')[0]
+            .split('/').pop();
     }
     , onDataBound : function (data) {
         let view = this;

@@ -4,7 +4,6 @@ export let MainTab = lite.extend({
     contentUrl : 'site/dungeons-dragons/character-sheets/tabs/main.html',
     onDataLoaded : function(data){
         let view = this;
-
         view.setSavesText();
         view.setStats();
         view.setLevelText();
@@ -23,6 +22,7 @@ export let MainTab = lite.extend({
         let stat = (stat) => data.Stats[stat] 
             + (data.Stats[stat] < 10 ? '' : '+')
             + data.bonus(data.Stats[stat]);
+        
         data.Stats.Str = stat('Strength');
         data.Stats.Dex = stat('Dexterity');
         data.Stats.Con = stat('Constitution');

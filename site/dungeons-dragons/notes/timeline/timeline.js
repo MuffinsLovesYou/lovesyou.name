@@ -1,6 +1,6 @@
 import { lite } from '../../../../scripts/homerolled/lite.js';
 
-return lite.extend({
+export let view = lite.extend({
     content : `<div id='timeline' class='timeline'></div>`
     , dataLoad : function() {
         import('../../../../5e/notes/timeline.js')
