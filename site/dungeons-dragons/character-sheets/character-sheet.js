@@ -86,7 +86,11 @@ export let view = lite.extend({
         let x = new lite.extend({
             container : notesContainer,
             content : `<div id='notes'></div>`,
-            data_url : '5e/notes/char-notes/' + window.location.hash.split('/').splice(-1) + '.md',
+            loadData : function() {
+                fetch('5e/notes/char-notes/' + location.hash.split('/').splice(-1) + '.md')
+                    .then(response => response.text())
+                    .then(text => { this.setData(text); });
+            },
             onDataLoaded : function(data){
                 this.data = markdown.parse(data);
             },

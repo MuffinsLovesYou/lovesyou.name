@@ -1,6 +1,5 @@
-define([],()=>{
 
-  let surge_table = {
+export let surgeTable = {
     1: "Roll on this table at the start of each of your turns for the next minute, ignoring this result on subsequent rolls.",
     2: "Roll on this table at the start of each of your turns for the next minute, ignoring this result on subsequent rolls.",
     3: "For the next minute, you can see any invisible creature if you have line of sight to it.",
@@ -103,5 +102,3 @@ define([],()=>{
     100: "You regain all expended sorcery points.",
 
   }
-  return surge_table;
-});
