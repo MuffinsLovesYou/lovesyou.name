@@ -1,4 +1,3 @@
-define([],()=>{
 
 /*
     Rokej is a nilbog, a goblin possessed by a prankster god. He improbably claims 
@@ -7,7 +6,7 @@ define([],()=>{
     detre of shaving bugbears. 
 */
 
-return {
+export let monster = {
     Name : 'Rokej'
     , Size : 'Medium'
     , Type : 'humanoid'
@@ -64,6 +63,5 @@ return {
             robe. If unfurled, it gives him a fly (glide) speed of 20. `}
     ]
 }
-});
 
 

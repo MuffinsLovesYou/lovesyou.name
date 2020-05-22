@@ -1,4 +1,3 @@
-define([],()=>{
 
 /*
     Iojad is a ruddy and hearty Goliath tracker. He frequents the Frostwalk camp where he 
@@ -6,7 +5,7 @@ define([],()=>{
     He is capable and friendly and useful to have in these climes. 
 */
 
-return {
+export let monster = {
     Name : 'Iojad'
     , Size : 'Medium'
     , Type : 'humanoid (Goliath)'
@@ -64,6 +63,4 @@ return {
         { Name : '', Text : ``}
     ]
 }
-});
-
 

@@ -1,4 +1,3 @@
-define([],()=>{
 
 /*
     Elarahal is a reserved scourge Aasimar in her early forties. She 
@@ -9,7 +8,7 @@ define([],()=>{
     and is particularly useful in an arctic biome. 
 */
 
-return {
+export let monster = {
     Name : 'Elarahal'
     , Size : 'Medium'
     , Type : 'humanoid (Aasimar)'
@@ -67,7 +66,6 @@ return {
         { Name : '', Text : ``}
     ]
 }
-});
 
 
 /*

@@ -1,4 +1,3 @@
-define([],()=>{
 
 /*
     Moradin: Chief god of the dwarven pantheon. Protection, law, good, creation are his domains. He represents 
@@ -22,8 +21,7 @@ define([],()=>{
 
 */
 
-
-    return {
+export let monster =  {
     Name : 'Kathuil, Dwarflord'
     , Size : 'Medium'
     , Type : 'humanoid'
@@ -88,4 +86,3 @@ define([],()=>{
         , { Name : 'Glamored Studded Leather', Text : `+1 studded leather that can change its appearance.` }
     ]
 }
-})

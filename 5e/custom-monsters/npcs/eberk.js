@@ -1,4 +1,3 @@
-define([],()=>{
 
 /*
     At around 370 years of age, Eberk is ancient for a dwarf. She is barely older than 
@@ -21,8 +20,7 @@ define([],()=>{
 
 */
 
-
-return {
+export let monster = {
     Name : 'Eberk'
     , Size : 'Medium'
     , Type : 'humanoid'
@@ -72,6 +70,5 @@ return {
         { Name : '', Text : ``}
     ]
 }
-});
 
 
