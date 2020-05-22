@@ -1,4 +1,3 @@
-define([],()=>{
 
 // Playtest vs: 
    // Barbarian 
@@ -8,7 +7,7 @@ define([],()=>{
 
 // Tiefling, Mordenkainen's variant with str + cha 
 // Paladin/Barbarian/Fighter
-return {
+export let monster = {
     Name : 'Dara'
     , Size : 'Medium'
     , Type : 'humanoid'

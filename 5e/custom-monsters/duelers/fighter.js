@@ -1,9 +1,8 @@
-define([],()=>{
 
 
 // Level 20 mountain dwarf battlemaster fighter for high level playtesting
 // Level 20 half orc champion 
-let fighter = {
+export let monster = {
     Name : 'Fighter'
     , Size : 'Medium'
     , Type : 'humanoid'
@@ -140,8 +139,3 @@ let dwarf_eldritch_knight = ()=>{
 //dwarf_battlemaster();
 //half_orc_champion();
 dwarf_eldritch_knight();
-
-return fighter;
-
-
-});

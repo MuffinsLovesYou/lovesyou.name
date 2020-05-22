@@ -1,7 +1,7 @@
 import { lite } from '../../../../scripts/homerolled/lite.js';
 import { spells } from '../../../../5e/spells.js';
 
-export let SpellBox = lite.extend({
+export let view = lite.extend({
     contentUrl : 'site/dungeons-dragons/elements/spellbox/spellbox.html'
     , initialize : function() {
         let view = this;
@@ -13,3 +13,4 @@ export let SpellBox = lite.extend({
         return spell;
     }
 });
+export let SpellBox = view;

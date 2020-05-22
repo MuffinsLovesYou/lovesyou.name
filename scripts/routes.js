@@ -16,7 +16,7 @@ export let routes = {
     , 'dungeons-dragons/encounter-builder' : 'dungeons-dragons/encounter-builder/encounter-builder.js'
     , 'dungeons-dragons/lookups' : 'dungeons-dragons/lookups/lookups.js'
     , 'dungeons-dragons/maps' : 'dungeons-dragons/maps/maps.js'
-    , 'dungeons-dragons/monsterbox' : 'dungeons-dragons/elements/monsterbox/monsterbox.js'
+    , 'dungeons-dragons/monsterbox/{monster}' : 'dungeons-dragons/elements/monsterbox/monsterbox.js'
     
     , 'dungeons-dragons/notes' : 'dungeons-dragons/notes/notes.js'
     , 'dungeons-dragons/notes/places' : 'dungeons-dragons/notes/places.js'

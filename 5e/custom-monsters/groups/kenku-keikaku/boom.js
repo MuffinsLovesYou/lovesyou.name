@@ -1,4 +1,3 @@
-define([],()=>{
 
 /* Kenku Arcane Trickster rogue
     Boom's strategy is simple. She buffs with blur to protect herself. She 
@@ -8,7 +7,7 @@ define([],()=>{
 
 */
 
-return {
+export let monster = {
     Name : 'Boom'
     , Size : 'Medium'
     , Type : 'humanoid (kenku)'
@@ -65,6 +64,5 @@ return {
         { Name : '', Text : ``}
     ]
 }
-});
 
 

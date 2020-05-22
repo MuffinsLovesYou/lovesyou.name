@@ -1,9 +1,7 @@
-define([],()=>{
 
 // Frenzy Barbarian
-
 // Level 20 half orc frenzy barbarian for high level playtesting
-return {
+export let monster = {
     Name : 'Barbarian'
     , Size : 'Medium'
     , Type : 'humanoid'
@@ -58,5 +56,3 @@ return {
     ]
 }
 
-
-});

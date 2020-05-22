@@ -1,6 +1,4 @@
-define([],()=>{
-
-return {
+export let monster = {
     Name : 'Warlock of the Fiend',
     Size : 'Medium',
     Type : 'humanoid',
@@ -48,5 +46,3 @@ return {
 
 }
 
-
-});

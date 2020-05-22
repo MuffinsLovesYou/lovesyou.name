@@ -2,26 +2,35 @@ import { lite } from '../../../../scripts/homerolled/lite.js';
 import { monsters } from '../../../../5e/monsters.js';
 import { customMonsters } from '../../../../5e/custom-monsters/custom-monsters.js';
 
-export let MonsterBox = lite.extend({
+export let view = lite.extend({
     contentUrl : 'site/dungeons-dragons/elements/monsterbox/monsterbox.html'
     , initialize : function() {
         let view = this;
-        if(!view.data) view.data = view.load_monster();
-        window.test = JSON.parse(JSON.stringify(view));
         view.loadStyleSheet('css/homerolled/dnd.css');
     }
-    , load_monster : function() {
+    , loadData : function() { 
         let view = this;
-        let monster_name = window.location.hash.split('/').slice(1).join('/').replace(/%20/g,' ');
-        let monster = monsters[monster_name];
-        if(!monster) view.load_custom_monster(monster_name);
+        if(view.data) { return; }
+
+        let monster = view.loadMonster(); 
+        if(!monster) { view.loadCustomMonster(); }
+    }
+    , getMonsterName : function() { 
+        return window.location.hash.split('/').slice(2).join('/').replace(/%20/g,' ');
+    }
+    , loadMonster : function() {
+        let view = this;
+        let monster = monsters[view.getMonsterName()];
+        if(monster) { view.setData(monster); }
         return monster;
     }
-    , load_custom_monster : function(monster_name){
+    , loadCustomMonster : function() {
         let view = this;
-        customMonsters.get_monster(monster_name, function(monster_data){
-            monsters[monster_name] = monster_data;
-            window.onhashchange();
+        let monsterName = view.getMonsterName(); 
+
+        customMonsters.getMonster(monsterName, function(monsterData){
+            monsters[monsterName] = monsterData;
+            view.setData(monsterData);
         });
     }
     , onDataLoaded : function(data){}
@@ -40,7 +49,7 @@ export let MonsterBox = lite.extend({
                 data.Stats[s] = bonus(data.Stats[s]);
         }
     }
-    , onContentBound : function () {
+    , onDataBound : function () {
         let view = this;
         view.toggle_divs();
         view.format_spells(view.data);
@@ -128,3 +137,4 @@ export let MonsterBox = lite.extend({
         });
     }
 });
+export let MonsterBox = view;

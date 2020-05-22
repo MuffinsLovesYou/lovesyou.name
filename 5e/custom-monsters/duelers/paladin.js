@@ -1,6 +1,5 @@
-define([],()=>{
 
-let paladin = {
+export let monster = {
     Name : 'Paladin'
     , Size : 'Medium'
     , Type : 'humanoid'
@@ -203,7 +202,3 @@ paladin.Action.push({
 //half_elf_devotion();
 //hill_dwarf_redemption();
 triton_ancients();
-
-return paladin;
-
-});

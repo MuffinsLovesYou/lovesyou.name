@@ -1,7 +1,5 @@
-define([],()=>{
 
-
-return {
+export let monster = {
     Name : 'Swarm of Rot Grubs'
     , Size : 'Medium swarm of tiny'
     , Type : 'beast'
@@ -49,6 +47,5 @@ return {
     , Legendary : []
     , Items : []
 }
-});
 
 
