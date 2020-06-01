@@ -5,7 +5,7 @@ import { Modal } from '../../common/modal/modal.js';
 import { SpellBox } from '../elements/spellbox/spellbox.js';
 import { spells } from '../../../5e/spells.js';
 import { markdown } from '../../../scripts/homerolled/markdown-parser.js';
-import { DiceRoller } from '../../../scripts/homerolled/dice/dice.js';
+import { Dice } from '../../common/dice/dice.js';
 
 export let view = lite.extend({
     contentUrl : 'site/dungeons-dragons/character-sheets/character-sheet.html',
@@ -13,11 +13,7 @@ export let view = lite.extend({
         let vm = this;
 
         vm.initializeTabs();
-
-        import('../../common/dice/dice.js')
-            .then(dice => {
-                new dice.view().attach(document.getElementById('dice-container'));
-            });
+        new Dice().attach(document.getElementById('dice-container'));
     }
     , initialize : function() {
         let view = this;

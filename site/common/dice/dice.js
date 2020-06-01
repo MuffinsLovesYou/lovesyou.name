@@ -9,18 +9,18 @@ export let view = lite.extend({
     contentUrl : 'site/common/dice/dice.html'
     , onContentBound : function() {
         let view = this;
-        view.initialize_roller();
-        view.initialize_table();
-        view.bind_button_click();
-        view.bind_keydown();
+        view.initializeRoller();
+        view.buildTable();
+        view.bindButtonClick();
+        view.bindKeydown();
     }
-    , initialize_roller : function(){
+    , initializeRoller : function(){
         let view = this;
         view.roller = new LoggingRoller();
         view.roller.operations.add(math);
         view.roller.operations.insert(0, dnd[0]);
     }
-    , initialize_table : function(){
+    , buildTable : function(){
         let view = this;
         let grid = new Gridify('DiceRoller_Output_Table')
         grid.initialize({
@@ -37,26 +37,26 @@ export let view = lite.extend({
         if(!this.elements[id]) this.elements[id] = document.getElementById(id);
         return this.elements[id];
     }
-    , bind_button_click : function(){
+    , bindButtonClick : function(){
         let view = this;
         let button = view.getElementById('DiceRoller_Button');
-        button.addEventListener('click', (e)=>{ view.roll_dice(); });
+        button.addEventListener('click', (e)=>{ view.rollDice(); });
     }
-    , bind_keydown : function(){
+    , bindKeydown : function(){
         let view = this;
         let input = view.getElementById('DiceRoller_Input');
         input.addEventListener('keydown', (e)=>{
-            if(e.keyCode==13)view.roll_dice();
+            if(e.keyCode==13)view.rollDice();
         });
     }
-    , roll_dice : function(){
+    , rollDice : function(){
         let view = this;
         let input = view.getElementById('DiceRoller_Input');
         view.roller.solve(input.value);
         let solution = view.roller.log.solutions[view.roller.log.solutions.length-1];
-        view.log_output(solution);
+        view.logOutput(solution);
     }
-    , get_solution_dice : function(solution){
+    , getResults : function(solution){
         return solution.operations.map(operation=>{
             if(!operation.dice) return '';
             return operation.dice.map(dice=>{
@@ -65,13 +65,13 @@ export let view = lite.extend({
         }).join(' ');
     }
     , rolls : []
-    , log_output : function(solution){
+    , logOutput : function(solution){
         let view = this;
         view.rolls.unshift({ 
             Result : solution.output, 
-            Rolls : view.get_solution_dice(solution) 
+            Rolls : view.getResults(solution) 
         });
-        view.initialize_table();
+        view.buildTable();
     }
 });
-
+export let Dice = view;
