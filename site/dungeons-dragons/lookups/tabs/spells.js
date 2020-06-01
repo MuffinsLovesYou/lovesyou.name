@@ -6,14 +6,22 @@ import { Modal } from '../../../common/modal/modal.js';
 
 export let SpellsTab =  lite.extend({
     content : `<div id='spells-table'></div><div id='spellbox-container'></div>`,
-    onContentBound : function() {
+    initialize : function() {
+        let _spells = [];
+        for(let k in spells) {
+            _spells.push(spells[k]);
+        }
+        this.data = _spells;
+    }
+    , onContentBound : function() {
         let view = this;
-        view.draw_table();
+        view.drawTable();
     },
-    draw_table : function() {
+    drawTable : function() {
+        let view = this;
         let grid = new Gridify('spells-table')
         grid.initialize({
-            data : spells,
+            data : view.data,
             columns : [
                 { 
                     field : 'Name', 

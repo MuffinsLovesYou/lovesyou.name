@@ -6,15 +6,20 @@ import { Modal } from '../../../common/modal/modal.js';
 
 export let MonstersTab = lite.extend({
     content : `<div id='monsters-table'></div><div id='monsterbox-container'></div>`
+    , initialize : function() {
+        let _monsters = [];
+        for(let k in monsters) { _monsters.push(monsters[k]); }
+        this.data = _monsters;
+    }
     , onContentBound : function(){
         let view = this;
-        view.draw_table();
+        view.drawTable();
     }
-    ,draw_table : function(_spells){
+    ,drawTable : function(_spells){
         let view = this;
         let grid = new Gridify('monsters-table')
         grid.initialize({
-            data : monsters,
+            data : view.data,
             columns : [
                 {
                     field : 'Name',

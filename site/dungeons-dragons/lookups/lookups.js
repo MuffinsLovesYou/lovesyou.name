@@ -11,6 +11,7 @@ export let view = lite.extend({
     }
     , onContentBound : function() {
         this.initializeTabs();
+        
         new SpellsTab({
             container : document.getElementById('spells-container')
         }).attach();
