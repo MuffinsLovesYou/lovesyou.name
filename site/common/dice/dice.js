@@ -22,14 +22,21 @@ export let view = lite.extend({
     }
     , buildTable : function(){
         let view = this;
-        let grid = new Gridify('DiceRoller_Output_Table')
-        grid.initialize({
-            data : view.rolls,
-            columns : [
-                { field : 'Result', style : 'width:100px;text-align:left;border-bottom:none',},
-                { field : 'Rolls',style: 'width:200px;text-align:left;border-bottom:none' }
+        new Gridify({
+            container : 'dice-output-table', 
+            columns : [ 
+                { 
+                    field : 'Result', 
+                    header : 'Results',
+                    style : 'width:100px;text-align:left;border-bottom:none' 
+                }, 
+                { 
+                    field : 'Rolls',
+                    header : 'Rolls', 
+                    style : 'width:100px;text-align:left;border-bottom:none' } 
             ],
-            style : 'border:solid-thin-black;'
+            data : view.rolls,
+            style : 'border: solid-thin-black;'
         });
     }
     , elements :  {}
@@ -39,19 +46,19 @@ export let view = lite.extend({
     }
     , bindButtonClick : function(){
         let view = this;
-        let button = view.getElementById('DiceRoller_Button');
+        let button = view.getElementById('dice-button');
         button.addEventListener('click', (e)=>{ view.rollDice(); });
     }
     , bindKeydown : function(){
         let view = this;
-        let input = view.getElementById('DiceRoller_Input');
+        let input = view.getElementById('dice-input');
         input.addEventListener('keydown', (e)=>{
             if(e.keyCode==13)view.rollDice();
         });
     }
     , rollDice : function(){
         let view = this;
-        let input = view.getElementById('DiceRoller_Input');
+        let input = view.getElementById('dice-input');
         view.roller.solve(input.value);
         let solution = view.roller.log.solutions[view.roller.log.solutions.length-1];
         view.logOutput(solution);

@@ -26,7 +26,7 @@ export let view = lite.extend({
     onContentBound : function(){
         let view = this;
         document.getElementById('wild-magic-surge-d100')
-            .addEventListener('click', view.onD100Click);
+            .addEventListener('click', view.onD100Click.bind(view));
     },
     onDataBound(){ 
         this.initializeGrid();
@@ -35,8 +35,8 @@ export let view = lite.extend({
         let view = this;
         let data = view.parseTable();
         
-        let grid = new Gridify('wild-magic-surge-table');
-        grid.initialize({
+        let grid = new Gridify({
+            container : 'wild-magic-surge-table',
             data : data,
             columns : [
                 { field : 'die', 
@@ -53,13 +53,13 @@ export let view = lite.extend({
                 }
             ]
         });
-    
+        view.grid = grid;
     },
     onD100Click : function(e){
         let roll = Math.floor(Math.random() * 100) + 1
         roll = roll%2==0 ? roll-1+'-'+roll : roll + '-' + (+roll+1);
-        let grid = new Gridify('wild-magic-surge-table');
-        grid.table().tHead.rows[1].cells[0].firstChild.value = roll;
+        
+        this.grid.html.tHead.rows[1].cells[0].firstChild.value = roll;
         grid.filtering.filter();
     }
 })

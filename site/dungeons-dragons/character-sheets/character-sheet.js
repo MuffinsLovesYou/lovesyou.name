@@ -117,13 +117,14 @@ export let view = lite.extend({
         for(let s in data.Skills) { _skills.push(data.Skills[s]); }
         _skills.forEach(s => { s.Trained = s.Trained ? 'Yes' : 'No' });
 
-        new Gridify('skills-container').initialize({
+        new Gridify({
+            container : 'skills-container',
             data : _skills,
             columns : [
-                { field : 'Name', style : 'text-align:left', sort : true },
-                { field : 'Ability', style : 'text-align:center', sort : true },
-                { field : 'Trained', style : 'text-align:center', sort : true },
-                { field : 'Bonus', style : 'text-align:right', sort : view.numberSort }
+                { field : 'Name', header : 'Name', style : 'text-align:left', sort : true },
+                { field : 'Ability', header : 'Ability', style : 'text-align:center', sort : true },
+                { field : 'Trained', header : 'Trained', style : 'text-align:center', sort : true },
+                { field : 'Bonus', header : 'Bonus', style : 'text-align:right', sort : view.numberSort }
             ],
         });
     }
@@ -135,13 +136,14 @@ export let view = lite.extend({
             if(typeof(data.Items[i]) !== 'object') continue;
             _items.push(data.Items[i]);
         }
-        new Gridify('items-container').initialize({
+        new Gridify({
+            container : 'items-container',
             data : _items,
             columns : [
-                { field : 'Name', style : 'text-align:left', sort : true },
-                { field : 'Count', style : 'text-align:right' },
-                { field : 'Value', sort: view.coinSort },
-                { field : 'Weight', style : 'text-align:right', sort : view.numberSort }
+                { field : 'Name', header : 'Name', style : 'text-align:left', sort : true },
+                { field : 'Count', header : 'Count', style : 'text-align:right' },
+                { field : 'Value', header : 'Value', sort: view.coinSort },
+                { field : 'Weight', header : 'Weight', style : 'text-align:right', sort : view.numberSort }
             ],
         });
         let totalWeight = _items.reduce((acc, item)=>{ return (acc += (item.Weight || 0)); }, 0);
@@ -154,11 +156,13 @@ export let view = lite.extend({
             if(typeof(data.Spells[s]) !== 'object') continue;
             _spells.push(data.Spells[s]);
         }
-        new Gridify('spells-container').initialize({
+        new Gridify({
+            container : 'spells-container',
             data : _spells,
             columns : [
                 { 
                     field : 'Name', 
+                    header : 'Name',
                     style : 'text-align:left; text-decoration:underline',
                     sort : true,
                     click: (e)=>{ 
@@ -172,10 +176,10 @@ export let view = lite.extend({
                         }).attach();
                     } 
                 },
-                { field : 'Level', sort : true },
-                { field : 'CastingTime', style : 'max-width:300px; text-align:left' },
-                { field : 'Range' },
-                { field : 'Duration' } 
+                { field : 'Level', header : 'Level', sort : true },
+                { field : 'CastingTime', header : 'Cast Time', style : 'max-width:300px; text-align:left' },
+                { field : 'Range', header : 'Range' },
+                { field : 'Duration', header : 'Duration' } 
             ],
         });
         if(!_spells.length) document.getElementById('spellsTab').style.display = 'none';    

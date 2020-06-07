@@ -19,12 +19,13 @@ export let SpellsTab =  lite.extend({
     },
     drawTable : function() {
         let view = this;
-        let grid = new Gridify('spells-table')
-        grid.initialize({
+        let grid = new Gridify({
+            container : 'spells-table',
             data : view.data,
             columns : [
                 { 
                     field : 'Name', 
+                    header : 'Name',
                     style : 'text-align:left; text-decoration:underline',
                     sort : true,
                     filter : true,
@@ -38,11 +39,11 @@ export let SpellsTab =  lite.extend({
                         }).attach();
                     } 
                 },
-                { field : 'Level', filter: true, sort:true, style:'width:40px;text-align:right' },
-                { field : 'School', filter : true, sort : true, style : 'width:75px'},
-                { field : 'CastingTime', filter : true, sort:true, style : 'max-width:75px;' },
-                { field : 'Range', filter : true, sort:true, style:'width:50px;' },
-                { field : 'Duration', filter : true, sort:true, } 
+                { field : 'Level', header : 'Level', filter : true, sort : true, style:'width:40px;text-align:right' },
+                { field : 'School', header : 'School', filter : true, sort : true, style : 'width:75px'},
+                { field : 'CastingTime', header : 'Casting Time', filter : true, sort:true, style : 'max-width:75px;' },
+                { field : 'Range', header : 'Range', filter : true, sort : true, style:'width:50px;' },
+                { field : 'Duration', header : 'Duration', filter : true, sort : true, } 
             ],
             paging : true
         });

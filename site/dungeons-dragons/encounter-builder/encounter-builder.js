@@ -167,10 +167,10 @@ export let view = lite.extend({
         return encounters;
     },
     writeOutput : function(encounters) { 
-        let grid = new Gridify('encounter-output-table');
         let numberSort = function(a, b) { return +a >= +b ? 1 : -1 };
 
-        grid.initialize({
+        new Gridify({
+            container : 'encounter-output-table',
             data : encounters,
             columns : [
                 { field : 'count', header : '# Monsters', filter : true, sort : numberSort }

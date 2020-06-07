@@ -12,18 +12,20 @@ export let ItemsTab =  lite.extend({
     , onContentBound : function(){
         this.buildItemsTable();
     }
+    // filter, sort, attach to header?
+    // 
     , buildItemsTable : function(){
         let view = this;
-        let grid = new Gridify('items-table');
-        grid.initialize({
+        let grid = new Gridify({
+            container : 'items-table',
             data : view.data,
             columns : [
-                { field : 'Name', filter : true, sort : true, style : 'width: 200px; display:table-cell; overflow:hidden;' }
-                , { field : 'Weight', filter : true, sort : view.numberSort, style : 'width: 25px; text-align: right;' }
-                , { field : 'Value', filter : true, sort : view.coinSort.bind(view), style : 'width: 25px; text-align: right;' }
+                { field : 'Name', header : 'Name', filter : true, sort : true, style : 'width: 175px; overflow:hidden;' }
+                , { field : 'Weight', header : 'Weight', filter : true, sort : view.numberSort, style : 'width: 75px; text-align: right;' }
+                , { field : 'Value', header : 'Value', filter : true, sort : view.coinSort.bind(view), style : 'width: 75px; text-align: right;' }
             ]
             , paging : true
-            , style : 'width:300px;'
+            , style : 'width:325px; table-layout:fixed;'
         });
     }
     , numberSort : function(a, b) {

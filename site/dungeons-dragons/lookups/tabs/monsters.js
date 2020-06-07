@@ -17,8 +17,8 @@ export let MonstersTab = lite.extend({
     }
     ,drawTable : function(_spells){
         let view = this;
-        let grid = new Gridify('monsters-table')
-        grid.initialize({
+        let grid = new Gridify({
+            container : 'monsters-table',
             data : view.data,
             columns : [
                 {

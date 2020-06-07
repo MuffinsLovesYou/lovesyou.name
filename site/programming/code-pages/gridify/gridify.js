@@ -8,8 +8,9 @@ export let view = lite.extend({
         view.usage_code();
         view.grid_demo();
     }
-    , grid_demo : function(){
-        new Gridify('grid-demo').initialize({
+    , grid_demo : function() {
+        new Gridify({
+            container : 'grid-demo',
             columns : [
                 { field : 'basic', header : 'Basic Column' },
                 { field : 'sort', header : 'Basic Sort', sort : true },
