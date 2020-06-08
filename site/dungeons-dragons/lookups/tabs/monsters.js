@@ -17,15 +17,15 @@ export let MonstersTab = lite.extend({
     }
     ,drawTable : function(_spells){
         let view = this;
-        let grid = new Gridify({
+        new Gridify({
             container : 'monsters-table',
             data : view.data,
             columns : [
                 {
                     field : 'Name',
-                    filter : true,
                     header : 'Name',
-                    style : 'text-align:left; text-decoration:underline',
+                    filter : true,
+                    style : 'width: 200px; text-align:left; text-decoration:underline',
                     sort : true,
                     click : (e)=>{
                         new Modal({
@@ -43,13 +43,20 @@ export let MonstersTab = lite.extend({
                     }
                 }
                 , { field : 'Challenge', header : 'CR', 
+                    style : 'width:75px; text-align:right;',
                     filter : { rule : view.challenge_rating_filter }, 
                     sort : { comparator : view.challenge_rating_sort }
                 }
-                , { field : 'Type', filter : true, format : (v)=> { return v.split(',')[0]; }, header : 'Type', sort : true }
-                , { field : 'Alignment', filter : true, header : 'Alignment', sort : true }
+                , { field : 'Type', header : 'Type',
+                    style : 'width: 125px; overflow:hidden;',
+                    filter : true, format : (v)=> { return v.split(',')[0]; }, sort : true }
+                , { field : 'Alignment', header : 'Alignment', style : 'width:100px;', filter : true, sort : true }
             ]
             , paging : true
+            , style : 'table-layout:fixed; width:500px;'
+            , onTableCellCreated : function(td, column) {
+                if(td.style.overflow === 'hidden') { td.title = td.innerText; } 
+            }
         });
     }
     , challenge_rating_sort : function(a, b) {

@@ -112,12 +112,3 @@
     opacity: .5;
     text-decoration:underline;
 }
-
-.section {
-    border-left: solid thin;
-    padding-left:8px;
-}
-
-.section table {
-    border-spacing:0;
-}

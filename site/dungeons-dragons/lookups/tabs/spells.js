@@ -19,14 +19,14 @@ export let SpellsTab =  lite.extend({
     },
     drawTable : function() {
         let view = this;
-        let grid = new Gridify({
+        new Gridify({
             container : 'spells-table',
             data : view.data,
             columns : [
                 { 
                     field : 'Name', 
                     header : 'Name',
-                    style : 'text-align:left; text-decoration:underline',
+                    style : 'width:200px; text-align:left; text-decoration:underline;',
                     sort : true,
                     filter : true,
                     click: (e)=>{ 
@@ -39,13 +39,18 @@ export let SpellsTab =  lite.extend({
                         }).attach();
                     } 
                 },
-                { field : 'Level', header : 'Level', filter : true, sort : true, style:'width:40px;text-align:right' },
-                { field : 'School', header : 'School', filter : true, sort : true, style : 'width:75px'},
-                { field : 'CastingTime', header : 'Casting Time', filter : true, sort:true, style : 'max-width:75px;' },
-                { field : 'Range', header : 'Range', filter : true, sort : true, style:'width:50px;' },
-                { field : 'Duration', header : 'Duration', filter : true, sort : true, } 
+                { field : 'Level', header : 'Level', filter : true, sort : true, style: 'width:50px; text-align:right' },
+                { field : 'School', header : 'School', filter : true, sort : true, style : 'width:125px'},
+                { field : 'CastingTime', header : 'Casting Time', filter : true, sort:true, style: 'width:125px;' },
+                { field : 'Range', header : 'Range', filter : true, sort : true, style: 'width:100px; overflow:hidden;' },
+                { field : 'Duration', header : 'Duration', filter : true, sort : true, style: 'width:100px;' } 
             ],
-            paging : true
+
+            paging : true,
+            style : 'table-layout:fixed; width:700px;',
+            onTableCellCreated(td, options) {
+                if(td.style.overflow === 'hidden') { td.title = td.innerText; }
+            }
         });
     }        
 });

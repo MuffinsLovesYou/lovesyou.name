@@ -1,4 +1,5 @@
 
+
 export let Gridify = function(options = {}) { 
     let grid = this;
     grid.container = options.container;
@@ -262,32 +263,33 @@ export let Gridify = function(options = {}) {
     return grid;
 }
 Gridify.prototype.extensions = {};
-
 Gridify.prototype.extensions.styling = function(div) {
     let grid = this;
 
     let onTableCreated = grid.onTableCreated;
     grid.onTableCreated = function(table, options) {
-        onTableCreated(table, options);
         grid.styling.stylize(table, options);
+        onTableCreated(table, options);
     }
 
     let onHeaderCellCreated = grid.onHeaderCellCreated;
-    grid.onHeaderCellCreated = function(th, options) {
-        onHeaderCellCreated(th, options);
+    grid.onHeaderCellCreated = function(th, options) {        
+        if(options.style) { grid.styling.setStyle(th, options.style); }
         grid.styling.stylize(th, options.header);
+
+        onHeaderCellCreated(th, options);
     }
 
     let onTableCellCreated = grid.onTableCellCreated;
     grid.onTableCellCreated = function(td, options) { 
-        onTableCellCreated(td, options);
         grid.styling.stylize(td, options);
+        onTableCellCreated(td, options);
     }
 
     let onFooterCellCreated = grid.onFooterCellCreated;
     grid.onFooterCellCreated = function(td, options) { 
-        onFooterCellCreated(td, options);
         grid.styling.stylize(td, options.footer);
+        onFooterCellCreated(td, options);
     }
 
     grid.styling = {
@@ -338,14 +340,15 @@ Gridify.prototype.extensions.styling = function(div) {
     }
 }
 
+
 Gridify.prototype.extensions.sorting = function(){
     let grid = this;
 
     let onHeaderCellCreated = grid.onHeaderCellCreated;
     grid.onHeaderCellCreated = function(th, headerDefinition) {
-        onHeaderCellCreated(th, headerDefinition);
-
         grid.sorting.initialize(th, headerDefinition);
+
+        onHeaderCellCreated(th, headerDefinition);
     }
 
     grid.sorting = {
@@ -412,18 +415,15 @@ Gridify.prototype.extensions.sorting = function(){
     Object.defineProperty(grid.sorting, 'defaultCompare', { get : () => function(a, b) { if(a == b) { return 0; } return a < b ? 1 : -1; } });
 }
 
-
 Gridify.prototype.extensions.filtering = function(div){
     let grid = this;
 
     let onHeaderCreated = grid.onHeaderCreated;
     grid.onHeaderCreated = function(header, headers) {
-        onHeaderCreated(header, headers);
-
         let hasFilters = headers.some(h => h.filter);
-        if(!hasFilters) { return; }
-
-        grid.filtering.addFilters(headers);
+        if(hasFilters) { grid.filtering.addFilters(headers); }
+        
+        onHeaderCreated(header, headers);
     }
 
 
@@ -507,15 +507,13 @@ Gridify.prototype.extensions.filtering = function(div){
         }
     }
 }
-
 Gridify.prototype.extensions.paging = function(div){
     let grid = this;
 
     let onFooterCreated = grid.onFooterCreated;
     grid.onFooterCreated = function(footer, footers) { 
-        onFooterCreated(footer, footers); 
-
         grid.paging.initialize(grid.html.options.paging);
+        onFooterCreated(footer, footers); 
     }
 
     grid.footer.pager = {
