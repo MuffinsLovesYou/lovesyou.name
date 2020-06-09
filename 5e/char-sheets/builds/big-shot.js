@@ -82,7 +82,7 @@ export let BigShot = new Character({
         'Prestidigitation', 'Mage Hand', 'Mending', 'Light',
         // Level 1
         // Paladin
-        'Hellish Rebuke', 'Inflict Wounds', 'Detect Magic', 'Detect Evil and Good', 'Cure Wounds', 'Shielf of Faith', 'Command',
+        'Hellish Rebuke', 'Inflict Wounds', 'Detect Magic', 'Detect Evil and Good', 'Cure Wounds', 'Shield of Faith', 'Command',
         // Bard
         'Identify', 'Feather Fall', 'Unseen Servant', 'Faerie Fire',
         // Level 2', 

@@ -1,9 +1,7 @@
 import { lite } from '../../../scripts/homerolled/lite.js';
 import { Gridify } from '../../../scripts/homerolled/gridify.js';
 import { MainTab } from './tabs/main.js';
-import { Modal } from '../../common/modal/modal.js';
-import { SpellBox } from '../elements/spellbox/spellbox.js';
-import { spells } from '../../../5e/spells.js';
+import { SpellsTab } from './tabs/spells.js';
 import { markdown } from '../../../scripts/homerolled/markdown-parser.js';
 import { Dice } from '../../common/dice/dice.js';
 
@@ -68,7 +66,7 @@ export let view = lite.extend({
     , onTabClicked : function(event) { 
         let vm = this;
         let inner = event.target.innerHTML;
-        for(let t in vm.tabs){
+        for(let t in vm.tabs) {
             let tab = vm.tabs[t];
             let selected = (tab.el.innerHTML === inner);
             tab.el.className = (selected) ? 'selected' : '';
@@ -152,39 +150,15 @@ export let view = lite.extend({
         lblItems.innerHTML = lblItems.innerHTML + ' ' + totalWeight + '/' + data.CarryWeight;
     }
     , loadSpellsTab : function(data) {
-        let _spells = [];
-        for(let s in data.Spells) {
-            if(typeof(data.Spells[s]) !== 'object') continue;
-            _spells.push(data.Spells[s]);
-        }
-        new Gridify({
-            container : 'spells-container',
-            data : _spells,
-            columns : [
-                { 
-                    field : 'Name', 
-                    header : 'Name',
-                    style : 'text-align:left; text-decoration:underline',
-                    sort : true,
-                    click: (e)=>{ 
-                        let _spell = spells[e.target.innerHTML];
-                        new Modal({ 
-                            container : document.getElementById('modal-container') 
-                        }).attach();
-                        new SpellBox({
-                            data : _spell,
-                            container : document.getElementById('modal-content'),
-                        }).attach();
-                    } 
-                },
-                { field : 'Level', header : 'Level', sort : true },
-                { field : 'CastingTime', header : 'Cast Time', style : 'max-width:300px; text-align:left' },
-                { field : 'Range', header : 'Range' },
-                { field : 'Duration', header : 'Duration' } 
-            ],
-        });
-        if(!_spells.length) document.getElementById('spellsTab').style.display = 'none';    
-    }
+        if(!data) {
+            return document.getElementById('spellsTab').style.display = 'none'; 
+        }   
+    
+        new SpellsTab({
+            container : document.getElementById('spells-container'), 
+            data : data.Spells
+        }).attach();
+    }  
     , numberSort : function(a, b) {
         if(+a === +b) { return 0; }
         else return +a > +b ? 1 : -1;
