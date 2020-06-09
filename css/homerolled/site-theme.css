@@ -54,3 +54,41 @@ header {
     content:'';
 }
 
+
+/* Rewrite tabs as a module.  */
+.tabs {
+    display:flex;
+    line-height:30px;
+    margin:25px;
+}
+
+.tabs :last-child {
+    border-right:none;
+}
+
+.tabs span {
+    border-right:solid thin;
+    display:inline-block;
+    font-weight:bold;
+    min-width:100px;
+    text-align: center;
+}
+
+.tabs .selected {
+    opacity: .5;
+    text-decoration:underline;
+}
+
+
+.grid tBody > tr { 
+    border-bottom : solid thin grey;
+}
+
+.grid th {
+    font-weight: bold;
+    padding: 2px 6px;
+}
+
+.grid td { 
+    padding: 1px 6px;
+}

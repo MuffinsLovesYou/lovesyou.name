@@ -15,7 +15,7 @@ export let MonstersTab = lite.extend({
         let view = this;
         view.drawTable();
     }
-    ,drawTable : function(_spells){
+    , drawTable : function(_spells){
         let view = this;
         new Gridify({
             container : 'monsters-table',
@@ -54,6 +54,7 @@ export let MonstersTab = lite.extend({
             ]
             , paging : true
             , style : 'table-layout:fixed; width:500px;'
+            , className : 'grid'
             , onTableCellCreated : function(td, column) {
                 if(td.style.overflow === 'hidden') { td.title = td.innerText; } 
             }

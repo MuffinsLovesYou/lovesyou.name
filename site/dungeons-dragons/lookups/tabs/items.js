@@ -26,6 +26,7 @@ export let ItemsTab =  lite.extend({
             ]
             , paging : true
             , style : 'width:325px; table-layout:fixed;'
+            , className : 'grid'
         });
     }
     , numberSort : function(a, b) {

@@ -10,19 +10,8 @@ export let view = lite.extend({
     }
     ,initialize : function() {
         let view = this;
-        this.load_css();
-    }
-    , load_css : function() {
-        let css = document.createElement("link");
-        css.rel = "stylesheet";
-        css.type = "text/css";
-        css.href = 'css/homerolled/timeline.css';
-        let head = document.getElementsByTagName('head')[0];
-        let links = document.getElementsByTagName('link');
-        let has = Array.from(links).some((link)=>{
-            return link.href === css.href;
-        });
-        if(!has) head.appendChild(css);            
+        window.view = view;
+        this.loadStyleSheet('timeline.css');
     }
     , onDataLoaded : function(data){
     }
