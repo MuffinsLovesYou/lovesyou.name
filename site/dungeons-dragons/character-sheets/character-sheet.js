@@ -145,6 +145,7 @@ export let view = lite.extend({
                 { field : 'Value', header : 'Value', sort: view.coinSort },
                 { field : 'Weight', header : 'Weight', style : 'text-align:right', sort : view.numberSort }
             ],
+            className : 'grid'
         });
         let totalWeight = _items.reduce((acc, item)=>{ return (acc += (item.Weight || 0)); }, 0);
         let lblItems = document.getElementById('label-items');
@@ -199,6 +200,7 @@ export let view = lite.extend({
         
         let convertToCopper = function(value) { 
             let conversion = coinValues.find(v => value.includes(v.suffix));
+            if(!conversion) { return -1; }
             value = +value.replace(conversion.suffix, '');
             value = value * conversion.rate;
             return value;
