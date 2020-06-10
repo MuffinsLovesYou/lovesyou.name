@@ -23,7 +23,6 @@ export let view = lite.extend({
                     case 'init' : 
                     break;
                 }
-                console.log(td, colDef);
             }
         });
     }
