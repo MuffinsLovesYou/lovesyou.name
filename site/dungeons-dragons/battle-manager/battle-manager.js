@@ -24,7 +24,7 @@ export let view = lite.extend({
     , btnShowAddParticipantModalClicked : function() { 
         let view = this;
 
-        new Modal().attach(document.getElementById('modal-container'));
+        new Modal().show();
         new AddParticipant({
             parent : view,
             container : document.getElementById('modal-content'), 
@@ -35,6 +35,7 @@ export let view = lite.extend({
         let view = this;
         view.data.push(participantData);
         view.drawGrid();
+        new Modal().hide();
     }
     // mock data for prototyping
     , data : [
