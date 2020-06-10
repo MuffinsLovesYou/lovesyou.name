@@ -21,6 +21,7 @@ export let view = lite.extend({
             , { title : "Lookups", href : "#dungeons-dragons/lookups", alt : "spells, monsters, items" }
             , { title : 'Wild Magic Surge', href : '#dungeons-dragons/wild-magic', alt : 'wild magic surge table' }
             , { title : 'Encounter Builder', href : '#dungeons-dragons/encounter-builder', alt : 'encounter builder' }
+            , { title : 'Battle Manager', href : '#dungeons-dragons/battle-manager', alt : 'battle management' }
         ]);
     }
 });

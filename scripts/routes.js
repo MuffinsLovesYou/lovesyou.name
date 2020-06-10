@@ -10,6 +10,7 @@ export let routes = {
     , 'programming/gridify' : 'programming/code-pages/gridify/gridify.js'
 
     , 'dungeons-dragons': 'dungeons-dragons/dungeons-dragons.js'
+    , 'dungeons-dragons/battle-manager' : 'dungeons-dragons/battle-manager/battle-manager.js'
     , 'dungeons-dragons/character-sheets' : 'dungeons-dragons/character-sheets/character-sheets.js'
     , 'dungeons-dragons/character-sheets/{character}' : 'dungeons-dragons/character-sheets/character-sheet.js'
     , 'dungeons-dragons/dice' : 'common/dice/dice.js'
