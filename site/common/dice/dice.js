@@ -14,13 +14,13 @@ export let view = lite.extend({
         view.bindButtonClick();
         view.bindKeydown();
     }
-    , initializeRoller : function(){
+    , initializeRoller : function() {
         let view = this;
         view.roller = new LoggingRoller();
         view.roller.operations.add(math);
         view.roller.operations.insert(0, dnd[0]);
     }
-    , buildTable : function(){
+    , buildTable : function() {
         let view = this;
         new Gridify({
             container : 'dice-output-table', 
@@ -40,39 +40,39 @@ export let view = lite.extend({
         });
     }
     , elements :  {}
-    , getElementById : function(id){
-        if(!this.elements[id]) this.elements[id] = document.getElementById(id);
+    , getElementById : function(id) {
+        if(!this.elements[id]) { this.elements[id] = document.getElementById(id); }
         return this.elements[id];
     }
-    , bindButtonClick : function(){
+    , bindButtonClick : function() {
         let view = this;
         let button = view.getElementById('dice-button');
-        button.addEventListener('click', (e)=>{ view.rollDice(); });
+        button.addEventListener('click', (e) => { view.rollDice(); });
     }
-    , bindKeydown : function(){
+    , bindKeydown : function() {
         let view = this;
         let input = view.getElementById('dice-input');
-        input.addEventListener('keydown', (e)=>{
-            if(e.keyCode==13)view.rollDice();
+        input.addEventListener('keydown', (e) => {
+            if(e.keyCode == 13) { view.rollDice(); }
         });
     }
-    , rollDice : function(){
+    , rollDice : function() {
         let view = this;
         let input = view.getElementById('dice-input');
         view.roller.solve(input.value);
         let solution = view.roller.log.solutions[view.roller.log.solutions.length-1];
         view.logOutput(solution);
     }
-    , getResults : function(solution){
-        return solution.operations.map(operation=>{
-            if(!operation.dice) return '';
-            return operation.dice.map(dice=>{
-                return dice.input+'('+ dice.rolls.map(die=>die.output).join('+') +')'
+    , getResults : function(solution) {
+        return solution.operations.map(operation => {
+            if(!operation.dice) { return ''; }
+            return operation.dice.map(dice => {
+                return dice.input + '(' + dice.rolls.map(die => die.output).join('+') + ')'
             }) 
         }).join(' ');
     }
     , rolls : []
-    , logOutput : function(solution){
+    , logOutput : function(solution) {
         let view = this;
         view.rolls.unshift({ 
             Result : solution.output, 
