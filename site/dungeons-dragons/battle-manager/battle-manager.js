@@ -44,6 +44,7 @@ export let view = lite.extend({
     , drawGrid : function() { 
         let view = this;
         new ParticipantsGrid({
+            parent : view, 
             container : document.getElementById('battle-table'),
             data : view.data
         }).attach();
