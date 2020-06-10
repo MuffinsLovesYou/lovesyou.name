@@ -9,11 +9,19 @@ export let view = lite.extend({
         document.getElementById('btnAddParticipant')
             .addEventListener('click', view.onAddParticipantClicked.bind(this));
     }
+    , getParticipant : function() { 
+        return { 
+            init : document.getElementById('txtInit').value,
+            id : document.getElementById('txtName').value,
+            name : document.getElementById('txtName').value,
+            hp : document.getElementById('txtHp').value
+        }
+    }
     , onAddParticipantClicked : function() { 
         let view = this;
-        view.parent.onParticipantAdded({
-            init : 3, id : 'test 3', name : 'test 3', hp : 100
-        });
+
+        let participant = view.getParticipant();
+        view.parent.onParticipantAdded(participant);
     }
 });
 export let AddParticipant = view;

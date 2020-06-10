@@ -16,8 +16,8 @@ export let Modal = lite.extend({
         
         modal.toggleScrolling();
         
-        overlay.addEventListener('click', (e) =>{
-            if(!e.target === overlay) { return; }
+        overlay.addEventListener('click', (e) => {
+            if(e.target !== overlay) { return e.preventDefault(); }
             modal.toggleScrolling();
             modal.clearContainer();
         });
