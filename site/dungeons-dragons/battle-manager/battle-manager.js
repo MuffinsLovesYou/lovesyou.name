@@ -1,7 +1,7 @@
 import { lite } from '../../../scripts/homerolled/lite.js';
 import { Dice } from '../../common/dice/dice.js';
-import { Gridify } from '../../../scripts/homerolled/gridify.js';
 import { AddParticipant } from './add-participant/add-participant.js';
+import { ParticipantsGrid } from './participants-grid/participants-grid.js';
 import { Modal } from '../../common/modal/modal.js';
 
 export let view = lite.extend({
@@ -33,17 +33,11 @@ export let view = lite.extend({
     ]
     , drawGrid : function() { 
         let view = this;
-        new Gridify({
-            container : 'battle-table',
-            data : view.data,
-            columns : [
-                { field : 'init', header : 'Init' },
-                { field : 'id', header : 'Id' },
-                { field : 'name', header : 'Name' },
-                { field : 'hp', header : 'HP' }, 
-                { field : 'remove', header : 'Remove' }
-            ]
-        });
+        new ParticipantsGrid({
+            container : document.getElementById('battle-table'),
+            data : view.data
+        }).attach();
+
     }
 });
 export let BattleManager = view;
