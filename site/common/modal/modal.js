@@ -5,6 +5,10 @@ export let Modal = lite.extend({
     initialize : function() { 
         this.loadStyleSheet('css/homerolled/modal.css');
         this.cacheOverflowY = document.body.style.overflowY;
+
+        if(!this.container) { 
+            this.container = document.getElementById('modal-container');
+        }
     },
     onContentBound : function() {
         this.setOverlay();
@@ -18,8 +22,7 @@ export let Modal = lite.extend({
         
         overlay.addEventListener('click', (e) => {
             if(e.target !== overlay) { return e.preventDefault(); }
-            modal.toggleScrolling();
-            modal.clearContainer();
+            modal.hide();
         });
     },
     clearContainer : function() { 
@@ -41,5 +44,12 @@ export let Modal = lite.extend({
         let content = document.getElementById('modal-content');
         content.style.backgroundColor = document.body.style.backgroundColor;
         content.style.opacity = '1.0';
+    },
+    show : function() { 
+        this.attach();
+    },
+    hide : function() {
+        this.toggleScrolling();
+        this.clearContainer();
     }
 });
