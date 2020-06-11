@@ -7,6 +7,8 @@ export let view = lite.extend({
         let view = this;
         view.setControls();
 
+        view.controls.init.value = view.getRandomInitiative();
+
         view.controls.init.focus();
     }
     , controls : {
@@ -49,6 +51,9 @@ export let view = lite.extend({
         if(!view.isValid()) { return ; }
         let participant = view.getParticipant();
         view.parent.onParticipantAdded(participant);
+    }
+    , getRandomInitiative : function() { 
+        return Math.floor(Math.random() * 20) + 1;
     }
 });
 export let AddParticipant = view;
