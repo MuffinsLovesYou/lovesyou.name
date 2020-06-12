@@ -1,4 +1,7 @@
 import { lite } from '../../../../scripts/homerolled/lite.js';
+import { autoComplete } from '../../../../scripts/vendor/autocomplete.js';
+import { monsters } from '../../../../5e/monsters.js';
+
 
 export let view = lite.extend({
     name : 'add-participant'
@@ -9,6 +12,7 @@ export let view = lite.extend({
 
         view.controls.init.value = view.getRandomInitiative();
 
+        view.setAutoComplete();
         view.controls.init.focus();
     }
     , controls : {
@@ -24,6 +28,21 @@ export let view = lite.extend({
         view.controls.add.addEventListener('click', view.onAddParticipantClicked.bind(this));
         view.controls.name.addEventListener('change', view.onNameChanged.bind(this));
         view.controls.hp.addEventListener('keydown', view.onHpKeyDown.bind(this));
+    }
+    , setAutoComplete : function() { 
+        let monsterNames = Object.keys(monsters);
+
+        new autoComplete({
+            selector: '#txtName',
+            minChars: 2,
+            source: function(term, suggest) {
+                term = term.toLowerCase();
+                let matches = monsterNames.filter(v => {
+                    return v.toLowerCase().includes(term);
+                });
+                suggest(matches);                
+            }
+        });
     }
     , getParticipant : function() { 
         let view = this;
