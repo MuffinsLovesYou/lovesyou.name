@@ -2,7 +2,6 @@ import { lite } from '../../../../scripts/homerolled/lite.js';
 import { autoComplete } from '../../../../scripts/vendor/autocomplete.js';
 import { monsters } from '../../../../5e/monsters.js';
 
-
 export let view = lite.extend({
     name : 'add-participant'
     , contentUrl : 'site/dungeons-dragons/battle-manager/add-participant/add-participant.html'
@@ -10,7 +9,7 @@ export let view = lite.extend({
         let view = this;
         view.setControls();
 
-        view.controls.init.value = view.getRandomInitiative();
+        view.controls.init.value = view.rollD20();
 
         view.setAutoComplete();
         view.controls.init.focus();
@@ -41,6 +40,10 @@ export let view = lite.extend({
                     return v.toLowerCase().includes(term);
                 });
                 suggest(matches);                
+            },
+            onSelect : function(e) { 
+                // Force .onNameChanged to be called
+                e.target.dispatchEvent(new Event('change'));
             }
         });
     }
@@ -57,7 +60,19 @@ export let view = lite.extend({
         if(e.keyCode === 13) { this.addParticipant(); }
     }
     , onNameChanged : function(e) {
-        this.controls.add.disabled = !this.isValid();
+        let view = this;
+        view.controls.add.disabled = !view.isValid();
+
+        let monster = monsters[e.target.value];
+        if(monster) { view.setMonster(monster); }
+    }
+    , setMonster : function(monster) { 
+        let view = this;
+        view.controls.init.value = 
+            view.rollD20() 
+            + Math.floor((monster.Stats.Dex - 10) / 2);
+
+        view.controls.hp.value = +/\d+/.exec(monster.Defenses.Hp)[0];
     }
     , onAddParticipantClicked : function() { 
         this.addParticipant();
@@ -71,7 +86,7 @@ export let view = lite.extend({
         let participant = view.getParticipant();
         view.parent.onParticipantAdded(participant);
     }
-    , getRandomInitiative : function() { 
+    , rollD20 : function() { 
         return Math.floor(Math.random() * 20) + 1;
     }
 });
