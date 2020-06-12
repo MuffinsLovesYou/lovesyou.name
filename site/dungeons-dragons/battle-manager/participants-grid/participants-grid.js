@@ -1,5 +1,8 @@
 import { lite } from '../../../../scripts/homerolled/lite.js';
 import { Gridify } from '../../../../scripts/homerolled/gridify.js';
+import { monsters } from '../../../../5e/monsters.js';
+import { Modal } from '../../../common/modal/modal.js';
+import { MonsterBox } from '../../elements/monsterbox/monsterbox.js';
 
 export let view = lite.extend({
     content : ' '
@@ -14,7 +17,7 @@ export let view = lite.extend({
             columns : [
                 { field : 'init', header : 'Init' },
                 { field : 'id', header : 'Id' },
-                { field : 'name', header : 'Name' },
+                { field : 'name', header : 'Name', click : view.onNameClick },
                 { field : 'hp', header : 'HP' }, 
                 { field : 'remove', header : 'Remove' }
             ],
@@ -40,6 +43,15 @@ export let view = lite.extend({
             }
         });
         view.grid = grid;
+    }
+    , onNameClick : function(e) { 
+        let monster = monsters[e.target.value];
+        if(!monster) { return; }
+        new Modal().show();
+        new MonsterBox({
+            container : document.getElementById('modal-content'),
+            data : monster
+        }).attach();
     }
     , tdInit : function(td) { 
         let input = document.createElement('input');
