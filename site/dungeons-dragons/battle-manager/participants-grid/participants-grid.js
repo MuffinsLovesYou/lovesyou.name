@@ -15,7 +15,7 @@ export let view = lite.extend({
             container : 'battle-table',
             data : view.data,
             columns : [
-                { field : 'init', header : 'Init' },
+                { field : 'init', header : 'Init', sort : view.numberSort },
                 { field : 'id', header : 'Id' },
                 { field : 'name', header : 'Name', click : view.onNameClick },
                 { field : 'hp', header : 'HP' }, 
@@ -43,6 +43,11 @@ export let view = lite.extend({
             }
         });
         view.grid = grid;
+        view.grid.sorting.sort('init');
+    }
+    , numberSort : function(a, b) {
+        if(a === b) { return 0; }
+        return +a > +b ? 1 : -1;
     }
     , onNameClick : function(e) { 
         let monster = monsters[e.target.value];

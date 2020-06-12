@@ -72,7 +72,12 @@ export let view = lite.extend({
     }
     , onNameKeyDown : function(e) {
         // Enter to submit if we have already selected a monster
-        if(e.keyCode === 13 && this.controls.hp.value) { this.addParticipant(); }
+        if(e.keyCode === 13) { 
+            if(e.target.enterPressed) { this.addParticipant(); }
+            else e.target.enterPressed = true;
+        }
+        else 
+            e.target.enterPressed = false;
     }
     , onCountKeyDown : function(e) {
         if(e.keyCode === 13) { this.addParticipant(); }
@@ -97,7 +102,9 @@ export let view = lite.extend({
 
         for(let i = 1; i <= +view.controls.count.value; i++) {
             let participant = view.getParticipant();
-            participant.id = participant.id + ' ' + i;
+            if(view.controls.count.value > 1) { 
+                participant.id =  participant.id + ' ' + i;
+            }
             view.parent.onParticipantAdded(participant);  
         }
 

@@ -393,8 +393,8 @@ Gridify.prototype.extensions.sorting = function(){
 
             let rows = Array.from(grid.html.tBodies[0].rows);            
             rows.sort((x, y) => {
-                let xv = x.cells[options.idx].innerText;
-                let yv = y.cells[options.idx].innerText; 
+                let xv = x.cells[options.idx].value;
+                let yv = y.cells[options.idx].value; 
                 let compared = options.compare(xv, yv);
                 return +compared * options.direction;
             });
@@ -466,7 +466,7 @@ Gridify.prototype.extensions.filtering = function(div){
             let filterControls = grid.filtering.getControls();
             Array.from(grid.html.tBodies[0].rows).forEach((row, i)=>{
                 let filteredOut = filterControls.some((filterControl)=>{
-                    let cellValue = row.cells[filterControl.idx].innerText;
+                    let cellValue = row.cells[filterControl.idx].value;
                     return !filterControl.rule(cellValue, filterControl.value);
                 });
                 row.filtered = filteredOut;
