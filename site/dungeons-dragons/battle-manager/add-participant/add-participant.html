@@ -1,9 +1,10 @@
-<div id='add-participant-modal' style='width: 350px;'>
+<div id='add-participant-modal'>
     <style>
         
         #add-participant-modal {
             text-align: left;
             margin : 5px;
+            width: 475px;
         }
 
         #add-participant-modal label {
@@ -16,11 +17,15 @@
         }
 
         #add-participant-modal #txtName { 
-            width : 150px;
+            width : 200px;
         }
 
         #add-participant-modal #txtHp {
-            width : 50px;
+            width : 75px;
+        }
+
+        #add-participant-modal #txtCount { 
+            width: 50px;
         }
 
         #add-participant-modal #btnAddParticipant { 
@@ -31,16 +36,20 @@
 
     <div>
         <div style='display:inline-block;'>
-            <label for='txtInit'>init</label>
-            <input id='txtInit' placeholder="initiative" />
+            <label for='txtInit'>initiative</label>
+            <input id='txtInit' placeholder="init" />
         </div>
         <div style='display:inline-block;'>
             <label for='txtName'>name</label>
             <input id='txtName' placeholder="name" />
         </div>
         <div style='display:inline-block;'>
-            <label for='txtHp'>hp</label>
-            <input id='txtHp' placeholder="hit points" />
+            <label for='txtHp'>hit points</label>
+            <input id='txtHp' placeholder="hp" />
+        </div>
+        <div style='display:inline-block;'>
+            <label for='txtCount'>count</label>
+            <input id='txtCount' placeholder="#" value='1'/>
         </div>
         <button id='btnAddParticipant' class='btn btn-primary btn-sm' disabled>Add</button>
     </div>

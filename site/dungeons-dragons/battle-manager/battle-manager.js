@@ -38,7 +38,6 @@ export let view = lite.extend({
         let view = this;
         view.data.push(participantData);
         view.drawGrid();
-        new Modal().hide();
     }
     , drawGrid : function() { 
         let view = this;

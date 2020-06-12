@@ -1,6 +1,7 @@
 import { lite } from '../../../../scripts/homerolled/lite.js';
 import { autoComplete } from '../../../../scripts/vendor/autocomplete.js';
 import { monsters } from '../../../../5e/monsters.js';
+import { Modal } from '../../../common/modal/modal.js';
 
 export let view = lite.extend({
     name : 'add-participant'
@@ -19,14 +20,17 @@ export let view = lite.extend({
     }
     , setControls : function() {
         let view = this;
-        view.controls.init = document.getElementById('txtInit');
-        view.controls.name = document.getElementById('txtName');
-        view.controls.hp = document.getElementById('txtHp');
-        view.controls.add = document.getElementById('btnAddParticipant');
+        view.controls.init = document.querySelector('#txtInit');
+        view.controls.name = document.querySelector('#txtName');
+        view.controls.hp = document.querySelector('#txtHp');
+        view.controls.count = document.querySelector('#txtCount');
+        view.controls.add = document.querySelector('#btnAddParticipant');
 
         view.controls.add.addEventListener('click', view.onAddParticipantClicked.bind(this));
         view.controls.name.addEventListener('change', view.onNameChanged.bind(this));
+        view.controls.name.addEventListener('keydown', view.onNameKeyDown.bind(this));
         view.controls.hp.addEventListener('keydown', view.onHpKeyDown.bind(this));
+        view.controls.count.addEventListener('keydown', view.onCountKeyDown.bind(this));
     }
     , setAutoComplete : function() { 
         let monsterNames = Object.keys(monsters);
@@ -66,6 +70,13 @@ export let view = lite.extend({
         let monster = monsters[e.target.value];
         if(monster) { view.setMonster(monster); }
     }
+    , onNameKeyDown : function(e) {
+        // Enter to submit if we have already selected a monster
+        if(e.keyCode === 13 && this.controls.hp.value) { this.addParticipant(); }
+    }
+    , onCountKeyDown : function(e) {
+        if(e.keyCode === 13) { this.addParticipant(); }
+    }
     , setMonster : function(monster) { 
         let view = this;
         view.controls.init.value = 
@@ -83,8 +94,14 @@ export let view = lite.extend({
     , addParticipant : function() {
         let view = this;
         if(!view.isValid()) { return ; }
-        let participant = view.getParticipant();
-        view.parent.onParticipantAdded(participant);
+
+        for(let i = 1; i <= +view.controls.count.value; i++) {
+            let participant = view.getParticipant();
+            participant.id = participant.id + ' ' + i;
+            view.parent.onParticipantAdded(participant);  
+        }
+
+        new Modal().hide();
     }
     , rollD20 : function() { 
         return Math.floor(Math.random() * 20) + 1;

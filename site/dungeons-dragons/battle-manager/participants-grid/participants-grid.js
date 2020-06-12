@@ -56,7 +56,7 @@ export let view = lite.extend({
     , tdId : function(td) {
         let input = document.createElement('input');
         input.value = td.innerText;
-        input.style = 'width:50px;'
+        input.style = 'width:100px;'
         td.innerText = '';
 
         input.addEventListener('change', () => { 
