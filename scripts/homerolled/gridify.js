@@ -185,12 +185,13 @@ export let Gridify = function(options = {}) {
             td.id = tr.id + '-' + field;
 
             td.field = field;
+            td.value = value;
             td.innerText = value;
 
             let colDef = grid.body.getColumnDefinition(field);
             if(colDef && colDef.attributes) { _setAttributes(td, colDef.attributes); }
             if(colDef && colDef.click) { td.onclick = colDef.click; }
-            
+
             grid.onTableCellCreated(td, colDef);
         }
     }
@@ -206,7 +207,7 @@ export let Gridify = function(options = {}) {
         , getRowData : function(tr) {
             let rowData = {};
             Array.from(tr.cells).forEach(td => {
-                rowData[td.field] = td.innerText;
+                rowData[td.field] = td.value;
             });
             return rowData;
         }
