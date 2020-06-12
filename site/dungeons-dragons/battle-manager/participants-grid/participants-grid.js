@@ -29,9 +29,6 @@ export let view = lite.extend({
                     case 'id' : 
                         td.appendChild(view.tdId(td));
                     break;
-                    case 'name' : 
-                        // attach onclick for known monsters
-                    break;
                     case 'hp' : 
                         td.appendChild(view.tdHP(td));
                     break;
@@ -96,9 +93,7 @@ export let view = lite.extend({
         });
 
         return input;
-        // we'll probably need to revisit the grid here 
-        // set the .value of the td and use that for getting and setting data
-    }
+     }
     , tdRemoveButton : function(td) { 
         let view = this;
         let button = document.createElement('button');

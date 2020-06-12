@@ -38,6 +38,8 @@ export let view = lite.extend({
         let view = this;
         view.data.push(participantData);
         view.drawGrid();
+        document.getElementById('btnShowAddParticipantModal')
+            .focus();
     }
     , drawGrid : function() { 
         let view = this;
@@ -47,7 +49,6 @@ export let view = lite.extend({
             container : document.getElementById('battle-table'),
             data : view.data
         }).attach();
-
     }
 });
 export let BattleManager = view;

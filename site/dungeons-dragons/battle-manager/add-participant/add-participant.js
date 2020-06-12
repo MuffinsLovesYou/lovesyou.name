@@ -28,9 +28,9 @@ export let view = lite.extend({
 
         view.controls.add.addEventListener('click', view.onAddParticipantClicked.bind(this));
         view.controls.name.addEventListener('change', view.onNameChanged.bind(this));
-        view.controls.name.addEventListener('keydown', view.onNameKeyDown.bind(this));
-        view.controls.hp.addEventListener('keydown', view.onHpKeyDown.bind(this));
-        view.controls.count.addEventListener('keydown', view.onCountKeyDown.bind(this));
+        view.controls.name.addEventListener('keypress', view.onNameKeyPress.bind(this));
+        view.controls.hp.addEventListener('keypress', view.onHpKeyPress.bind(this));
+        view.controls.count.addEventListener('keypress', view.onCountKeyPress.bind(this));
     }
     , setAutoComplete : function() { 
         let monsterNames = Object.keys(monsters);
@@ -60,7 +60,7 @@ export let view = lite.extend({
             hp : view.controls.hp.value
         }
     }
-    , onHpKeyDown : function(e) { 
+    , onHpKeyPress : function(e) { 
         if(e.keyCode === 13) { this.addParticipant(); }
     }
     , onNameChanged : function(e) {
@@ -70,8 +70,8 @@ export let view = lite.extend({
         let monster = monsters[e.target.value];
         if(monster) { view.setMonster(monster); }
     }
-    , onNameKeyDown : function(e) {
-        // Enter to submit if we have already selected a monster
+    , onNameKeyPress : function(e) {
+        // Press enter twice on name to submit
         if(e.keyCode === 13) { 
             if(e.target.enterPressed) { this.addParticipant(); }
             else e.target.enterPressed = true;
@@ -79,7 +79,7 @@ export let view = lite.extend({
         else 
             e.target.enterPressed = false;
     }
-    , onCountKeyDown : function(e) {
+    , onCountKeyPress : function(e) {
         if(e.keyCode === 13) { this.addParticipant(); }
     }
     , setMonster : function(monster) { 
@@ -105,11 +105,12 @@ export let view = lite.extend({
             if(view.controls.count.value > 1) { 
                 participant.id =  participant.id + ' ' + i;
             }
-            view.parent.onParticipantAdded(participant);  
+            view.onParticipantAdded(participant);  
         }
 
         new Modal().hide();
     }
+    , onParticipantAdded : function() { }
     , rollD20 : function() { 
         return Math.floor(Math.random() * 20) + 1;
     }
