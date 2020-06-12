@@ -59,6 +59,7 @@ export let view = lite.extend({
         }).attach();
     }
     , tdInit : function(td) { 
+        let view = this;
         let input = document.createElement('input');
         input.value = td.innerText;
         input.style = 'width:50px;'
@@ -66,7 +67,9 @@ export let view = lite.extend({
 
         input.addEventListener('change', () => { 
             td.value = input.value; 
-            // sort by init before binding
+            // sort twice so we stay descending
+            view.grid.sorting.sort('init');
+            view.grid.sorting.sort('init');
         });
         return input;
     }
@@ -111,7 +114,6 @@ export let view = lite.extend({
 
         return button
     }
-
 });
 export let ParticipantsGrid = view;
 
