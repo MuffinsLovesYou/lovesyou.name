@@ -7,6 +7,9 @@ import { Modal } from '../../common/modal/modal.js';
 export let view = lite.extend({
     name : 'battle-manager'
     , contentUrl : 'site/dungeons-dragons/battle-manager/battle-manager.html'
+    , initialize : function() { 
+        this.data = [];
+    }
     , onContentBound : function(content) { 
         let view = this;
         view.appendDice();
@@ -37,13 +40,9 @@ export let view = lite.extend({
         view.drawGrid();
         new Modal().hide();
     }
-    // mock data for prototyping
-    , data : [
-        { init : 1, id : 'test1', name : 'test1', hp : 5 },
-        { init : 2, id : 'test2', name : 'test2', hp : 10 },
-    ]
     , drawGrid : function() { 
         let view = this;
+        if(!view.data.length) { return; }
         new ParticipantsGrid({
             parent : view, 
             container : document.getElementById('battle-table'),
