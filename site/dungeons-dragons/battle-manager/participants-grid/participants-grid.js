@@ -88,8 +88,8 @@ export let view = lite.extend({
         button.style.lineHeight = '.75'
 
         button.addEventListener('click', function() { 
-            console.log(view.grid.data.get());
-            window.grid = view.grid;
+            td.parentElement.parentElement.removeChild(td.parentElement);
+            view.parent.data = view.grid.data.get();
         });
 
         return button
