@@ -9,6 +9,7 @@ export let view = lite.extend({
     , contentUrl : 'site/dungeons-dragons/battle-manager/battle-manager.html'
     , initialize : function() { 
         this.data = [];
+        this.loadStyleSheet('site/dungeons-dragons/battle-manager/battle-manager.css');
     }
     , onContentBound : function(content) { 
         let view = this;

@@ -12,24 +12,33 @@ export let view = lite.extend({
     , drawGrid : function() {
         let view = this;
         let grid = new Gridify({
-            container : 'battle-table',
+            container : 'battle-table-container',
+            id : 'battle-table',
             data : view.data,
             columns : [
-                { field : 'init', header : 'Init', sort : view.numberSort },
-                { field : 'id', header : 'Id' },
-                { field : 'name', header : 'Name', click : view.onNameClick },
-                { field : 'hp', header : 'HP' }, 
-                { field : 'remove', header : 'Remove' }
+                { field : 'init', header : 'Init', sort : view.numberSort,
+                    style : 'width:50px; text-align:right;' },
+                { field : 'id', header : 'Id',
+                    style : 'width:100px;' },
+                { field : 'name', header : 'Name', click : view.onNameClick,
+                    style : 'width:150px; text-align:center;' },
+                { field : 'hp', header : 'HP', 
+                    style : 'width:150px;' }, 
+                { field : 'remove', header : 'Remove', 
+                    style : 'width:75px;' }
             ],
             onTableCellCreated : function(td, colDef) {
                 switch(colDef.field) { 
-                    case 'init' : 
+                    case 'init' :       
+                        td.innerText = '';
                         td.appendChild(view.tdInit(td));
                     break;
-                    case 'id' : 
+                    case 'id' :     
+                        td.innerText = '';
                         td.appendChild(view.tdId(td));
                     break;
                     case 'hp' : 
+                        td.innerText = '';
                         td.appendChild(view.tdHP(td));
                     break;
                     case 'remove': 
@@ -37,7 +46,9 @@ export let view = lite.extend({
                         td.appendChild(view.tdRemoveButton(td));
                     break;
                 }
-            }
+            },
+            style : 'table-layout:fixed;'
+
         });
         view.grid = grid;
         view.grid.sorting.sort('init');
@@ -58,10 +69,9 @@ export let view = lite.extend({
     , tdInit : function(td) { 
         let view = this;
         let input = document.createElement('input');
-        input.value = td.innerText;
-        input.style = 'width:50px;'
-        td.innerText = '';
-
+        input.value = td.value;
+        input.style = td.style.cssText;
+        
         input.addEventListener('change', () => { 
             td.value = input.value; 
             // sort twice so we stay descending
@@ -72,9 +82,8 @@ export let view = lite.extend({
     }
     , tdId : function(td) {
         let input = document.createElement('input');
-        input.value = td.innerText;
-        input.style = 'width:100px;'
-        td.innerText = '';
+        input.value = td.value;
+        input.style = td.style.cssText;
 
         input.addEventListener('change', () => { 
             td.value = input.value;
@@ -85,8 +94,8 @@ export let view = lite.extend({
     , tdHP : function(td) { 
         let view = this;
         let input = document.createElement('input');
-        input.value = td.innerText;
-        td.innerText = '';
+        input.value = td.value;
+        input.style = td.style.cssText;
 
         input.addEventListener('change', () => {
             td.value = input.value;
