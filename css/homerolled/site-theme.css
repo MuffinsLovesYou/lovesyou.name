@@ -27,8 +27,11 @@ a:hover   {
     font-style:italic;
 }
 
-header {
+
+
+#header {
     display:block;
+    margin: 10px 2.5em;
 }
 
 .logo {
@@ -40,7 +43,11 @@ header {
 
 #main-content {
     display:block;
-    margin: 10px 5%;
+    margin: 10px 5em;
+}
+
+#footer {
+    margin: 10px 2.5em;
 }
 
 #footer ul li {

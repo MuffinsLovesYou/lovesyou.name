@@ -47,7 +47,7 @@ export let view = lite.extend({
         if(!view.data.length) { return; }
         new ParticipantsGrid({
             parent : view, 
-            container : document.getElementById('battle-table'),
+            container : document.getElementById('battle-table-container'),
             data : view.data
         }).attach();
     }

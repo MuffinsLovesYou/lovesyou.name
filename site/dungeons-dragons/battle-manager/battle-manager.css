@@ -1,11 +1,17 @@
-#battle-manager .row { 
-    margin : 10px 0px;
+
+#battle-manager { 
+    display:grid;
+    grid-template-columns: 70% 30%;
 }
 
 #add-participant-modal {
     text-align: left;
     margin : 5px;
     width: 475px;
+}
+
+#btnShowAddParticipantModal {
+    margin: 10px;
 }
 
 #add-participant-modal label {

@@ -3,13 +3,11 @@ import { Tiles } from '../../../../scripts/homerolled/tiles.js';
 
 export let view =  lite.extend({
     content : `
-    <div class='container'>
-        <div class='row'>
-            <div class='col-12'>
-                <p>2017 started and ended with the claw mountain arc.</p>
-            </div>
+    <div>
+        <div>
+            <p>2017 started and ended with the claw mountain arc.</p>
         </div>
-        <div class='row'>
+        <div>
             <div id='tiles' class='tiles'></div>
         </div>
     </div>`,
