@@ -1,44 +1,36 @@
-<div class='container'>
-    <div class='row'>
-        <div class='col-12' id='code-page-dice-roller-notes'>
-            <p>One of my first programs was an equation-based dice roller written in Objective-C. I use it a lot when 
-                playing D&D since that game is very dice-roll intensive. Every other year I like to revisit the 
-                program to either rewrite or refactor it. 
-                <a href='https://github.com/unstableconfiguration/Dice' target='_blank'>Github Link</a>
-            </p>
-        </div>
+<div>
+    <div id='code-page-dice-roller-notes'>
+        <p>One of my first programs was an equation-based dice roller written in Objective-C. I use it a lot when 
+            playing D&D since that game is very dice-roll intensive. Every other year I like to revisit the 
+            program to either rewrite or refactor it. 
+            <a href='https://github.com/unstableconfiguration/Dice' target='_blank'>Github Link</a>
+        </p>
     </div>
-    <div class='row'>
-        <div class='col-12' id='dice-container' style='max-height:200px; overflow:auto'></div>
+    <div id='dice-container' style='max-height:200px; overflow:auto'></div>
+    <div>
+        <h2>main roller and operation object </h2>
+        <p>The main roller is a collection of operations. When it solves for an input, it passes the input 
+            to each of the operations in order. Each operation can .search() the input to see if some or 
+            all of it is a valid target for that operation. Optionally it can .parse() out meaningful values. 
+            Finally it can execute its .call() function, which will replace the part of the input it is targeting 
+            with a resolved value.     
+        </p>
+        <p>For example, if the input is 4+6/3 and the math operations are in place. The divide operation will 
+            identify '6/3' as a valid target. It will resolve it to 2, and modify the input to be 4+2. Then the 
+            addition operation will identify 4+2, resolve it to 6, and modify the input to 6, completing the solution.
+        </p>
+        <pre style='overflow:auto; max-height:400px;'>
+            <code id='dice-roller-code' class='language-javascript'></code>
+        </pre>
     </div>
-    <div class='row'>
-        <div class='col-12'>
-            <h2>main roller and operation object </h2>
-            <p>The main roller is a collection of operations. When it solves for an input, it passes the input 
-                to each of the operations in order. Each operation can .search() the input to see if some or 
-                all of it is a valid target for that operation. Optionally it can .parse() out meaningful values. 
-                Finally it can execute its .call() function, which will replace the part of the input it is targeting 
-                with a resolved value.     
-            </p>
-            <p>For example, if the input is 4+6/3 and the math operations are in place. The divide operation will 
-                identify '6/3' as a valid target. It will resolve it to 2, and modify the input to be 4+2. Then the 
-                addition operation will identify 4+2, resolve it to 6, and modify the input to 6, completing the solution.
-            </p>
-            <pre style='overflow:auto; max-height:400px;'>
-                <code id='dice-roller-code' class='language-javascript'></code>
-            </pre>
-        </div>
-    </div>
-    <div class='row'>
-        <div class='col-12'>
-            <h2>math extensions</h2>
-            <p>The math extensions are a set of operations that provide basic PEMDAS functionality to the roller. 
-                With them added in, if an equation comes in like : 3*(2+4/2) it will be able to handle the math 
-                in the correct order of operations.  
-            </p>
-            <pre style='overflow:auto; max-height:400px;'>
-                <code id='math-extensions-code' class='language-javascript'></code>
-            </pre>
-        </div>
+    <div>
+        <h2>math extensions</h2>
+        <p>The math extensions are a set of operations that provide basic PEMDAS functionality to the roller. 
+            With them added in, if an equation comes in like : 3*(2+4/2) it will be able to handle the math 
+            in the correct order of operations.  
+        </p>
+        <pre style='overflow:auto; max-height:400px;'>
+            <code id='math-extensions-code' class='language-javascript'></code>
+        </pre>
     </div>
 </div>

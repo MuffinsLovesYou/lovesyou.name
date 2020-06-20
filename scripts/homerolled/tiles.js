@@ -7,7 +7,7 @@ export let Tiles = function(options = {}) {
 
     _tiles.Tile = function(tileData) {
         let tile = document.createElement('div');
-        tile.className = 'tile col';
+        tile.className = 'tile';
 
         tile.appendChild(_tiles.getImage(tileData.src));
         
@@ -26,12 +26,6 @@ export let Tiles = function(options = {}) {
         return tile;
     }
 
-    _tiles.getRow = function() { 
-        let div = document.createElement('div');
-        div.className = 'row row-cols-3';
-        return div;
-    }
-
     _tiles.getImage = function(src){
         let rand = Math.floor(Math.random() * _tiles.imageCount + 1);
         let img = document.createElement('img');
@@ -44,11 +38,9 @@ export let Tiles = function(options = {}) {
         if(!container instanceof HTMLElement) { throw`tiles.fill requires a valid html element for a container`; }
         if(!Array.isArray(tiles)) { throw`tiles.fill requires an array of tile data`; }
         
-        let row = _tiles.getRow();
         tiles.forEach((tileData) => {
-            row.appendChild(_tiles.Tile(tileData));
+            container.appendChild(_tiles.Tile(tileData));
         });
-        container.appendChild(row);
     }
     return _tiles;
 }

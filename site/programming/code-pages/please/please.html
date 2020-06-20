@@ -1,44 +1,38 @@
-<div class='container'>
-    <div class='row'>
-        <div id='code-page-character-notes'>
-            <p>please.js is a promise-resolution tool. It's intention is to provide syntax sugar for 
-                promise resolution since I find the vanilla js promises syntax to be a bit clunky. 
-                please.js uses a function chain syntax that attempts to have a intuitive flow to it.
-            </p>
-            <p>
-                <a href='https://github.com/unstableconfiguration/Lite' target='_blank'>Github Link</a>
-            </p>
-            <p>The example below is how lite.js uses please.js on page load. The views often load 
-                content (usually html or text) and bind it to the page, as well as load data (usually json) 
-                and bind it to the content. As such, it wants to make sure the content and data have 
-                both been loaded succcessfully before attempting the binding operations.
-            </p>
-        </div>
- 
-       
+<div>
+    <div id='code-page-character-notes'>
+        <p>please.js is a promise-resolution tool. It's intention is to provide syntax sugar for 
+            promise resolution since I find the vanilla js promises syntax to be a bit clunky. 
+            please.js uses a function chain syntax that attempts to have a intuitive flow to it.
+        </p>
+        <p>
+            <a href='https://github.com/unstableconfiguration/Lite' target='_blank'>Github Link</a>
+        </p>
+        <p>The example below is how lite.js uses please.js on page load. The views often load 
+            content (usually html or text) and bind it to the page, as well as load data (usually json) 
+            and bind it to the content. As such, it wants to make sure the content and data have 
+            both been loaded succcessfully before attempting the binding operations.
+        </p>
     </div>
-    <div class='row'>
-        <div>
-            <h2>example usage</h2>
-            <pre style='overflow:auto; max-height:400ppx'>
-                <code id='example-code-block' class='language-javascript'>
+
+    
+    <div>
+        <h2>example usage</h2>
+        <pre style='overflow:auto; max-height:400ppx'>
+            <code id='example-code-block' class='language-javascript'>
 please.do(_loadContent())
     .and(_loadData())
     .then((x, y)=>{
         _bindContent(_lite.content);
         _bindData(_lite.data);
     });
-                </code>
-            </pre>
-        </div>
+            </code>
+        </pre>
     </div>
-    <div class='row'>
-        <div>
-            <h2>please.js</h2>
-            <pre style='overflow:auto; max-height:400px;'>
-                <code id='please-code-block' class='language-javascript'>
-                </code>
-            </pre>
-        </div>
+    <div>
+        <h2>please.js</h2>
+        <pre style='overflow:auto; max-height:400px;'>
+            <code id='please-code-block' class='language-javascript'>
+            </code>
+        </pre>
     </div>
 </div>
