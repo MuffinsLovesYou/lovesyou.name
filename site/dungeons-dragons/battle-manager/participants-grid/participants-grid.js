@@ -25,7 +25,7 @@ export let view = lite.extend({
                 { field : 'hp', header : 'HP', 
                     style : 'width:150px;' }, 
                 { field : 'remove', header : 'Remove', 
-                    style : 'width:75px;' }
+                    style : 'width:75px; text-align:center;' }
             ],
             onTableCellCreated : function(td, colDef) {
                 switch(colDef.field) { 
@@ -105,11 +105,11 @@ export let view = lite.extend({
      }
     , tdRemoveButton : function(td) { 
         let view = this;
+
         let button = document.createElement('button');
         button.innerHTML = '-'
-        button.className = 'btn btn-dark btn-sm';
-        button.style.width = '30px';
-        button.style.lineHeight = '.75'
+        button.className = 'btn-inline btn-dark';
+        button.style.width = '60%';
 
         button.addEventListener('click', function() { 
             td.parentElement.parentElement.removeChild(td.parentElement);
