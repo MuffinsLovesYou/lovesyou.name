@@ -34,7 +34,7 @@ export let MonstersTab = lite.extend({
                         new MonsterBox({
                             data : monsters[e.target.innerText]
                             , container : document.getElementById('modal-content')
-                            , onDataBound : function() {
+                            , onContentBound : function() {
                                 let box = document.getElementById('monsterbox');
                                 box.style.maxHeight = '80%';
                                 box.style.overflow  = 'auto';

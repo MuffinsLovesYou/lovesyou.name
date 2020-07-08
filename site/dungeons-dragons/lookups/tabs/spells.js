@@ -47,7 +47,7 @@ export let SpellsTab =  lite.extend({
                 { field : 'Level', header : 'Level', filter : true, sort : true, style: 'width:50px; text-align:right;' },
                 { field : 'School', header : 'School', filter : true, sort : true, style : 'width:125px'},
                 { field : 'CastingTime', header : 'Casting Time', filter : true, sort:true, style: 'width:125px;' },
-                { field : 'Ritual', header : 'Ritual', filter : view.getRitualFilter(), style : 'width:50px, text-align:center;'},
+                { field : 'Ritual', header : 'Ritual', filter : view.getRitualFilter(), style : 'width:50px; text-align:center;'},
                 { field : 'Range', header : 'Range', filter : true, sort : true, style: 'width:100px; overflow:hidden;' },
                 { field : 'Duration', header : 'Duration', filter : true, sort : true, style: 'width:100px;' } 
             ],

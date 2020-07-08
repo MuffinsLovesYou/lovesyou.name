@@ -13,6 +13,7 @@ export let view =  lite.extend({
     </div>`,
     onContentBound : function() {
         new Tiles().fill(document.getElementById('tiles'), [
+            { title: '07-2020', href: '#dungeons-dragons/notes/05-2020?path=sessions/07-2020', alt: 'starting safari' },
             { title: '05-2020', href: '#dungeons-dragons/notes/05-2020?path=sessions/05-2020', alt: 'downtime and new arc' },
             { title: '03-2020', href: '#dungeons-dragons/notes/05-2020?path=sessions/03-2020', alt: 'hit and run in the necropolis' },
             { title: '02-2020', href: '#dungeons-dragons/notes/05-2020?path=sessions/02-2020', alt: 'dealing with vampires' },

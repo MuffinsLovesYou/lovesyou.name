@@ -2,6 +2,7 @@ import { lite } from '../../../../scripts/homerolled/lite.js';
 import { monsters } from '../../../../5e/monsters.js';
 import { customMonsters } from '../../../../5e/custom-monsters/custom-monsters.js';
 
+
 export let view = lite.extend({
     contentUrl : 'site/dungeons-dragons/elements/monsterbox/monsterbox.html'
     , initialize : function() {
@@ -33,7 +34,11 @@ export let view = lite.extend({
             view.setData(monsterData);
         });
     }
-    , onDataLoaded : function(data){}
+    , onDataLoaded : function(data) { 
+        let view = this;
+        view.format_stats(data);
+        view.format_spells(view.data);
+    }
     , format_spells : function(data){
         if(!data.Trait) return;
         let spellcasting = data.Trait.find((trait)=>{
@@ -44,6 +49,7 @@ export let view = lite.extend({
     }
     , format_stats : function(data) {
         let bonus = (x) => x+'('+((x>=10)?'+':'') + Math.floor((+x-10)/2)+')'
+        window.bonus = bonus;
         for(let s in data.Stats){
             if(!isNaN(data.Stats[s])) 
                 data.Stats[s] = bonus(data.Stats[s]);
@@ -51,9 +57,8 @@ export let view = lite.extend({
     }
     , onDataBound : function () {
         let view = this;
+
         view.toggle_divs();
-        view.format_spells(view.data);
-        view.format_stats(view.data);
         view.build_traits();
         view.build_actions();
         view.build_reactions();
