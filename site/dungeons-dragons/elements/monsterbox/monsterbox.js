@@ -17,7 +17,7 @@ export let view = lite.extend({
         if(!monster) { view.loadCustomMonster(); }
     }
     , getMonsterName : function() { 
-        return window.location.hash.split('/').slice(2).join('/').replace(/%20/g,' ');
+        return window.location.hash.split('/').slice(1).join('/').replace(/%20/g,' ');
     }
     , loadMonster : function() {
         let view = this;
