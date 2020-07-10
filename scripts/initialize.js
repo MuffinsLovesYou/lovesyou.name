@@ -28,7 +28,7 @@ export let initializer = {
                     .then(page => {                        
                         new page.view().attach(document.getElementById('main-content'));
                     });
-                breadcrumb.set(hash, filePath);
+                //breadcrumb.set(hash, filePath);
             }
         });
         window.onhashchange()

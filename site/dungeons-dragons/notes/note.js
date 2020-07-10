@@ -19,7 +19,7 @@ export let view = lite.extend({
         let markup = markdown.parse(content);
         this.content = `
             <div><a href='https://www.dandwiki.com/wiki/5e_SRD:Monsters' target='_blank'>Monsters</a>
-            <a href='http://npcgenerator.azurewebsites.net/' target='_blank'>NPC generator</a></div>
+            <br><a href='http://www.npcgenerator.com/' target='_blank'>NPC generator</a></div>
             ` + markup;
     }
 });
