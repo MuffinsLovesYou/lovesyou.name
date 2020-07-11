@@ -44,6 +44,6 @@ export let monster = {
     ]
 }
 
-export let FlaggfurSquire = monster;
+export let Squire = monster;
 
 

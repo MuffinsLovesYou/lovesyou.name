@@ -8,12 +8,12 @@ export let monster = {
     Type: "fiend (Rakshasa), monster manual",
     Senses: "darkvision 60 ft.",
     Stats: {
-        "Str":"14(+2)",
-        "Dex":"18(+4)",
-        "Con":"18(+4)",
-        "Int":"13(+1)",
-        "Wis":"16(+3)",
-        "Cha":"20(+5)"
+        "Str": 14,
+        "Dex": 18,
+        "Con": 18,
+        "Int": 13,
+        "Wis": 16,
+        "Cha": 20
     },
     Defenses: {
         "Ac":"17 (natural armor)",
@@ -60,8 +60,7 @@ export let monster = {
         }
     ], 
     Items: [
-        { Name : 'Robe of Nondetection (Very rare, requires attunement)', Text : `While worn, the wearer 
-            of these robes is under the effect of a Nondetection spell.` }
+        { Name : 'Ring of Mind Shielding', Text : `While worn, the wearer is immune to having their thoughts read.` }
     ]
 }
 
