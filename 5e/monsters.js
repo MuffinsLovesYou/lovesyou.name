@@ -1,11 +1,14 @@
 import { importedMonsters } from './imported/monsters.js';
 import { importedVolos } from './imported/volos_guide.js';
 import { importedMordenkainens } from './imported/mordenkainens_monsters.js';
+import { customMonsters } from './custom-monsters/custom-monsters.js';
 
 export let monsters = {};
 
 let map_imported = function(imported){
-    for(let m in imported){
+    for(let m in imported) {
+        if(typeof(m) === 'function') { return; }
+
         let monster = {};
         let imp = imported[m];
 
@@ -94,3 +97,11 @@ let map_imported = function(imported){
 map_imported(importedMonsters);
 map_imported(importedVolos);
 map_imported(importedMordenkainens);
+
+for(let k in customMonsters) { 
+    let monster = customMonsters[k];
+    if(typeof(monster) !== 'object') { continue; }
+
+    monsters[k] = monster;
+}
+

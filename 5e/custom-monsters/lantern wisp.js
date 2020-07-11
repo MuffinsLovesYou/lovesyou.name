@@ -41,3 +41,4 @@ export let monster = {
     ]
     , Legendary : []
 }
+export let LanternWisp = monster;

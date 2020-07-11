@@ -1,7 +1,7 @@
 export let monster = {
     Name: "Jangalee Pashu",
     Alignment: "lawful evil",
-    Challenge: "13",
+    Challenge: "16",
     Languages: "Common, Infernal",
     Size: "Medium",
     Speed: "40 ft.",
@@ -28,7 +28,7 @@ export let monster = {
         },
         {
             Name: "Claw",
-            Text: `Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 9 (2d6 + 2) 
+            Text: `Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 9 (2d6 + 2) 
                 slashing damage, and the target is cursed if it is a creature. The magical 
                 curse takes effect whenever the target takes a short or long rest, filling the 
                 target's thoughts with horrible images and dreams. The cursed target gains no 
@@ -64,3 +64,5 @@ export let monster = {
             of these robes is under the effect of a Nondetection spell.` }
     ]
 }
+
+export let JangaleePashu = monster;
