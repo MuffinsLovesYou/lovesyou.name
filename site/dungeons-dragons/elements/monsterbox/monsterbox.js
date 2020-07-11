@@ -72,7 +72,10 @@ export let view = lite.extend({
         if(!data.Languages) hide('Languages');
         if(!data.Defenses.Save) hide('Save');
         if(!data.Senses) hide('Senses');
+        if(!data.Skills) hide('Skills');
+        if(!data.Defenses.Vulnerabilities) hide('Vulnerabilities');
         if(!data.Defenses.Immune) hide('Immune');
+        if(!data.Defenses.Resist) hide('Resistances');
         if(!data.Defenses.ConditionImmune) hide('ConditionImmune');
         if(!data.Reaction.length) view.container.querySelector('#monster-reactions').style.display = 'none';
         if(!data.Legendary.length) view.container.querySelector('#monster-legendary').style.display = 'none' ;

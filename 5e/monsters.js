@@ -26,8 +26,8 @@ let map_imported = function(imported){
         monster.Type = imp.type;
         // slots?
         // spells?
-        // skill
         // passive
+        monster.Skills = imp.skill;
         monster.Senses = imp.senses
         
         monster.Stats = {
@@ -44,7 +44,7 @@ let map_imported = function(imported){
             Hp : imp.hp,
             Immune : imp.immune||'',
             Resist : imp.resist,
-            Vulnerable : imp.vulnerable,
+            Vulnerabilities : imp.vulnerable,
             Saves : imp.save,
         }
         monster.Action = [];
