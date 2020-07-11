@@ -4,12 +4,14 @@ import { monsters } from '../../../../5e/monsters.js';
 import { MonsterBox } from '../../elements/monsterbox/monsterbox.js';
 import { Modal } from '../../../common/modal/modal.js';
 
+
 export let MonstersTab = lite.extend({
     content : `<div id='monsters-table'></div><div id='monsterbox-container'></div>`
     , initialize : function() {
         let _monsters = [];
         for(let k in monsters) { _monsters.push(monsters[k]); }
         this.data = _monsters;
+        window.monsters = _monsters
     }
     , onContentBound : function(){
         let view = this;
