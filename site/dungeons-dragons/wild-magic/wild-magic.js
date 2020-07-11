@@ -51,15 +51,21 @@ export let view = lite.extend({
                     },
                     style : 'width:90%;max-width:400px;white-space:normal;overflow-wrap:break-word'
                 }
-            ]
+            ],
+            onTableCellCreated : function(td, colDef) { 
+                let text = td.innerText;
+                td.innerText = '';
+                td.innerHTML = text;
+            }
         });
         view.grid = grid;
+        window.grid = grid;
     },
-    onD100Click : function(e){
+    onD100Click : function(e) {
         let roll = Math.floor(Math.random() * 100) + 1
         roll = roll%2==0 ? roll-1+'-'+roll : roll + '-' + (+roll+1);
         
         this.grid.html.tHead.rows[1].cells[0].firstChild.value = roll;
-        grid.filtering.filter();
+        this.grid.filtering.filter();
     }
 })
