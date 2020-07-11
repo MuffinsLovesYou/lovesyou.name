@@ -166,8 +166,12 @@ export let view = lite.extend({
 
         return encounters;
     },
+    wildcardFilter : function(cellVal, filterVal) { 
+        return cellVal.includes(filterVal);
+    },
     writeOutput : function(encounters) { 
         let numberSort = function(a, b) { return +a >= +b ? 1 : -1 };
+        let wildcardFilter = this.wildcardFilter;
 
         new Gridify({
             container : 'encounter-output-table',
@@ -175,7 +179,7 @@ export let view = lite.extend({
             columns : [
                 { field : 'count', header : '# Monsters', filter : true, sort : numberSort }
                 , { field : 'xpCost', header : 'XP Cost', filter : true, sort : numberSort }
-                , { field : 'crsString', header : 'Challenge Ratings', filter : true, sort : true }
+                , { field : 'crsString', header : 'Challenge Ratings', filter : wildcardFilter, sort : true }
             ], 
             paging : true
         });
