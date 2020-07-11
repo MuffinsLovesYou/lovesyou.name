@@ -27,7 +27,7 @@ export let routes = {
     , 'dungeons-dragons/notes/{note}' : 'dungeons-dragons/notes/note.js'
     , 'dungeons-dragons/notes/archives/{note}' : 'dungeons-dragons/note/note.js'
     
-    , 'dungeons-dragons/spellbox' : 'dungeons-dragons/elements/spellbox/spellbox.js'
+    , 'spellbox/{spell}' : 'dungeons-dragons/elements/spellbox/spellbox.js'
     , 'dungeons-dragons/wild-magic': 'dungeons-dragons/wild-magic/wild-magic.js'
     
     , 'programming' : 'programming/programming.js' 
