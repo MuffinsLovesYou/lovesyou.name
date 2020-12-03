@@ -26,3 +26,43 @@
 #monster-builder .number-input { 
     width:3em;
 }
+
+.output-table { 
+    margin: 25px;
+    table-layout: fixed;
+    width:500px;
+}
+
+.output-table thead th input { 
+    width : 75px !important;
+}
+
+.output-table tbody tr :nth-child(1), 
+.output-table tbody tr :nth-child(2) {
+    width:125px;
+}
+
+.output-table thead tr :nth-child(3),
+.output-table tbody tr :nth-child(3) {
+    width:250px;
+}
+
+.output-table tbody > :nth-child(even) {
+    background-color:#eee;
+}
+
+.output-table .monster-count-col {
+    padding: 0em 1em;
+    /* Need to remove style defaults from gridify */
+    text-align:right !important; 
+}
+
+.output-table .xp-cost-col { 
+    padding: 0em 1em;
+    text-align:right !important;
+}
+
+.output-table .cr-col {
+    padding: 0em 1em;
+    text-align:left !important;
+}

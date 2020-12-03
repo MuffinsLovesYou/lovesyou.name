@@ -168,14 +168,15 @@ export let view = lite.extend({
         let wildcardFilter = this.wildcardFilter;
 
         new Gridify({
-            container : 'encounter-output-table',
+            container : 'output-table',
             data : encounters,
             columns : [
-                { field : 'count', header : '# Monsters', filter : true, sort : numberSort }
-                , { field : 'xpCost', header : 'XP Cost', filter : true, sort : numberSort }
-                , { field : 'crsString', header : 'Challenge Ratings', filter : wildcardFilter, sort : true }
+                { field : 'count', header : '# Monsters', filter : true, sort : numberSort, className : 'monster-count-col' }
+                , { field : 'xpCost', header : 'XP Cost', filter : true, sort : numberSort, className : 'xp-cost-col' }
+                , { field : 'crsString', header : 'Challenge Ratings', filter : wildcardFilter, sort : true , className : 'cr-col' }
             ], 
-            paging : true
+            paging : true, 
+            className : 'output-table'
         });
     }
 });
