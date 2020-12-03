@@ -4,7 +4,7 @@ export let monster = {
     , Type : 'celestial'
     , Alignment : 'lawful good'
     , Speed : 'fly 50 ft. (hover)'
-    , Save : 'int +11, wis +8'
+    , Save : 'dex +10, cha +2'
     , Skill : ''
     , Senses : 'darkvision 120ft'
     , Languages : 'Common, Celestial'
@@ -25,15 +25,14 @@ export let monster = {
         Cha : 11
     }
     , Trait : [
-        { Name : 'Illuminate', Text : 'The Lantern Wisp can emanate bright light like the light spell. '}
-        , { Name : 'Daylight 1/day', Text : `The Lantern Wisp can emanate the daylight spell.` }    
+        { Name : 'Innate Spellcasting', Text : `The wisp's spellcasting ability is wisdom (spell save DC 12) 
+            It can innately cast the following spells: 
+            <br>At Will: Light, Invisibility (self only)
+            <br>1/Day: Daylight` },
     ]
     , Action : [
         { Name : 'Flare', Text : `Melee Spell Attack: +4 to hit, reach 5 ft., one creature. 
         Hit:9 (2d8) radiant damage.`},
-        { Name : 'Invisibility', Text : `The Lantern Wisp and its light magically become invisible until it 
-        attacks or uses a light producing action.`},
-        { Name : 'Spare the Dying', Text : 'The lantern Wisp can cast the Spare the Dying cantrip at will. '}
     ]
     , Reaction : []
     , Items : [

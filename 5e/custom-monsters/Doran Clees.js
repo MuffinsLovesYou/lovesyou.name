@@ -1,14 +1,27 @@
+/*
+He has long, curled, brown hair and green eyes.
+He has smooth black skin.
+He stands 182cm (5'11") tall and has a muscular build.
+He has an edgy, bland face.
+He has slightly long nails.
+He is prone to violence.
+He takes everything at face-value.
+He frequently thinks aloud.
+*/
+
+
+
 export let monster = {
-    Name : 'Did we pick a name for this person?'
+    Name : 'Doran Clees'
     , Size : 'Medium'
-    , Type : 'humanoid'
+    , Type : 'humanoid (human)'
     , Alignment : 'lawful neutral'
     , Speed : 30
     , Save : 'Con +5, Wis+6'
-    , Skill : ''
+    , Skills : 'Religion +3, Heal +6, Athletics +6'
     , Senses : ''
-    , Languages : ''
-    , Challenge : ''
+    , Languages : 'Human, Dwarvish'
+    , Challenge : '2'
     , Defenses : { 
         Ac : '18 (Chainmail + Shield)',
         Hp : 38,
@@ -30,20 +43,22 @@ export let monster = {
             <br>Cantrips (at will): light, mending, sacred flame, spare the dying,
             <br>1st level(4 slots): divine favor, guiding bolt, healing word, shield of faith
             <br>2nd level(3 slots): lesser restoration, magic weapon, prayer of healing, silence
-            <br>3rd level(2 slots): beacon of hope, crusader's mantle, revivify` }
+            <br>3rd level(2 slots): beacon of hope, clairvoyance, revivify` }
     ]
     , Action : [
         { Name : 'Warhammer', Text : `Melee weapon attack: +6 to hit, reach 5ft, one target. Hit: 8 (1d8+3) bludgeoning damage.` }
     ]
-    , Reaction : []
+    , Reaction : [ ]
     , Legendary : [
-        { Name : '', Text : ``}
     ]
     , Items : [
-        { Name : '', Text : ``}
+        { Name : 'Chain Mail', Text : ``},
+        { Name : 'Shield', Text : ``},
+        { Name : 'Warhammer', Text : ``},
+        
     ]
 }
 
-export let Squire = monster;
+export let Doran = monster;
 
 
