@@ -2,12 +2,6 @@ import { lite } from '../../../scripts/homerolled/lite.js';
 import { EncounterBuilder } from '../../../scripts/homerolled/encounterBuilder.js';
 import { Gridify } from '../../../scripts/homerolled/gridify.js';
 
-/* TODO: cleanup and styling: 
-    Table styles. 
-    Input styles 
-        fixed width left 
-    give character levels alternative input (x chars of y level)
-*/
 
 export let view = lite.extend({
     contentUrl : 'site/dungeons-dragons/encounter-builder/encounter-builder.html',
