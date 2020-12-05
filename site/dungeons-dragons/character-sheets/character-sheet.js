@@ -20,19 +20,22 @@ export let view = lite.extend({
         let view = this;
         import(view.getDataUrl())
             .then(charData => {
-                view.setData(charData[this.getCharName()]);
+                view.setData(charData[this.getCharId()]);
             });
     }
     , getDataUrl : function() { 
         let base = '../../../5e/char-sheets/'
+        return base + this.getFileName();
+    }
+    , getFileName : function() {
         let hash = location.hash;
-        let charName = hash.indexOf('path') > -1 
+        let path = hash.indexOf('path') > -1 
             ? hash.substr(hash.indexOf('path') + 5) + '.js'
             : hash.split('/').slice(2).join('/') + '.js';
         // Apache servers are case-sensitive
-        return base + charName.toLocaleLowerCase();
+        return path.toLocaleLowerCase();
     }
-    , getCharName : function() {
+    , getCharId : function() {
         return location.hash
             .split('?')[0]
             .split('/').pop();
@@ -92,24 +95,17 @@ export let view = lite.extend({
     }
     , loadNotesTab : function(){
         let view = this;
-        var notesContainer = view.container.querySelector('#character-notes');
-        let x = new lite.extend({
+        let notesContainer = view.container.querySelector('#character-notes');
+        let notesPath = '5e/notes/char-notes/' + view.getFileName().replace('.js', '.md');
+
+        let notes = new lite.extend({
             container : notesContainer,
-            content : `<div id='notes'></div>`,
-            loadData : function() {
-                fetch('5e/notes/char-notes/' + location.hash.split('/').splice(-1) + '.md')
-                    .then(response => response.text())
-                    .then(text => { this.setData(text); })
-                    .catch(err => { console.log('No character notes found'); });
-            },
-            onDataLoaded : function(data){
-                this.data = markdown.parse(data);
-            },
-            onDataBound : function(){
-                this.container.querySelector('#notes').innerHTML += this.data;
+            contentUrl : notesPath,
+            onContentLoaded : function(content) { 
+                this.content = markdown.parse(content);
             }
         });
-        new x().attach();
+        new notes().attach();
     }
     , loadSkillsTab : function(data) {
         let view = this;
