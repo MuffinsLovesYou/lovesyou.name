@@ -1,6 +1,6 @@
-import { Emeline } from './Emeline.js';
-import { JangaleePashu } from './Jangalee Pashu.js';
-import { Sengras } from './Sengras Tunnel.js'
+import { Emeline } from './emeline.js';
+import { JangaleePashu } from './jangalee-pashu.js';
+import { Sengras } from './sengras-tunnel.js'
 
 export let JangaleeArc = {
     Emeline,
