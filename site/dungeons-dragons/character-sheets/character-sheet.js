@@ -98,7 +98,7 @@ export let view = lite.extend({
         let notesContainer = view.container.querySelector('#character-notes');
         let notesPath = '5e/notes/char-notes/' + view.getFileName().replace('.js', '.md');
 
-        let notes = new lite.extend({
+        let notes = lite.extend({
             container : notesContainer,
             contentUrl : notesPath,
             onContentLoaded : function(content) { 
