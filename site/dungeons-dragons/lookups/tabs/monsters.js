@@ -47,7 +47,7 @@ export let MonstersTab = lite.extend({
                 , { field : 'Challenge', header : 'CR', 
                     style : 'width:75px; text-align:right;',
                     filter : { rule : view.challenge_rating_filter }, 
-                    sort : { comparator : view.challenge_rating_sort }
+                    sort : { comparator : view.crSort }
                 }
                 , { field : 'Type', header : 'Type',
                     style : 'width: 125px; overflow:hidden;',
@@ -62,16 +62,16 @@ export let MonstersTab = lite.extend({
             }
         });
     }
-    , challenge_rating_sort : function(a, b) {
+    , crSort : function(a, b) {
         let parse = (cr) => cr.indexOf('/') === -1 ? +cr : 1/(cr.split('/')[1]); 
         a = parse(a);
         b = parse(b);
-        if(a==b) return 0;
+        if(a == b) { return 0; }
         return a > b ? 1 : -1;
     }
-    , challenge_rating_filter : function(cell_value, filter_value){
-        if(+filter_value === 1) return +cell_value === 1;
-        return cell_value.substr(0, filter_value.length) === filter_value; 
+    , challenge_rating_filter : function(cellValue, filterValue){
+        if(+filterValue === 1) { return +cell_value === 1; }
+        return cellValue.substr(0, filterValue.length) === filterValue; 
     }
 });
 
