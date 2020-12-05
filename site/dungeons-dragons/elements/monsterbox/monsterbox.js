@@ -36,10 +36,10 @@ export let view = lite.extend({
     }
     , onDataLoaded : function(data) { 
         let view = this;
-        view.format_stats(data);
-        view.format_spells(view.data);
+        view.formatStats(data);
+        view.formatSpells(view.data);
     }
-    , format_spells : function(data){
+    , formatSpells : function(data){
         if(!data.Trait) return;
         let spellcasting = data.Trait.find((trait)=>{
             return trait.Name === 'Spellcasting';
@@ -47,7 +47,7 @@ export let view = lite.extend({
         if(!spellcasting) return;
         spellcasting.Text = spellcasting.Text.replace(/â€¢/g, '');
     }
-    , format_stats : function(data) {
+    , formatStats : function(data) {
         let bonus = (x) => x+'('+((x>=10)?'+':'') + Math.floor((+x-10)/2)+')'
         window.bonus = bonus;
         for(let s in data.Stats){
@@ -58,14 +58,14 @@ export let view = lite.extend({
     , onDataBound : function () {
         let view = this;
 
-        view.toggle_divs();
-        view.build_traits();
-        view.build_actions();
-        view.build_reactions();
-        view.build_legendary();
-        view.build_items();
+        view.toggleDivs();
+        view.buildTraits();
+        view.buildActions();
+        view.buildReactions();
+        view.buildLegendary();
+        view.buildItems();
     }
-    , toggle_divs : function() {
+    , toggleDivs : function() {
         let view = this;
         let data = view.data;
         let hide = (id)=>view.container.querySelector('#'+id).parentElement.style.display = 'none';
@@ -81,7 +81,7 @@ export let view = lite.extend({
         if(!data.Legendary.length) view.container.querySelector('#monster-legendary').style.display = 'none' ;
         if(!data.Items) view.container.querySelector('#monster-items').style.display = 'none';
     }
-    , build_dynamic_item : function(name, text){
+    , buildDynamicItem : function(name, text){
         let new_item = document.createElement('div');
         let label = new_item.appendChild(document.createElement('span'));
         let description = new_item.appendChild(document.createElement('span'));
@@ -90,58 +90,57 @@ export let view = lite.extend({
         description.innerHTML = text;
         return new_item;
     }
-    , build_traits : function() {
+    , buildTraits : function() {
         let view = this;
         let traits = view.data.Trait;
-        if(!traits) return;
+        if(!traits) { return; }
         let traits_div = view.container.querySelector('#monster-traits');
         traits.forEach((trait)=>{ 
-            traits_div.appendChild(view.build_dynamic_item(trait.Name, trait.Text));
+            traits_div.appendChild(view.buildDynamicItem(trait.Name, trait.Text));
         });
     }
-    , build_actions : function() {
+    , buildActions : function() {
         let view = this;
-        window.view = view;
         let actions = view.data.Action;
-        if(!actions) return;
+        if(!actions) { return; }
         let actions_div = view.container.querySelector('#monster-actions');
         actions.forEach((action)=>{
             if(Array.isArray(action.text)){
                 action.text = action.text.map((item, idx)=>{ 
-                    if(!idx) return item;
+                    if(!idx) { return item; }
                     item = item.split('.');
                     return '<b>'+item[0]+'.</b>'+item.slice(1).join('.');
                 });
                 action.text = action.text.join('<br>');
             }
-            actions_div.appendChild(view.build_dynamic_item(action.Name, action.Text));
+            actions_div.appendChild(view.buildDynamicItem(action.Name, action.Text));
         });
     }
-    , build_reactions : function() {
+    , buildReactions : function() {
         let view = this;
         let reactions = view.data.Reaction;
-        if(!reactions.length) return;
+        if(!reactions.length) { return; }
         let reactions_div = view.container.querySelector('#monster-reactions');
         reactions.forEach((reaction)=>{
-            reactions_div.appendChild(view.build_dynamic_item(reaction.Name, reaction.Text));
+            reactions_div.appendChild(view.buildDynamicItem(reaction.Name, reaction.Text));
         });
     }
-    , build_legendary : function() {
+    , buildLegendary : function() {
         let view = this;
         let legendary = view.data.Legendary;
-        if(!legendary) return;
+        if(!legendary) { return; }
         let legendary_div = view.container.querySelector('#monster-legendary');
         legendary.forEach((legend)=>{
-            legendary_div.appendChild(view.build_dynamic_item(legend.Name, legend.Text));
+            legendary_div.appendChild(view.buildDynamicItem(legend.Name, legend.Text));
         });
     }
-    , build_items : function() {
+    , buildItems : function() {
         let view = this;
         let items = view.data.Items;
-        if(!items) return;
-        let items_div = view.container.querySelector('#monster-items');
+        if(!items) { return; }
+        let itemsDiv = view.container.querySelector('#monster-items');
         items.forEach((item)=>{
-            items_div.appendChild(view.build_dynamic_item(item.Name, item.Text));
+            itemsDiv.appendChild(view.buildDynamicItem(item.Name, item.Text));
         });
     }
 });

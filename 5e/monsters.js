@@ -5,7 +5,7 @@ import { customMonsters } from './custom-monsters/custom-monsters.js';
 
 export let monsters = {};
 
-let map_imported = function(imported){
+let mapImported = function(imported){
     for(let m in imported) {
         if(typeof(m) === 'function') { return; }
 
@@ -94,9 +94,9 @@ let map_imported = function(imported){
         monsters[m] = monster;
     }
 }
-map_imported(importedMonsters);
-map_imported(importedVolos);
-map_imported(importedMordenkainens);
+mapImported(importedMonsters);
+mapImported(importedVolos);
+mapImported(importedMordenkainens);
 
 for(let k in customMonsters) { 
     let monster = customMonsters[k];
