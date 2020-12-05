@@ -1,4 +1,4 @@
-import { Character } from '../character';
+import { Character } from '../character.js';
 // Height : 6'
 // Weight: 165
 
