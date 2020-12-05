@@ -26,7 +26,7 @@ export let MonstersTab = lite.extend({
                 {
                     field : 'Name',
                     header : 'Name',
-                    filter : true,
+                    filter : { rule : view.nameFilter },
                     style : 'width: 200px; text-align:left; text-decoration:underline',
                     sort : true,
                     click : (e)=>{
@@ -69,9 +69,13 @@ export let MonstersTab = lite.extend({
         if(a == b) { return 0; }
         return a > b ? 1 : -1;
     }
-    , crFilter : function(cellValue, filterValue){
+    , crFilter : function(cellValue, filterValue) {
         if(+filterValue === 1) { return +cell_value === 1; }
         return ('' + cellValue).substr(0, filterValue.length) === filterValue; 
+    }
+    , nameFilter : function(cellValue, filterValue) { 
+        return cellValue.toLowerCase()
+            .includes(filterValue.toLowerCase());
     }
 });
 
