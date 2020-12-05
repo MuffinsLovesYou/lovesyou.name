@@ -3,7 +3,6 @@ import { Gridify } from '../../../scripts/homerolled/gridify.js';
 import { MainTab } from './tabs/main.js';
 import { SpellsTab } from './tabs/spells.js';
 import { markdown } from '../../../scripts/homerolled/markdown-parser.js';
-import { Dice } from '../../common/dice/dice.js';
 
 export let view = lite.extend({
     contentUrl : 'site/dungeons-dragons/character-sheets/character-sheet.html',
@@ -11,12 +10,11 @@ export let view = lite.extend({
         let vm = this;
 
         vm.initializeTabs();
-        new Dice().attach(document.getElementById('dice-container'));
     }
     , initialize : function() {
         let view = this;
+        view.loadStyleSheet('site/dungeons-dragons/character-sheets/character-sheet.css');   
         view.loadCharacter();
-        view.loadStyleSheet('css/homerolled/character-sheet.css');   
     }
     , loadCharacter : function() {
         let view = this;
