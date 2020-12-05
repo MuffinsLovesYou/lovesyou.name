@@ -46,7 +46,7 @@ export let MonstersTab = lite.extend({
                 }
                 , { field : 'Challenge', header : 'CR', 
                     style : 'width:75px; text-align:right;',
-                    filter : { rule : view.challenge_rating_filter }, 
+                    filter : { rule : view.crFilter }, 
                     sort : { comparator : view.crSort }
                 }
                 , { field : 'Type', header : 'Type',
@@ -69,7 +69,7 @@ export let MonstersTab = lite.extend({
         if(a == b) { return 0; }
         return a > b ? 1 : -1;
     }
-    , challenge_rating_filter : function(cellValue, filterValue){
+    , crFilter : function(cellValue, filterValue){
         if(+filterValue === 1) { return +cell_value === 1; }
         return cellValue.substr(0, filterValue.length) === filterValue; 
     }
