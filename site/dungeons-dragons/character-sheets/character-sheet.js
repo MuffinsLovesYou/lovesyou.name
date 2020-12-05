@@ -22,15 +22,17 @@ export let view = lite.extend({
         let view = this;
         import(view.getDataUrl())
             .then(charData => {
-               view.setData(charData[this.getCharName()]);
+                view.setData(charData[this.getCharName()]);
             });
     }
     , getDataUrl : function() { 
-        let hash = location.hash;
         let base = '../../../5e/char-sheets/'
-        return hash.indexOf('path') > -1 
-            ? base + hash.substr(hash.indexOf('path') + 5) + '.js'
-            : base + hash.split('/').slice(2).join('/') + '.js';
+        let hash = location.hash;
+        let charName = hash.indexOf('path') > -1 
+            ? hash.substr(hash.indexOf('path') + 5) + '.js'
+            : hash.split('/').slice(2).join('/') + '.js';
+        // Apache servers are case-sensitive
+        return base + charName.toLocaleLowerCase();
     }
     , getCharName : function() {
         return location.hash
@@ -39,6 +41,7 @@ export let view = lite.extend({
     }
     , onDataBound : function (data) {
         let view = this;
+
         view.loadMainTab(data);
         view.loadBackgroundTab(data);
         view.loadNotesTab();
@@ -98,7 +101,8 @@ export let view = lite.extend({
             loadData : function() {
                 fetch('5e/notes/char-notes/' + location.hash.split('/').splice(-1) + '.md')
                     .then(response => response.text())
-                    .then(text => { this.setData(text); });
+                    .then(text => { this.setData(text); })
+                    .catch(err => { console.log('No character notes found'); });
             },
             onDataLoaded : function(data){
                 this.data = markdown.parse(data);

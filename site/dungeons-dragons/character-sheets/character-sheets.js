@@ -1,6 +1,11 @@
 import { lite } from '../../../scripts/homerolled/lite.js';
 import { Tiles } from '../../../scripts/homerolled/tiles.js';
 
+/* ID and path variables 
+    /character-sheets/{Name} is the name of the module export value. 
+        If no path is given, it looks for a file with that name in lowercase in 5e/char-sheets
+    ?path=directory/file-path : If the file is in a subfolder or has a different name than {Name}
+*/
 export let view = lite.extend({
     contentUrl : `site/dungeons-dragons/character-sheets/character-sheets.html`,
     onContentBound : function() {
