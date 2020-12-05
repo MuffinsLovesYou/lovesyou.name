@@ -2,7 +2,7 @@ import { lite } from '../../../../scripts/homerolled/lite.js';
 
 export let MainTab = lite.extend({
     contentUrl : 'site/dungeons-dragons/character-sheets/tabs/main.html',
-    onDataLoaded : function(data){
+    initialize : function() {
         let view = this;
         view.setSavesText();
         view.setStats();
@@ -28,8 +28,7 @@ export let MainTab = lite.extend({
         data.Stats.Con = stat('Constitution');
         data.Stats.Int = stat('Intelligence');
         data.Stats.Wis = stat('Wisdom');
-        data.Stats.Cha = stat('Charisma');
-    
+        data.Stats.Cha = stat('Charisma');    
     },
     setLevelText : function(){
         let data = this.data;
@@ -43,9 +42,9 @@ export let MainTab = lite.extend({
         if(!data) return view.hide(container);
         let div = view.container.querySelector('#'+container);
         for(let i in data)
-            div.appendChild(view.build_dynamic_item(i, data[i]));
+            div.appendChild(view.buildDynamicItem(i, data[i]));
     },
-    build_dynamic_item : function(name, text){
+    buildDynamicItem : function(name, text){
         let new_item = document.createElement('div');
         let label = new_item.appendChild(document.createElement('span'));
         let description = new_item.appendChild(document.createElement('span'));
