@@ -71,7 +71,7 @@ export let MonstersTab = lite.extend({
     }
     , crFilter : function(cellValue, filterValue){
         if(+filterValue === 1) { return +cell_value === 1; }
-        return cellValue.substr(0, filterValue.length) === filterValue; 
+        return ('' + cellValue).substr(0, filterValue.length) === filterValue; 
     }
 });
 
