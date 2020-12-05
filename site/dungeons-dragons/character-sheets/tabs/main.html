@@ -1,41 +1,41 @@
 <div id='characterbox' class='character'>
 	<textarea rows='1' placeholder="hp tracker"></textarea>
 	<div>
-		<span id='Name' bind class='character-name'></span>
+		<span id='Name' data-field class='character-name'></span>
 	</div>
 	<div style='font-style:italic;'>
-		<span id='Size' bind></span>
-		<span id='Race' bind></span><span>,</span>
-		<span id='Alignment' bind></span>
+		<span id='Size' data-field></span>
+		<span id='Race' data-field></span><span>,</span>
+		<span id='Alignment' data-field></span>
 	</div>
 	<div class='character-divider'></div>
 	<div>
 		<span class='character-red-left'>Saving Throws </span>
-		<span id='Save' bind='SaveText'>
+		<span id='Save' data-field='SaveText'>
 	</div>
 	<div id='character-resistances'>
 		<span class='character-red-left'>Resistances </span>
-		<span id='Immune' bind='Defenses.Resistances'>
+		<span id='Immune' data-field='Defenses.Resistances'>
 	</div>
 	<div id='character-immunities'>
 		<span class='character-red-left'>Damage Immunities </span>
-		<span id='Immune' bind='Defenses.Immunities'>
+		<span id='Immune' data-field='Defenses.Immunities'>
 	</div>
 	<div id='character-condition-immunities'>
 		<span class='character-red-left'>Condition Immunities </span>
-		<span id='ConditionImmune' bind='Defenses.ConditionImmunities'>
+		<span id='ConditionImmune' data-field='Defenses.ConditionImmunities'>
 	</div>
 	<div>
 		<span class='character-red-left'>Armor Class </span>
-		<span id='Ac' bind='Defenses.AC'>
+		<span id='Ac' data-field='Defenses.AC'>
 	</div>
 	<div>
 		<span class='character-red-left'>Hit Points </span>
-		<span id='Hp' bind='Defenses.HP'></span>
+		<span id='Hp' data-field='Defenses.HP'></span>
 	</div>
 	<div>
 		<span class='character-red-left'>Speed </span>
-		<span id='Speed' bind></span>
+		<span id='Speed' data-field></span>
 	</div>
 	<div class='character-divider'></div>
 	<div>
@@ -48,26 +48,26 @@
 			<span class='character-stat-label'>CHA</span>	
 		</div>
 		<div>
-			<span id='Str' bind='Stats.Str' class='character-stat-value'></span>
-			<span id='Dex' bind='Stats.Dex' class='character-stat-value'></span>
-			<span id='Con' bind='Stats.Con' class='character-stat-value'></span>
-			<span id='Int' bind='Stats.Int' class='character-stat-value'></span>
-			<span id='Wis' bind='Stats.Wis' class='character-stat-value'></span>
-			<span id='Cha' bind='Stats.Cha' class='character-stat-value'></span>
+			<span id='Str' data-field='Stats.Str' class='character-stat-value'></span>
+			<span id='Dex' data-field='Stats.Dex' class='character-stat-value'></span>
+			<span id='Con' data-field='Stats.Con' class='character-stat-value'></span>
+			<span id='Int' data-field='Stats.Int' class='character-stat-value'></span>
+			<span id='Wis' data-field='Stats.Wis' class='character-stat-value'></span>
+			<span id='Cha' data-field='Stats.Cha' class='character-stat-value'></span>
 		</div>
 	</div>
 	<div class='character-divider'></div>
 	<div>
 		<span class='character-red-left'>Senses </span>
-		<span id='Senses' bind></span>
+		<span id='Senses' data-field></span>
 	</div>
 	<div>
 		<span class='character-red-left'>Languages </span>
-		<span id='Languages' bind></span>
+		<span id='Languages' data-field></span>
 	</div>
 	<div>
 		<span class='character-red-left'>Level </span>
-		<span id='Level' bind='LevelText'></span>
+		<span id='Level' data-field='LevelText'></span>
 	</div>
 	<div id='character-features'>
         <span class='character-red-left'>Features</span>
