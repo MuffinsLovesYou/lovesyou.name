@@ -6,8 +6,6 @@ import { ItemsTab } from './tabs/items.js';
 export let view = lite.extend({
     contentUrl : 'site/dungeons-dragons/lookups/lookups.html',
     initialize : function() {
-        // need to revisit tabs 
-        this.loadStyleSheet('css/homerolled/character-sheet.css');
     }
     , onContentBound : function() {
         this.initializeTabs();

@@ -42,43 +42,19 @@
     width:60px;
 }
 
-#characterTabs {
-    display:flex;
-    line-height:30px;
-    margin:25px;
-}
-
-#characterTabs :last-child {
-    border-right:none;
-}
-
-#characterTabs span {
-    border-right:solid thin;
-    display:inline-block;
-    font-weight:bold;
-    min-width:100px;
-    text-align: center;
-}
-
-#characterTabs .selected {
-    opacity: .5;
-    text-decoration:underline;
-}
-
 #characterSections {
     border-left: solid thin;
     padding-left:8px;
 }
 
-
 #characterSections .characterSection span:nth-child(2){
     display:inline;
 }
 
-
 #characterSections .characterSection ul span:first-child{
     width:50px;
 }
+
 #characterSections .characterSection ul span:nth-child(2){
     display:inline-block;
     text-align:right;
