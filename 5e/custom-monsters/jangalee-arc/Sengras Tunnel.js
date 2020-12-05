@@ -11,7 +11,7 @@ export let monster = {
     , Skill : ''
     , Senses : ''
     , Languages : ''
-    , Challenge : ''
+    , Challenge : '9'
     , Defenses : { 
         Ac : '16 (+1 st.leather)',
         Hp : 94 ,
