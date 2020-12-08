@@ -10,7 +10,6 @@ export let view = lite.extend({
     }
     ,initialize : function() {
         let view = this;
-        window.view = view;
         this.loadStyleSheet('timeline.css');
     }
     , onDataLoaded : function(data){

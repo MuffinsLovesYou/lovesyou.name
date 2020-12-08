@@ -11,7 +11,6 @@ export let MonstersTab = lite.extend({
         let _monsters = [];
         for(let k in monsters) { _monsters.push(monsters[k]); }
         this.data = _monsters;
-        window.monsters = _monsters
     }
     , onContentBound : function(){
         let view = this;

@@ -8,7 +8,7 @@ export let view = lite.extend({
         if(!view.data) { view.data = view.loadSpell(); }
     }
     , loadSpell : function() {
-        let spellName = window.location.hash.split('/').slice(1).join('/').replace(/%20/g, ' ');
+        let spellName = location.hash.split('/').slice(1).join('/').replace(/%20/g, ' ');
         let spell = spells[spellName];
         return spell;
     }

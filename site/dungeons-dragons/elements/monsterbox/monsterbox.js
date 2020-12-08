@@ -17,7 +17,7 @@ export let view = lite.extend({
         if(!monster) { view.loadCustomMonster(); }
     }
     , getMonsterName : function() { 
-        return window.location.hash.split('/').slice(1).join('/').replace(/%20/g,' ');
+        return location.hash.split('/').slice(1).join('/').replace(/%20/g,' ');
     }
     , loadMonster : function() {
         let view = this;
@@ -49,7 +49,6 @@ export let view = lite.extend({
     }
     , formatStats : function(data) {
         let bonus = (x) => x+'('+((x>=10)?'+':'') + Math.floor((+x-10)/2)+')'
-        window.bonus = bonus;
         for(let s in data.Stats){
             if(!isNaN(data.Stats[s])) 
                 data.Stats[s] = bonus(data.Stats[s]);
