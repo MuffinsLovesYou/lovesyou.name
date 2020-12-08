@@ -1,4 +1,4 @@
-import { Router } from './homerolled/router.js';
+import { lite } from './homerolled/lite.js';
 import { routes } from './routes.js';
 
 export function main() { 
@@ -23,16 +23,26 @@ let initializer = {
         document.title = emojis[Math.floor(Math.random()*emojis.length)];   
     },
     initializeRouter : function() {
-        window.router = new Router({
-            paths : routes,
+        window.lite = lite;
+ 
+        lite.router = new lite.Router({
+            paths : routes, 
             onHashChange : function(hash, filePath) {
+                hash = hash.substr(1);
+                if(!filePath) {
+                    // Default path behavior if not found in routes: 
+                        // #hash/url/path looks for file ../site/hash/url/path/path.js
+                    filePath = hash + '/' + hash.split('/').slice(-1)[0] + '.js';
+                }
                 let route = '../site/' + filePath;
+
                 import(route)
                     .then(page => {                        
                         new page.view().attach(document.getElementById('main-content'));
                     });
             }
         });
+
         window.onhashchange()
     }
 }
