@@ -1,34 +1,25 @@
 
-/* url-hash : file-to-load */
-export let routes = {
-    "" : 'landing/landing.js'
-    , 'home' : 'landing/landing.js'
+/* 
+    Default behavior (defined in main.js): #hash/url/path looks for a file site/hash/url/path/path.js
+        So #dungeons-dragons/wild-magic opens site/dungeons-dragons/wild-magic/wild-magic.js
+*/
+export let routes = [
+    { hash : '', value : 'landing/landing.js' },
+    { hash : 'dungeons-dragons/character-sheets/{character}', 
+        value : 'dungeons-dragons/character-sheets/character-sheet.js' },
+    { hash : 'dungeons-dragons/dice', value : 'common/dice/dice.js' },
     
-    , 'programming/dice-roller' : 'programming/code-pages/dice-roller/dice-roller.js'
-    , 'programming/please' : 'programming/code-pages/please/please.js'
-    , 'programming/lite' : 'programming/code-pages/lite/lite.js'
-    , 'programming/gridify' : 'programming/code-pages/gridify/gridify.js'
+    // We could eliminate these by dropping their pages in subfolders
+    { hash : 'dungeons-dragons/notes/places', value : 'dungeons-dragons/notes/places.js' },
+    { hash : 'dungeons-dragons/notes/archives/2017', value : 'dungeons-dragons/notes/archives/2017.js' },
+    { hash : 'dungeons-dragons/notes/archives/2018', value : 'dungeons-dragons/notes/archives/2018.js' },
+    { hash : 'dungeons-dragons/notes/archives/2019', value : 'dungeons-dragons/notes/archives/2019.js' },
+    /* wildcards need to come after hard coded ones or else they will trigger  */
+    { hash : 'dungeons-dragons/notes/{note}', value : 'dungeons-dragons/notes/note.js' },
+    { hash : 'dungeons-dragons/notes/archives/{note}', value : 'dungeons-dragons/note/note.js' },
+    
+    { hash : 'monsterbox/{monster}', value : 'dungeons-dragons/elements/monsterbox/monsterbox.js' },
+    { hash : 'spellbox/{spell}', value : 'dungeons-dragons/elements/spellbox/spellbox.js' }
 
-    , 'dungeons-dragons': 'dungeons-dragons/dungeons-dragons.js'
-    , 'dungeons-dragons/battle-manager' : 'dungeons-dragons/battle-manager/battle-manager.js'
-    , 'dungeons-dragons/character-sheets' : 'dungeons-dragons/character-sheets/character-sheets.js'
-    , 'dungeons-dragons/character-sheets/{character}' : 'dungeons-dragons/character-sheets/character-sheet.js'
-    , 'dungeons-dragons/dice' : 'common/dice/dice.js'
-    , 'dungeons-dragons/encounter-builder' : 'dungeons-dragons/encounter-builder/encounter-builder.js'
-    , 'dungeons-dragons/lookups' : 'dungeons-dragons/lookups/lookups.js'
-    , 'dungeons-dragons/maps' : 'dungeons-dragons/maps/maps.js'
-    , 'monsterbox/{monster}' : 'dungeons-dragons/elements/monsterbox/monsterbox.js'
-    
-    , 'dungeons-dragons/notes' : 'dungeons-dragons/notes/notes.js'
-    , 'dungeons-dragons/notes/places' : 'dungeons-dragons/notes/places.js'
-    , 'dungeons-dragons/notes/archives/2017' : 'dungeons-dragons/notes/archives/2017.js'
-    , 'dungeons-dragons/notes/archives/2018' : 'dungeons-dragons/notes/archives/2018.js'
-    , 'dungeons-dragons/notes/archives/2019' : 'dungeons-dragons/notes/archives/2019.js'
-    , 'dungeons-dragons/notes/{note}' : 'dungeons-dragons/notes/note.js'
-    , 'dungeons-dragons/notes/archives/{note}' : 'dungeons-dragons/note/note.js'
-    
-    , 'spellbox/{spell}' : 'dungeons-dragons/elements/spellbox/spellbox.js'
-    , 'dungeons-dragons/wild-magic': 'dungeons-dragons/wild-magic/wild-magic.js'
-    
-    , 'programming' : 'programming/programming.js' 
-};
+]
+
