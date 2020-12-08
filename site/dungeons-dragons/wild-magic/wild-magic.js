@@ -4,7 +4,7 @@ import { Gridify } from '../../../scripts/homerolled/gridify.js';
 
 export let view = lite.extend({
     contentUrl : 'site/dungeons-dragons/wild-magic/wild-magic.html',
-    loadData : function() {
+    initialize : function() {
         import('../../../5e/imported/wild-magic-surge.js')
             .then(data => {
                 this.setData(data.surgeTable);
@@ -15,11 +15,11 @@ export let view = lite.extend({
         let parsedData = [];
 
         for(let k in this.data){
-            if(k%2==1) continue;
+            if(k % 2 == 1) continue;
             parsedData.push({ 
                 die : k-1 + '-'+ k,
                 result : markdown.parse(this.data[k])
-                });
+            });
         }
         return parsedData
     },
@@ -28,7 +28,7 @@ export let view = lite.extend({
         document.getElementById('wild-magic-surge-d100')
             .addEventListener('click', view.onD100Click.bind(view));
     },
-    onDataBound(){ 
+    onDataBound() {
         this.initializeGrid();
     },
     initializeGrid : function(){
@@ -59,7 +59,6 @@ export let view = lite.extend({
             }
         });
         view.grid = grid;
-        window.grid = grid;
     },
     onD100Click : function(e) {
         let roll = Math.floor(Math.random() * 100) + 1
