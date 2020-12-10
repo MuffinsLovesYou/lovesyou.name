@@ -61,9 +61,11 @@ export let view = lite.extend({
     }
     , formatOutput : function(log) {
         let output = {};
-        console.log(log);
         output.solution = log.solution;
-        let diceOp = log.operations.find(op => op.name == 'dice');
+        /* 'advantage' rolls are recursive and give us multiple dice ops 
+            using filter lets us skip over advantage rolls */
+        let diceOp = log.operations.filter(op => op.name == 'dice').slice(-1)[0];
+        
         output.rolls = diceOp.resolve.map(res => {
             res.rolls.sort((a, b) => a<=b);
             return res.operands.join('d') + ': (' + res.rolls.join(', ') + ')';
