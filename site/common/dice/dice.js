@@ -1,8 +1,5 @@
 import { lite } from '../../../scripts/homerolled/lite.js';
-import { DiceRoller } from '../../../scripts/homerolled/dice/dice.js';
-import { math } from '../../../scripts/homerolled/dice/modules/math.js';
-import { dnd } from '../../../scripts/homerolled/dice/modules/5e.js';
-import { LoggingRoller } from '../../../scripts/homerolled/dice/modules/logging.js';
+import { DiceRoller, MathModule, DnDModule, LoggingModule } from '../../../scripts/homerolled/dice.js';
 import { Gridify } from '../../../scripts/homerolled/gridify.js';
 
 export let view = lite.extend({
@@ -16,9 +13,7 @@ export let view = lite.extend({
     }
     , initializeRoller : function() {
         let view = this;
-        view.roller = new LoggingRoller();
-        view.roller.operations.add(math);
-        view.roller.operations.insert(0, dnd[0]);
+        view.roller = new DiceRoller({ modules : [MathModule, DnDModule, LoggingModule]}); 
     }
     , buildTable : function() {
         let view = this;
@@ -60,23 +55,28 @@ export let view = lite.extend({
         let view = this;
         let input = view.getElementById('dice-input');
         view.roller.solve(input.value);
-        let solution = view.roller.log.solutions[view.roller.log.solutions.length-1];
-        view.logOutput(solution);
+
+        let log = view.roller.log.slice(-1)[0];
+        view.logOutput(view.formatOutput(log));
     }
-    , getResults : function(solution) {
-        return solution.operations.map(operation => {
-            if(!operation.dice) { return ''; }
-            return operation.dice.map(dice => {
-                return dice.input + '(' + dice.rolls.map(die => die.output).join('+') + ')'
-            }) 
-        }).join(' ');
+    , formatOutput : function(log) {
+        let output = {};
+        console.log(log);
+        output.solution = log.solution;
+        let diceOp = log.operations.find(op => op.name == 'dice');
+        output.rolls = diceOp.resolve.map(res => {
+            res.rolls.sort((a, b) => a<=b);
+            return res.operands.join('d') + ': (' + res.rolls.join(', ') + ')';
+        }).join(', ')
+        
+        return output;
     }
     , rolls : []
-    , logOutput : function(solution) {
+    , logOutput : function(output) {
         let view = this;
         view.rolls.unshift({ 
-            Result : solution.output, 
-            Rolls : view.getResults(solution) 
+            Result : output.solution, 
+            Rolls : output.rolls 
         });
         view.buildTable();
     }
