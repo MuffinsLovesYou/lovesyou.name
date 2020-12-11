@@ -1,5 +1,5 @@
 import { lite } from '../../../scripts/homerolled/lite.js';
-import { EncounterBuilder } from '../../../scripts/homerolled/encounterBuilder.js';
+import { EncounterBuilder } from './encounterBuilder.js';
 import { Gridify } from '../../../scripts/homerolled/gridify.js';
 
 
