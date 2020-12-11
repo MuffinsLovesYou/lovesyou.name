@@ -108,7 +108,7 @@ export let view = lite.extend({
 
         let button = document.createElement('button');
         button.innerHTML = '-'
-        button.className = 'btn-inline btn-dark';
+        button.className = 'btn-inline';
         button.style.width = '60%';
 
         button.addEventListener('click', function() { 
