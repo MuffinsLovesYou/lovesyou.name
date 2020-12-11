@@ -38,7 +38,7 @@ let initializer = {
 
                 import(route)
                     .then(page => {                        
-                        new page.view().attach(document.getElementById('main-content'));
+                        new page.view().attach(document.getElementById('content'));
                     });
             }
         });

@@ -1,31 +1,71 @@
-/* https://flatuicolors.com/palette/us */
 
-/*
-    #00cec9 "Robin's egg blue" - progress / action
-    #00b894 "Mint Leaf" - confirmation / success
-    #ffeaa7 "Sour Lemon" - information / alert
-    #e17055 "Orangeville"  - warning
-    #d63031 "Chi Gong" - error / back
-    #636e72 "American River" - text / borders
-*/
+:root {
+    /* https://paletton.com/#uid=33m0q0kllllaFw0g0qFqFg0w0aF
+        For text: saturation -40, contrast +25 */
+    --text-dark : #344043;
+    --text-mid : #5b6769;
+    --text-light : #fefefe;
 
+    --control : #255e69;
+    --control-dark: #0f454f;
+    --info : #ab8539;
+    --info-dark : #805d16;
+    --error : #ab4d39;
+    --error-dark : #802816;
 
+}
 
-
-/* Global element overwrites */
-body,input,select,textarea {
-    color: #636e72;
+body {
+    background-color: var(--text-light);
+    color : var(--text-dark);
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
+    font-weight:400;
+    line-height:1.5;
 }
 
 @media screen and (max-width: 1280px) {
-	body,input,select,textarea {
+	body {
 		font-size: 10pt;
         line-height:1.25;
 	}
 }
+
+.header { 
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    padding: 1.5em 2.5em;
+}
+
+.header a {
+    color: var(--text-light);
+    text-decoration:none;
+    font-size:22px;
+    font-weight: 600;
+}
+
+.header a:visited {
+    color : var(--text-light);
+}
+
+.footer { 
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    padding: 1em 2.5em;
+}
+
+.footer ul li {
+    display:inline
+}
+
+.footer ul li::after {
+    content : ' | '
+}
+
+.footer ul li:last-child::after {
+    content:'';
+}
+
+
 
 code,pre {
     font-family: Courier New, Courier, monospace;
@@ -40,39 +80,12 @@ a:hover   {
     font-style:italic;
 }
 
-/* Major page elements */
-#header {
+
+.content {
     display:block;
-    margin: 10px 2.5em;
+    margin: 2em;
 }
 
-.logo {
-    font-weight:800;
-    color:#6e6e6e;
-    text-decoration:none;
-    font-size:14pt;
-}
-
-#main-content {
-    display:block;
-    margin: 10px 5em;
-}
-
-#footer {
-    margin: 10px 2.5em;
-}
-
-#footer ul li {
-    display:inline
-}
-
-#footer ul li::after {
-    content : ' | '
-}
-
-#footer ul li:last-child::after {
-    content:'';
-}
 
 
 /*  */
