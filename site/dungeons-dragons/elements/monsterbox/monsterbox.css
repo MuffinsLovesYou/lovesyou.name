@@ -3,29 +3,29 @@
     text-align: left
 }
 
-.monster_name {
+.monster-name {
     color : darkred;
     font-size : large;
     font-weight:bold;
 }
 
-.monster_red_left {
+.monster-red-left {
     color : darkred;
     font-weight:bold;
 }
 
-.monster_grey_left {
+.monster-grey-left {
     font-style:italic;
     font-weight:bold;
 }
 
-.monster_divider {
+.monster-divider {
     border-top:solid thin darkred;
     margin-top : 5px;
     padding-bottom : 5px;
 }
 
-.monster_stat_label {
+.monster-stat-label {
     color :darkred;
     display:inline-block;
     font-weight:bold;
@@ -33,7 +33,7 @@
     width: 60px;
 }
 
-.monster_stat_value {
+.monster-stat-value {
     color : darkred;
     display:inline-block;
     text-align:center;
