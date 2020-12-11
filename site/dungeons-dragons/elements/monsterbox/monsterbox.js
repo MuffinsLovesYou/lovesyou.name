@@ -7,7 +7,7 @@ export let view = lite.extend({
     contentUrl : 'site/dungeons-dragons/elements/monsterbox/monsterbox.html'
     , initialize : function() {
         let view = this;
-        view.loadStyleSheet('css/homerolled/dnd.css');
+        view.loadStyleSheet('site/dungeons-dragons/elements/monsterbox/monsterbox.css');
     }
     , loadData : function() { 
         let view = this;
