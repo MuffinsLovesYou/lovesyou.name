@@ -50,7 +50,11 @@ body {
 .footer { 
     background-color: var(--text-dark);
     color: var(--text-light);
-    padding: 1em 2.5em;
+    padding: .5em 2.5em;
+}
+
+.footer a, .footer a:hover, .footer a:visited {
+    color:var(--text-light);
 }
 
 .footer ul li {
@@ -65,27 +69,22 @@ body {
     content:'';
 }
 
-
+.content {
+    margin: 2em 5em;
+}
 
 code,pre {
     font-family: Courier New, Courier, monospace;
 }
 
 a, a:visited { 
-    color: #333333;
+    color: var(--control);
     text-decoration:underline;
 }
 
 a:hover   {
     font-style:italic;
 }
-
-
-.content {
-    display:block;
-    margin: 2em;
-}
-
 
 
 /*  */
@@ -112,10 +111,11 @@ a:hover   {
     text-decoration:underline;
 }
 
-/* Base grid styles */
+/* html table defaults */
 .grid tBody > tr { 
-    border-bottom : solid thin grey;
+    border-bottom : solid thin var(--text-mid);
 }
+
 
 .grid th {
     font-weight: bold;
@@ -128,7 +128,10 @@ a:hover   {
 
 
 
-.btn {
+.btn, .btn-inline {
+    background-color:var(--control);
+    border:transparent;
+    color:var(--text-light);
     display:inline-block;
     font-size:14px;
     padding:.5em 1em;
@@ -141,44 +144,31 @@ a:hover   {
     padding:.1em .75em; 
 }
 
-.btn-ok,
-.btn-confirm, 
-.btn-cancel,
-.btn-dark {
-    border:transparent;
-    color: white;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.3);
+.btn:hover, .btn:focus, 
+.btn-inline:hover, .btn-inline:focus {
+    background-color: var(--control-dark);
 }
 
-.btn-ok { 
-    background-color : #00cec9;
-}
-.btn-ok:hover,
-.btn-ok:focus { 
-    background-color : #0ab6b3;
+.btn-invert {
+    color:var(--control);
+    background-color:var(--text-light);
+    border:solid thin var(--control);
 }
 
-.btn-confirm { 
-    background-color: #00b894;
-}
-.btn-confirm:hover,
-.btn-confirm:focus {
-    background-color: #0ea587;
+.btn-invert:hover, .btn-invert:focus {
+    color:var(--control-dark);
+    background-color:var(--text-light);
+    border:solid thin var(--control-dark);
 }
 
-.btn-cancel { 
-    background-color: #e17055;
-}
-.btn-cancel:hover,
-.btn-cancel:focus { 
-    background-color: #c26953;
+
+.info {
+    color : var(--info);
 }
 
-.btn-dark {
-    background-color: #636e72;
+.error { 
+    color : var(--error);
 }
-.btn-dark:hover,
-.btn-dark:focus {
-    background-color: #2d3436;
-}
+
+
+
