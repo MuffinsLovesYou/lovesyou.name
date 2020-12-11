@@ -3,7 +3,7 @@ import { lite } from '../../../scripts/homerolled/lite.js';
 export let Modal = lite.extend({
     content : `<div id='modal-overlay'><div id='modal-content'></div></div>`,
     initialize : function() { 
-        this.loadStyleSheet('css/homerolled/modal.css');
+        this.loadStyleSheet('site/common/modal/modal.css');
         this.cacheOverflowY = document.body.style.overflowY;
 
         if(!this.container) { 
